@@ -1,0 +1,26 @@
+# SOFTENG 306: Project 1 Starter
+
+Welcome to your first project for SOFTENG 306. 
+
+The project specification is available [here](https://canvas.auckland.ac.nz/courses/105857/files/13471322). The four deliverables for this project are:
+* [Design Documentation](https://canvas.auckland.ac.nz/courses/105857/assignments/400876)
+* [Demo](https://canvas.auckland.ac.nz/courses/105857/assignments/400878)
+* [Code](https://canvas.auckland.ac.nz/courses/105857/assignments/400879)
+* [Quality Report](https://canvas.auckland.ac.nz/courses/105857/assignments/404409)
+
+## Important
+
+Update this readme file to contain the names of each team member and your GitHub login.
+
+* *Replace this text: Team Member Name 1 - GitHub Login*
+* *Replace this text: Team Member Name 2 - GitHub Login*
+* *Replace this text: Team Member Name 3 - GitHub Login*
+* *Replace this text: Team Member Name 4 - GitHub Login*
+
+## Initial Repository Code
+
+The repository contains some initial Java code to help your project. These are under the [src/main/java/uoa/lavs](src/main/java/uoa/lavs) folder. The following code is supplied:
+* [mainframe](src/main/java/uoa/lavs/mainframe): the interfaces for sending requests to and receiving responses from the mainframe. You will need to use the [Connection](src/main/java/uoa/lavs/mainframe/Connection.java) interface in your code: we have provided two implementations of this interface in the [simulator](src/main/java/uoa/lavs/mainframe/simulator/) folder.
+* [Utility](src/main/java/uoa/lavs/utility/): a utility for calculating loan repayments.
+
+  In addition, there are some unit tests in [src/test/java/uoa/lavs/](src/test/java/uoa/lavs/) folder.
