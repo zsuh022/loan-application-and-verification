@@ -14,9 +14,9 @@ The project specification is available [here](https://canvas.auckland.ac.nz/cour
 Update this readme file to contain the names of each team member and your GitHub login.
 
 * *Woojin Jeon - Woojinnz*
-* *Replace this text: Yi-Chen Hsiao - yichenhsiaonz*
-* *Replace this text: Team Member Name 3 - GitHub Login*
-* *Replace this text: Team Member Name 4 - GitHub Login*
+* *Yi-Chen Hsiao - yichenhsiaonz*
+* *Nicholas Lianto - nlia656*
+* *Zion Suh - zsuh022*
 
 ## Initial Repository Code
 
