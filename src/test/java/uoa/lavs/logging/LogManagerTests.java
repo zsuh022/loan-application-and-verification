@@ -62,6 +62,14 @@ public class LogManagerTests {
         writeToLog(type, properties);
         // should write to log.json
         // flush log
-        LogManager.flushLog();
+        ArrayList<Response> reponses = LogManager.flushLog();
+        // should send log entry to mainframe
+        //print all names
+        for (Response response : reponses) {
+            String responseId = response.getValue(LoadCustomer.Fields.CUSTOMER_ID);
+            System.out.println(responseId);
+            String responseName = response.getValue(LoadCustomer.Fields.NAME);
+            System.out.println(responseName);
+        }
     }
 }

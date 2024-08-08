@@ -4,12 +4,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
+import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmail;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static uoa.lavs.mainframe.messages.All.getMessageDescription;
 
 public class LogManager {
     // singleton instance to read log only at startup
@@ -48,7 +51,7 @@ public class LogManager {
         }
     }
 
-    public static void flushLog() {
+    public static ArrayList<Response> flushLog() {
 
         boolean succeeded = true;
         // use singleton instance to send all log entries to mainframe
@@ -59,15 +62,11 @@ public class LogManager {
         for(int i = 0; i < INSTANCE.logCount; i++) {
             // for each log entry, create a request with recorded type and send it to mainframe
             JSONObject logEntry = (JSONObject) INSTANCE.log.get(i);
-            System.out.println(logEntry);
-            System.out.println(logEntry.getString("name"));
             Request request = parseLogEntry(logEntry);
-            connection.send(request);
-            // NO CLUE HOW STATUS WORKS YET
-//            if (status != Status.OK) {
-//                succeeded = false;
-//            }
+            Response response= connection.send(request);
+            responses.add(response);
         }
+        return responses;
     }
 
     private void clearLog() {
@@ -86,10 +85,9 @@ public class LogManager {
     private static Request parseLogEntry(JSONObject logEntry) {
         // parse log entry into request
         Request request = new Request(logEntry.getInt("type"));
-        for (String key : logEntry.keySet()) {
-            if (!key.equals("type") && !key.equals("order")) {
-                request.setValue(key, (String) logEntry.get(key));
-            }
+        for(String key : logEntry.keySet()) {
+            if(key.equals("type")) continue;
+            request.setValue(key, logEntry.getString(key));
         }
         return request;
     }
