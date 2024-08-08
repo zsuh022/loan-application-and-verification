@@ -1,8 +1,12 @@
 package uoa.lavs.logging;
 
+import uoa.lavs.models.Customer;
+import uoa.lavs.models.Loan;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
 
 public class Cache {
 

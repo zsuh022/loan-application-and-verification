@@ -5,8 +5,10 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
 
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LogManager {
@@ -37,9 +39,10 @@ public class LogManager {
 
         // write log to file
         try {
-            FileWriter file = new FileWriter("log.json");
+            BufferedWriter file = new BufferedWriter(new FileWriter("log.json"));
             file.write(INSTANCE.log.toString());
             file.flush();
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,21 +54,19 @@ public class LogManager {
         // use singleton instance to send all log entries to mainframe
         Connection connection = Instance.getConnection();
 
+        ArrayList<Response> responses = new ArrayList<>();
+
         for(int i = 0; i < INSTANCE.logCount; i++) {
             // for each log entry, create a request with recorded type and send it to mainframe
             JSONObject logEntry = (JSONObject) INSTANCE.log.get(i);
-            Request request = INSTANCE.parseLogEntry(logEntry);
-            Response reponse = connection.send(request);
-            Status status = reponse.getStatus();
+            System.out.println(logEntry);
+            System.out.println(logEntry.getString("name"));
+            Request request = parseLogEntry(logEntry);
+            connection.send(request);
             // NO CLUE HOW STATUS WORKS YET
 //            if (status != Status.OK) {
 //                succeeded = false;
 //            }
-        }
-
-        // clear log
-        if(succeeded) {
-            INSTANCE.clearLog();
         }
     }
 
@@ -82,9 +83,9 @@ public class LogManager {
         }
     }
 
-    private Request parseLogEntry(JSONObject logEntry) {
+    private static Request parseLogEntry(JSONObject logEntry) {
         // parse log entry into request
-        Request request = new Request((int) (logEntry.get("type")));
+        Request request = new Request(logEntry.getInt("type"));
         for (String key : logEntry.keySet()) {
             if (!key.equals("type") && !key.equals("order")) {
                 request.setValue(key, (String) logEntry.get(key));
