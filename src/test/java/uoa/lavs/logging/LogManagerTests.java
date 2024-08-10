@@ -1,7 +1,6 @@
 package uoa.lavs.logging;
 
 import org.junit.Test;
-import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
 
@@ -9,9 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static uoa.lavs.logging.LogManager.flushLog;
-import static uoa.lavs.logging.LogManager.writeToLog;
-import static uoa.lavs.mainframe.messages.All.getMessageDescription;
+import static uoa.lavs.logging.LocalLogManager.writeToLog;
 
 public class LogManagerTests {
     @Test
@@ -62,7 +59,7 @@ public class LogManagerTests {
         writeToLog(type, properties);
         // should write to log.json
         // flush log
-        ArrayList<Response> reponses = LogManager.flushLog();
+        ArrayList<Response> reponses = LocalLogManager.flushLog();
         // should send log entry to mainframe
         //print all names
         for (Response response : reponses) {
