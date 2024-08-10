@@ -47,6 +47,7 @@ public class MainframeWriter {
             conn.close();
         } catch (IOException e) {
             connectionError(e);
+            writeToLog(1201, customer, customer.getName(), status.getTransactionId());
             // Null to indicate error
             return null;
         }
@@ -103,7 +104,7 @@ public class MainframeWriter {
 
 
     private <T> void writeToLog(int type, T data, String name, Long tranID){
-        logger.info("\n**********Logging************\n Logging {} {} with code: {}, Transaction ID: {}", data.getClass().getSimpleName(),name, type, tranID);
+        logger.info("\n**********Logging************\n Attempting to log {} {} with code: {}, Transaction ID: {}", data.getClass().getSimpleName(),name, type, tranID);
         try {
             if (data instanceof Customer customer) {
                 Map<String, String> properties = getCustomerLog(customer);
@@ -152,6 +153,6 @@ public class MainframeWriter {
     }
 
     private void mainframeError(int code, String message){
-        logger.error("\nFailed to save data to mainframe.\n Error Code: {}, Error Message: {}.\n Saving details to logfile", code, message);
+        logger.error("\nFailed to save data to mainframe.\n Error Code: {}, Error Message: {}.", code, message);
     }
 }
