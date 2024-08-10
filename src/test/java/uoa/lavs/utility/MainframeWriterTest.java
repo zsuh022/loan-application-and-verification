@@ -21,56 +21,54 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class MainframeWriterTest {
 
-    private static final String DB_PATH = "lavs-data.db";
+  private static final String DB_PATH = "lavs-data.db";
 
-    private final MainframeWriter mainframeWriter = MainframeWriter.getInstance();
+  private final MainframeWriter mainframeWriter = MainframeWriter.getInstance();
 
-    private final Customer customer = new Customer();
+  private final Customer customer = new Customer();
 
-    private final Connection conn = Instance.getConnection();
+  private final Connection conn = Instance.getConnection();
 
-    @BeforeEach
-    void setup() {
+  @BeforeEach
+  void setup() {
 
-        deleteDatabaseFile();
+    deleteDatabaseFile();
 
-        customer.setTitle("Mr");
-        customer.setName("John Doe");
-        customer.setDateOfBirth(LocalDate.of(2024,2,11));
-        customer.setOccupation("Engineer");
-        customer.setCitizenship("New Zealand");
-        customer.setVisa(null);
+    customer.setTitle("Mr");
+    customer.setName("John Doe");
+    customer.setDateOfBirth(LocalDate.of(2024, 2, 11));
+    customer.setOccupation("Engineer");
+    customer.setCitizenship("New Zealand");
+    customer.setVisa(null);
+  }
 
+  private void deleteDatabaseFile() {
+    Path path = Paths.get(DB_PATH);
+    try {
+      Files.deleteIfExists(path);
+    } catch (IOException e) {
+      System.err.println("Failed to delete database file: " + e.getMessage());
     }
+  }
 
-    private void deleteDatabaseFile() {
-        Path path = Paths.get(DB_PATH);
-        try {
-            Files.deleteIfExists(path);
-        } catch (IOException e) {
-            System.err.println("Failed to delete database file: " + e.getMessage());
-        }
-    }
+  @Test
+  void testNewCustomerSuccess() throws IOException {
 
-    @Test
-    void testNewCustomerSuccess() throws IOException {
+    String result = mainframeWriter.newCustomer(conn, customer);
 
-        String result = mainframeWriter.newCustomer(conn, customer);
+    assertEquals(result, "1");
+  }
 
-        assertEquals(result, "1");
-    }
+  @Test
+  void testNewCustomerFailure() throws IOException {
 
-    @Test
-    void testNewCustomerFailure() throws IOException {
+    Status errorStatus = new Status(404, "Some problem", 123456L);
+    Response errorResponse = new Response(errorStatus, new HashMap<>());
 
-        Status errorStatus = new Status(404, "Some problem", 123456L);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
+    Connection mockConnection = new MockConnection(errorResponse);
 
-        Connection mockConnection = new MockConnection(errorResponse);
+    String result = mainframeWriter.newCustomer(mockConnection, customer);
 
-        String result = mainframeWriter.newCustomer(mockConnection, customer);
-
-        assertNull(result);
-    }
-
+    assertNull(result);
+  }
 }
