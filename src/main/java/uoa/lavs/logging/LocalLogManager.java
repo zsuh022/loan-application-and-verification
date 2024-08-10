@@ -69,6 +69,20 @@ public class LocalLogManager {
             Request request = parseLogEntry(logEntry);
             Response response = connection.send(request);
             responses.add(response);
+            if(response.getStatus().getWasSuccessful()) {
+                // if successful, remove log entry
+                INSTANCE.log.remove(i);
+                INSTANCE.logCount--;
+                i--;
+            } else {
+                // if not successful break loop
+                succeeded = false;
+                break;
+            }
+        }
+        // if all responses were successful, clear log
+        if(succeeded) {
+            INSTANCE.clearLog();
         }
         return responses;
     }
