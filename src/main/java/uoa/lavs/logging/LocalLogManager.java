@@ -1,26 +1,28 @@
 package uoa.lavs.logging;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmail;
-
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static uoa.lavs.mainframe.messages.All.getMessageDescription;
+public class LocalLogManager {
 
-public class LogManager {
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(LocalLogManager.class);
+
     // singleton instance to read log only at startup
-    private final static LogManager INSTANCE = new LogManager();
+    private final static LocalLogManager INSTANCE = new LocalLogManager();
     private JSONArray log;
     private int logCount;
 
-    private LogManager(){
+    private LocalLogManager(){
         // read log from file
         JSONParser parser = new JSONParser();
         try{
@@ -63,8 +65,22 @@ public class LogManager {
             // for each log entry, create a request with recorded type and send it to mainframe
             JSONObject logEntry = (JSONObject) INSTANCE.log.get(i);
             Request request = parseLogEntry(logEntry);
-            Response response= connection.send(request);
+            Response response = connection.send(request);
             responses.add(response);
+            if(response.getStatus().getWasSuccessful()) {
+                // if successful, remove log entry
+                INSTANCE.log.remove(i);
+                INSTANCE.logCount--;
+                i--;
+            } else {
+                // if not successful break loop
+                succeeded = false;
+                break;
+            }
+        }
+        // if all responses were successful, clear log
+        if(succeeded) {
+            INSTANCE.clearLog();
         }
         return responses;
     }
@@ -77,6 +93,7 @@ public class LogManager {
             FileWriter file = new FileWriter("log.json");
             file.write(log.toString());
             file.flush();
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

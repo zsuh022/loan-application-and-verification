@@ -32,11 +32,14 @@ public class CacheTests {
     @Test
     public void testSingleCustomer() {
         // test cache
-        Customer customer = new Customer("1");
+        Customer customer = new Customer();
+        customer.setCustomerId("1");
         Cache.cacheCustomer(customer);
-        Customer customer2 = new Customer("2");
+        Customer customer2 = new Customer();
+        customer2.setCustomerId("2");
         Cache.cacheCustomer(customer2);
-        Customer customer3 = new Customer("2");
+        Customer customer3 = new Customer();
+        customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
         assert Cache.searchCustomerCache("1").get(0).getId().equals("1");
     }
@@ -44,11 +47,14 @@ public class CacheTests {
     @Test
     public void testMultipleCustomer() {
         // test cache
-        Customer customer = new Customer("1");
+        Customer customer = new Customer();
+        customer.setCustomerId("1");
         Cache.cacheCustomer(customer);
-        Customer customer2 = new Customer("2");
+        Customer customer2 = new Customer();
+        customer2.setCustomerId("2");
         Cache.cacheCustomer(customer2);
-        Customer customer3 = new Customer("2");
+        Customer customer3 = new Customer();
+        customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
         assert Cache.searchCustomerCache("2").size() == 2;
     }
