@@ -36,10 +36,10 @@ public class CacheTests {
         customer.setCustomerId("1");
         Cache.cacheCustomer(customer);
         Customer customer2 = new Customer();
-        customer.setCustomerId("2");
+        customer2.setCustomerId("2");
         Cache.cacheCustomer(customer2);
         Customer customer3 = new Customer();
-        customer.setCustomerId("3");
+        customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
         assert Cache.searchCustomerCache("1").get(0).getId().equals("1");
     }
@@ -51,10 +51,10 @@ public class CacheTests {
         customer.setCustomerId("1");
         Cache.cacheCustomer(customer);
         Customer customer2 = new Customer();
-        customer.setCustomerId("2");
+        customer2.setCustomerId("2");
         Cache.cacheCustomer(customer2);
         Customer customer3 = new Customer();
-        customer.setCustomerId("3");
+        customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
         assert Cache.searchCustomerCache("2").size() == 2;
     }

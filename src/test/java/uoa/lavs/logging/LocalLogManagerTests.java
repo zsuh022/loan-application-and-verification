@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 import static uoa.lavs.logging.LocalLogManager.writeToLog;
 
-public class LogManagerTests {
+public class LocalLogManagerTests {
     @Test
     public void testLogManager() {
         int type = 1201;
