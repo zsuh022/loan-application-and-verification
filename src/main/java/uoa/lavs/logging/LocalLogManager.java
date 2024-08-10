@@ -67,7 +67,7 @@ public class LocalLogManager {
             // for each log entry, create a request with recorded type and send it to mainframe
             JSONObject logEntry = (JSONObject) INSTANCE.log.get(i);
             Request request = parseLogEntry(logEntry);
-            Response response= connection.send(request);
+            Response response = connection.send(request);
             responses.add(response);
         }
         return responses;
@@ -81,6 +81,7 @@ public class LocalLogManager {
             FileWriter file = new FileWriter("log.json");
             file.write(log.toString());
             file.flush();
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
