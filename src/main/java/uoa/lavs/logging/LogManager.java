@@ -4,15 +4,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmail;
-
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static uoa.lavs.mainframe.messages.All.getMessageDescription;
 
 public class LogManager {
     // singleton instance to read log only at startup
@@ -65,6 +61,20 @@ public class LogManager {
             Request request = parseLogEntry(logEntry);
             Response response= connection.send(request);
             responses.add(response);
+            if(response.getStatus().getWasSuccessful()) {
+                // if successful, remove log entry
+                INSTANCE.log.remove(i);
+                INSTANCE.logCount--;
+                i--;
+            } else {
+                // if not successful break loop
+                succeeded = false;
+                break;
+            }
+        }
+        // if all responses were successful, clear log
+        if(succeeded) {
+            INSTANCE.clearLog();
         }
         return responses;
     }
