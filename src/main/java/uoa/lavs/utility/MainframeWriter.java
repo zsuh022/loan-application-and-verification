@@ -48,10 +48,8 @@ public class MainframeWriter {
       conn.close();
     } catch (IOException e) {
       connectionError(e);
-      writeToLog(1201, customer, customer.getName(), status.getTransactionId());
-      // Null to indicate error
-      return null;
     }
+
     if (status.getWasSuccessful()) {
       logger.info(
           "\n**********SUCCESS************\n New customer created: Name = {}, ID = {}, Transaction ID = {}",
