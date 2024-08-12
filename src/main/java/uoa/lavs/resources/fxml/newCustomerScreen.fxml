@@ -5,7 +5,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,14 +35,14 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
                                        <children>
-                                          <FontAwesomeIconView fx:id="loanBack" fill="WHITE" glyphName="ARROW_LEFT" size="24">
+                                          <FontAwesomeIconView fx:id="customerBack" fill="WHITE" glyphName="ARROW_LEFT" size="24">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </FontAwesomeIconView>
                                        </children>
                                     </VBox>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loans" StackPane.alignment="CENTER">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="New customer" StackPane.alignment="CENTER">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -71,7 +72,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -82,7 +83,10 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -90,7 +94,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
+                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -104,199 +108,106 @@
                                        <children>
                                           <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <AnchorPane fx:id="loanGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                <AnchorPane fx:id="newCustGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123456-789-00" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="123-4566-789" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Mr John Doe" textFill="WHITE" />
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Principal" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$45,000" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Active" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Float 1238" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizenship" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="12-11-2011" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Period:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Visa:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="5 years" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan term (years):" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="30 " textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compounding:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="checkbox" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment freq:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="checkbox" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment amt:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="\$12,123" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest only:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="check" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="loanPaymentsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustAddressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PAYMENT STUFF:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address type:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="HERE" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -306,11 +217,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -320,11 +227,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -334,11 +237,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -348,11 +247,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -362,11 +257,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -376,183 +267,159 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
+                                                                  <TextField />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <CheckBox mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
-                                                                  </Text>
-                                                                  <Label textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  </CheckBox>
+                                                                  <CheckBox mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                      <HBox.margin>
-                                                                        <Insets right="30.0" />
+                                                                        <Insets left="20.0" />
                                                                      </HBox.margin>
-                                                                  </Label>
+                                                                  </CheckBox>
                                                                </children>
                                                             </HBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="loanCBPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                                <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
-                                                                        <Insets right="30.0" />
+                                                                        <Insets left="30.0" />
                                                                      </HBox.margin>
-                                                                  </Label>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <CheckBox mnemonicParsing="false" textFill="WHITE" />
                                                                </children>
                                                             </HBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="loanSummaryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="John Doe" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="123-456-789" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Rate:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="8.15%" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan Term:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="30 years" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Frequency:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="Monthly" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Amount:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="\$3,300" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Interest Paid:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="\$655,111" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Cost of Loan:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="\$123,123" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payoff Date:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="Jun 2054" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
+                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                                                               <font>
+                                                                  <Font size="24.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <TextArea opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: rgba(255,255,255,0.2);" VBox.vgrow="ALWAYS">
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                                                               </VBox.margin>
+                                                            </TextArea>
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -570,16 +437,6 @@
                                                       <Insets bottom="24.0" right="21.0" />
                                                    </StackPane.margin>
                                                 </Text>
-                                                <Circle fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="20.0" right="20.0" />
-                                                   </StackPane.margin>
-                                                </Circle>
-                                                <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="33.0" right="31.0" />
-                                                   </StackPane.margin>
-                                                </FontAwesomeIconView>
                                              </children>
                                           </StackPane>
                                        </children>
