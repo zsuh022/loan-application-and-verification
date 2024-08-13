@@ -1,7 +1,9 @@
 package uoa.lavs.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Customer {
 
@@ -12,6 +14,10 @@ public class Customer {
     private String occupation;
     private String citizenship;
     private String visa;
+    private List<CustomerAddress> addressList = new ArrayList<>();
+    private List<CustomerEmail> emailList = new ArrayList<>();
+    private List<CustomerNote> noteList = new ArrayList<>();
+    private List<CustomerPhone> phoneList = new ArrayList<>();
 
     public Customer() {
     }
