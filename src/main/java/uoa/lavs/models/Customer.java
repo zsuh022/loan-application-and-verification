@@ -1,6 +1,7 @@
 package uoa.lavs.models;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class Customer {
 
@@ -69,5 +70,25 @@ public class Customer {
 
     public void setVisa(String visa) {
         this.visa = visa;
+    }
+
+    public void writeCustomer(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writePhone(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeNote(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeAddress(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeEmail(HashMap<String, String> map) {
+        // TODO:
     }
 }
