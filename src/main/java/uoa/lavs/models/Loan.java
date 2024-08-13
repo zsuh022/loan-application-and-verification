@@ -1,13 +1,34 @@
 package uoa.lavs.models;
 
-public class Loan {
-    private String id;
+import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.utility.LoanSummary;
+import uoa.lavs.utility.PaymentFrequency;
 
-    public Loan(String id) {
-        this.id = id;
-    }
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public abstract class Loan {
+
+    protected String loanId;
+    protected List<String> customerList = new ArrayList<>();
+    protected Double principal;
+    protected String rateType;
+    protected Double rate;
+    protected String startDate;
+    protected String period;
+    protected Frequency compoundingFrequency;
+    protected PaymentFrequency paymentFrequency;
+    protected Double paymentAmount;
+    protected LoanStatus status;
+    protected LoanSummary summary;
 
     public String getId() {
-        return id;
+        return loanId;
     }
+
+    public abstract ArrayList<String> getRepaymentSchedule();
+
+    public abstract void writeLoan(HashMap<String, String> map);
 }
