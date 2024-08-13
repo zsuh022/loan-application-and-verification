@@ -2,21 +2,19 @@ package uoa.lavs.mainframe.messages.customer;
 
 import uoa.lavs.mainframe.*;
 
-public class LoadCustomerAddresses implements Message, MessageDescription {
-    public static final int REQUEST_CODE = 1002;
+public class LoadCustomerEmployers implements Message, MessageDescription {
+    public static final int REQUEST_CODE = 1005;
     private Response response;
     private String customerId;
 
     public class Fields {
         public static final String[] INPUT = {"id"};
-        public static final String[] OUTPUT = {"[01].flags", "[01].number", "[01].type", "[02].flags", "[02].number", "[02].type", "[03].flags", "[03].number", "[03].type", "[04].flags", "[04].number", "[04].type", "[05].flags", "[05].number", "[05].type", "count"};
+        public static final String[] OUTPUT = {"[01].name", "[01].number", "[02].name", "[02].number", "[03].name", "[03].number", "[04].name", "[04].number", "[05].name", "[05].number", "count"};
 
         public static final String CUSTOMER_ID = "id";
         public static final String COUNT = "count";
         public static final String NUMBER = "[%02d].number";
-        public static final String TYPE = "[%02d].type";
-        public static final String IS_PRIMARY = "[%02d].flags";
-        public static final String IS_MAILING = "[%02d].flags";
+        public static final String NAME = "[%02d].name";
     }
 
     @Override
@@ -55,29 +53,11 @@ public class LoadCustomerAddresses implements Message, MessageDescription {
         return Integer.parseInt(value);
      }
 
-    // gets type from server
-    public String getTypeFromServer(Integer row)
+    // gets name from server
+    public String getNameFromServer(Integer row)
      {
-        String key = String.format(Fields.TYPE, row);
+        String key = String.format(Fields.NAME, row);
         return response.getValue(key);
-     }
-
-    // gets is primary [flags] from server
-    public Boolean getIsPrimaryFromServer(Integer row)
-     {
-        String key = String.format(Fields.IS_PRIMARY, row);
-        String value = response.getValue(key);
-        int flags = Integer.parseInt(value);
-        return (flags & 1) == 1;
-     }
-
-    // gets is mailing [flags] from server
-    public Boolean getIsMailingFromServer(Integer row)
-     {
-        String key = String.format(Fields.IS_MAILING, row);
-        String value = response.getValue(key);
-        int flags = Integer.parseInt(value);
-        return (flags & 2) == 2;
      }
 
     @Override
