@@ -1,5 +1,6 @@
 package uoa.lavs.mainframe;
 
+import uoa.lavs.mainframe.simulator.NitriteConnection;
 import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 
 // implements the singleton pattern for a mainframe connection
@@ -13,7 +14,7 @@ public class Instance {
     // internal class to initialize the singleton, this enables lazy-loading
     // for the singleton
     private static class SingletonHelper {
-        private static final Connection INSTANCE = new SimpleReplayConnection(dataPath);
+        private static final Connection INSTANCE = new NitriteConnection(dataPath);
     }
 
     // return the underlying connection
