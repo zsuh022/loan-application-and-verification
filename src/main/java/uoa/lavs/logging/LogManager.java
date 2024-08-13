@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class LogManager {
         // read log from file
         JSONParser parser = new JSONParser();
         try{
+            File logFile = new File("log.json");
+            logFile.createNewFile();
             log = new JSONArray(parser.parse(new FileReader("log.json")));
             logCount = log.length();
         } catch (Exception e) {
@@ -35,16 +38,6 @@ public class LogManager {
         JSONObject logEntry = new JSONObject(data);
         INSTANCE.log.put(logEntry);
         INSTANCE.logCount++;
-
-        // write log to file
-        try {
-            BufferedWriter file = new BufferedWriter(new FileWriter("log.json"));
-            file.write(INSTANCE.log.toString());
-            file.flush();
-            file.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static ArrayList<Response> flushLog() {
@@ -83,7 +76,14 @@ public class LogManager {
         log.clear();
         logCount = 0;
         // clear log file
+        writeLog();
+    }
+
+    private void writeLog() {
+        // write log to file
         try {
+            File logFile = new File("log.json");
+            logFile.createNewFile();
             FileWriter file = new FileWriter("log.json");
             file.write(log.toString());
             file.flush();
