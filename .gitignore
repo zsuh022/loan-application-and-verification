@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Log ###
+logs/
+log.json
+lavs-data.db
+lavs-data.txt
