@@ -30,7 +30,7 @@ public class CacheTests {
     }
 
     @Test
-    public void testSingleCustomer() {
+    public void testSingleCustomerId() {
         // test cache
         Customer customer = new Customer();
         customer.setCustomerId("1");
@@ -41,11 +41,11 @@ public class CacheTests {
         Customer customer3 = new Customer();
         customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
-        assert Cache.searchCustomerCache("1").get(0).getId().equals("1");
+        assert Cache.searchCustomerCacheId("1").get(0).getId().equals("1");
     }
 
     @Test
-    public void testMultipleCustomer() {
+    public void testMultipleCustomerId() {
         // test cache
         Customer customer = new Customer();
         customer.setCustomerId("1");
@@ -56,6 +56,6 @@ public class CacheTests {
         Customer customer3 = new Customer();
         customer3.setCustomerId("2");
         Cache.cacheCustomer(customer3);
-        assert Cache.searchCustomerCache("2").size() == 2;
+        assert Cache.searchCustomerCacheId("2").size() == 2;
     }
 }

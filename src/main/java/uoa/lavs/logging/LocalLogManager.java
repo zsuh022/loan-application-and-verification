@@ -5,9 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import uoa.lavs.mainframe.*;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -32,6 +30,7 @@ public class LocalLogManager {
             logCount = log.length();
         } catch (Exception e) {
             // if file does not exist, create new log
+            logger.error("Error reading log file: " + e.getMessage());
             log = new JSONArray();
             logCount = 0;
         }
@@ -66,6 +65,7 @@ public class LocalLogManager {
                 INSTANCE.logCount--;
                 i--;
             } else {
+                logger.error("Failed to send log entry: " + logEntry);
                 // if not successful break loop
                 succeeded = false;
                 INSTANCE.writeLog();
@@ -80,6 +80,7 @@ public class LocalLogManager {
     }
 
     private void clearLog() {
+        logger.info("Clearing log");
         log.clear();
         logCount = 0;
         // clear log file
@@ -95,7 +96,7 @@ public class LocalLogManager {
             file.write(log.toString());
             file.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error writing log file: " + e.getMessage());
         }
     }
 

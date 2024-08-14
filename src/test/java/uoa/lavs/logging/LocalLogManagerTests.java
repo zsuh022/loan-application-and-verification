@@ -3,15 +3,10 @@ package uoa.lavs.logging;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
-import uoa.lavs.mainframe.Response;
-import uoa.lavs.mainframe.messages.customer.LoadCustomer;
 
 import java.io.File;
-import java.io.FileReader;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static uoa.lavs.logging.LocalLogManager.writeToLog;
@@ -56,6 +51,7 @@ public class LocalLogManagerTests {
         }
         System.out.println(logCount);
         assert ((JSONObject) log.get(0)).getString("name").equals(name);
+        assert ((JSONObject) log.get(1)).getString("name").equals(name);
     }
 
     @Test
