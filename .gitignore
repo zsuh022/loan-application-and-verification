@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/google-java-format.xml
 *.iws
 *.iml
 *.ipr
@@ -36,3 +37,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Ignore local db and local log file
+lavs-data.db
+log.json
+
+# LOG4J2 logs
+logs

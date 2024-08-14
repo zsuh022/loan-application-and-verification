@@ -1,5 +1,7 @@
 package uoa.lavs.logging;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,13 +13,17 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LogManager {
+public class LocalLogManager {
+
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(LocalLogManager.class);
+
     // singleton instance to read log only at startup
-    private final static LogManager INSTANCE = new LogManager();
+    private final static LocalLogManager INSTANCE = new LocalLogManager();
     private JSONArray log;
     private int logCount;
 
-    private LogManager(){
+    private LocalLogManager(){
         // read log from file
         JSONParser parser = new JSONParser();
         try{
