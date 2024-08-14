@@ -8,13 +8,7 @@ public class CustomerPhone {
     private Boolean isPrimary;
     private Boolean isTexting;
 
-    public CustomerPhone(String type, String prefix, String number, Boolean isPrimary, Boolean isTexting) {
-        this.type = type;
-        this.prefix = prefix;
-        this.number = number;
-        this.isPrimary = isPrimary;
-        this.isTexting = isTexting;
-    }
+    public CustomerPhone() {}
 
     public void validatePrefix(String p) {
         // TODO:

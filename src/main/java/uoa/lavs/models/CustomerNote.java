@@ -4,7 +4,5 @@ public class CustomerNote {
 
     private String note;
 
-    public CustomerNote(String note) {
-        this.note = note;
-    }
+    public CustomerNote() {}
 }
