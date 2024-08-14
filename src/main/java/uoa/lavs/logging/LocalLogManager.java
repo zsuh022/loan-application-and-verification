@@ -4,12 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,11 +25,10 @@ public class LocalLogManager {
 
     private LocalLogManager(){
         // read log from file
-        JSONParser parser = new JSONParser();
         try{
             File logFile = new File("log.json");
             logFile.createNewFile();
-            log = new JSONArray(parser.parse(new FileReader("log.json")));
+            log = new JSONArray(log = new JSONArray(Files.readString(logFile.toPath())));
             logCount = log.length();
         } catch (Exception e) {
             // if file does not exist, create new log
@@ -44,9 +43,10 @@ public class LocalLogManager {
         JSONObject logEntry = new JSONObject(data);
         INSTANCE.log.put(logEntry);
         INSTANCE.logCount++;
+        INSTANCE.writeLog();
     }
 
-    public static ArrayList<Response> flushLog() {
+    public static boolean flushLog() {
 
         boolean succeeded = true;
         // use singleton instance to send all log entries to mainframe
@@ -68,6 +68,7 @@ public class LocalLogManager {
             } else {
                 // if not successful break loop
                 succeeded = false;
+                INSTANCE.writeLog();
                 break;
             }
         }
@@ -75,7 +76,7 @@ public class LocalLogManager {
         if(succeeded) {
             INSTANCE.clearLog();
         }
-        return responses;
+        return succeeded;
     }
 
     private void clearLog() {
@@ -92,7 +93,6 @@ public class LocalLogManager {
             logFile.createNewFile();
             FileWriter file = new FileWriter("log.json");
             file.write(log.toString());
-            file.flush();
             file.close();
         } catch (Exception e) {
             e.printStackTrace();

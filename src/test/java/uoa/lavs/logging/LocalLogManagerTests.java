@@ -1,9 +1,15 @@
 package uoa.lavs.logging;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Test;
 import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
 
+import java.io.File;
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +38,24 @@ public class LocalLogManagerTests {
         properties.put("visa", visa);
         // write to log
         writeToLog(type, properties);
+        writeToLog(type, properties);
         // should write to log.json
+        // read log.json
+
+        JSONArray log;
+        File file = new File("log.json");
+        int logCount;
+        try{
+            log = new JSONArray(Files.readString(file.toPath()));
+            logCount = log.length();
+        } catch (Exception e) {
+            // if file does not exist, create new log
+            log = new JSONArray();
+            logCount = 0;
+            e.printStackTrace();
+        }
+        System.out.println(logCount);
+        assert ((JSONObject) log.get(0)).getString("name").equals(name);
     }
 
     @Test
@@ -59,14 +82,8 @@ public class LocalLogManagerTests {
         writeToLog(type, properties);
         // should write to log.json
         // flush log
-        ArrayList<Response> reponses = LocalLogManager.flushLog();
-        // should send log entry to mainframe
-        //print all names
-        for (Response response : reponses) {
-            String responseId = response.getValue(LoadCustomer.Fields.CUSTOMER_ID);
-            System.out.println(responseId);
-            String responseName = response.getValue(LoadCustomer.Fields.NAME);
-            System.out.println(responseName);
-        }
+        boolean successful = LocalLogManager.flushLog();
+        assert successful;
+
     }
 }
