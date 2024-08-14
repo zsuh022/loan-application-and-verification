@@ -78,6 +78,38 @@ public class Customer {
         this.visa = visa;
     }
 
+    public List<CustomerAddress> getAddressList() {
+        return addressList;
+    }
+
+    public void addAddress(CustomerAddress address) {
+        this.addressList.add(address);
+    }
+
+    public List<CustomerEmail> getEmailList() {
+        return emailList;
+    }
+
+    public void addEmail(CustomerEmail email) {
+        this.emailList.add(email);
+    }
+
+    public List<CustomerNote> getNoteList() {
+        return noteList;
+    }
+
+    public void addNote(CustomerNote note) {
+        this.noteList.add(note);
+    }
+
+    public List<CustomerPhone> getPhoneList() {
+        return phoneList;
+    }
+
+    public void addPhone(CustomerPhone phone) {
+        this.phoneList.add(phone);
+    }
+
     public void writeCustomer(HashMap<String, String> map) {
         // TODO:
     }
