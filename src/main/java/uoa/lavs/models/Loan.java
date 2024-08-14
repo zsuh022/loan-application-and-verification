@@ -2,9 +2,11 @@ package uoa.lavs.models;
 
 import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.utility.LoanRepayment;
 import uoa.lavs.utility.LoanSummary;
 import uoa.lavs.utility.PaymentFrequency;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ public abstract class Loan {
     protected Double principal;
     protected String rateType;
     protected Double rate;
-    protected String startDate;
+    protected LocalDate startDate;
     protected String period;
     protected Frequency compoundingFrequency;
     protected PaymentFrequency paymentFrequency;
@@ -28,7 +30,7 @@ public abstract class Loan {
         return loanId;
     }
 
-    public abstract ArrayList<String> getRepaymentSchedule();
+    public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
 
     public abstract void writeLoan(HashMap<String, String> map);
 }
