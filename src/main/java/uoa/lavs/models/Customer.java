@@ -120,19 +120,44 @@ public class Customer {
         map.put("visa", visa);
     }
 
-    public void writePhone(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void writeNote(HashMap<String, String> map) {
-        // TODO:
-    }
-
     public void writeAddress(HashMap<String, String> map) {
-        // TODO:
+        for (int i = 0; i < addressList.size(); i++) {
+            CustomerAddress address = addressList.get(i);
+            map.put("type " + i, address.getType());
+            map.put("line1 " + i, address.getLine1());
+            map.put("line2 " + i, address.getLine2());
+            map.put("suburb " + i, address.getSuburb());
+            map.put("city " + i, address.getCity());
+            map.put("postCode " + i, String.valueOf(address.getPostCode()));
+            map.put("country " + i, address.getCountry());
+            map.put("isPrimary " + i, address.getIsPrimary().toString());
+            map.put("isMailing " + i, address.getIsMailing().toString());
+        }
     }
 
     public void writeEmail(HashMap<String, String> map) {
-        // TODO:
+        for (int i = 0; i < emailList.size(); i++) {
+            CustomerEmail email = emailList.get(i);
+            map.put("address " + i, email.getAddress());
+            map.put("isPrimary " + i, email.getIsPrimary().toString());
+        }
+    }
+
+    public void writeNote(HashMap<String, String> map) {
+        for (int i = 0; i < noteList.size(); i++) {
+            CustomerNote note = noteList.get(i);
+            map.put("note " + i, note.getNote());
+        }
+    }
+
+    public void writePhone(HashMap<String, String> map) {
+        for (int i = 0; i < phoneList.size(); i++) {
+            CustomerPhone phone = phoneList.get(i);
+            map.put("type " + i, phone.getType());
+            map.put("prefix " + i, phone.getPrefix());
+            map.put("number " + i, phone.getNumber());
+            map.put("isPrimary " + i, phone.getIsPrimary().toString());
+            map.put("isTexting " + i, phone.getIsTexting().toString());
+        }
     }
 }
