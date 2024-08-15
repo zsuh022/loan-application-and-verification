@@ -111,7 +111,13 @@ public class Customer {
     }
 
     public void writeCustomer(HashMap<String, String> map) {
-        // TODO:
+        map.put("customerId", customerId);
+        map.put("title", title);
+        map.put("name", name);
+        map.put("dateOfBirth", dateOfBirth.toString());
+        map.put("occupation", occupation);
+        map.put("citizenship", citizenship);
+        map.put("visa", visa);
     }
 
     public void writePhone(HashMap<String, String> map) {
