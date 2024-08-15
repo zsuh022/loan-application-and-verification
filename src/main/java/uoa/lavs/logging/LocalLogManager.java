@@ -4,11 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import uoa.lavs.mainframe.*;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,12 +23,14 @@ public class LocalLogManager {
 
     private LocalLogManager(){
         // read log from file
-        JSONParser parser = new JSONParser();
         try{
-            log = new JSONArray(parser.parse(new FileReader("log.json")));
+            File logFile = new File("log.json");
+            logFile.createNewFile();
+            log = new JSONArray(log = new JSONArray(Files.readString(logFile.toPath())));
             logCount = log.length();
         } catch (Exception e) {
             // if file does not exist, create new log
+            logger.error("Error reading log file: " + e.getMessage());
             log = new JSONArray();
             logCount = 0;
         }
@@ -41,19 +42,10 @@ public class LocalLogManager {
         JSONObject logEntry = new JSONObject(data);
         INSTANCE.log.put(logEntry);
         INSTANCE.logCount++;
-
-        // write log to file
-        try {
-            BufferedWriter file = new BufferedWriter(new FileWriter("log.json"));
-            file.write(INSTANCE.log.toString());
-            file.flush();
-            file.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        INSTANCE.writeLog();
     }
 
-    public static ArrayList<Response> flushLog() {
+    public static boolean flushLog() {
 
         boolean succeeded = true;
         // use singleton instance to send all log entries to mainframe
@@ -73,8 +65,10 @@ public class LocalLogManager {
                 INSTANCE.logCount--;
                 i--;
             } else {
+                logger.error("Failed to send log entry: " + logEntry);
                 // if not successful break loop
                 succeeded = false;
+                INSTANCE.writeLog();
                 break;
             }
         }
@@ -82,20 +76,27 @@ public class LocalLogManager {
         if(succeeded) {
             INSTANCE.clearLog();
         }
-        return responses;
+        return succeeded;
     }
 
     private void clearLog() {
+        logger.info("Clearing log");
         log.clear();
         logCount = 0;
         // clear log file
+        writeLog();
+    }
+
+    private void writeLog() {
+        // write log to file
         try {
+            File logFile = new File("log.json");
+            logFile.createNewFile();
             FileWriter file = new FileWriter("log.json");
             file.write(log.toString());
-            file.flush();
             file.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error writing log file: " + e.getMessage());
         }
     }
 

@@ -1,6 +1,9 @@
 package uoa.lavs.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Customer {
 
@@ -11,6 +14,10 @@ public class Customer {
     private String occupation;
     private String citizenship;
     private String visa;
+    private List<CustomerAddress> addressList = new ArrayList<>();
+    private List<CustomerEmail> emailList = new ArrayList<>();
+    private List<CustomerNote> noteList = new ArrayList<>();
+    private List<CustomerPhone> phoneList = new ArrayList<>();
 
     public Customer() {
     }
@@ -69,5 +76,57 @@ public class Customer {
 
     public void setVisa(String visa) {
         this.visa = visa;
+    }
+
+    public List<CustomerAddress> getAddressList() {
+        return addressList;
+    }
+
+    public void addAddress(CustomerAddress address) {
+        this.addressList.add(address);
+    }
+
+    public List<CustomerEmail> getEmailList() {
+        return emailList;
+    }
+
+    public void addEmail(CustomerEmail email) {
+        this.emailList.add(email);
+    }
+
+    public List<CustomerNote> getNoteList() {
+        return noteList;
+    }
+
+    public void addNote(CustomerNote note) {
+        this.noteList.add(note);
+    }
+
+    public List<CustomerPhone> getPhoneList() {
+        return phoneList;
+    }
+
+    public void addPhone(CustomerPhone phone) {
+        this.phoneList.add(phone);
+    }
+
+    public void writeCustomer(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writePhone(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeNote(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeAddress(HashMap<String, String> map) {
+        // TODO:
+    }
+
+    public void writeEmail(HashMap<String, String> map) {
+        // TODO:
     }
 }
