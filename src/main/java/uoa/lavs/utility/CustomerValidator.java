@@ -57,6 +57,56 @@ public class CustomerValidator {
         // private String address;
         // private Boolean isPrimary;
 
+        if (map.get("address") == null || map.get("address").isEmpty()) {
+            return false;
+        }
+
+        String[] email = map.get("address").split("@");
+        if (email.length != 2) {
+            // email split into prefix and domain
+            return false;
+        }
+
+        String prefix = email[0];
+        if (!prefix.matches("^[a-zA-Z0-9._-]+$")) {
+            return false;
+        }
+
+        if (!Character.isLetter(prefix.charAt(0)) || !Character.isLetterOrDigit(prefix.charAt(prefix.length() - 1))) {
+            return false;
+        }
+
+        if (prefix.contains("..") || prefix.contains("__") || prefix.contains("--")) {
+            return false;
+        }
+
+        String[] domain = email[1].split("\\.");
+        if (domain.length <= 1) {
+            return false;
+        }
+
+        for (String domainPart : domain) {
+            if (domainPart.isEmpty()) {
+                return false;
+            }
+
+            if (!domainPart.matches("^[a-zA-Z0-9-]+$")) {
+                return false;
+            }
+
+            if (!Character.isLetterOrDigit(domainPart.charAt(0)) || !Character.isLetterOrDigit(domainPart.charAt(domainPart.length() - 1))) {
+                return false;
+            }
+
+            if (domainPart.contains("..") || domainPart.contains("--")) {
+                return false;
+            }
+        }
+
+        if (map.get("isPrimary") == null || map.get("isPrimary").isEmpty()) {
+            return false;
+        }
+
         return true;
     }
 
