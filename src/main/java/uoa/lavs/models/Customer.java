@@ -118,6 +118,11 @@ public class Customer {
         map.put("occupation", occupation);
         map.put("citizenship", citizenship);
         map.put("visa", visa);
+
+        writeAddress(map);
+        writeEmail(map);
+        writeNote(map);
+        writePhone(map);
     }
 
     public void writeAddress(HashMap<String, String> map) {
