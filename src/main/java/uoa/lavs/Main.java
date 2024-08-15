@@ -1,21 +1,57 @@
 package uoa.lavs;
 
+import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.Status;
+import uoa.lavs.mainframe.messages.customer.LoadCustomer;
+import uoa.lavs.mainframe.simulator.RecorderConnection;
+import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.io.IOException;
 
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+public class Main extends Application{
+
+    public static Stage stage;
+    private static Scene scene;
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
+        launch();
+        // the following shows two ways of using the mainframe interface
+        // approach #1: use the singleton instance - this way is recommended as it provides a single configuration
+        // location (and is easy for the testers to change when needed).
         Connection connection = Instance.getConnection();
         updateMainframe(connection);
     }
 
     private static void updateMainframe(Connection connection) {
 
+    }
+
+    //loads a FXML file
+    private static Parent loadFxml(final String fxml) throws IOException{
+        return new FXMLLoader(Main.class.getResource("/fxml/"+fxml+".fxml")).load();
+    }
+
+    //Set the active screen
+    public static void setScreen(Screens screen){
+        scene.setRoot(SceneManager.getScreen(screen));
+    }
+
+    @Override
+    public void start(final Stage stage) throws IOException{
+        scene = new Scene(loadFxml("homeScreen"), 960, 540);
+        stage.setScene(scene);
+        stage.show();
 
     }
+
 }
