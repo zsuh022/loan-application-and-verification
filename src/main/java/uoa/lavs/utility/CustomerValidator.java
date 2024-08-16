@@ -49,6 +49,40 @@ public class CustomerValidator {
         // private Boolean isPrimary;
         // private Boolean isMailing;
 
+        if (map.get("type") == null || map.get("type").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("line1") == null || map.get("line1").isEmpty()) {
+            // line1 compulsory, line2 optional
+            return false;
+        }
+
+        if (map.get("suburb") == null || map.get("suburb").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("city") == null || map.get("city").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("postCode") == null || map.get("postCode").isEmpty() || map.get("postCode").matches("\\d{4}")) {
+            // assume post code is 4 digits
+            return false;
+        }
+
+        if (map.get("country") == null || map.get("country").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("isPrimary") == null || map.get("isPrimary").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("isMailing") == null || map.get("isMailing").isEmpty()) {
+            return false;
+        }
+
         return true;
     }
 
