@@ -1,6 +1,6 @@
 package uoa.lavs.utility;
 
-import uoa.lavs.models.Customer;
+import uoa.lavs.models.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -17,22 +17,73 @@ public class CustomerValidator {
         customer.setCitizenship(map.get("citizenship"));
         customer.setVisa(map.get("visa"));
 
+        int i = 0;
+        while (map.containsKey("address type " + i)) {
+            CustomerAddress address = new CustomerAddress();
+            address.setType(map.get("address type " + i));
+            address.setLine1(map.get("address line1 " + i));
+            address.setLine2(map.get("address line2 " + i));
+            address.setSuburb(map.get("address suburb " + i));
+            address.setCity(map.get("address city " + i));
+            address.setPostCode(Integer.parseInt(map.get("address postCode " + i)));
+            address.setCountry(map.get("address country " + i));
+            address.setIsPrimary(Boolean.parseBoolean(map.get("address isPrimary " + i)));
+            address.setIsMailing(Boolean.parseBoolean(map.get("address isMailing " + i)));
+            customer.addAddress(address);
+            i++;
+        }
+
+        i = 0;
+        while (map.containsKey("email address " + i)) {
+            CustomerEmail email = new CustomerEmail();
+            email.setAddress(map.get("email address " + i));
+            email.setIsPrimary(Boolean.parseBoolean(map.get("email isPrimary " + i)));
+            customer.addEmail(email);
+            i++;
+        }
+
+        i = 0;
+        while (map.containsKey("employer name " + i)) {
+            CustomerEmployer employer = new CustomerEmployer();
+            employer.setName(map.get("employer name " + i));
+            employer.setLine1(map.get("employer line1 " + i));
+            employer.setLine2(map.get("employer line2 " + i));
+            employer.setSuburb(map.get("employer suburb " + i));
+            employer.setCity(map.get("employer city " + i));
+            employer.setPostCode(map.get("employer postCode " + i));
+            employer.setCountry(map.get("employer country " + i));
+            employer.setPhone(map.get("employer phone " + i));
+            employer.setEmail(map.get("employer email " + i));
+            employer.setWeb(map.get("employer web " + i));
+            employer.setIsOwner(Boolean.parseBoolean(map.get("employer isOwner " + i)));
+            customer.addEmployer(employer);
+            i++;
+        }
+
+        i = 0;
+        while (map.containsKey("note " + i)) {
+            CustomerNote note = new CustomerNote();
+            note.setNote(map.get("note " + i));
+            customer.addNote(note);
+            i++;
+        }
+
+        i = 0;
+        while (map.containsKey("phone type " + i)) {
+            CustomerPhone phone = new CustomerPhone();
+            phone.setType(map.get("phone type " + i));
+            phone.setPrefix(map.get("phone prefix " + i));
+            phone.setNumber(map.get("phone number " + i));
+            phone.setIsPrimary(Boolean.parseBoolean(map.get("phone isPrimary " + i)));
+            phone.setIsTexting(Boolean.parseBoolean(map.get("phone isTexting " + i)));
+            customer.addPhone(phone);
+            i++;
+        }
+
         return customer;
     }
 
     public Boolean validateCustomer(HashMap<String, String> map) {
-
-        // private String customerId;
-        // private String title;
-        // private String name;
-        // private LocalDate dateOfBirth;
-        // private String occupation;
-        // private String citizenship;
-        // private String visa;
-        // private List<CustomerAddress> addressList = new ArrayList<>();
-        // private List<CustomerEmail> emailList = new ArrayList<>();
-        // private List<CustomerNote> noteList = new ArrayList<>();
-        // private List<CustomerPhone> phoneList = new ArrayList<>();
 
         if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
             return false;
@@ -69,16 +120,6 @@ public class CustomerValidator {
     }
 
     public Boolean validateAddress(HashMap<String, String> map) {
-
-        // private String type;
-        // private String line1;
-        // private String line2;
-        // private String suburb;
-        // private String city;
-        // private int postCode;
-        // private String country;
-        // private Boolean isPrimary;
-        // private Boolean isMailing;
 
         if (map.get("type") == null || map.get("type").isEmpty()) {
             return false;
@@ -118,9 +159,6 @@ public class CustomerValidator {
     }
 
     public Boolean validateEmail(HashMap<String, String> map) {
-
-        // private String address;
-        // private Boolean isPrimary;
 
         if (map.get("address") == null || map.get("address").isEmpty()) {
             return false;
@@ -177,12 +215,6 @@ public class CustomerValidator {
 
     public Boolean validatePhone(HashMap<String, String> map) {
 
-        // private String type;
-        // private String prefix;
-        // private String number;
-        // private Boolean isPrimary;
-        // private Boolean isTexting;
-
         if (map.get("type") == null || map.get("type").isEmpty()) {
             return false;
         }
@@ -209,9 +241,7 @@ public class CustomerValidator {
     }
 
     public Boolean validateNote(HashMap<String, String> map) {
-
-        // private String note;
-
+        // note is optional
         return true;
     }
 }
