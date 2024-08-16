@@ -53,11 +53,17 @@ public class CustomerPhone {
     }
 
     public void validatePrefix(String p) {
-        // TODO:
+        if (!p.matches("\\d{2,4}")) {
+            // assume prefix 2 to 4 digits
+            // TODO: why void
+        }
     }
 
     public void validateNumber(String n) {
-        // TODO:
+        if (!n.matches("\\d{7,8}")) {
+            // assume number is 7 or 8 digits
+            // TODO: why void
+        }
     }
 
     @Override
