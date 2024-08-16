@@ -45,7 +45,7 @@ public class AddCustomer extends AbstractWriter<Customer> {
     @Override
     protected Map<String, String> extractLogProperties(Customer customer, String customerID) {
         Map<String, String> properties = new HashMap<>();
-        properties.put("customerId", customer.getId());
+        properties.put("id", customer.getId());
         properties.put("title", customer.getTitle());
         properties.put("name", customer.getName());
         properties.put("dateOfBirth", customer.getDateOfBirth().toString());
