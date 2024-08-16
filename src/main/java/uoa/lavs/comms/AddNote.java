@@ -3,12 +3,11 @@ package uoa.lavs.comms;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.messages.customer.UpdateCustomer;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomerNote;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomerPhoneNumber;
-import uoa.lavs.models.CustomerEmail;
 import uoa.lavs.models.CustomerNote;
-import uoa.lavs.models.CustomerPhone;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,17 +22,13 @@ public class AddNote extends AbstractWriter<CustomerNote> {
     public String add(Connection conn, CustomerNote value, String customerID) {
         UpdateCustomerNote newValue = new UpdateCustomerNote();
         newValue.setCustomerId(customerID);
-        newValue.setNumber(null);
 
-        String[] lines = value.getNote().split("\n");
-        for (int i = 0; i < lines.length && i < 20; i++) {
-            newValue.setLine(i, lines[i]);
-        }
+        splitSetLines(value.getNote(), newValue);
 
         return processRequest(conn, newValue, value, status -> {
             logger.info(
-                    "New Note created: ID = {}, Transaction ID = {}",
-                    customerID,
+                    "New Note created: Value = {}, Transaction ID = {}",
+                    value.getNote(),
                     status.getTransactionId());
             // Return new customer ID
             return customerID;
@@ -51,4 +46,26 @@ public class AddNote extends AbstractWriter<CustomerNote> {
         return properties;
     }
 
+    private void splitSetLines(String value, UpdateCustomerNote update) {
+        int maxLineLength = 70;
+        int linesPerPage = 19;
+        int totalLines = (int) Math.ceil((double) value.length() / maxLineLength);
+
+        int totalPages = (int) Math.ceil((double) totalLines / linesPerPage);
+
+        for (int page = 1; page <= totalPages; page++) {
+            update.setNumber(null);
+
+            for (int i = 0; i < linesPerPage; i++) {
+                int lineIndex = (page - 1) * linesPerPage + i;
+                if (lineIndex >= totalLines) break;
+
+                int start = lineIndex * maxLineLength;
+                int end = Math.min(start + maxLineLength, value.length());
+                String lineContent = value.substring(start, end);
+
+                update.setLine(i + 1, lineContent);
+            }
+        }
+    }
 }

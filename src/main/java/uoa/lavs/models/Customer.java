@@ -16,7 +16,7 @@ public class Customer {
     private String visa;
     private List<CustomerAddress> addressList = new ArrayList<>();
     private List<CustomerEmail> emailList = new ArrayList<>();
-    private List<CustomerNote> noteList = new ArrayList<>();
+    private CustomerNote note = new CustomerNote();
     private List<CustomerPhone> phoneList = new ArrayList<>();
     private List<CustomerEmployer> employerList = new ArrayList<>();
 
@@ -103,12 +103,12 @@ public class Customer {
         this.employerList.add(employer);
     }
 
-    public List<CustomerNote> getNoteList() {
-        return noteList;
+    public CustomerNote getNote() {
+        return note;
     }
 
     public void addNote(CustomerNote note) {
-        this.noteList.add(note);
+        this.note = note;
     }
 
     public List<CustomerPhone> getPhoneList() {
