@@ -3,6 +3,7 @@ package uoa.lavs.utility;
 // Java Imports
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -127,10 +128,11 @@ public class MainframeWriter {
 
   private static Map<String, String> getCustomerLog(Customer customer) {
     Map<String, String> properties = new HashMap<>();
-    properties.put("customerId", customer.getId());
+    properties.put("id", customer.getId());
     properties.put("title", customer.getTitle());
     properties.put("name", customer.getName());
-    properties.put("dateOfBirth", customer.getDateOfBirth().toString());
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    properties.put("dob", formatter.format(customer.getDateOfBirth()));
     properties.put("occupation", customer.getOccupation());
     properties.put("citizenship", customer.getCitizenship());
     properties.put("visa", customer.getVisa());
