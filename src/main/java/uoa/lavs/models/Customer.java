@@ -137,7 +137,7 @@ public class Customer {
             map.put("city " + i, address.getCity());
             map.put("postCode " + i, String.valueOf(address.getPostCode()));
             map.put("country " + i, address.getCountry());
-            map.put("isPrimaryAddress " + i, address.getIsPrimaryAddress().toString());
+            map.put("isPrimary " + i, address.getIsPrimary().toString());
             map.put("isMailing " + i, address.getIsMailing().toString());
         }
     }
@@ -146,7 +146,7 @@ public class Customer {
         for (int i = 0; i < emailList.size(); i++) {
             CustomerEmail email = emailList.get(i);
             map.put("address " + i, email.getAddress());
-            map.put("isPrimaryEmail " + i, email.getIsPrimaryEmail().toString());
+            map.put("isPrimary " + i, email.getIsPrimary().toString());
         }
     }
 
@@ -180,7 +180,7 @@ public class Customer {
             map.put("type " + i, phone.getType());
             map.put("prefix " + i, phone.getPrefix());
             map.put("number " + i, phone.getNumber());
-            map.put("isPrimaryPhone " + i, phone.getIsPrimaryPhone().toString());
+            map.put("isPrimary " + i, phone.getIsPrimary().toString());
             map.put("isTexting " + i, phone.getIsTexting().toString());
         }
     }

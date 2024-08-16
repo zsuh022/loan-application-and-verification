@@ -5,7 +5,7 @@ import java.util.Objects;
 public class CustomerEmail {
 
     private String address;
-    private Boolean isPrimaryEmail;
+    private Boolean isPrimary;
 
     public CustomerEmail() {}
 
@@ -17,12 +17,12 @@ public class CustomerEmail {
         this.address = address;
     }
 
-    public Boolean getIsPrimaryEmail() {
-        return isPrimaryEmail;
+    public Boolean getIsPrimary() {
+        return isPrimary;
     }
 
-    public void setIsPrimaryEmail(Boolean isPrimaryEmail) {
-        this.isPrimaryEmail = isPrimaryEmail;
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     @Override
@@ -34,6 +34,6 @@ public class CustomerEmail {
             return false;
         }
         CustomerEmail that = (CustomerEmail) o;
-        return Objects.equals(address, that.address) && Objects.equals(isPrimaryEmail, that.isPrimaryEmail);
+        return Objects.equals(address, that.address) && Objects.equals(isPrimary, that.isPrimary);
     }
 }

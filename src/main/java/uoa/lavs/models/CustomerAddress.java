@@ -11,7 +11,7 @@ public class CustomerAddress {
     private String city;
     private int postCode;
     private String country;
-    private Boolean isPrimaryAddress;
+    private Boolean isPrimary;
     private Boolean isMailing;
 
     public CustomerAddress() {}
@@ -72,12 +72,12 @@ public class CustomerAddress {
         this.country = country;
     }
 
-    public Boolean getIsPrimaryAddress() {
-        return isPrimaryAddress;
+    public Boolean getIsPrimary() {
+        return isPrimary;
     }
 
-    public void setIsPrimaryAddress(Boolean isPrimaryAddress) {
-        this.isPrimaryAddress = isPrimaryAddress;
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     public Boolean getIsMailing() {
@@ -104,7 +104,7 @@ public class CustomerAddress {
                 Objects.equals(city, that.city) &&
                 Objects.equals(postCode, that.postCode) &&
                 Objects.equals(country, that.country) &&
-                Objects.equals(isPrimaryAddress, that.isPrimaryAddress) &&
+                Objects.equals(isPrimary, that.isPrimary) &&
                 Objects.equals(isMailing, that.isMailing);
     }
 }

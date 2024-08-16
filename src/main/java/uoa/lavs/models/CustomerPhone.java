@@ -7,7 +7,7 @@ public class CustomerPhone {
     private String type;
     private String prefix;
     private String number;
-    private Boolean isPrimaryPhone;
+    private Boolean isPrimary;
     private Boolean isTexting;
 
     public CustomerPhone() {}
@@ -36,12 +36,12 @@ public class CustomerPhone {
         this.number = number;
     }
 
-    public Boolean getIsPrimaryPhone() {
-        return isPrimaryPhone;
+    public Boolean getIsPrimary() {
+        return isPrimary;
     }
 
-    public void setIsPrimaryPhone(Boolean isPrimaryPhone) {
-        this.isPrimaryPhone = isPrimaryPhone;
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     public Boolean getIsTexting() {
@@ -78,7 +78,7 @@ public class CustomerPhone {
         return Objects.equals(type, that.type) &&
                 Objects.equals(prefix, that.prefix) &&
                 Objects.equals(number, that.number) &&
-                Objects.equals(isPrimaryPhone, that.isPrimaryPhone) &&
+                Objects.equals(isPrimary, that.isPrimary) &&
                 Objects.equals(isTexting, that.isTexting);
     }
 }
