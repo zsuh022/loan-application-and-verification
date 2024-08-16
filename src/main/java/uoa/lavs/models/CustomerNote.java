@@ -4,13 +4,16 @@ public class CustomerNote {
 
     private String note;
 
-    public CustomerNote() {}
+    public CustomerNote() {
+    }
 
     public String getNote() {
         return note;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void addLine(String note) {
+        this.note += note;
     }
+
+
 }

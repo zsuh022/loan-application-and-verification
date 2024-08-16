@@ -15,12 +15,15 @@ public abstract class AbstractSearchable<T> {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AbstractSearchable.class);
 
+    public T findById(Connection conn, String customerId) {
+        throw new UnsupportedOperationException("findById without an index is not supported for this entity.");
+    }
+
     public T findById(Connection conn, String customerId, int index) {
-        throw new UnsupportedOperationException("findById is not supported for this entity.");
+        throw new UnsupportedOperationException("findById with index is not supported for this entity.");
     }
 
     public abstract List<T> findAll(Connection conn, String customerId);
-
 
     protected <R extends Message, Y> Y processRequest(Connection conn, R request,
                                                       Function<Status, Y> onSuccess, Function<Status, Y> onFailure) {

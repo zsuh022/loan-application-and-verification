@@ -22,17 +22,17 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
         address.setNumber(index);
 
         return processRequest(conn, address, status -> {
-            CustomerAddress cusAddress = new CustomerAddress();
-            cusAddress.setType(address.getTypeFromServer());
-            cusAddress.setLine1(address.getLine1FromServer());
-            cusAddress.setLine2(address.getLine2FromServer());
-            cusAddress.setSuburb(address.getSuburbFromServer());
-            cusAddress.setCity(address.getCityFromServer());
-            cusAddress.setPostCode(Integer.parseInt(address.getPostCodeFromServer()));
-            cusAddress.setCountry(address.getCountryFromServer());
-            cusAddress.setIsPrimary(address.getIsPrimaryFromServer());
-            cusAddress.setIsMailing(address.getIsMailingFromServer());
-            return cusAddress;
+            CustomerAddress newAddress = new CustomerAddress();
+            newAddress.setType(address.getTypeFromServer());
+            newAddress.setLine1(address.getLine1FromServer());
+            newAddress.setLine2(address.getLine2FromServer());
+            newAddress.setSuburb(address.getSuburbFromServer());
+            newAddress.setCity(address.getCityFromServer());
+            newAddress.setPostCode(Integer.parseInt(address.getPostCodeFromServer()));
+            newAddress.setCountry(address.getCountryFromServer());
+            newAddress.setIsPrimary(address.getIsPrimaryFromServer());
+            newAddress.setIsMailing(address.getIsMailingFromServer());
+            return newAddress;
         }, status -> {
             return new CustomerAddress();
         });

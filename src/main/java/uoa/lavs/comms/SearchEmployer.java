@@ -1,4 +1,61 @@
 package uoa.lavs.comms;
 
-public class SearchEmployer {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.messages.customer.LoadCustomerEmployer;
+import uoa.lavs.mainframe.messages.customer.LoadCustomerEmployers;
+import uoa.lavs.models.CustomerEmployer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchEmployer extends AbstractSearchable<CustomerEmployer> {
+
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(SearchEmployer.class);
+
+    @Override
+    public CustomerEmployer findById(Connection conn, String customerId, int index) {
+        LoadCustomerEmployer employer = new LoadCustomerEmployer();
+        employer.setCustomerId(customerId);
+        employer.setNumber(index);
+
+        return processRequest(conn, employer, status -> {
+            CustomerEmployer cusEmployer = new CustomerEmployer();
+            cusEmployer.setName(employer.getNameFromServer());
+            cusEmployer.setLine1(employer.getLine1FromServer());
+            cusEmployer.setLine2(employer.getLine2FromServer());
+            cusEmployer.setSuburb(employer.getSuburbFromServer());
+            cusEmployer.setCity(employer.getCityFromServer());
+            cusEmployer.setPostCode(employer.getPostCodeFromServer());
+            cusEmployer.setCountry(employer.getCountryFromServer());
+            cusEmployer.setPhone(employer.getPhoneNumberFromServer());
+            cusEmployer.setEmail(employer.getEmailAddressFromServer());
+            cusEmployer.setWeb(employer.getWebsiteFromServer());
+            cusEmployer.setIsOwner(employer.getIsOwnerFromServer());
+            return cusEmployer;
+        }, status -> {
+            return new CustomerEmployer();
+        });
+    }
+
+    @Override
+    public List<CustomerEmployer> findAll(Connection conn, String customerId) {
+        LoadCustomerEmployers employers = new LoadCustomerEmployers();
+        employers.setCustomerId(customerId);
+        return processRequest(conn, employers, status -> {
+            List<CustomerEmployer> list = new ArrayList<>();
+            // Eager loading all the employers when customer is first loaded
+            for (int i = 0; i < employers.getCountFromServer(); i++) {
+                CustomerEmployer employer = findById(conn, customerId, i);
+                list.add(employer);
+                logger.info("Employer: {}, successfully added", employer.getName());
+            }
+            return list;
+        }, status -> {
+            return new ArrayList<>();
+        });
+    }
+
 }
