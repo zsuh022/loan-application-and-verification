@@ -13,17 +13,20 @@ import java.util.*;
 public class LocalLogManager {
 
     // TEMPORARY ID PREFIX
-    public static final String TEMPORARY_ID_PREFIX = "TEMP_";
+    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
+
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
 
     // LOCAL LOG FILE PATH
-    public static final String LOCAL_LOG_FILE_PATH = "log.json";
+    private static final String LOCAL_LOG_FILE_PATH = "log.json";
 
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LocalLogManager.class);
 
     // singleton instance to read log only at startup
     private final static LocalLogManager INSTANCE = new LocalLogManager();
-    private final HashMap<String, String> temporaryIds = new HashMap<>();
+    private final HashMap<String, String> temporaryCustomerIds = new HashMap<>();
+    private final HashMap<String, String> temporaryLoanIds = new HashMap<>();
     private JSONArray log;
     private int logCount;
 
@@ -36,7 +39,7 @@ public class LocalLogManager {
             logCount = log.length();
         } catch (Exception e) {
             // if file does not exist, create new log
-            logger.error("Error reading log file: " + e.getMessage());
+            logger.error("Error reading log file: {}", e.getMessage());
             log = new JSONArray();
             logCount = 0;
         }
@@ -67,7 +70,16 @@ public class LocalLogManager {
                 try{
                     temporaryId = logEntry.getString("id");
                 } catch (Exception e) {
-                    logger.info("No temporary Id");
+                    logger.info("No temporary Customer Id");
+                }
+
+            }
+
+            if(logEntry.getInt("type") == 2201) {
+                try{
+                    temporaryId = logEntry.getString("id");
+                } catch (Exception e) {
+                    logger.info("No temporary loan Id");
                 }
 
             }
@@ -75,24 +87,23 @@ public class LocalLogManager {
             Request request = parseLogEntry(logEntry);
 
             Response response = connection.send(request);
-
-            System.out.println("Sending with id: " + request.getValue("id"));
             if(response.getStatus().getWasSuccessful()) {
                 // if successful, remove log entry
                 INSTANCE.log.remove(i);
                 INSTANCE.logCount--;
                 i--;
-                System.out.println("Successfully sent log entry: " + response.getValue("name") + response.getValue("id"));
 
                 // if request was for a new customer, map temporary id to id
                 if(request.getRequestType() == 1201) {
-                    mapTemporaryIdtoId(temporaryId, response.getValue("id"));
+                    mapTemporaryCustomerId(temporaryId, response.getValue("id"));
+                }
+
+                // if request was for a new loan, map temporary id to id
+                if(request.getRequestType() == 2201) {
+                    mapTemporaryLoanId(temporaryId, response.getValue("id"));
                 }
             } else {
-                logger.error("Failed to send log entry: " + logEntry);
-                System.out.println(response.getStatus().getErrorCode());
-                System.out.println(response.getStatus().getErrorMessage());
-
+                logger.error("Failed to send log entry: {} with error: {}: {}", logEntry, response.getStatus().getErrorCode(), response.getStatus().getErrorMessage());
                 // if not successful break loop
                 succeeded = false;
                 INSTANCE.writeLog();
@@ -123,7 +134,7 @@ public class LocalLogManager {
             file.write(log.toString());
             file.close();
         } catch (Exception e) {
-            logger.error("Error writing log file: " + e.getMessage());
+            logger.error("Error writing log file: {}", e.getMessage());
         }
     }
 
@@ -132,20 +143,15 @@ public class LocalLogManager {
         Request request = new Request(logEntry.getInt("type"));
         for(String key : logEntry.keySet()) {
             if(key.equals("type")) continue;
-            if(key.equals("id")) {
+            if(key.equals("id")  || key.equals("customerId") || key.equals("loanId")) {
                 // if id is temporary, replace with mapped id
                 String id = logEntry.getString(key);
-                if(id.startsWith(TEMPORARY_ID_PREFIX)) {
-                    id = INSTANCE.temporaryIds.get(id);
-                    if(id == null) {
-                        logger.error("Failed to map temporary id: " + logEntry);
-                        continue;
-                    } else {
-                        System.out.println("Found " + logEntry.getString(key) + " to " + id);
-                    }
+                if(id.startsWith(TEMPORARY_CUSTOMER_ID_PREFIX)) {
+                    id = INSTANCE.temporaryCustomerIds.get(id);
+                } else if(id.startsWith(TEMPORARY_LOAN_ID_PREFIX)) {
+                    id = INSTANCE.temporaryLoanIds.get(id);
                 }
                 request.setValue(key, id);
-                continue;
             } else {
                 request.setValue(key, logEntry.getString(key));
             }
@@ -153,11 +159,19 @@ public class LocalLogManager {
         return request;
     }
 
-    private static void mapTemporaryIdtoId(String temporaryId, String id) {
+    private static void mapTemporaryCustomerId(String temporaryId, String id) {
         // check if temporary id is already mapped
-        if(!INSTANCE.temporaryIds.containsKey(temporaryId)) {
-            INSTANCE.temporaryIds.put(temporaryId, id);
-            System.out.println("Mapped " + temporaryId + " to " + id);
+        if(!INSTANCE.temporaryCustomerIds.containsKey(temporaryId)) {
+            INSTANCE.temporaryCustomerIds.put(temporaryId, id);
+            logger.info("Mapped customer {} to {}", temporaryId, id);
+        }
+    }
+
+    private static void mapTemporaryLoanId(String temporaryId, String id) {
+        // check if temporary id is already mapped
+        if(!INSTANCE.temporaryLoanIds.containsKey(temporaryId)) {
+            INSTANCE.temporaryLoanIds.put(temporaryId, id);
+            logger.info("Mapped loan {} to {}", temporaryId, id);
         }
     }
 }
