@@ -130,40 +130,40 @@ public class Customer {
     public void writeAddress(HashMap<String, String> map) {
         for (int i = 0; i < addressList.size(); i++) {
             CustomerAddress address = addressList.get(i);
-            map.put("type " + i, address.getType());
-            map.put("line1 " + i, address.getLine1());
-            map.put("line2 " + i, address.getLine2());
-            map.put("suburb " + i, address.getSuburb());
-            map.put("city " + i, address.getCity());
-            map.put("postCode " + i, String.valueOf(address.getPostCode()));
-            map.put("country " + i, address.getCountry());
-            map.put("isPrimary " + i, address.getIsPrimary().toString());
-            map.put("isMailing " + i, address.getIsMailing().toString());
+            map.put("address type " + i, address.getType());
+            map.put("address line1 " + i, address.getLine1());
+            map.put("address line2 " + i, address.getLine2());
+            map.put("address suburb " + i, address.getSuburb());
+            map.put("address city " + i, address.getCity());
+            map.put("address postCode " + i, String.valueOf(address.getPostCode()));
+            map.put("address country " + i, address.getCountry());
+            map.put("address isPrimary " + i, address.getIsPrimary().toString());
+            map.put("address isMailing " + i, address.getIsMailing().toString());
         }
     }
 
     public void writeEmail(HashMap<String, String> map) {
         for (int i = 0; i < emailList.size(); i++) {
             CustomerEmail email = emailList.get(i);
-            map.put("address " + i, email.getAddress());
-            map.put("isPrimary " + i, email.getIsPrimary().toString());
+            map.put("email address " + i, email.getAddress());
+            map.put("email isPrimary " + i, email.getIsPrimary().toString());
         }
     }
 
     public void writeEmployer(HashMap<String, String> map) {
         for (int i = 0; i < noteList.size(); i++) {
             CustomerEmployer employer = employerList.get(i);
-            map.put("name " + i, employer.getName());
-            map.put("line1 " + i, employer.getLine1());
-            map.put("line2 " + i, employer.getLine2());
-            map.put("suburb " + i, employer.getSuburb());
-            map.put("city " + i, employer.getCity());
-            map.put("postCode " + i, String.valueOf(employer.getPostCode()));
-            map.put("country " + i, employer.getCountry());
-            map.put("phone " + i, employer.getPhone());
-            map.put("email " + i, employer.getEmail());
-            map.put("web " + i, employer.getWeb());
-            map.put("isOwner " + i, employer.getIsOwner().toString());
+            map.put("employer name " + i, employer.getName());
+            map.put("employer line1 " + i, employer.getLine1());
+            map.put("employer line2 " + i, employer.getLine2());
+            map.put("employer suburb " + i, employer.getSuburb());
+            map.put("employer city " + i, employer.getCity());
+            map.put("employer postCode " + i, String.valueOf(employer.getPostCode()));
+            map.put("employer country " + i, employer.getCountry());
+            map.put("employer phone " + i, employer.getPhone());
+            map.put("employer email " + i, employer.getEmail());
+            map.put("employer web " + i, employer.getWeb());
+            map.put("employer isOwner " + i, employer.getIsOwner().toString());
         }
     }
 
@@ -177,11 +177,11 @@ public class Customer {
     public void writePhone(HashMap<String, String> map) {
         for (int i = 0; i < phoneList.size(); i++) {
             CustomerPhone phone = phoneList.get(i);
-            map.put("type " + i, phone.getType());
-            map.put("prefix " + i, phone.getPrefix());
-            map.put("number " + i, phone.getNumber());
-            map.put("isPrimary " + i, phone.getIsPrimary().toString());
-            map.put("isTexting " + i, phone.getIsTexting().toString());
+            map.put("phone type " + i, phone.getType());
+            map.put("phone prefix " + i, phone.getPrefix());
+            map.put("phone number " + i, phone.getNumber());
+            map.put("phone isPrimary " + i, phone.getIsPrimary().toString());
+            map.put("phone isTexting " + i, phone.getIsTexting().toString());
         }
     }
 }
