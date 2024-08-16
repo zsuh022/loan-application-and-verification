@@ -6,8 +6,12 @@ import javafx.scene.control.TextField;
 
 public class SearchLoanScreenController {
 
-    @FXML private TextField searchLoanBar;
     @FXML private FontAwesomeIconView searchLoanBack;
+    @FXML private TextField searchLoanBar;
+    @FXML private TextField loanSearchResult1;
+    @FXML private TextField loanSearchResult2;
+    @FXML private TextField loanSearchResult3;
+    @FXML private TextField loanSearchResult4;
 
     private String searchString;
 
