@@ -16,6 +16,7 @@ public class Customer {
     private String visa;
     private List<CustomerAddress> addressList = new ArrayList<>();
     private List<CustomerEmail> emailList = new ArrayList<>();
+    private List<CustomerEmployer> employerList = new ArrayList<>();
     private List<CustomerNote> noteList = new ArrayList<>();
     private List<CustomerPhone> phoneList = new ArrayList<>();
 
@@ -121,6 +122,7 @@ public class Customer {
 
         writeAddress(map);
         writeEmail(map);
+        writeEmployer(map);
         writeNote(map);
         writePhone(map);
     }
@@ -145,6 +147,23 @@ public class Customer {
             CustomerEmail email = emailList.get(i);
             map.put("address " + i, email.getAddress());
             map.put("isPrimaryEmail " + i, email.getIsPrimaryEmail().toString());
+        }
+    }
+
+    public void writeEmployer(HashMap<String, String> map) {
+        for (int i = 0; i < noteList.size(); i++) {
+            CustomerEmployer employer = employerList.get(i);
+            map.put("name " + i, employer.getName());
+            map.put("line1 " + i, employer.getLine1());
+            map.put("line2 " + i, employer.getLine2());
+            map.put("suburb " + i, employer.getSuburb());
+            map.put("city " + i, employer.getCity());
+            map.put("postCode " + i, String.valueOf(employer.getPostCode()));
+            map.put("country " + i, employer.getCountry());
+            map.put("phone " + i, employer.getPhone());
+            map.put("email " + i, employer.getEmail());
+            map.put("web " + i, employer.getWeb());
+            map.put("isOwner " + i, employer.getIsOwner().toString());
         }
     }
 
