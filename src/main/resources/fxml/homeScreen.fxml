@@ -93,8 +93,8 @@
          </font>
       </Text>
       <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
-      <Button fx:id="btnSearch" layoutX="125.0" layoutY="125.0" mnemonicParsing="false" text="Search" />
-      <Button fx:id="btnAddNew" layoutX="125.0" layoutY="235.0" mnemonicParsing="false" text="Add new" />
-      <Button fx:id="btnDrafts" layoutX="125.0" layoutY="345.0" mnemonicParsing="false" text="Drafts" />
+      <Button fx:id="btnSearch" layoutX="125.0" layoutY="125.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" text="Search" />
+      <Button fx:id="btnAddNew" layoutX="125.0" layoutY="235.0" mnemonicParsing="false" onAction="#onAddNewButtonClicked" text="Add new" />
+      <Button fx:id="btnDrafts" layoutX="125.0" layoutY="345.0" mnemonicParsing="false" onAction="#onDraftsButtonClicked" text="Drafts" />
    </children>
 </AnchorPane>
