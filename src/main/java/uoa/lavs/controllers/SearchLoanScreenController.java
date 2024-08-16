@@ -8,4 +8,11 @@ public class SearchLoanScreenController {
 
     @FXML private TextField searchLoanBar;
     @FXML private FontAwesomeIconView searchLoanBack;
+
+    private String searchString;
+
+    public boolean submitLoanSearch() {
+        // TODO:
+        return true;
+    }
 }
