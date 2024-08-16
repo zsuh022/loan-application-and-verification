@@ -34,6 +34,37 @@ public class CustomerValidator {
         // private List<CustomerNote> noteList = new ArrayList<>();
         // private List<CustomerPhone> phoneList = new ArrayList<>();
 
+        if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("name") == null || map.get("name").isEmpty()) {
+            return false;
+        }
+
+        String[] fullName = map.get("name").split(" ");
+        if (fullName.length <= 1) {
+            return false;
+        }
+
+        if (map.get("dateOfBirth") == null || map.get("dateOfBirth").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("occupation") == null || map.get("occupation").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("citizenship") == null || map.get("citizenship").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("visa") == null || map.get("visa").isEmpty()) {
+            return false;
+        }
+
+        // validate array lists?
+
         return true;
     }
 
