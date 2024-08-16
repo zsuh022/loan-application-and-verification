@@ -9,7 +9,7 @@ public class CustomerEmployer {
     private String line2;
     private String suburb;
     private String city;
-    private String postCode;
+    private int postCode;
     private String country;
     private String phone;
     private String email;
@@ -58,11 +58,11 @@ public class CustomerEmployer {
         this.city = city;
     }
 
-    public String getPostCode() {
+    public int getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(String postCode) {
+    public void setPostCode(int postCode) {
         this.postCode = postCode;
     }
 

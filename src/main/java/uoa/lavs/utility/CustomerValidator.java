@@ -50,7 +50,7 @@ public class CustomerValidator {
             employer.setLine2(map.get("employer line2 " + i));
             employer.setSuburb(map.get("employer suburb " + i));
             employer.setCity(map.get("employer city " + i));
-            employer.setPostCode(map.get("employer postCode " + i));
+            employer.setPostCode(Integer.parseInt(map.get("employer postCode " + i)));
             employer.setCountry(map.get("employer country " + i));
             employer.setPhone(map.get("employer phone " + i));
             employer.setEmail(map.get("employer email " + i));
