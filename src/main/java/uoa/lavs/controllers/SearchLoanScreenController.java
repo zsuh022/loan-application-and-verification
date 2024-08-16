@@ -3,6 +3,7 @@ package uoa.lavs.controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class SearchLoanScreenController {
 
@@ -18,5 +19,10 @@ public class SearchLoanScreenController {
     public boolean submitLoanSearch() {
         // TODO:
         return true;
+    }
+
+    @FXML
+    private void onSearchLoanBackClicked(MouseEvent event) {
+        //
     }
 }

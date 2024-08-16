@@ -6,17 +6,28 @@ import javafx.scene.control.TextField;
 
 public class SearchCustomerScreenController {
 
-    @FXML private FontAwesomeIconView searchCustomerBack;
-    @FXML private TextField searchCustomerBar;
-    @FXML private TextField customerSearchResult1;
-    @FXML private TextField customerSearchResult2;
-    @FXML private TextField customerSearchResult3;
-    @FXML private TextField customerSearchResult4;
+    @FXML
+    private FontAwesomeIconView searchCustomerBack;
+    @FXML
+    private TextField searchCustomerBar;
+    @FXML
+    private TextField customerSearchResult1;
+    @FXML
+    private TextField customerSearchResult2;
+    @FXML
+    private TextField customerSearchResult3;
+    @FXML
+    private TextField customerSearchResult4;
 
     private String searchString;
 
     public boolean submitCustomerSearch() {
         // TODO:
         return true;
+    }
+
+    @FXML
+    private void onSearchCustomerBackClicked() {
+        //
     }
 }

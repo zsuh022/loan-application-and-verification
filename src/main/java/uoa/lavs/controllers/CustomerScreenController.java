@@ -2,6 +2,9 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import uoa.lavs.models.Customer;
 
 import java.util.HashMap;
@@ -9,6 +12,8 @@ import java.util.HashMap;
 public class CustomerScreenController {
 
     @FXML private FontAwesomeIconView CustomerBack;
+    @FXML private Rectangle addLoanRectangle;
+    @FXML private Circle editCustomersCircle;
 
     private Customer activeCustomer;
     private HashMap<String, String> changeMap = new HashMap<>();
@@ -36,5 +41,10 @@ public class CustomerScreenController {
     public boolean submitPhoneUpdate(HashMap<String, String> map) {
         // TODO:
         return true;
+    }
+
+    @FXML
+    private void onCustomerBackClicked(MouseEvent event) {
+        // go to drafts?
     }
 }
