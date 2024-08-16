@@ -47,10 +47,10 @@ public class SearchEmployer extends AbstractSearchable<CustomerEmployer> {
         return processRequest(conn, employers, status -> {
             List<CustomerEmployer> list = new ArrayList<>();
             // Eager loading all the employers when customer is first loaded
-            for (int i = 0; i < employers.getCountFromServer(); i++) {
+            for (int i = 1; i < employers.getCountFromServer() + 1; i++) {
                 CustomerEmployer employer = findById(conn, customerId, i);
                 list.add(employer);
-                logger.info("Employer: {}, successfully added", employer.getName());
+                logger.info("Employer: {}, successfully loaded", employer.getName());
             }
             return list;
         }, status -> {

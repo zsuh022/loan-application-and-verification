@@ -45,10 +45,10 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
         return processRequest(conn, addresses, status -> {
             List<CustomerAddress> list = new ArrayList<>();
             // Eager loading all the address when customer is first loaded
-            for (int i = 0; i < addresses.getCountFromServer(); i++) {
+            for (int i = 1; i < addresses.getCountFromServer() + 1; i++) {
                 CustomerAddress address = findById(conn, customerId, i);
                 list.add(address);
-                logger.info("Address: {}, successfully added", address.getLine1());
+                logger.info("Address: {}, successfully loaded", address.getLine1());
             }
             return list;
         }, status -> {

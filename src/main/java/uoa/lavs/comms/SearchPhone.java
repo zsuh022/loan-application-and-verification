@@ -41,10 +41,10 @@ public class SearchPhone extends AbstractSearchable<CustomerPhone> {
         return processRequest(conn, phones, status -> {
             List<CustomerPhone> list = new ArrayList<>();
             // Eager loading all the phones when customer is first loaded
-            for (int i = 0; i < phones.getCountFromServer(); i++) {
+            for (int i = 1; i < phones.getCountFromServer() + 1; i++) {
                 CustomerPhone phone = findById(conn, customerId, i);
                 list.add(phone);
-                logger.info("Email: {}, successfully added", phone.getNumber());
+                logger.info("Email: {}, successfully loaded", phone.getNumber());
             }
             return list;
         }, status -> {

@@ -38,10 +38,10 @@ public class SearchEmail extends AbstractSearchable<CustomerEmail> {
         return processRequest(conn, emails, status -> {
             List<CustomerEmail> list = new ArrayList<>();
             // Eager loading all the emails when customer is first loaded
-            for (int i = 0; i < emails.getCountFromServer(); i++) {
+            for (int i = 1; i < emails.getCountFromServer() + 1; i++) {
                 CustomerEmail email = findById(conn, customerId, i);
                 list.add(email);
-                logger.info("Email: {}, successfully added", email.getAddress());
+                logger.info("Email: {}, successfully loaded", email.getAddress());
             }
             return list;
         }, status -> {

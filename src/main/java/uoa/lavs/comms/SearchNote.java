@@ -22,7 +22,7 @@ public class SearchNote extends AbstractSearchable<CustomerNote> {
 
         return processRequest(conn, note, status -> {
             CustomerNote cusNote = new CustomerNote();
-            for (int j = 0; j < note.getLineCountFromServer(); j++) {
+            for (int j = 1; j < note.getLineCountFromServer() + 1; j++) {
                 cusNote.addLine(note.getLineFromServer(j));
             }
             return cusNote;
@@ -35,13 +35,15 @@ public class SearchNote extends AbstractSearchable<CustomerNote> {
     public List<CustomerNote> findAll(Connection conn, String customerId) {
         LoadCustomerNote notes = new LoadCustomerNote();
         notes.setCustomerId(customerId);
+        notes.setNumber(1);
 
         return processRequest(conn, notes, status -> {
             List<CustomerNote> list = new ArrayList<>();
             for (int i = 1; i < notes.getPageCountFromServer(); i++) {
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + notes.getPageCountFromServer());
                 CustomerNote note = findById(conn, customerId, i);
                 list.add(note);
-                logger.info("Note: {}, successfully added", note.getNote());
+                logger.info("Note: {}, successfully loaded", note.getNote());
             }
             return list;
         }, status -> {

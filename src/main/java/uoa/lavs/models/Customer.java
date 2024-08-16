@@ -18,6 +18,7 @@ public class Customer {
     private List<CustomerEmail> emailList = new ArrayList<>();
     private List<CustomerNote> noteList = new ArrayList<>();
     private List<CustomerPhone> phoneList = new ArrayList<>();
+    private List<CustomerEmployer> employerList = new ArrayList<>();
 
     public Customer() {
     }
@@ -92,6 +93,14 @@ public class Customer {
 
     public void addEmail(CustomerEmail email) {
         this.emailList.add(email);
+    }
+
+    public List<CustomerEmployer> getEmployerList() {
+        return employerList;
+    }
+
+    public void addEmployer(CustomerEmployer employer) {
+        this.employerList.add(employer);
     }
 
     public List<CustomerNote> getNoteList() {
