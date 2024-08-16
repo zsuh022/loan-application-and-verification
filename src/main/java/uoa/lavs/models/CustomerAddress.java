@@ -1,5 +1,7 @@
 package uoa.lavs.models;
 
+import java.util.Objects;
+
 public class CustomerAddress {
 
     private String type;
@@ -84,5 +86,25 @@ public class CustomerAddress {
 
     public void setIsMailing(Boolean isMailing) {
         this.isMailing = isMailing;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CustomerAddress that = (CustomerAddress) o;
+        return Objects.equals(type, that.type) &&
+                Objects.equals(line1, that.line1) &&
+                Objects.equals(line2, that.line2) &&
+                Objects.equals(suburb, that.suburb) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(postCode, that.postCode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(isPrimary, that.isPrimary) &&
+                Objects.equals(isMailing, that.isMailing);
     }
 }

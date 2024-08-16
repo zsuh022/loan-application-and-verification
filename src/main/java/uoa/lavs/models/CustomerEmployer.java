@@ -1,5 +1,7 @@
 package uoa.lavs.models;
 
+import java.util.Objects;
+
 public class CustomerEmployer {
 
     private String name;
@@ -102,5 +104,27 @@ public class CustomerEmployer {
 
     public void setIsOwner(Boolean isOwner) {
         this.isOwner = isOwner;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CustomerEmployer that = (CustomerEmployer) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(line1, that.line1) &&
+                Objects.equals(line2, that.line2) &&
+                Objects.equals(suburb, that.suburb) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(postCode, that.postCode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(web, that.web) &&
+                Objects.equals(isOwner, that.isOwner);
     }
 }

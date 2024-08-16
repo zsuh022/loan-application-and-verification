@@ -1,5 +1,7 @@
 package uoa.lavs.models;
 
+import java.util.Objects;
+
 public class CustomerPhone {
 
     private String type;
@@ -56,5 +58,21 @@ public class CustomerPhone {
 
     public void validateNumber(String n) {
         // TODO:
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CustomerPhone that = (CustomerPhone) o;
+        return Objects.equals(type, that.type) &&
+                Objects.equals(prefix, that.prefix) &&
+                Objects.equals(number, that.number) &&
+                Objects.equals(isPrimary, that.isPrimary) &&
+                Objects.equals(isTexting, that.isTexting);
     }
 }
