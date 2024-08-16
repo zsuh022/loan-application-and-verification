@@ -8,4 +8,11 @@ public class SearchCustomerScreenController {
 
     @FXML private TextField searchCustomerBar;
     @FXML private FontAwesomeIconView searchCustomerBack;
+
+    private String searchString;
+
+    public boolean submitCustomerSearch() {
+        // TODO:
+        return true;
+    }
 }
