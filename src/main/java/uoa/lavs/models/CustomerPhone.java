@@ -52,18 +52,14 @@ public class CustomerPhone {
         this.isTexting = isTexting;
     }
 
-    public void validatePrefix(String p) {
-        if (!p.matches("\\d{2,4}")) {
-            // assume prefix 2 to 4 digits
-            // TODO: why void
-        }
+    public boolean validatePrefix(String p) {
+        // assume prefix 2 to 4 digits
+        return p.matches("\\d{2,4}");
     }
 
-    public void validateNumber(String n) {
-        if (!n.matches("\\d{7,8}")) {
-            // assume number is 7 or 8 digits
-            // TODO: why void
-        }
+    public boolean validateNumber(String n) {
+        // assume number is 7 or 8 digits
+        return n.matches("\\d{7,8}");
     }
 
     @Override
