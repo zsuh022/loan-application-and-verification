@@ -95,6 +95,14 @@ public class Customer {
         this.emailList.add(email);
     }
 
+    public List<CustomerEmployer> getEmployerList() {
+        return employerList;
+    }
+
+    public void addEmployer(CustomerEmployer employer) {
+        this.employerList.add(employer);
+    }
+
     public List<CustomerNote> getNoteList() {
         return noteList;
     }
