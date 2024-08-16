@@ -7,6 +7,14 @@ import java.util.ArrayList;
 public class CustomerResultReader {
 
     public boolean processSearch(ArrayList<Customer> search) {
-        // TODO:
+        if (search == null || search.isEmpty()) {
+            return false;
+        }
+
+        for (Customer customer : search) {
+            // do something
+        }
+
+        return true;
     }
 }
