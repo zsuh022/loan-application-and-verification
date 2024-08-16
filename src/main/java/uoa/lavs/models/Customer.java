@@ -161,7 +161,7 @@ public class Customer {
             map.put("type " + i, phone.getType());
             map.put("prefix " + i, phone.getPrefix());
             map.put("number " + i, phone.getNumber());
-            map.put("isPrimaryAddress " + i, phone.getIsPrimaryPhone().toString());
+            map.put("isPrimaryPhone " + i, phone.getIsPrimaryPhone().toString());
             map.put("isTexting " + i, phone.getIsTexting().toString());
         }
     }
