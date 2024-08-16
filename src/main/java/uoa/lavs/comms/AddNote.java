@@ -3,39 +3,43 @@ package uoa.lavs.comms;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomer;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomerNote;
 import uoa.lavs.models.CustomerNote;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class AddNote extends AbstractWriter<CustomerNote> {
 
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AddNote.class);
 
-    // Returns ID for customer
-    // 0 if failed
     @Override
     public String add(Connection conn, CustomerNote value, String customerID) {
-        UpdateCustomerNote newValue = new UpdateCustomerNote();
-        newValue.setCustomerId(customerID);
+        List<String> noteLines = splitIntoLines(value.getNote());
 
-        splitSetLines(value.getNote(), newValue);
+        int lineCount = noteLines.size();
 
-        return processRequest(conn, newValue, value, status -> {
-            logger.info(
-                    "New Note created: Value = {}, Transaction ID = {}",
-                    value.getNote(),
-                    status.getTransactionId());
-            // Return new customer ID
-            return customerID;
-        }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
-            return "0";
-        }, 1206, "Customer Note", customerID);
+        for (int i = 0; i < lineCount; i += 5) {
+            UpdateCustomerNote newValue = new UpdateCustomerNote();
+            newValue.setCustomerId(customerID);
+            newValue.setNumber(null);
+
+            List<String> chunk = noteLines.subList(i, Math.min(i + 5, lineCount));
+            assignLinesToNoteChunk(newValue, chunk);
+
+
+            processRequest(conn, newValue, value, status -> {
+                logger.info(
+                        "New Note created: Number = {}, Transaction ID = {}",
+                        newValue.getNumberFromServer(),
+                        status.getTransactionId());
+                return customerID;
+            }, status -> {
+                return null;
+            }, 1206, "Customer Note", customerID);
+        }
+
+        return customerID;
     }
 
     @Override
@@ -46,26 +50,38 @@ public class AddNote extends AbstractWriter<CustomerNote> {
         return properties;
     }
 
-    private void splitSetLines(String value, UpdateCustomerNote update) {
-        int maxLineLength = 70;
-        int linesPerPage = 19;
-        int totalLines = (int) Math.ceil((double) value.length() / maxLineLength);
+    private List<String> splitIntoLines(String note) {
+        List<String> lines = new ArrayList<>();
+        int length = note.length();
+        int start = 0;
 
-        int totalPages = (int) Math.ceil((double) totalLines / linesPerPage);
-
-        for (int page = 1; page <= totalPages; page++) {
-            update.setNumber(null);
-
-            for (int i = 0; i < linesPerPage; i++) {
-                int lineIndex = (page - 1) * linesPerPage + i;
-                if (lineIndex >= totalLines) break;
-
-                int start = lineIndex * maxLineLength;
-                int end = Math.min(start + maxLineLength, value.length());
-                String lineContent = value.substring(start, end);
-
-                update.setLine(i + 1, lineContent);
+        while (start < length) {
+            int end = Math.min(start + 70, length);
+            String line;
+            if (end < length && note.charAt(end) == ' ') {
+                line = note.substring(start, end);
+                start = end;
+            } else if (end < length && note.charAt(end) != ' ') {
+                int lastSpace = note.lastIndexOf(' ', end);
+                if (lastSpace > start) {
+                    line = note.substring(start, lastSpace + 1);
+                    start = lastSpace + 1;
+                } else {
+                    line = note.substring(start, end);
+                    start = end;
+                }
+            } else {
+                line = note.substring(start, end);
+                start = end;
             }
+            lines.add(line);
+        }
+        return lines;
+    }
+
+    private void assignLinesToNoteChunk(UpdateCustomerNote newValue, List<String> noteChunk) {
+        for (int i = 0; i < noteChunk.size(); i++) {
+            newValue.setLine(i + 1, noteChunk.get(i));
         }
     }
 }

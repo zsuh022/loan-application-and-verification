@@ -6,9 +6,7 @@ import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.messages.customer.LoadCustomerNote;
 import uoa.lavs.models.CustomerNote;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SearchNote extends AbstractSearchable<CustomerNote> {
 
@@ -23,50 +21,33 @@ public class SearchNote extends AbstractSearchable<CustomerNote> {
         LoadCustomerNote initialNote = new LoadCustomerNote();
         initialNote.setCustomerId(customerId);
         initialNote.setNumber(1);
-        initialNote.send(conn);
 
-        int totalPages = initialNote.getPageCountFromServer();
-        System.out.println("TOTAL PAGES " + totalPages);
+        return processRequest(conn, initialNote, status -> {
+            int totalPages = initialNote.getPageCountFromServer();
 
-        for (int pageIndex = 1; pageIndex <= totalPages; pageIndex++) {
-
-            LoadCustomerNote loadNotes = new LoadCustomerNote();
-            loadNotes.setCustomerId(customerId);
-            loadNotes.setNumber(pageIndex);
-            loadNotes.send(conn);
-
-            int totalLines = loadNotes.getLineCountFromServer();
-            System.out.println("Total lines for page " + pageIndex + ": " + totalLines);
-
-            int numQueries = (int) Math.ceil((double) totalLines / 5);
-
-            for (int queryIndex = 0; queryIndex < numQueries; queryIndex++) {
-                // We continue to fetch the lines for the current pageIndex
+            for (int pageIndex = 1; pageIndex <= totalPages; pageIndex++) {
+                LoadCustomerNote loadNotes = new LoadCustomerNote();
+                loadNotes.setCustomerId(customerId);
+                loadNotes.setNumber(pageIndex);
                 loadNotes.send(conn);
 
-                int linesFetched = loadNotes.getLineCountFromServer();
+                int totalLines = loadNotes.getLineCountFromServer();
 
-                for (int j = 0; j < linesFetched; j++) {
-                    String content = loadNotes.getLineFromServer(j + 1);
+                for (int lineIndex = 1; lineIndex <= totalLines; lineIndex++) {
+                    String content = loadNotes.getLineFromServer(lineIndex);
                     if (content != null) {
                         fullNote.addNote(content);
                     }
                 }
-
-                if (linesFetched < 5) {
-                    break;
-                }
             }
-        }
-
-        return fullNote;
+            return fullNote;
+        }, status -> {
+            return null;
+        });
     }
-
 
     @Override
     public List<CustomerNote> findAll(Connection conn, String customerId) {
         throw new UnsupportedOperationException("findAll is not supported for searching notes.");
     }
-
-
 }

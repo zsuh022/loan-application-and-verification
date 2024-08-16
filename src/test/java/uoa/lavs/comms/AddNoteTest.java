@@ -25,7 +25,27 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
     void setup() {
         super.setup();
 
-        note1.setNote("First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.First note content.");
+        note1.setNote(
+                "First note content1. " +
+                        "First note content 2. " +
+                        "First note content 3. " +
+                        "First note content 4. " +
+                        "First note content 5. " +
+                        "First note content 6. " +
+                        "First note content 7. " +
+                        "First note content 8. " +
+                        "First note content 9. " +
+                        "First note content 10. " +
+                        "First note content 12. " +
+                        "First note content 13. " +
+                        "First note content 14. " +
+                        "First note content 15. " +
+                        "First note content 16. " +
+                        "First note content 17. " +
+                        "First note content 18. " +
+                        "First note content 19. " +
+                        "First note content 20."
+        );
 
         customer.addNote(note1);
     }
@@ -42,7 +62,6 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
         boolean matchFound = false;
 
-        System.out.println("EXPECTED\n " + expectedNote.getNote() + "\nACTUAL\n " + dbNote.getNote());
         if (expectedNote.getNote().equals(dbNote.getNote())) {
             assertDetails(expectedNote, dbNote);
             matchFound = true;
@@ -65,7 +84,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
         Connection mockConnection = new MockConnection(errorResponse);
 
-        String customerId = addNote.add(mockConnection, note1);
+        String customerId = addNote.add(mockConnection, note1, customer.getId());
 
         CustomerNote notes = searchNote.findById(mockConnection, customerId);
         assertNull(notes);
