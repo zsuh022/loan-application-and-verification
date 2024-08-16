@@ -83,18 +83,51 @@ public class CustomerValidator {
         return customer;
     }
 
-    public Boolean validateCustomer(HashMap<String, String> map) {
-
-        if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
+    private boolean isValidAddress(HashMap<String, String> map) {
+        if (map.get("line1") == null || map.get("line1").isEmpty()) {
             return false;
         }
 
+        if (map.get("suburb") == null || map.get("suburb").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("city") == null || map.get("city").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("postCode") == null || map.get("postCode").isEmpty() || map.get("postCode").matches("\\d{4}")) {
+            // assume post code is 4 digits
+            return false;
+        }
+
+        if (map.get("country") == null || map.get("country").isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isValidName(HashMap<String, String> map) {
         if (map.get("name") == null || map.get("name").isEmpty()) {
             return false;
         }
 
         String[] fullName = map.get("name").split(" ");
-        if (fullName.length <= 1) {
+        if (fullName.length < 2) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateCustomer(HashMap<String, String> map) {
+
+        if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
+            return false;
+        }
+
+        if (!isValidName(map)) {
             return false;
         }
 
@@ -119,31 +152,13 @@ public class CustomerValidator {
         return true;
     }
 
-    public Boolean validateAddress(HashMap<String, String> map) {
+    public boolean validateAddress(HashMap<String, String> map) {
 
         if (map.get("type") == null || map.get("type").isEmpty()) {
             return false;
         }
 
-        if (map.get("line1") == null || map.get("line1").isEmpty()) {
-            // line1 compulsory, line2 optional
-            return false;
-        }
-
-        if (map.get("suburb") == null || map.get("suburb").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("city") == null || map.get("city").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("postCode") == null || map.get("postCode").isEmpty() || map.get("postCode").matches("\\d{4}")) {
-            // assume post code is 4 digits
-            return false;
-        }
-
-        if (map.get("country") == null || map.get("country").isEmpty()) {
+        if (!isValidAddress(map)) {
             return false;
         }
 
@@ -158,7 +173,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public Boolean validateEmail(HashMap<String, String> map) {
+    public boolean validateEmail(HashMap<String, String> map) {
 
         if (map.get("address") == null || map.get("address").isEmpty()) {
             return false;
@@ -213,7 +228,37 @@ public class CustomerValidator {
         return true;
     }
 
-    public Boolean validatePhone(HashMap<String, String> map) {
+    public boolean validateEmployer(HashMap<String, String> map) {
+
+        if (!isValidName(map)) {
+            return false;
+        }
+
+        if (!isValidAddress(map)) {
+            return false;
+        }
+
+        if (map.get("phone") == null || map.get("phone").isEmpty() || map.get("phone").matches("\\d+")) {
+            // phone only has digits
+            return false;
+        }
+
+        if (map.get("email") == null || map.get("email").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("web") == null || map.get("web").isEmpty()) {
+            return false;
+        }
+
+        if (map.get("isOwner") == null || map.get("isOwner").isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validatePhone(HashMap<String, String> map) {
 
         if (map.get("type") == null || map.get("type").isEmpty()) {
             return false;
@@ -240,7 +285,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public Boolean validateNote(HashMap<String, String> map) {
+    public boolean validateNote(HashMap<String, String> map) {
         // note is optional
         return true;
     }
