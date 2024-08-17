@@ -5,7 +5,8 @@ public class CustomerEmail {
     private String address;
     private Boolean isPrimary;
 
-    public CustomerEmail() {}
+    public CustomerEmail() {
+    }
 
     public String getAddress() {
         return address;

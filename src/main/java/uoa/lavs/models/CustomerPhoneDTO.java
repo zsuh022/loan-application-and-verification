@@ -1,14 +1,15 @@
 package uoa.lavs.models;
 
-public class CustomerPhone {
+public class CustomerPhoneDTO {
 
     private String type;
     private String prefix;
     private String number;
     private Boolean isPrimary;
     private Boolean isTexting;
+    private int index;
 
-    public CustomerPhone() {
+    public CustomerPhoneDTO() {
     }
 
     public String getType() {
@@ -35,27 +36,27 @@ public class CustomerPhone {
         this.number = number;
     }
 
-    public Boolean getIsPrimary() {
+    public Boolean getPrimary() {
         return isPrimary;
     }
 
-    public void setIsPrimary(Boolean isPrimary) {
-        this.isPrimary = isPrimary;
+    public void setPrimary(Boolean primary) {
+        isPrimary = primary;
     }
 
-    public Boolean getIsTexting() {
+    public Boolean getTexting() {
         return isTexting;
     }
 
-    public void setIsTexting(Boolean isTexting) {
-        this.isTexting = isTexting;
+    public void setTexting(Boolean texting) {
+        isTexting = texting;
     }
 
-    public void validatePrefix(String p) {
-        // TODO:
+    public int getIndex() {
+        return index;
     }
 
-    public void validateNumber(String n) {
-        // TODO:
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

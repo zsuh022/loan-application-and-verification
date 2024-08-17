@@ -1,28 +1,36 @@
 package uoa.lavs.models;
 
-public class CustomerEmployer {
+public class CustomerAddressDTO {
 
-    private String name;
+
+    private int index;
+    private String type;
     private String line1;
     private String line2;
     private String suburb;
     private String city;
-    private String postCode;
+    private Integer postCode;
     private String country;
-    private String phone;
-    private String email;
-    private String web;
-    private Boolean isOwner;
+    private Boolean isPrimary;
+    private Boolean isMailing;
 
-    public CustomerEmployer() {
+    CustomerAddressDTO() {
     }
 
-    public String getName() {
-        return name;
+    public int getNumber() {
+        return index;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(int index) {
+        this.index = index;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLine1() {
@@ -57,11 +65,11 @@ public class CustomerEmployer {
         this.city = city;
     }
 
-    public String getPostCode() {
+    public Integer getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(String postCode) {
+    public void setPostCode(Integer postCode) {
         this.postCode = postCode;
     }
 
@@ -73,35 +81,20 @@ public class CustomerEmployer {
         this.country = country;
     }
 
-    public String getPhone() {
-        return phone;
+    public Boolean getPrimary() {
+        return isPrimary;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPrimary(Boolean primary) {
+        isPrimary = primary;
     }
 
-    public String getEmail() {
-        return email;
+    public Boolean getMailing() {
+        return isMailing;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMailing(Boolean mailing) {
+        isMailing = mailing;
     }
 
-    public String getWeb() {
-        return web;
-    }
-
-    public void setWeb(String web) {
-        this.web = web;
-    }
-
-    public Boolean getIsOwner() {
-        return isOwner;
-    }
-
-    public void setIsOwner(Boolean isOwner) {
-        this.isOwner = isOwner;
-    }
 }

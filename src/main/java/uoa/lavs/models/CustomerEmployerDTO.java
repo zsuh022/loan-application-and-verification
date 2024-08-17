@@ -1,6 +1,6 @@
 package uoa.lavs.models;
 
-public class CustomerEmployer {
+public class CustomerEmployerDTO {
 
     private String name;
     private String line1;
@@ -13,9 +13,11 @@ public class CustomerEmployer {
     private String email;
     private String web;
     private Boolean isOwner;
+    private int number;
 
-    public CustomerEmployer() {
+    public CustomerEmployerDTO() {
     }
+
 
     public String getName() {
         return name;
@@ -103,5 +105,13 @@ public class CustomerEmployer {
 
     public void setIsOwner(Boolean isOwner) {
         this.isOwner = isOwner;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

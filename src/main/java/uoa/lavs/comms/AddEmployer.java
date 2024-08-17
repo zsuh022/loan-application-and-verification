@@ -3,9 +3,7 @@ package uoa.lavs.comms;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmail;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmployer;
-import uoa.lavs.models.CustomerEmail;
 import uoa.lavs.models.CustomerEmployer;
 
 import java.util.HashMap;
