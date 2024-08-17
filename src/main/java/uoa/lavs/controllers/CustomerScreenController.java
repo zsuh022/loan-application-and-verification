@@ -137,4 +137,49 @@ public class CustomerScreenController {
     private void onCustomerBackClicked(MouseEvent event) {
         // go to drafts?
     }
+
+    @FXML
+    private void onGeneralButtonClicked() {
+        customerGeneralPane.setVisible(true);
+        customerAddressPane.setVisible(false);
+        customerLoansPane.setVisible(false);
+        customerEmployerPane.setVisible(false);
+        customerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onAddressButtonClicked() {
+        customerGeneralPane.setVisible(false);
+        customerAddressPane.setVisible(true);
+        customerLoansPane.setVisible(false);
+        customerEmployerPane.setVisible(false);
+        customerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onLoansButtonClicked() {
+        customerGeneralPane.setVisible(false);
+        customerAddressPane.setVisible(false);
+        customerLoansPane.setVisible(true);
+        customerEmployerPane.setVisible(false);
+        customerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onEmployerButtonClicked() {
+        customerGeneralPane.setVisible(false);
+        customerAddressPane.setVisible(false);
+        customerLoansPane.setVisible(false);
+        customerEmployerPane.setVisible(true);
+        customerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onNotesButtonClicked() {
+        customerGeneralPane.setVisible(false);
+        customerAddressPane.setVisible(false);
+        customerLoansPane.setVisible(false);
+        customerEmployerPane.setVisible(false);
+        customerNotesPane.setVisible(true);
+    }
 }
