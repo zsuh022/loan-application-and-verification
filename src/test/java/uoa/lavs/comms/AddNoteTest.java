@@ -8,6 +8,7 @@ import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
 import uoa.lavs.models.CustomerNote;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
     @Override
     @BeforeEach
-    void setup() {
+    void setup() throws IOException {
         super.setup();
 
         note1.setNote(
@@ -47,7 +48,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
                         "First note content 20."
         );
 
-        customer.addNote(note1);
+        customer.setNote(note1);
     }
 
     @Test

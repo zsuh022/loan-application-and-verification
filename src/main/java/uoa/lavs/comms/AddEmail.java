@@ -25,6 +25,7 @@ public class AddEmail extends AbstractWriter<CustomerEmail> {
         newValue.setNumber(null);
         newValue.setIsPrimary(value.getIsPrimary());
 
+
         return processRequest(conn, newValue, value, status -> {
             logger.info(
                     "New Email created: Address = {}, ID = {}, Transaction ID = {}",

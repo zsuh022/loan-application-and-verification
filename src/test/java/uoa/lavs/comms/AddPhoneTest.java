@@ -8,6 +8,7 @@ import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
 import uoa.lavs.models.CustomerPhone;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
 
     @Override
     @BeforeEach
-    void setup() {
+    void setup() throws IOException {
         super.setup();
 
         phone1.setType("Mobile");
