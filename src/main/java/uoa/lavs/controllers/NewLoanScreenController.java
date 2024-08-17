@@ -91,4 +91,9 @@ public class NewLoanScreenController {
         btnGeneralNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnCoborrowersNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
+
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
+    }
 }

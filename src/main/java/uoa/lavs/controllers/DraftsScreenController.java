@@ -24,4 +24,9 @@ public class DraftsScreenController {
     private void onDraftsBackClicked(MouseEvent event) {
         Main.setScreen(Screens.HOME);
     }
+    
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
+    }
 }

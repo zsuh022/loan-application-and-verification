@@ -50,4 +50,9 @@ public class SearchCustomerScreenController {
 
         }
     }
+
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
+    }
 }
