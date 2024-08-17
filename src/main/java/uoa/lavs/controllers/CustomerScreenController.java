@@ -2,7 +2,11 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.models.Customer;
@@ -11,12 +15,98 @@ import java.util.HashMap;
 
 public class CustomerScreenController {
 
-    @FXML private FontAwesomeIconView CustomerBack;
-    @FXML private Rectangle addLoanRectangle;
-    @FXML private Circle editCustomersCircle;
-
     private Customer activeCustomer;
+
     private HashMap<String, String> changeMap = new HashMap<>();
+
+    @FXML
+    private FontAwesomeIconView CustomerBack;
+    @FXML
+    private Rectangle addLoanRectangle;
+    @FXML
+    private Circle editCustomersCircle;
+    // general
+    @FXML
+    private Button btnGeneralCustomer;
+    @FXML
+    private AnchorPane customerGeneralPane;
+    @FXML
+    private Label lbCustomerId;
+    @FXML
+    private Label lbCustomerTitle;
+    @FXML
+    private Label lbCustomerName;
+    @FXML
+    private Label lbCustomerStatus;
+    @FXML
+    private Label lbCustomerDob;
+    @FXML
+    private Label lbCustomerOccupation;
+    @FXML
+    private Label lbCustomerCitizenship;
+    @FXML
+    private Label lbCustomerVisa;
+    @FXML
+    private Label lbCustomerPhone;
+    @FXML
+    private Label lbCustomerEmail;
+    // address
+    @FXML
+    private Button btnAddressCustomer;
+    @FXML
+    private AnchorPane customerAddressPane;
+    @FXML
+    private Label lbCustomerType;
+    @FXML
+    private Label lbCustomerLine1;
+    @FXML
+    private Label lbCustomerLine2;
+    @FXML
+    private Label lbCustomerSuburb;
+    @FXML
+    private Label lbCustomerCity;
+    @FXML
+    private Label lbCustomerPostcode;
+    @FXML
+    private Label lbCustomerCountry;
+    // loans
+    @FXML
+    private Button btnLoansCustomer;
+    // TODO:
+    @FXML
+    private AnchorPane customerLoansPane;
+    // employer
+    @FXML
+    private Button btnEmployerCustomer;
+    @FXML
+    private AnchorPane customerEmployerPane;
+    @FXML
+    private Label lbCustomerEmployerName;
+    @FXML
+    private Label lbCustomerEmployerLine1;
+    @FXML
+    private Label lbCustomerEmployerLine2;
+    @FXML
+    private Label lbCustomerEmployerSuburb;
+    @FXML
+    private Label lbCustomerEmployerCity;
+    @FXML
+    private Label lbCustomerEmployerPostcode;
+    @FXML
+    private Label lbCustomerEmployerCountry;
+    @FXML
+    private Label lbCustomerEmployerPhone;
+    @FXML
+    private Label lbCustomerEmployerEmail;
+    @FXML
+    private Label lbCustomerEmployerWeb;
+    // notes
+    @FXML
+    private Button btnNotesCustomer;
+    @FXML
+    private AnchorPane customerNotesPane;
+    @FXML
+    private TextArea taCustomerNotes;
 
     public boolean submitCustomerUpdate(HashMap<String, String> map) {
         // TODO:
