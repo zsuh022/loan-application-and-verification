@@ -1,6 +1,7 @@
 package uoa.lavs;
 
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.Status;
@@ -24,6 +25,8 @@ public class Main extends Application{
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
+        // flush log immediately to avoid inconsistencies with mainframe
+        LocalLogManager.flushLog();
         launch();
         // the following shows two ways of using the mainframe interface
         // approach #1: use the singleton instance - this way is recommended as it provides a single configuration
