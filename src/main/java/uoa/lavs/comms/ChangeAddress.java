@@ -17,6 +17,7 @@ public class ChangeAddress extends AbstractWriter<CustomerAddressDTO> {
     @Override
     protected String add(Connection conn, CustomerAddressDTO entity, String customerID) {
         UpdateCustomerAddress newAddy = new UpdateCustomerAddress();
+        newAddy.setCustomerId(customerID);
 
         if (entity.getType() != null) {
             newAddy.setType(entity.getType());

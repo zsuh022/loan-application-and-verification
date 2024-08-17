@@ -17,6 +17,7 @@ public class ChangeEmployer extends AbstractWriter<CustomerEmployerDTO> {
     @Override
     protected String add(Connection conn, CustomerEmployerDTO entity, String customerID) {
         UpdateCustomerEmployer value = new UpdateCustomerEmployer();
+        value.setCustomerId(customerID);
 
         if (entity.getName() != null) {
             value.setName(entity.getName());

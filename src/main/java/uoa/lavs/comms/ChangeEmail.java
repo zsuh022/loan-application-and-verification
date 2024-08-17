@@ -17,6 +17,7 @@ public class ChangeEmail extends AbstractWriter<CustomerEmailDTO> {
     @Override
     protected String add(Connection conn, CustomerEmailDTO entity, String customerID) {
         UpdateCustomerEmail newEmail = new UpdateCustomerEmail();
+        newEmail.setCustomerId(customerID);
 
         if (entity.getAddress() != null) {
             newEmail.setAddress(entity.getAddress());

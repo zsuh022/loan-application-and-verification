@@ -17,6 +17,7 @@ public class ChangePhone extends AbstractWriter<CustomerPhoneDTO> {
     @Override
     protected String add(Connection conn, CustomerPhoneDTO entity, String customerID) {
         UpdateCustomerPhoneNumber newPhone = new UpdateCustomerPhoneNumber();
+        newPhone.setCustomerId(customerID);
 
         if (entity.getType() != null) {
             newPhone.setType(entity.getType());

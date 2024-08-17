@@ -9,7 +9,10 @@ import uoa.lavs.models.Customer;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static java.nio.file.Files.deleteIfExists;
 
 public abstract class AbstractCustomerTest<T> {
 
@@ -24,7 +27,7 @@ public abstract class AbstractCustomerTest<T> {
     void setup() throws IOException {
 
         conn = new NitriteConnection("lavs-data.db");
-
+        deleteIfExists(Path.of("lavs-data.db"));
         customer.setTitle("Mr");
         customer.setName("John Doe");
         customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));

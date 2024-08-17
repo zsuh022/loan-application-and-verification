@@ -1,6 +1,7 @@
 package uoa.lavs.comms;
 
 import org.junit.jupiter.api.BeforeEach;
+import uoa.lavs.mainframe.Connection;
 import uoa.lavs.models.CustomerAddress;
 import uoa.lavs.models.CustomerEmail;
 import uoa.lavs.models.CustomerPhone;
@@ -15,11 +16,16 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
     protected CustomerAddress address1, address2, address3, address4, address5;
     protected CustomerEmployer employer1;
 
+    protected final AddPhone addPhone = new AddPhone();
+    protected final AddEmail addEmail = new AddEmail();
+    protected final AddAddress addAddress = new AddAddress();
+
     @Override
     @BeforeEach
     void setup() throws IOException {
         super.setup();
 
+        // Initialize phone details
         phone1 = new CustomerPhone();
         phone1.setType("Mobile");
         phone1.setPrefix("+64");
@@ -41,6 +47,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         phone3.setIsPrimary(false);
         phone3.setIsTexting(false);
 
+        // Initialize email details
         email1 = new CustomerEmail();
         email1.setAddress("john.doe@example.com");
         email1.setIsPrimary(true);
@@ -49,6 +56,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         email2.setAddress("john.doe@work.com");
         email2.setIsPrimary(false);
 
+        // Initialize address details
         address1 = new CustomerAddress();
         address1.setType("Residential");
         address1.setLine1("123 Main St");
@@ -104,6 +112,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address5.setIsPrimary(false);
         address5.setIsMailing(false);
 
+        // Initialize employer details
         employer1 = new CustomerEmployer();
         employer1.setName("Company A");
         employer1.setLine1("123 Main St");
@@ -129,5 +138,24 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         customer.addAddress(address4);
         customer.addAddress(address5);
         customer.addEmployer(employer1);
+    }
+
+    protected void addPhones(Connection conn, String customerId) {
+        addPhone.add(conn, phone1, customerId);
+        addPhone.add(conn, phone2, customerId);
+        addPhone.add(conn, phone3, customerId);
+    }
+
+    protected void addEmails(Connection conn, String customerId) {
+        addEmail.add(conn, email1, customerId);
+        addEmail.add(conn, email2, customerId);
+    }
+
+    protected void addAddresses(Connection conn, String customerId) {
+        addAddress.add(conn, address1, customerId);
+        addAddress.add(conn, address2, customerId);
+        addAddress.add(conn, address3, customerId);
+        addAddress.add(conn, address4, customerId);
+        addAddress.add(conn, address5, customerId);
     }
 }
