@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 
 import java.util.HashMap;
 
@@ -107,6 +109,7 @@ public class NewCustomerScreenController {
     @FXML
     private void onNewCustomerBackClicked(MouseEvent event) {
         // go to ...
+        Main.setScreen(Screens.HOME);
     }
 
     @FXML
