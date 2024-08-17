@@ -109,4 +109,36 @@ public class LoanScreenController {
     private void onLoanBackClicked(MouseEvent event) {
         // go to drafts?
     }
+
+    @FXML
+    private void onGeneralButtonClicked() {
+        btnGeneralLoans.setVisible(true);
+        btnPaymentsLoans.setVisible(false);
+        btnCoborrowersLoans.setVisible(false);
+        btnSummaryLoans.setVisible(false);
+    }
+
+    @FXML
+    private void onPaymentsButtonClicked() {
+        btnGeneralLoans.setVisible(false);
+        btnPaymentsLoans.setVisible(true);
+        btnCoborrowersLoans.setVisible(false);
+        btnSummaryLoans.setVisible(false);
+    }
+
+    @FXML
+    private void onCoborrowersButtonClicked() {
+        btnGeneralLoans.setVisible(false);
+        btnPaymentsLoans.setVisible(false);
+        btnCoborrowersLoans.setVisible(true);
+        btnSummaryLoans.setVisible(false);
+    }
+
+    @FXML
+    private void onSummaryButtonClicked() {
+        btnGeneralLoans.setVisible(false);
+        btnPaymentsLoans.setVisible(false);
+        btnCoborrowersLoans.setVisible(false);
+        btnSummaryLoans.setVisible(true);
+    }
 }

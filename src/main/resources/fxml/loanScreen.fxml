@@ -54,7 +54,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -62,7 +62,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button fx:id="btnPaymentsLoans" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnPaymentsLoans" mnemonicParsing="false" onAction="#onPaymentsButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -73,7 +73,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button fx:id="btnCoborrowersLoans" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnCoborrowersLoans" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -81,7 +81,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button fx:id="btnSummaryLoans" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
+                                          <Button fx:id="btnSummaryLoans" mnemonicParsing="false" onAction="#onSummaryButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
