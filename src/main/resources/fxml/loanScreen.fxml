@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,7 +25,7 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
                                        <children>
-                                          <FontAwesomeIconView fx:id="loanBack" fill="WHITE" glyphName="ARROW_LEFT" size="24">
+                                          <FontAwesomeIconView fx:id="loanBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onLoanBackClicked" size="24">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
@@ -63,7 +54,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -71,7 +62,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnPaymentsLoans" mnemonicParsing="false" onAction="#onPaymentsButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -82,7 +73,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnCoborrowersLoans" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -90,7 +81,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
+                                          <Button fx:id="btnSummaryLoans" mnemonicParsing="false" onAction="#onSummaryButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -115,7 +106,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123456-789-00" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanId" text="123456-789-00" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -129,12 +120,12 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123-4566-789" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanCustomerId" text="123-4566-789" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
                                                                   </Label>
-                                                                  <Label text="Mr John Doe" textFill="WHITE" />
+                                                                  <Label fx:id="lbGeneralLoanCustomerName" text="Mr John Doe" textFill="WHITE" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -144,7 +135,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$45,000" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanPrincipal" text="\$45,000" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -158,7 +149,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Active" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanStatus" text="Active" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -172,7 +163,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Float 1238" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanRate" text="Float 1238" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -186,7 +177,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="12-11-2011" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanStartDate" text="12-11-2011" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -200,7 +191,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="5 years" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanPeriod" text="5 years" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -214,7 +205,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="30 " textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanTerm" text="30 " textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -256,7 +247,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$12,123" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbGeneralLoanAmount" text="\$12,123" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -306,7 +297,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -320,7 +311,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansLine2" text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -334,7 +325,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -348,7 +339,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -362,7 +353,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -376,7 +367,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbPaymentsLoansCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -401,7 +392,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="loanCBPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="loanCoborrowersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -434,7 +425,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="John Doe" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansCustomerName" text="John Doe" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -448,7 +439,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="123-456-789" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansCustomerId" text="123-456-789" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -462,7 +453,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="8.15%" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansRate" text="8.15%" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -476,7 +467,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="30 years" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansTerm" text="30 years" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -490,7 +481,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Monthly" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansFrequency" text="Monthly" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -504,7 +495,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$3,300" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansAmount" text="\$3,300" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -518,7 +509,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$655,111" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansTotalPaid" text="\$655,111" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -532,7 +523,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="\$123,123" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansTotalCost" text="\$123,123" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -546,7 +537,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <Label text="Jun 2054" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                  <Label fx:id="lbSummaryLoansPayoffDate" text="Jun 2054" textFill="WHITE" HBox.hgrow="ALWAYS">
                                                                      <HBox.margin>
                                                                         <Insets right="30.0" />
                                                                      </HBox.margin>
@@ -557,7 +548,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
+                                                <Rectangle fx:id="saveLoansRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>
                                                       <Insets bottom="15.0" right="15.0" />
                                                    </StackPane.margin>
@@ -570,7 +561,7 @@
                                                       <Insets bottom="24.0" right="21.0" />
                                                    </StackPane.margin>
                                                 </Text>
-                                                <Circle fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
+                                                <Circle fx:id="editLoansCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>
                                                       <Insets bottom="20.0" right="20.0" />
                                                    </StackPane.margin>
