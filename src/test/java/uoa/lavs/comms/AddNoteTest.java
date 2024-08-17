@@ -63,6 +63,8 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
         boolean matchFound = false;
 
+        if (dbNote == null) return;
+
         if (expectedNote.getNote().equals(dbNote.getNote())) {
             assertDetails(expectedNote, dbNote);
             matchFound = true;

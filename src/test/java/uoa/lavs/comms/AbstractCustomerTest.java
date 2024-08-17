@@ -5,7 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.simulator.NitriteConnection;
+import uoa.lavs.mainframe.simulator.failures.NFailsPerMRequestsPolicy;
+import uoa.lavs.mainframe.simulator.failures.RandomPolicy;
 import uoa.lavs.models.Customer;
+import uoa.lavs.mainframe.simulator.IntermittentConnection;
+import uoa.lavs.mainframe.Response;
+import uoa.lavs.mainframe.Request;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +31,8 @@ public abstract class AbstractCustomerTest<T> {
     @BeforeEach
     void setup() throws IOException {
 
-        conn = new NitriteConnection("lavs-data.db");
+        conn = Instance.getConnection();
+
         deleteIfExists(Path.of("lavs-data.db"));
         customer.setTitle("Mr");
         customer.setName("John Doe");
@@ -34,11 +40,6 @@ public abstract class AbstractCustomerTest<T> {
         customer.setOccupation("Engineer");
         customer.setCitizenship("New Zealand");
         customer.setVisa(null);
-    }
-
-    @AfterEach
-    void teardown() throws IOException {
-        conn.close();
     }
 
     protected abstract void assertDetails(T expected, T actual);

@@ -37,7 +37,7 @@ public class AddCustomer extends AbstractWriter<Customer> {
             // Return new customer ID
             return newCustomer.getCustomerIdFromServer();
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", customer);
             return "0";
         }, 1201, "Customer", null);
     }

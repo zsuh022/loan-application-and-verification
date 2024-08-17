@@ -41,7 +41,7 @@ public class AddAddress extends AbstractWriter<CustomerAddress> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, addy);
             return "0";
         }, 1202, "Customer Address", customerID);
     }

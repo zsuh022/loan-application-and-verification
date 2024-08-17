@@ -45,7 +45,9 @@ public class SearchPhone extends AbstractSearchable<CustomerPhone> {
             for (int i = 1; i < phones.getCountFromServer() + 1; i++) {
                 CustomerPhone phone = findById(conn, customerId, i, phones.getNumberFromServer(i));
                 list.add(phone);
-                logger.info("Phone: {}, successfully loaded", phone.getNumber());
+                if (phone.getNumber() != null) {
+                    logger.info("Phone: {}, successfully loaded", phone.getNumber());
+                }
             }
             return list;
         }, status -> {

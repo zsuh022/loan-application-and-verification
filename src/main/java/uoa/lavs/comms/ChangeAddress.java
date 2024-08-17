@@ -57,7 +57,7 @@ public class ChangeAddress extends AbstractWriter<CustomerAddressDTO> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, entity);
             return "0";
         }, 1202, "Customer Address", customerID);
     }

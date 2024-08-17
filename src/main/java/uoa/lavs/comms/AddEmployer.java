@@ -43,7 +43,7 @@ public class AddEmployer extends AbstractWriter<CustomerEmployer> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, value);
             return "0";
         }, 1205, "Customer Email", customerID);
     }

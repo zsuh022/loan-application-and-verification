@@ -51,7 +51,7 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
                         addresses.getNumberFromServer(i));
                 if (address != null) {
                     list.add(address);
-                    logger.info("Address: {}, successfully loaded", address.getLine1());
+                    if (address.getLine1() != null) logger.info("Address: {}, successfully loaded", address.getLine1());
                 }
             }
             return list;

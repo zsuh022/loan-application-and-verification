@@ -64,7 +64,7 @@ public class ChangeEmployer extends AbstractWriter<CustomerEmployerDTO> {
             // Return customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, entity);
             return "0";
         }, 1202, "Customer Employer", customerID);
     }

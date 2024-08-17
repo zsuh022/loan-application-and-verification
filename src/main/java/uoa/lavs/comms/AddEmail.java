@@ -35,7 +35,7 @@ public class AddEmail extends AbstractWriter<CustomerEmail> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, value);
             return "0";
         }, 1204, "Customer Email", customerID);
     }

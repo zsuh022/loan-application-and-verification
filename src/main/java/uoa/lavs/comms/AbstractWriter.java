@@ -61,9 +61,9 @@ public abstract class AbstractWriter<T> {
         }
     }
 
-    protected void mainframeError(int code, String message) {
+    protected void mainframeError(int code, String message, String customerID, T entity) {
         logger.error(
-                "Failed to save data to mainframe. Error Code: {}, Error Message: {}.", code, message);
+                "Failed to save {} to mainframe. Customer ID = {}, Error Code: {}, Error Message: {}.", entity.getClass().getSimpleName(), customerID, code, message);
     }
 
 }
