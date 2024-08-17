@@ -63,7 +63,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>

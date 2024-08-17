@@ -147,6 +147,11 @@ public class CustomerScreenController {
         customerLoansPane.setVisible(false);
         customerEmployerPane.setVisible(false);
         customerNotesPane.setVisible(false);
+        btnGeneralCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnLoansCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -156,6 +161,11 @@ public class CustomerScreenController {
         customerLoansPane.setVisible(false);
         customerEmployerPane.setVisible(false);
         customerNotesPane.setVisible(false);
+        btnGeneralCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnLoansCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -165,6 +175,11 @@ public class CustomerScreenController {
         customerLoansPane.setVisible(true);
         customerEmployerPane.setVisible(false);
         customerNotesPane.setVisible(false);
+        btnGeneralCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnLoansCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -174,6 +189,11 @@ public class CustomerScreenController {
         customerLoansPane.setVisible(false);
         customerEmployerPane.setVisible(true);
         customerNotesPane.setVisible(false);
+        btnGeneralCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnLoansCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -183,6 +203,11 @@ public class CustomerScreenController {
         customerLoansPane.setVisible(false);
         customerEmployerPane.setVisible(false);
         customerNotesPane.setVisible(true);
+        btnGeneralCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnLoansCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
