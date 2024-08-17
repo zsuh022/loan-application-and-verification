@@ -65,17 +65,36 @@ public class ChangeAddress extends AbstractWriter<CustomerAddressDTO> {
     @Override
     protected Map<String, String> extractLogProperties(CustomerAddressDTO addy, String customerID) {
         Map<String, String> properties = new HashMap<>();
-        properties.put("number", String.valueOf(addy.getNumber()));
-        properties.put("type", addy.getType());
-        properties.put("line1", addy.getLine1());
-        properties.put("line2", addy.getLine2());
-        properties.put("suburb", addy.getSuburb());
-        properties.put("city", addy.getCity());
-        properties.put("postCode", String.valueOf(addy.getPostCode()));
-        properties.put("country", addy.getCountry());
-        properties.put("isPrimary", addy.getPrimary().toString());
-        properties.put("isMailing", addy.getMailing().toString());
         properties.put("id", customerID);
+        properties.put("number", String.valueOf(addy.getNumber()));
+        if (addy.getType() != null) {
+            properties.put("type", addy.getType());
+        }
+        if (addy.getLine1() != null) {
+            properties.put("line1", addy.getLine1());
+        }
+        if (addy.getLine2() != null) {
+            properties.put("line2", addy.getLine2());
+        }
+        if (addy.getSuburb() != null) {
+            properties.put("suburb", addy.getSuburb());
+        }
+        if (addy.getCity() != null) {
+            properties.put("city", addy.getCity());
+        }
+        if (addy.getPostCode() != null) {
+            properties.put("postCode", String.valueOf(addy.getPostCode()));
+        }
+        if (addy.getCountry() != null) {
+            properties.put("country", addy.getCountry());
+        }
+        if (addy.getPrimary() != null) {
+            properties.put("isPrimary", addy.getPrimary().toString());
+        }
+        if (addy.getMailing() != null) {
+            properties.put("isMailing", addy.getMailing().toString());
+        }
+
         return properties;
     }
 }

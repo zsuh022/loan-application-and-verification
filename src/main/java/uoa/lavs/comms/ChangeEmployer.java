@@ -73,19 +73,42 @@ public class ChangeEmployer extends AbstractWriter<CustomerEmployerDTO> {
     @Override
     protected Map<String, String> extractLogProperties(CustomerEmployerDTO value, String customerID) {
         Map<String, String> properties = new HashMap<>();
-        properties.put("number", String.valueOf(value.getName()));
-        properties.put("name", value.getName());
-        properties.put("line1", value.getLine1());
-        properties.put("line2", value.getLine2());
-        properties.put("suburb", value.getSuburb());
-        properties.put("city", value.getCity());
-        properties.put("postCode", value.getPostCode());
-        properties.put("country", value.getCountry());
-        properties.put("phone", value.getPhone());
-        properties.put("email", value.getEmail());
-        properties.put("web", value.getWeb());
-        properties.put("isOwner", value.getIsOwner().toString());
         properties.put("id", customerID);
+        properties.put("number", String.valueOf(value.getName()));
+        if (value.getName() != null) {
+            properties.put("name", value.getName());
+        }
+        if (value.getLine1() != null) {
+            properties.put("line1", value.getLine1());
+        }
+        if (value.getLine2() != null) {
+            properties.put("line2", value.getLine2());
+        }
+        if (value.getSuburb() != null) {
+            properties.put("suburb", value.getSuburb());
+        }
+        if (value.getCity() != null) {
+            properties.put("city", value.getCity());
+        }
+        if (value.getPostCode() != null) {
+            properties.put("postCode", value.getPostCode());
+        }
+        if (value.getCountry() != null) {
+            properties.put("country", value.getCountry());
+        }
+        if (value.getPhone() != null) {
+            properties.put("phone", value.getPhone());
+        }
+        if (value.getEmail() != null) {
+            properties.put("email", value.getEmail());
+        }
+        if (value.getWeb() != null) {
+            properties.put("web", value.getWeb());
+        }
+        if (value.getIsOwner() != null) {
+            properties.put("isOwner", value.getIsOwner().toString());
+        }
+
         return properties;
     }
 }

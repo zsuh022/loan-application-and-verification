@@ -51,13 +51,13 @@ public class ChangePhone extends AbstractWriter<CustomerPhoneDTO> {
     @Override
     protected Map<String, String> extractLogProperties(CustomerPhoneDTO phone, String customerID) {
         Map<String, String> properties = new HashMap<>();
+        properties.put("id", customerID);
+        properties.put("index", String.valueOf(phone.getIndex()));
         properties.put("type", phone.getType());
         properties.put("prefix", phone.getPrefix());
-        properties.put("number", phone.getNumber());
+        properties.put("phone", phone.getNumber());
         properties.put("isPrimary", phone.getPrimary().toString());
         properties.put("isTexting", phone.getTexting().toString());
-        properties.put("index", String.valueOf(phone.getIndex()));
-        properties.put("id", customerID);
         return properties;
     }
 }

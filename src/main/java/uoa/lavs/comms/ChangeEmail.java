@@ -44,10 +44,15 @@ public class ChangeEmail extends AbstractWriter<CustomerEmailDTO> {
     @Override
     protected Map<String, String> extractLogProperties(CustomerEmailDTO email, String customerID) {
         Map<String, String> properties = new HashMap<>();
-        properties.put("address", email.getAddress());
-        properties.put("isPrimary", email.getPrimary().toString());
-        properties.put("number", String.valueOf(email.getNumber()));
         properties.put("id", customerID);
+        properties.put("number", String.valueOf(email.getNumber()));
+        if (email.getAddress() != null) {
+            properties.put("address", email.getAddress());
+        }
+        if (email.getPrimary() != null) {
+            properties.put("isPrimary", email.getPrimary().toString());
+        }
+
         return properties;
     }
 }
