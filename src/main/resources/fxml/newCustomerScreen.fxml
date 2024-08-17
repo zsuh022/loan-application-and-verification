@@ -54,7 +54,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnGeneralNewCustomer" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -62,7 +62,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnAddressNewCustomer" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -73,7 +73,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="btnEmployerNewCustomer" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -84,7 +84,7 @@
                                                 <Cursor fx:constant="OPEN_HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
+                                          <Button fx:id="btnNotesNewCustomer" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -98,7 +98,7 @@
                                        <children>
                                           <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <AnchorPane fx:id="newCustGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                <AnchorPane fx:id="newCustomerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -109,7 +109,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerTitle" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -119,7 +119,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerName" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -129,7 +129,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerDob" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -139,7 +139,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerOccupation" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -149,7 +149,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerCitizenship" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -159,7 +159,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerVisa" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -169,7 +169,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerPhone" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -179,14 +179,14 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmail" />
                                                                </children>
                                                             </HBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="newCustAddressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustomerAddressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -197,7 +197,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerType" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -207,7 +207,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerLine1" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -217,7 +217,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerLine2" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -227,7 +227,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerSuburb" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -237,7 +237,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerCity" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -247,7 +247,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerPostcode" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -257,17 +257,17 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerCountry" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <CheckBox mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                  <CheckBox fx:id="cbNewCustomerIsPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                      <HBox.margin>
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </CheckBox>
-                                                                  <CheckBox mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                  <CheckBox fx:id="cbNewCustomerIsMailing" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                      <HBox.margin>
                                                                         <Insets left="20.0" />
                                                                      </HBox.margin>
@@ -278,7 +278,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="newCustEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustomerEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -289,7 +289,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerName" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -299,7 +299,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerLine1" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -309,7 +309,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerLine2" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -319,7 +319,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerSuburb" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -329,7 +329,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerCity" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -339,7 +339,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerPostcode" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -349,7 +349,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerCountry" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -359,7 +359,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerPhone" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -369,7 +369,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerEmail" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -379,7 +379,7 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <TextField />
+                                                                  <TextField fx:id="tfNewCustomerEmployerWeb" />
                                                                </children>
                                                             </HBox>
                                                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -389,14 +389,14 @@
                                                                         <Insets left="30.0" />
                                                                      </HBox.margin>
                                                                   </Text>
-                                                                  <CheckBox mnemonicParsing="false" textFill="WHITE" />
+                                                                  <CheckBox fx:id="cbNewCustomerEmployerIsOwner" mnemonicParsing="false" textFill="WHITE" />
                                                                </children>
                                                             </HBox>
                                                          </children>
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane fx:id="newCustNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                <AnchorPane fx:id="newCustomerNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                    <children>
                                                       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -405,7 +405,7 @@
                                                                   <Font size="24.0" />
                                                                </font>
                                                             </Text>
-                                                            <TextArea opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: rgba(255,255,255,0.2);" VBox.vgrow="ALWAYS">
+                                                            <TextArea fx:id="taNewCustomerNotes" opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: rgba(255,255,255,0.2);" VBox.vgrow="ALWAYS">
                                                                <VBox.margin>
                                                                   <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                                                                </VBox.margin>
@@ -414,7 +414,7 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
+                                                <Rectangle fx:id="saveNewCustomerRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>
                                                       <Insets bottom="15.0" right="15.0" />
                                                    </StackPane.margin>

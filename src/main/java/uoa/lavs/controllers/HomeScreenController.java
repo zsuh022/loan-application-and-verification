@@ -5,9 +5,12 @@ import javafx.scene.control.Button;
 
 public class HomeScreenController {
 
-    @FXML private Button btnSearch;
-    @FXML private Button btnAddNew;
-    @FXML private Button btnDrafts;
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private Button btnAddNew;
+    @FXML
+    private Button btnDrafts;
 
     @FXML
     private void onSearchButtonClicked() {

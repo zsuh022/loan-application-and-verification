@@ -7,12 +7,18 @@ import javafx.scene.input.MouseEvent;
 
 public class SearchLoanScreenController {
 
-    @FXML private FontAwesomeIconView searchLoanBack;
-    @FXML private TextField searchLoanBar;
-    @FXML private TextField loanSearchResult1;
-    @FXML private TextField loanSearchResult2;
-    @FXML private TextField loanSearchResult3;
-    @FXML private TextField loanSearchResult4;
+    @FXML
+    private FontAwesomeIconView searchLoanBack;
+    @FXML
+    private TextField searchLoanBar;
+    @FXML
+    private TextField loanSearchResult1;
+    @FXML
+    private TextField loanSearchResult2;
+    @FXML
+    private TextField loanSearchResult3;
+    @FXML
+    private TextField loanSearchResult4;
 
     private String searchString;
 
