@@ -12,8 +12,9 @@ public class CustomerAddress {
     private Boolean isPrimary;
     private Boolean isMailing;
 
-    public CustomerAddress() {}
-    
+    public CustomerAddress() {
+    }
+
     public String getType() {
         return type;
     }
