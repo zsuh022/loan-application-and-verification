@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
@@ -101,5 +102,42 @@ public class NewCustomerScreenController {
     public boolean submitNewCustomer() {
         // TODO:
         return false;
+    }
+
+    @FXML
+    private void onNewCustomerBackClicked(MouseEvent event) {
+        // go to ...
+    }
+
+    @FXML
+    private void onGeneralButtonClicked() {
+        newCustomerGeneralPane.setVisible(true);
+        newCustomerAddressPane.setVisible(false);
+        newCustomerEmployerPane.setVisible(false);
+        newCustomerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onAddressButtonClicked() {
+        newCustomerGeneralPane.setVisible(false);
+        newCustomerAddressPane.setVisible(true);
+        newCustomerEmployerPane.setVisible(false);
+        newCustomerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onEmployerButtonClicked() {
+        newCustomerGeneralPane.setVisible(false);
+        newCustomerAddressPane.setVisible(false);
+        newCustomerEmployerPane.setVisible(true);
+        newCustomerNotesPane.setVisible(false);
+    }
+
+    @FXML
+    private void onNotesButtonClicked() {
+        newCustomerGeneralPane.setVisible(false);
+        newCustomerAddressPane.setVisible(false);
+        newCustomerEmployerPane.setVisible(false);
+        newCustomerNotesPane.setVisible(true);
     }
 }
