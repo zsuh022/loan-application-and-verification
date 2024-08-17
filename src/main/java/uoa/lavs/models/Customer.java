@@ -107,7 +107,7 @@ public class Customer {
         return note;
     }
 
-    public void addNote(CustomerNote note) {
+    public void setNote(CustomerNote note) {
         this.note = note;
     }
 
