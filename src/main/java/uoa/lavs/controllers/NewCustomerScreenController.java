@@ -101,6 +101,8 @@ public class NewCustomerScreenController {
     @FXML
     private TextArea taNewCustomerNotes;
 
+
+
     public boolean submitNewCustomer() {
         // TODO:
         return false;
@@ -111,6 +113,7 @@ public class NewCustomerScreenController {
         // go to ...
         Main.setScreen(Screens.HOME);
     }
+    
 
     @FXML
     private void onGeneralButtonClicked() {
@@ -118,6 +121,10 @@ public class NewCustomerScreenController {
         newCustomerAddressPane.setVisible(false);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(false);
+        btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -126,6 +133,10 @@ public class NewCustomerScreenController {
         newCustomerAddressPane.setVisible(true);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(false);
+        btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -134,6 +145,10 @@ public class NewCustomerScreenController {
         newCustomerAddressPane.setVisible(false);
         newCustomerEmployerPane.setVisible(true);
         newCustomerNotesPane.setVisible(false);
+        btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -142,5 +157,9 @@ public class NewCustomerScreenController {
         newCustomerAddressPane.setVisible(false);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(true);
+        btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 }

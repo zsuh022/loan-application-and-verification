@@ -64,6 +64,7 @@ public class NewLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId;
 
+
     public boolean submitNewLoan() {
         // TODO:
         return true;
@@ -79,11 +80,15 @@ public class NewLoanScreenController {
     private void onGeneralButtonClicked() {
         newLoanGeneralPane.setVisible(true);
         newLoanCoborrowersPane.setVisible(false);
+        btnCoborrowersNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnGeneralNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
     private void onCoborrowersButtonClicked() {
         newLoanGeneralPane.setVisible(false);
         newLoanCoborrowersPane.setVisible(true);
+        btnGeneralNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 }
