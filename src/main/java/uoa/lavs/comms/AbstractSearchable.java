@@ -19,7 +19,7 @@ public abstract class AbstractSearchable<T> {
         throw new UnsupportedOperationException("findById without an index is not supported for this entity.");
     }
 
-    public T findById(Connection conn, String customerId, int index) {
+    public T findById(Connection conn, String customerId, int index, int number) {
         throw new UnsupportedOperationException("findById with index is not supported for this entity.");
     }
 

@@ -16,13 +16,14 @@ public class SearchEmployer extends AbstractSearchable<CustomerEmployer> {
     private static final Logger logger = LogManager.getLogger(SearchEmployer.class);
 
     @Override
-    public CustomerEmployer findById(Connection conn, String customerId, int index) {
+    public CustomerEmployer findById(Connection conn, String customerId, int index, int number) {
         LoadCustomerEmployer employer = new LoadCustomerEmployer();
         employer.setCustomerId(customerId);
         employer.setNumber(index);
 
         return processRequest(conn, employer, status -> {
             CustomerEmployer cusEmployer = new CustomerEmployer();
+            cusEmployer.setIndex(number);
             cusEmployer.setName(employer.getNameFromServer());
             cusEmployer.setLine1(employer.getLine1FromServer());
             cusEmployer.setLine2(employer.getLine2FromServer());
@@ -48,7 +49,7 @@ public class SearchEmployer extends AbstractSearchable<CustomerEmployer> {
             List<CustomerEmployer> list = new ArrayList<>();
             // Eager loading all the employers when customer is first loaded
             for (int i = 1; i < employers.getCountFromServer() + 1; i++) {
-                CustomerEmployer employer = findById(conn, customerId, i);
+                CustomerEmployer employer = findById(conn, customerId, i, employers.getNumberFromServer(i));
                 list.add(employer);
                 logger.info("Employer: {}, successfully loaded", employer.getName());
             }
