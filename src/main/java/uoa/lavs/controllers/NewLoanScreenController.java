@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
@@ -64,5 +65,22 @@ public class NewLoanScreenController {
     public boolean submitNewLoan() {
         // TODO:
         return true;
+    }
+
+    @FXML
+    private void onNewLoanBackClicked(MouseEvent event) {
+        // go to ...
+    }
+
+    @FXML
+    private void onGeneralButtonClicked() {
+        newLoanGeneralPane.setVisible(true);
+        newLoanCoborrowersPane.setVisible(false);
+    }
+
+    @FXML
+    private void onCoborrowersButtonClicked() {
+        newLoanGeneralPane.setVisible(false);
+        newLoanCoborrowersPane.setVisible(true);
     }
 }

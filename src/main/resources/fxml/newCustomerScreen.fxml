@@ -25,7 +25,7 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
                                        <children>
-                                          <FontAwesomeIconView fx:id="newCustomerBack" fill="WHITE" glyphName="ARROW_LEFT" size="24">
+                                          <FontAwesomeIconView fx:id="newCustomerBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onNewCustomerBackClicked" size="24">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
