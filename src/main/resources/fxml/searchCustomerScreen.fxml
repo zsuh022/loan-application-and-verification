@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.SearchCustomerScreenController">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logobank.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </ImageView>
+               </children></HBox>
             <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
             <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                <children>
@@ -21,6 +38,9 @@
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </FontAwesomeIconView>
                      </children>
                   </VBox>
@@ -61,11 +81,6 @@
          </children>
       </VBox>
       <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fitHeight="65.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <image>
             <Image url="@../images/logobank2.png" />
@@ -91,7 +106,10 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <FontAwesomeIconView fx:id="searchCustomerEnter" fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="20.0" onKeyPressed="#onSearchCustomerEnterKeyPressed" onMouseClicked="#onSearchCustomerEnterClicked" size="16.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="144.0" />
+      <FontAwesomeIconView fx:id="searchCustomerEnter" fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="20.0" onKeyPressed="#onSearchCustomerEnterKeyPressed" onMouseClicked="#onSearchCustomerEnterClicked" size="16.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="144.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></FontAwesomeIconView>
       <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
    </children>
 </AnchorPane>

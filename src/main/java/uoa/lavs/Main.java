@@ -48,7 +48,16 @@ public class Main extends Application{
 
     @Override
     public void start(final Stage stage) throws IOException{
-        scene = new Scene(loadFxml("homeScreen"), 960, 540);
+        SceneManager.addScreenUi(Screens.CUSTOMER, loadFxml("customerScreen"));
+        SceneManager.addScreenUi(Screens.DRAFTS, loadFxml("draftsScreen"));
+        SceneManager.addScreenUi(Screens.HOME, loadFxml("homeScreen"));
+        SceneManager.addScreenUi(Screens.LOAN, loadFxml("loanScreen"));
+        SceneManager.addScreenUi(Screens.NEW_CUSTOMER, loadFxml("newCustomerScreen"));
+        SceneManager.addScreenUi(Screens.NEW_LOAN, loadFxml("newLoanScreen"));
+        SceneManager.addScreenUi(Screens.SEARCH_CUSTOMER, loadFxml("searchCustomerScreen"));
+        SceneManager.addScreenUi(Screens.SEARCH_LOAN, loadFxml("searchLoanScreen"));
+        
+        scene = new Scene(SceneManager.getScreen(Screens.HOME), 960, 540);
         stage.setScene(scene);
         stage.show();
 

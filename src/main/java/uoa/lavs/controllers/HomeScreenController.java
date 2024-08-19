@@ -1,29 +1,52 @@
 package uoa.lavs.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 
-public class HomeScreenController {
+public class HomeScreenController
+ {
 
     @FXML
-    private Button btnSearch;
+    private MenuItem btnAddCustomer;
+
     @FXML
-    private Button btnAddNew;
+    private MenuItem btnAddLoan;
+
     @FXML
     private Button btnDrafts;
 
     @FXML
-    private void onSearchButtonClicked() {
-        // reveal search customer and search loan
+    private MenuItem btnSearchCustomer;
+
+    @FXML
+    private MenuItem btnSearchLoan;
+
+    @FXML
+    void onDraftsButtonClicked(ActionEvent event) {
+        Main.setScreen(Screens.DRAFTS);
     }
 
     @FXML
-    private void onAddNewButtonClicked() {
-        // reveal add customer and add loan
+    void searchLoanClicked(ActionEvent event){
+        Main.setScreen(Screens.SEARCH_LOAN);
     }
 
     @FXML
-    private void onDraftsButtonClicked() {
-        // go to drafts screen
+    void searchCustomerClicked(ActionEvent event){
+        Main.setScreen(Screens.SEARCH_CUSTOMER);
+    }
+
+    @FXML
+    void addLoanClicked(ActionEvent event){
+        Main.setScreen(Screens.NEW_LOAN);
+    }
+
+    @FXML
+    void addCustomerClicked(ActionEvent event){
+        Main.setScreen(Screens.NEW_CUSTOMER);
     }
 }

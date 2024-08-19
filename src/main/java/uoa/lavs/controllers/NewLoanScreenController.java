@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 
 import java.util.HashMap;
 
@@ -62,6 +64,7 @@ public class NewLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId;
 
+
     public boolean submitNewLoan() {
         // TODO:
         return true;
@@ -69,18 +72,28 @@ public class NewLoanScreenController {
 
     @FXML
     private void onNewLoanBackClicked(MouseEvent event) {
-        // go to ...
+        // go to ... previous screen
+        Main.setScreen(Screens.HOME);
     }
 
     @FXML
     private void onGeneralButtonClicked() {
         newLoanGeneralPane.setVisible(true);
         newLoanCoborrowersPane.setVisible(false);
+        btnCoborrowersNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnGeneralNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
     private void onCoborrowersButtonClicked() {
         newLoanGeneralPane.setVisible(false);
         newLoanCoborrowersPane.setVisible(true);
+        btnGeneralNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersNewLoan.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+    }
+
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
     }
 }

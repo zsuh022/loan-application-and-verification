@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.models.Loan;
 
 import java.util.HashMap;
@@ -116,6 +118,10 @@ public class LoanScreenController {
         btnPaymentsLoans.setVisible(false);
         btnCoborrowersLoans.setVisible(false);
         btnSummaryLoans.setVisible(false);
+        btnGeneralLoans.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnPaymentsLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnSummaryLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -124,6 +130,10 @@ public class LoanScreenController {
         btnPaymentsLoans.setVisible(true);
         btnCoborrowersLoans.setVisible(false);
         btnSummaryLoans.setVisible(false);
+        btnGeneralLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnPaymentsLoans.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnSummaryLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -132,6 +142,10 @@ public class LoanScreenController {
         btnPaymentsLoans.setVisible(false);
         btnCoborrowersLoans.setVisible(true);
         btnSummaryLoans.setVisible(false);
+        btnGeneralLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnPaymentsLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersLoans.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnSummaryLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
 
     @FXML
@@ -140,5 +154,14 @@ public class LoanScreenController {
         btnPaymentsLoans.setVisible(false);
         btnCoborrowersLoans.setVisible(false);
         btnSummaryLoans.setVisible(true);
+        btnGeneralLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnPaymentsLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnCoborrowersLoans.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnSummaryLoans.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+    }
+
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
     }
 }

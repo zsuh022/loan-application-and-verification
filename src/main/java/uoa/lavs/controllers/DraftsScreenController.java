@@ -4,6 +4,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 
 public class DraftsScreenController {
 
@@ -20,6 +22,11 @@ public class DraftsScreenController {
 
     @FXML
     private void onDraftsBackClicked(MouseEvent event) {
-        // go somewhere
+        Main.setScreen(Screens.HOME);
+    }
+    
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
     }
 }

@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import uoa.lavs.Main;
+import uoa.lavs.SceneManager.Screens;
 
 public class SearchLoanScreenController {
 
@@ -34,6 +36,7 @@ public class SearchLoanScreenController {
     @FXML
     private void onSearchLoanBackClicked(MouseEvent event) {
         // go to home screen
+        Main.setScreen(Screens.HOME);
     }
 
     @FXML
@@ -46,5 +49,10 @@ public class SearchLoanScreenController {
         if (event.getCode() == KeyCode.ENTER) {
 
         }
+    }
+
+    @FXML
+    private void logoClicked(){
+        Main.setScreen(Screens.HOME);
     }
 }
