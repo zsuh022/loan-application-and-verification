@@ -16,13 +16,14 @@ public class SearchPhone extends AbstractSearchable<CustomerPhone> {
     private static final Logger logger = LogManager.getLogger(SearchPhone.class);
 
     @Override
-    public CustomerPhone findById(Connection conn, String customerId, int index) {
+    public CustomerPhone findById(Connection conn, String customerId, int index, int number) {
         LoadCustomerPhoneNumber phone = new LoadCustomerPhoneNumber();
         phone.setCustomerId(customerId);
         phone.setNumber(index);
 
         return processRequest(conn, phone, status -> {
             CustomerPhone cusPhone = new CustomerPhone();
+            cusPhone.setIndex(number);
             cusPhone.setType(phone.getTypeFromServer());
             cusPhone.setPrefix(phone.getPrefixFromServer());
             cusPhone.setNumber(phone.getPhoneNumberFromServer());
@@ -42,9 +43,11 @@ public class SearchPhone extends AbstractSearchable<CustomerPhone> {
             List<CustomerPhone> list = new ArrayList<>();
             // Eager loading all the phones when customer is first loaded
             for (int i = 1; i < phones.getCountFromServer() + 1; i++) {
-                CustomerPhone phone = findById(conn, customerId, i);
+                CustomerPhone phone = findById(conn, customerId, i, phones.getNumberFromServer(i));
                 list.add(phone);
-                logger.info("Email: {}, successfully loaded", phone.getNumber());
+                if (phone.getNumber() != null) {
+                    logger.info("Phone: {}, successfully loaded", phone.getNumber());
+                }
             }
             return list;
         }, status -> {

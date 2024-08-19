@@ -1,19 +1,28 @@
 package uoa.lavs.models;
 
-public class CustomerAddress {
+public class CustomerAddressDTO {
 
+
+    private int index;
     private String type;
     private String line1;
     private String line2;
     private String suburb;
     private String city;
-    private int postCode;
+    private Integer postCode;
     private String country;
     private Boolean isPrimary;
     private Boolean isMailing;
-    private int index;
 
-    public CustomerAddress() {
+    CustomerAddressDTO() {
+    }
+
+    public int getNumber() {
+        return index;
+    }
+
+    public void setNumber(int index) {
+        this.index = index;
     }
 
     public String getType() {
@@ -56,11 +65,11 @@ public class CustomerAddress {
         this.city = city;
     }
 
-    public int getPostCode() {
+    public Integer getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(int postCode) {
+    public void setPostCode(Integer postCode) {
         this.postCode = postCode;
     }
 
@@ -72,27 +81,20 @@ public class CustomerAddress {
         this.country = country;
     }
 
-    public Boolean getIsPrimary() {
+    public Boolean getPrimary() {
         return isPrimary;
     }
 
-    public void setIsPrimary(Boolean isPrimary) {
-        this.isPrimary = isPrimary;
+    public void setPrimary(Boolean primary) {
+        isPrimary = primary;
     }
 
-    public Boolean getIsMailing() {
+    public Boolean getMailing() {
         return isMailing;
     }
 
-    public void setIsMailing(Boolean isMailing) {
-        this.isMailing = isMailing;
+    public void setMailing(Boolean mailing) {
+        isMailing = mailing;
     }
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
 }

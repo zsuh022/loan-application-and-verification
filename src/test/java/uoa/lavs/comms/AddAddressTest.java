@@ -8,6 +8,7 @@ import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
 import uoa.lavs.models.CustomerAddress;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
 
     @Override
     @BeforeEach
-    void setup() {
+    void setup() throws IOException {
         super.setup();
 
         addy1.setType("Residential");

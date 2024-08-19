@@ -8,6 +8,7 @@ import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
 import uoa.lavs.models.Customer;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +18,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
 
     @Override
     @BeforeEach
-    void setup() {
+    void setup() throws IOException {
         super.setup();
         addCustomer.add(conn, customer);
     }

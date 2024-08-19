@@ -3,9 +3,7 @@ package uoa.lavs.comms;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmail;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomerEmployer;
-import uoa.lavs.models.CustomerEmail;
 import uoa.lavs.models.CustomerEmployer;
 
 import java.util.HashMap;
@@ -45,7 +43,7 @@ public class AddEmployer extends AbstractWriter<CustomerEmployer> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, value);
             return "0";
         }, 1205, "Customer Email", customerID);
     }

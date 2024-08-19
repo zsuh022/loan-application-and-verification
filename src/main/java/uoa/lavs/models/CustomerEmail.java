@@ -4,8 +4,10 @@ public class CustomerEmail {
 
     private String address;
     private Boolean isPrimary;
+    private int index;
 
-    public CustomerEmail() {}
+    public CustomerEmail() {
+    }
 
     public String getAddress() {
         return address;
@@ -21,5 +23,13 @@ public class CustomerEmail {
 
     public void setIsPrimary(Boolean isPrimary) {
         this.isPrimary = isPrimary;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
