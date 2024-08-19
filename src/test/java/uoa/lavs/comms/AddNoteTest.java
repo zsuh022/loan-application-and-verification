@@ -47,7 +47,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
                         "First note content 20."
         );
 
-        customer.addNote(note1);
+        customer.setNote(note1);
     }
 
     @Test

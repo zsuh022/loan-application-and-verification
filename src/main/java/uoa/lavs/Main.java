@@ -1,5 +1,7 @@
 package uoa.lavs;
 
+import javafx.beans.value.ChangeListener;
+import javafx.scene.layout.AnchorPane;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
@@ -51,7 +53,17 @@ public class Main extends Application{
         scene = new Scene(loadFxml("homeScreen"), 960, 540);
         stage.setScene(scene);
         stage.show();
-
+        ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) ->
+            scaleToScreen((AnchorPane) scene.getRoot(), stage.getWidth(), stage.getHeight());
+        stage.widthProperty().addListener(stageSizeListener);
+        stage.heightProperty().addListener(stageSizeListener);
     }
 
+    public static void scaleToScreen(AnchorPane contentPane, double windowWidth, double windowHeight) {
+        // calculate the scale factor
+        double scale = (double) windowWidth / 1920;
+        // scale the content pane accordingly
+        contentPane.setScaleX(scale);
+        contentPane.setScaleY(scale);
+    }
 }
