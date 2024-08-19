@@ -54,6 +54,9 @@
                                        <StackPane.margin>
                                           <Insets right="70.0" />
                                        </StackPane.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </Rectangle>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add loan" StackPane.alignment="CENTER_RIGHT">
                                        <font>
@@ -589,6 +592,9 @@
                                                    <StackPane.margin>
                                                       <Insets bottom="20.0" right="20.0" />
                                                    </StackPane.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
                                                 </Circle>
                                                 <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>

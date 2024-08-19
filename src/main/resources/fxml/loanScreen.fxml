@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -557,23 +556,13 @@
                                                       </VBox>
                                                    </children>
                                                 </AnchorPane>
-                                                <Rectangle fx:id="saveLoansRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="15.0" right="15.0" />
-                                                   </StackPane.margin>
-                                                </Rectangle>
-                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <font>
-                                                      <Font size="16.0" />
-                                                   </font>
-                                                   <StackPane.margin>
-                                                      <Insets bottom="24.0" right="21.0" />
-                                                   </StackPane.margin>
-                                                </Text>
                                                 <Circle fx:id="editLoansCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>
                                                       <Insets bottom="20.0" right="20.0" />
                                                    </StackPane.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
                                                 </Circle>
                                                 <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
                                                    <StackPane.margin>
