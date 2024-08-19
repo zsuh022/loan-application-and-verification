@@ -16,13 +16,14 @@ public class SearchEmail extends AbstractSearchable<CustomerEmail> {
     private static final Logger logger = LogManager.getLogger(SearchEmail.class);
 
     @Override
-    public CustomerEmail findById(Connection conn, String customerId, int index) {
+    public CustomerEmail findById(Connection conn, String customerId, int index, int number) {
         LoadCustomerEmail email = new LoadCustomerEmail();
         email.setCustomerId(customerId);
         email.setNumber(index);
 
         return processRequest(conn, email, status -> {
             CustomerEmail cusEmail = new CustomerEmail();
+            cusEmail.setIndex(number);
             cusEmail.setAddress(email.getAddressFromServer());
             cusEmail.setIsPrimary(email.getIsPrimaryFromServer());
             return cusEmail;
@@ -39,9 +40,9 @@ public class SearchEmail extends AbstractSearchable<CustomerEmail> {
             List<CustomerEmail> list = new ArrayList<>();
             // Eager loading all the emails when customer is first loaded
             for (int i = 1; i < emails.getCountFromServer() + 1; i++) {
-                CustomerEmail email = findById(conn, customerId, i);
+                CustomerEmail email = findById(conn, customerId, i, emails.getNumberFromServer(i));
                 list.add(email);
-                logger.info("Email: {}, successfully loaded", email.getAddress());
+                if (email.getAddress() != null) logger.info("Email: {}, successfully loaded", email.getAddress());
             }
             return list;
         }, status -> {

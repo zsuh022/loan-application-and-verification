@@ -8,6 +8,7 @@ import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
 import uoa.lavs.models.CustomerEmail;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class AddEmailTest extends AbstractCustomerTest<CustomerEmail> {
 
     @Override
     @BeforeEach
-    void setup() {
+    void setup() throws IOException {
         super.setup();
 
         email1.setAddress("john.doe@example.com");

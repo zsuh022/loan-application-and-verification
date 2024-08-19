@@ -16,13 +16,14 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
     private static final Logger logger = LogManager.getLogger(SearchAddress.class);
 
     @Override
-    public CustomerAddress findById(Connection conn, String customerId, int index) {
+    public CustomerAddress findById(Connection conn, String customerId, int index, int number) {
         LoadCustomerAddress address = new LoadCustomerAddress();
         address.setCustomerId(customerId);
         address.setNumber(index);
 
         return processRequest(conn, address, status -> {
             CustomerAddress newAddress = new CustomerAddress();
+            newAddress.setIndex(number);
             newAddress.setType(address.getTypeFromServer());
             newAddress.setLine1(address.getLine1FromServer());
             newAddress.setLine2(address.getLine2FromServer());
@@ -46,10 +47,11 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
             List<CustomerAddress> list = new ArrayList<>();
             // Eager loading all the address when customer is first loaded
             for (int i = 1; i < addresses.getCountFromServer() + 1; i++) {
-                CustomerAddress address = findById(conn, customerId, i);
+                CustomerAddress address = findById(conn, customerId, i,
+                        addresses.getNumberFromServer(i));
                 if (address != null) {
                     list.add(address);
-                    logger.info("Address: {}, successfully loaded", address.getLine1());
+                    if (address.getLine1() != null) logger.info("Address: {}, successfully loaded", address.getLine1());
                 }
             }
             return list;

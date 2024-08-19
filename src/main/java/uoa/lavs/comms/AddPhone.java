@@ -36,7 +36,7 @@ public class AddPhone extends AbstractWriter<CustomerPhone> {
             // Return new customer ID
             return customerID;
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage());
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customerID, value);
             return "0";
         }, 1203, "Customer Phone", customerID);
     }
