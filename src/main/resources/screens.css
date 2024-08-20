@@ -11,6 +11,10 @@
     -fx-cursor: HAND;
 }
 
+.tab:selected{
+    -fx-background-color: #4b4999;
+}
+
 .tab-label{
     -fx-text-fill: #ffffff;
 }

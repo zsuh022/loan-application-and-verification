@@ -7,6 +7,8 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,8 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewLoanScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewLoanScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -227,37 +228,306 @@
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="newLoanCoborrowersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <children>
-                                                                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" top="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanCoborrowerId">
-                                                                           <HBox.margin>
-                                                                              <Insets top="27.0" />
-                                                                           </HBox.margin>
-                                                                        </TextField>
-                                                                        <Label text="coborrower name" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" right="30.0" top="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                               </children>
-                                                            </VBox>
+                                                            <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../screens.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <tabs>
+                                                                <Tab text="Coborrowers">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId1">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId2">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId3">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId4">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId5">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                  </content>
+                                                                </Tab>
+                                                                  <Tab text="Coborrowers">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId1">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId11">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId21">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId31">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId41">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId51">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Coborrowers">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId1">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId12">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId22">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId32">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId42">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" top="20.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId52">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="17.0" />
+                                                                                             </HBox.margin>
+                                                                                          </TextField>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </content>
+                                                                  </Tab>
+                                                              </tabs>
+                                                            </TabPane>
                                                          </children>
                                                       </AnchorPane>
-                                                      <Rectangle fx:id="saveNewLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
+                                                      <Rectangle fx:id="saveNewLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" onMouseClicked="#onCoborrowersButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
                                                          <StackPane.margin>
                                                             <Insets bottom="15.0" right="15.0" />
                                                          </StackPane.margin>
                                                       </Rectangle>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" StackPane.alignment="BOTTOM_RIGHT">
+                                                      <Text fill="WHITE" onMouseClicked="#onCoborrowersButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" StackPane.alignment="BOTTOM_RIGHT">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
