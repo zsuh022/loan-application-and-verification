@@ -32,6 +32,10 @@ public class NewCustomerScreenController {
     private Rectangle saveNewCustomerGeneral;
     @FXML
     private Circle btnNewAddress;
+    @FXML
+    private Circle btnNewEmail;
+    @FXML
+    private Circle btnNewPhone;
     // general
     @FXML
     private Button btnGeneralNewCustomer;
@@ -76,6 +80,11 @@ public class NewCustomerScreenController {
     private CheckBox cbNewCustomerIsPrimary;
     @FXML
     private CheckBox cbNewCustomerIsMailing;
+    //contacts
+    @FXML
+    private AnchorPane newCustomerContactsPane;
+    @FXML
+    private Button btnContactsNewCustomer;
     // employer
     @FXML
     private Button btnEmployerNewCustomer;
@@ -113,17 +122,37 @@ public class NewCustomerScreenController {
     @FXML
     private TabPane addressTabPane;
     @FXML
+    private TabPane phoneTabPane;
+    @FXML
+    private TabPane emailTabPane;
+    @FXML
     private AnchorPane addressTab1;
     @FXML
     private AnchorPane addressTab2;
     @FXML
     private AnchorPane addressTab3;
+    @FXML
+    private AnchorPane phoneTab1;
+    @FXML
+    private AnchorPane phoneTab2;
+    @FXML
+    private AnchorPane phoneTab3;
+    @FXML
+    private AnchorPane emailTab1;
+    @FXML
+    private AnchorPane emailTab2;
+    @FXML
+    private AnchorPane emailTab3;
 
 
     @FXML
     public void initialize(){
         Tab firstTab = addressTabPane.getTabs().get(0);
         firstTab.setClosable(false);
+        Tab firstPhoneTab = phoneTabPane.getTabs().get(0);
+        firstPhoneTab.setClosable(false);
+        Tab firstEmailTab = emailTabPane.getTabs().get(0);
+        firstEmailTab.setClosable(false);
     }
 
     public boolean submitNewCustomer() {
@@ -142,10 +171,12 @@ public class NewCustomerScreenController {
     private void onGeneralButtonClicked() {
         newCustomerGeneralPane.setVisible(true);
         newCustomerAddressPane.setVisible(false);
+        newCustomerContactsPane.setVisible(false);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(false);
         btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnContactsNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
@@ -154,10 +185,26 @@ public class NewCustomerScreenController {
     private void onAddressButtonClicked() {
         newCustomerGeneralPane.setVisible(false);
         newCustomerAddressPane.setVisible(true);
+        newCustomerContactsPane.setVisible(false);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(false);
         btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnContactsNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+    }
+
+    @FXML
+    private void onContactsButtonClicked() {
+        newCustomerGeneralPane.setVisible(false);
+        newCustomerAddressPane.setVisible(false);
+        newCustomerContactsPane.setVisible(true);
+        newCustomerEmployerPane.setVisible(false);
+        newCustomerNotesPane.setVisible(false);
+        btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnContactsNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
@@ -166,10 +213,12 @@ public class NewCustomerScreenController {
     private void onEmployerButtonClicked() {
         newCustomerGeneralPane.setVisible(false);
         newCustomerAddressPane.setVisible(false);
+        newCustomerContactsPane.setVisible(false);
         newCustomerEmployerPane.setVisible(true);
         newCustomerNotesPane.setVisible(false);
         btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnContactsNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
@@ -178,10 +227,12 @@ public class NewCustomerScreenController {
     private void onNotesButtonClicked() {
         newCustomerGeneralPane.setVisible(false);
         newCustomerAddressPane.setVisible(false);
+        newCustomerContactsPane.setVisible(false);
         newCustomerEmployerPane.setVisible(false);
         newCustomerNotesPane.setVisible(true);
         btnGeneralNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnAddressNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
+        btnContactsNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnEmployerNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: #ffffff; -fx-border-width: 1px");
         btnNotesNewCustomer.setStyle("-fx-background-color: rgba(255,255,255,0.5); -fx-border-color: #ffffff; -fx-border-width: 1px");
     }
@@ -195,8 +246,6 @@ public class NewCustomerScreenController {
     private void addNewAddress(){
         if (addressTabPane.getTabs().size() >= 4) {
             return;
-        } else if (addressTabPane.getTabs().size() == 3){
-
         }
         int numTabs = addressTabPane.getTabs().size();
         Tab tab = new Tab("Address "+(numTabs+1));
@@ -226,6 +275,72 @@ public class NewCustomerScreenController {
             firstTab.setClosable(false);
         }
         addressTabPane.getSelectionModel().selectLast();
+    }
+
+    @FXML
+    private void addNewEmail(){
+        if (emailTabPane.getTabs().size() >= 4) {
+            return;
+        }
+        int numTabs = emailTabPane.getTabs().size();
+        Tab tab = new Tab("Email "+(numTabs+1));
+        AnchorPane newContent;
+        switch (numTabs) {
+            case 1:
+                newContent = emailTab1;
+                newContent.setVisible(true);
+                break;
+            case 2:
+                newContent = emailTab2;
+                newContent.setVisible(true);
+                break;
+            case 3:
+                newContent = emailTab3;
+                newContent.setVisible(true);
+                break;
+            default:
+                newContent = new AnchorPane();
+                break;
+        }
+        tab.setContent(newContent);
+        tab.setClosable(true);
+        emailTabPane.getTabs().add(tab);
+        if (emailTabPane.getTabs().size() == 4) {
+            Tab firstTab = emailTabPane.getTabs().get(0);
+            firstTab.setClosable(false);
+        }
+        emailTabPane.getSelectionModel().selectLast();
+    }
+
+    @FXML
+    private void addNewPhone(){
+        if (phoneTabPane.getTabs().size() >= 4) {
+            return;
+        } 
+        int numTabs = phoneTabPane.getTabs().size();
+        Tab tab = new Tab("Phone "+(numTabs+1));
+        AnchorPane newContent;
+        switch (numTabs) {
+            case 1:
+                newContent = phoneTab1;
+                newContent.setVisible(true);
+                break;
+            case 2:
+                newContent = phoneTab2;
+                newContent.setVisible(true);
+                break;
+            case 3:
+                newContent = phoneTab3;
+                newContent.setVisible(true);
+                break;
+            default:
+                newContent = new AnchorPane();
+                break;
+        }
+        tab.setContent(newContent);
+        tab.setClosable(true);
+        phoneTabPane.getTabs().add(tab);
+        phoneTabPane.getSelectionModel().selectLast();
     }
 
 }
