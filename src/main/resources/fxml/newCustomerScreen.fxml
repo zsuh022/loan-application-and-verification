@@ -180,7 +180,7 @@
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
                                                                         </Text>
-                                                                        <DatePicker fx:id="dbNewCustomerDob" />
+                                                                        <DatePicker fx:id="dpNewCustomerDob" />
                                                                      </children>
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
