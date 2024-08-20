@@ -119,6 +119,29 @@ public class NewCustomerScreenController {
     }
 
     private void fillCustomerValuesMap() {
+        // general
+        // TODO: customerValuesMap.put("customerId", );
+        customerValuesMap.put("title", tfNewCustomerTitle.getText());
+        customerValuesMap.put("name", tfNewCustomerName.getText());
+        customerValuesMap.put("dob", tfNewCustomerDob.getText());
+        customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
+        customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
+        customerValuesMap.put("visa", tfNewCustomerVisa.getText());
+
+        // address
+
+
+        // email
+
+
+        // employer
+
+
+        // phone
+
+
+        // note
+        customerValuesMap.put("note", taNewCustomerNotes.getText());
     }
 
     @FXML
