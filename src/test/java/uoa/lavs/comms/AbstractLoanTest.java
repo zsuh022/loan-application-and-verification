@@ -24,6 +24,7 @@ public class AbstractLoanTest<R> extends AbstractCustomerTest<R> {
     protected void setup() throws IOException {
         super.setup();
 
+        loan.setLoanId("TEMP_LOAN_");
         loan.setCustomerID("1");
         loan.setCustomerName(customer.getName());
         loan.setPrincipal(10000.0);

@@ -36,7 +36,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
         addy1.setLine2("Edith");
         addy1.setSuburb("CBD");
         addy1.setCity("Auckland");
-        addy1.setPostCode(1234);
+        addy1.setPostCode("1234");
         addy1.setCountry("New Zealand");
         addy1.setIsMailing(true);
         addy1.setIsPrimary(true);
@@ -46,7 +46,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
         addy2.setLine2("Ellerslie");
         addy2.setSuburb("Suburb");
         addy2.setCity("Auckland");
-        addy2.setPostCode(5678);
+        addy2.setPostCode("5678");
         addy2.setCountry("New Zealand");
         addy2.setIsMailing(false);
         addy2.setIsPrimary(false);
@@ -56,7 +56,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
         addy3.setLine2("Mt Eden");
         addy3.setSuburb("Suburb");
         addy3.setCity("Auckland");
-        addy3.setPostCode(9876);
+        addy3.setPostCode("9876");
         addy3.setCountry("New Zealand");
         addy3.setIsMailing(true);
         addy3.setIsPrimary(false);
@@ -66,7 +66,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
         addy4.setLine2("Ponsonby");
         addy4.setSuburb("Suburb");
         addy4.setCity("Auckland");
-        addy4.setPostCode(1010);
+        addy4.setPostCode("1010");
         addy4.setCountry("New Zealand");
         addy4.setIsMailing(false);
         addy4.setIsPrimary(false);
@@ -76,7 +76,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
         addy5.setLine2("Devonport");
         addy5.setSuburb("Suburb");
         addy5.setCity("Auckland");
-        addy5.setPostCode(12345);
+        addy5.setPostCode("12345");
         addy5.setCountry("New Zealand");
         addy5.setIsMailing(false);
         addy5.setIsPrimary(false);

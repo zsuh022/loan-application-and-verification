@@ -13,7 +13,7 @@ public class CustomerAddress {
     private String country;
     private Boolean isPrimary;
     private Boolean isMailing;
-    private int index;
+    private Integer index;
 
     public CustomerAddress() {
     }
@@ -90,11 +90,11 @@ public class CustomerAddress {
         this.isMailing = isMailing;
     }
 
-    public int getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(Integer index) {
         this.index = index;
     }
 

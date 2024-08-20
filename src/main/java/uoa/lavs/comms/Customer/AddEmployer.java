@@ -20,8 +20,8 @@ public class AddEmployer extends AbstractWriter<CustomerEmployer> {
     @Override
     public String add(Connection conn, CustomerEmployer value, String customerID) {
         UpdateCustomerEmployer newValue = new UpdateCustomerEmployer();
+        newValue.setNumber(value.getIndex());
         newValue.setCustomerId(customerID);
-        newValue.setNumber(null);
         newValue.setName(value.getName());
         newValue.setLine1(value.getLine1());
         newValue.setLine2(value.getLine2());
