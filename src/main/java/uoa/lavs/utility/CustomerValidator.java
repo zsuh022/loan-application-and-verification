@@ -220,53 +220,65 @@ public class CustomerValidator {
 
     public boolean validateEmail(HashMap<String, String> map) {
 
-        if (map.get("address") == null || map.get("address").isEmpty()) {
-            return false;
-        }
+        int i = 0;
+        int primaryCount = 0;
 
-        String[] email = map.get("address").split("@");
-        if (email.length != 2) {
-            // email split into prefix and domain
-            return false;
-        }
+        while (map.containsKey("email type " + i)) {
 
-        String prefix = email[0];
-        if (!prefix.matches("^[a-zA-Z0-9._-]+$")) {
-            return false;
-        }
-
-        if (!Character.isLetter(prefix.charAt(0)) || !Character.isLetterOrDigit(prefix.charAt(prefix.length() - 1))) {
-            return false;
-        }
-
-        if (prefix.contains("..") || prefix.contains("__") || prefix.contains("--")) {
-            return false;
-        }
-
-        String[] domain = email[1].split("\\.");
-        if (domain.length <= 1) {
-            return false;
-        }
-
-        for (String domainPart : domain) {
-            if (domainPart.isEmpty()) {
+            if (map.get("email address " + i) == null || map.get("email address " + i).isEmpty()) {
                 return false;
             }
 
-            if (!domainPart.matches("^[a-zA-Z0-9-]+$")) {
+            String[] email = map.get("email address " + i).split("@");
+            if (email.length != 2) {
+                // email split into prefix and domain
                 return false;
             }
 
-            if (!Character.isLetterOrDigit(domainPart.charAt(0)) || !Character.isLetterOrDigit(domainPart.charAt(domainPart.length() - 1))) {
+            String prefix = email[0];
+            if (!prefix.matches("^[a-zA-Z0-9._-]+$")) {
                 return false;
             }
 
-            if (domainPart.contains("..") || domainPart.contains("--")) {
+            if (!Character.isLetter(prefix.charAt(0)) || !Character.isLetterOrDigit(prefix.charAt(prefix.length() - 1))) {
                 return false;
             }
+
+            if (prefix.contains("..") || prefix.contains("__") || prefix.contains("--")) {
+                return false;
+            }
+
+            String[] domain = email[1].split("\\.");
+            if (domain.length <= 1) {
+                return false;
+            }
+
+            for (String domainPart : domain) {
+                if (domainPart.isEmpty()) {
+                    return false;
+                }
+
+                if (!domainPart.matches("^[a-zA-Z0-9-]+$")) {
+                    return false;
+                }
+
+                if (!Character.isLetterOrDigit(domainPart.charAt(0)) || !Character.isLetterOrDigit(domainPart.charAt(domainPart.length() - 1))) {
+                    return false;
+                }
+
+                if (domainPart.contains("..") || domainPart.contains("--")) {
+                    return false;
+                }
+            }
+
+            if (Boolean.parseBoolean(map.get("email isPrimary " + i))) {
+                primaryCount++;
+            }
+
+            i++;
         }
 
-        if (map.get("isPrimary") == null || map.get("isPrimary").isEmpty()) {
+        if (primaryCount != 1) {
             return false;
         }
 
