@@ -169,19 +169,50 @@ public class CustomerValidator {
 
     public boolean validateAddress(HashMap<String, String> map) {
 
-        if (map.get("type") == null || map.get("type").isEmpty()) {
-            return false;
-        }
+        int i = 0;
+        int primaryCount = 0;
+        int mailingCount = 0;
 
-        if (!isValidAddress(map)) {
-            return false;
-        }
+        while (map.containsKey("address type " + i)) {
 
-        if (map.get("isPrimary") == null || map.get("isPrimary").isEmpty()) {
-            return false;
-        }
+            if (map.get("address type " + i) == null || map.get("address type " + i).isEmpty()) {
+                return false;
+            }
 
-        if (map.get("isMailing") == null || map.get("isMailing").isEmpty()) {
+            if (map.get("address line1 " + i) == null || map.get("address line1 " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("address suburb" + i) == null || map.get("address suburb " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("address city " + i) == null || map.get("address city " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("address postCode " + i) == null || map.get("address postCode " + i).isEmpty() ||
+                    map.get("address postCode " + i).matches("\\d{4}")) {
+                // assume post code is 4 digits
+                return false;
+            }
+
+            if (map.get("address country " + i) == null || map.get("address country " + i).isEmpty()) {
+                return false;
+            }
+
+            if (Boolean.parseBoolean(map.get("address isPrimary " + i))) {
+                primaryCount++;
+            }
+
+            if (Boolean.parseBoolean(map.get("address isMailing " + i))) {
+                mailingCount++;
+            }
+
+            i++;
+        }
+        
+        if (primaryCount != 1 || mailingCount != 1) {
             return false;
         }
 
