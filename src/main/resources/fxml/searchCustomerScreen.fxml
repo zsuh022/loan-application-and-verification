@@ -14,9 +14,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.SearchCustomerScreenController">
-   <children>
-      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.SearchCustomerScreenController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
             <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS">
                <children>
@@ -32,69 +33,91 @@
             <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
             <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS">
                      <children>
-                        <FontAwesomeIconView fx:id="searchCustomerBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onSearchCustomerBackClicked" size="24">
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
+                        <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logobank.png" />
+                           </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </FontAwesomeIconView>
+                        </ImageView>
                      </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                  </HBox>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
+                  <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer search">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
-                        </Text>
-                        <TextField fx:id="searchCustomerBar" prefHeight="30.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-background-radius: 15; -fx-border-color: ffffff; -fx-border-radius: 15; -fx-border-width: 1; -fx-text-fill: ffffff;">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="15.0" right="30.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="customerSearchResult1" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;">
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="customerSearchResult2" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                        <TextField fx:id="customerSearchResult3" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                        <TextField fx:id="customerSearchResult4" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                        <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+                           <children>
+                              <FontAwesomeIconView fx:id="searchCustomerBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onSearchCustomerBackClicked" size="24">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </FontAwesomeIconView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer search">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="searchCustomerBar" prefHeight="30.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-background-radius: 15; -fx-border-color: ffffff; -fx-border-radius: 15; -fx-border-width: 1; -fx-text-fill: ffffff;">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="15.0" right="30.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="customerSearchResult1" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;">
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="customerSearchResult2" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                              <TextField fx:id="customerSearchResult3" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                              <TextField fx:id="customerSearchResult4" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" HBox.hgrow="ALWAYS" />
                      </children>
-                  </VBox>
-                  <VBox fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" HBox.hgrow="ALWAYS" />
+                  </HBox>
                </children>
-            </HBox>
-         </children>
-      </VBox>
-      <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank2.png" />
-         </image>
-      </ImageView>
-      <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-         <buttons>
-            <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+            </VBox>
+            <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <image>
+                  <Image url="@../images/logobank2.png" />
+               </image>
+            </ImageView>
+            <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <buttons>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </buttons>
+            </ButtonBar>
+            <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
                <font>
                   <Font size="24.0" />
                </font>

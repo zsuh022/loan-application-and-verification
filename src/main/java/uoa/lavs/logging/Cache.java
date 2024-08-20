@@ -53,4 +53,11 @@ public class Cache {
         }
         return results;
     }
+
+    // ONLY USE FOR TESTING!!!
+
+    public static void clearCache() {
+        customerCache.clear();
+        loanCache.clear();
+    }
 }
