@@ -50,15 +50,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.HomeScreenController">
-   <children>
-      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.HomeScreenController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
-            <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
+                  <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                            <children>
@@ -112,22 +113,27 @@
                         </VBox>
                         <VBox alignment="TOP_RIGHT" fillWidth="false" minWidth="-Infinity" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <TextArea opacity="0.3" style="-fx-border-color: rgba(0,255,255,0.1); -fx-border-radius: 20;" />
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Company notices" StackPane.alignment="TOP_LEFT">
-                                 <StackPane.margin>
-                                    <Insets left="10.0" top="5.0" />
-                                 </StackPane.margin>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
+                              <StackPane VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TextArea opacity="0.3" style="-fx-border-color: rgba(0,255,255,0.1); -fx-border-radius: 20;" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Company notices" StackPane.alignment="TOP_LEFT">
+                                       <StackPane.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </StackPane.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+                                 </VBox.margin>
+                              </StackPane>
                            </children>
-                           <VBox.margin>
-                              <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
-                           </VBox.margin>
-                        </StackPane>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" prefWidth="200.0" />
                </children>
             </VBox>
             <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -164,13 +170,8 @@
                   <Font size="24.0" />
                </font>
             </Text>
-         </buttons>
-      </ButtonBar>
-      <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
-   </children>
-</AnchorPane>
+            <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
