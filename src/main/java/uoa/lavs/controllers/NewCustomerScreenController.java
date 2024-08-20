@@ -147,6 +147,16 @@ public class NewCustomerScreenController {
     private AnchorPane emailTab2;
     @FXML
     private AnchorPane emailTab3;
+    @FXML
+    private AnchorPane employerTab1;
+    @FXML
+    private AnchorPane employerTab2;
+    @FXML
+    private AnchorPane employerTab3;
+    @FXML
+    private AnchorPane employerTab4;
+    @FXML
+    private TabPane employerTabPane;
 
 
     @FXML
@@ -398,6 +408,37 @@ public class NewCustomerScreenController {
         tab.setClosable(true);
         phoneTabPane.getTabs().add(tab);
         phoneTabPane.getSelectionModel().selectLast();
+    }
+
+    @FXML
+    private void addNewEmployer() {
+        if (employerTabPane.getTabs().size() >= 4) {
+            return;
+        }
+        int numTabs = employerTabPane.getTabs().size();
+        Tab tab = new Tab("Employer " + (numTabs + 1));
+        AnchorPane newContent;
+        switch (numTabs) {
+            case 1:
+                newContent = employerTab1;
+                newContent.setVisible(true);
+                break;
+            case 2:
+                newContent = employerTab2;
+                newContent.setVisible(true);
+                break;
+            case 3:
+                newContent = employerTab3;
+                newContent.setVisible(true);
+                break;
+            default:
+                newContent = new AnchorPane();
+                break;
+        }
+        tab.setContent(newContent);
+        tab.setClosable(true);
+        employerTabPane.getTabs().add(tab);
+        employerTabPane.getSelectionModel().selectLast();
     }
 
 }
