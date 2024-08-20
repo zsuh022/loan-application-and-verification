@@ -210,7 +210,8 @@ public class CustomerValidator {
             i++;
         }
         
-        if (primaryCount != 1 || mailingCount != 1) {
+        if (primaryCount != 1 || mailingCount == 0) {
+            // only 1 primary address allowed, needs at least 1 mailing address
             return false;
         }
 
