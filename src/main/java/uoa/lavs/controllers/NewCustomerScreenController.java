@@ -183,6 +183,10 @@ public class NewCustomerScreenController {
 
     public boolean submitNewCustomer() {
         fillCustomerValuesMap();
+        fillAddressValuesList();
+        fillEmailValuesList();
+        fillEmployerValuesList();
+        fillPhoneValuesList();
 
         if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
                 employerValuesList, phoneValuesList)) {
@@ -196,15 +200,16 @@ public class NewCustomerScreenController {
     }
 
     private void fillCustomerValuesMap() {
-        // general
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
         customerValuesMap.put("name", tfNewCustomerName.getText());
         customerValuesMap.put("dob", tfNewCustomerDob.getText());
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());
+        customerValuesMap.put("note", taNewCustomerNotes.getText());
+    }
 
-        // address
+    private void fillAddressValuesList() {
         for (Tab tab : addressTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> addressMap = new HashMap<>();
@@ -219,8 +224,9 @@ public class NewCustomerScreenController {
             addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing")).isSelected()));
             addressValuesList.add(addressMap);
         }
+    }
 
-        // email
+    private void fillEmailValuesList() {
         for (Tab tab : emailTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> emailMap = new HashMap<>();
@@ -228,8 +234,9 @@ public class NewCustomerScreenController {
             emailMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmailIsPrimary")).isSelected()));
             emailValuesList.add(emailMap);
         }
+    }
 
-        // employer
+    private void fillEmployerValuesList() {
         for (Tab tab : employerTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> employerMap = new HashMap<>();
@@ -246,8 +253,9 @@ public class NewCustomerScreenController {
             employerMap.put("isOwner", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmployerIsOwner")).isSelected()));
             employerValuesList.add(employerMap);
         }
+    }
 
-        // phone
+    private void fillPhoneValuesList() {
         for (Tab tab : phoneTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> phoneMap = new HashMap<>();
@@ -258,11 +266,7 @@ public class NewCustomerScreenController {
             phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerPhoneIsTexting")).isSelected()));
             phoneValuesList.add(phoneMap);
         }
-
-        // note
-        customerValuesMap.put("note", taNewCustomerNotes.getText());
     }
-
 
     @FXML
     private void onGeneralButtonClicked() {
