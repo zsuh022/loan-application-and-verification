@@ -113,7 +113,7 @@ public class CustomerValidator {
             return false;
         }
 
-        if (map.get("dateOfBirth") == null || map.get("dateOfBirth").isEmpty()) {
+        if (map.get("dob") == null || map.get("dob").isEmpty()) {
             logger.error("Customer date of birth is not valid");
             return false;
         }
@@ -172,7 +172,7 @@ public class CustomerValidator {
                 return false;
             }
 
-            if (map.get("address suburb" + i) == null || map.get("address suburb " + i).isEmpty()) {
+            if (map.get("address suburb " + i) == null || map.get("address suburb " + i).isEmpty()) {
                 logger.error("Address suburb is not valid");
                 return false;
             }
