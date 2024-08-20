@@ -2,13 +2,21 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 
@@ -21,7 +29,9 @@ public class NewCustomerScreenController {
     @FXML
     private FontAwesomeIconView newCustomerBack;
     @FXML
-    private Rectangle saveNewCustomerRectangle;
+    private Rectangle saveNewCustomerGeneral;
+    @FXML
+    private Circle btnNewAddress;
     // general
     @FXML
     private Button btnGeneralNewCustomer;
@@ -100,8 +110,21 @@ public class NewCustomerScreenController {
     private AnchorPane newCustomerNotesPane;
     @FXML
     private TextArea taNewCustomerNotes;
+    @FXML
+    private TabPane addressTabPane;
+    @FXML
+    private AnchorPane addressTab1;
+    @FXML
+    private AnchorPane addressTab2;
+    @FXML
+    private AnchorPane addressTab3;
 
 
+    @FXML
+    public void initialize(){
+        Tab firstTab = addressTabPane.getTabs().get(0);
+        firstTab.setClosable(false);
+    }
 
     public boolean submitNewCustomer() {
         // TODO:
@@ -167,4 +190,43 @@ public class NewCustomerScreenController {
     private void logoClicked(){
         Main.setScreen(Screens.HOME);
     }
+
+    @FXML
+    private void addNewAddress(){
+        if (addressTabPane.getTabs().size() >= 4) {
+            return;
+        } else if (addressTabPane.getTabs().size() == 3){
+
+        }
+        int numTabs = addressTabPane.getTabs().size();
+        Tab tab = new Tab("Address "+(numTabs+1));
+        AnchorPane newContent;
+        switch (numTabs) {
+            case 1:
+                newContent = addressTab1;
+                newContent.setVisible(true);
+                break;
+            case 2:
+                newContent = addressTab2;
+                newContent.setVisible(true);
+                break;
+            case 3:
+                newContent = addressTab3;
+                newContent.setVisible(true);
+                break;
+            default:
+                newContent = new AnchorPane();
+                break;
+        }
+        tab.setContent(newContent);
+        tab.setClosable(true);
+        addressTabPane.getTabs().add(tab);
+        if (addressTabPane.getTabs().size() == 4) {
+            Tab firstTab = addressTabPane.getTabs().get(0);
+            firstTab.setClosable(false);
+        }
+        addressTabPane.getSelectionModel().selectLast();
+    }
+
 }
+ 

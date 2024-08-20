@@ -1,0 +1,16 @@
+.tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab{
+    -fx-background-color:  #3B3A7C;
+}
+
+.tab:hover{
+    -fx-background-color: #4b4999;
+    -fx-cursor: HAND;
+}
+
+.tab-label{
+    -fx-text-fill: #ffffff;
+}
