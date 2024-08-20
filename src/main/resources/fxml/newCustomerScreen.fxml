@@ -191,11 +191,17 @@
                                                             </HBox>
                                                          </children>
                                                       </VBox>
-                                                      <Rectangle fx:id="saveNewCustomerGeneral" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
+                                                      <Rectangle fx:id="saveNewCustomerGeneral" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" onMouseClicked="#onAddressButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor></Rectangle>
+                                                      <Text fill="WHITE" onMouseClicked="#onAddressButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Text>
                                                    </children>
                                                 </AnchorPane>
@@ -304,7 +310,7 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TabPane>
-                                                      <Rectangle fx:id="saveNewCustomerGeneral1" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="10.0" layoutY="10.0" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="40.0">
+                                                      <Rectangle fx:id="saveNewCustomerGeneral1" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onContactsButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="40.0">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor></Rectangle>
@@ -318,7 +324,7 @@
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
                                                       </FontAwesomeIconView>
-                                                      <Text fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="46.0">
+                                                      <Text fill="WHITE" layoutX="10.0" layoutY="10.0" onMouseClicked="#onContactsButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="46.0">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
@@ -911,11 +917,17 @@
                                                             </StackPane>
                                                          </children>
                                                       </VBox>
-                                                      <Rectangle fx:id="saveNewCustomerGeneral3" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
+                                                      <Rectangle fx:id="saveNewCustomerGeneral3" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" onMouseClicked="#onEmployerButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor></Rectangle>
+                                                      <Text fill="WHITE" onMouseClicked="#onEmployerButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Text>
                                                       <Circle fx:id="btnNewPhone" fill="#4b4999" layoutX="10.0" layoutY="10.0" onMouseClicked="#addNewPhone" radius="20.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="18.0">
                                                          <cursor>
@@ -1055,11 +1067,17 @@
                                                             </HBox>
                                                          </children>
                                                       </VBox>
-                                                      <Rectangle fx:id="saveNewCustomerGeneral2" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="10.0" layoutY="10.0" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                                                      <Text fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
+                                                      <Rectangle fx:id="saveNewCustomerGeneral2" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onNotesButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor></Rectangle>
+                                                      <Text fill="WHITE" layoutX="10.0" layoutY="10.0" onMouseClicked="#onNotesButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Text>
                                                    </children>
                                                 </AnchorPane>
@@ -1079,11 +1097,17 @@
                                                             </TextArea>
                                                          </children>
                                                       </VBox>
-                                                      <Rectangle fx:id="saveNewCustomerGeneral21" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="20.0" layoutY="20.0" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                                                      <Text fill="WHITE" layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="21.0">
+                                                      <Rectangle fx:id="saveNewCustomerGeneral21" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" stroke="BLACK" strokeType="INSIDE" width="80.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor></Rectangle>
+                                                      <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="29.0">
                                                          <font>
                                                             <Font size="16.0" />
                                                          </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </Text>
                                                    </children>
                                                 </AnchorPane>
