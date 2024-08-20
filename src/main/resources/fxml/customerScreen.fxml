@@ -19,643 +19,648 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.CustomerScreenController">
-   <children>
-      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.CustomerScreenController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
-            <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
+                  <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                      <children>
-                        <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                              <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                                  <children>
-                                    <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+                                    <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <FontAwesomeIconView fx:id="customerBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onCustomerBackClicked" size="24">
-                                             <VBox.margin>
-                                                <Insets top="15.0" />
-                                             </VBox.margin>
-                                          </FontAwesomeIconView>
-                                       </children>
-                                    </VBox>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" StackPane.alignment="CENTER">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets bottom="5.0" />
-                                       </StackPane.margin>
-                                    </Text>
-                                    <Rectangle fx:id="addLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="110.0" StackPane.alignment="CENTER_RIGHT">
-                                       <StackPane.margin>
-                                          <Insets right="70.0" />
-                                       </StackPane.margin>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Rectangle>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add loan" StackPane.alignment="CENTER_RIGHT">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets bottom="2.0" right="92.0" />
-                                       </StackPane.margin>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                           </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <VBox alignment="CENTER" prefWidth="200.0">
-                                       <children>
-                                          <Button fx:id="btnGeneralCustomer" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnAddressCustomer" mnemonicParsing="false" onAction="#onAddressButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnLoansCustomer" mnemonicParsing="false" onAction="#onLoansButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Loans" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnEmployerCustomer" mnemonicParsing="false" onAction="#onEmployerButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnNotesCustomer" mnemonicParsing="false" onAction="#onNotesButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                       </children>
-                                    </VBox>
-                                    <HBox prefHeight="100.0" prefWidth="660.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                          <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
                                              <children>
-                                                <AnchorPane fx:id="customerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
-                                                   <children>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerId" text="123-456-789" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerTitle" text="Mr" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerName" text="John Doe" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerStatus" text="Active" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerDob" text="12-11-1990" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerOccupation" text="Test Dummy" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizenship" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerCitizenship" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Visa:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerVisa" text="N/A" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerPhone" text="+23 456-7890" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmail" text="john.doe@nowhere.com" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane fx:id="customerAddressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
-                                                   <children>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address type:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerType" text="Residential" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerLine2" text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane fx:id="customerLoansPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
-                                                   <children>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label text="loanstuff" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane fx:id="customerEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
-                                                   <children>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerName" text="Good company" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerLine2" text="Somehwhere" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerPhone" text="09-123-4567" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerEmail" text="manager@goodcompany.co.nz" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets left="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Text>
-                                                                  <Label fx:id="lbCustomerEmployerWeb" text="https://www.fmoviesz.to" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                     <HBox.margin>
-                                                                        <Insets right="30.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane fx:id="customerNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
-                                                   <children>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <TextArea fx:id="taCustomerNotes" editable="false" opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: rgba(255,255,255,0.2);" VBox.vgrow="ALWAYS">
-                                                               <VBox.margin>
-                                                                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
-                                                               </VBox.margin>
-                                                            </TextArea>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <Circle fx:id="editCustomersCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="20.0" right="20.0" />
-                                                   </StackPane.margin>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Circle>
-                                                <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="33.0" right="31.0" />
-                                                   </StackPane.margin>
+                                                <FontAwesomeIconView fx:id="customerBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onCustomerBackClicked" size="24">
+                                                   <VBox.margin>
+                                                      <Insets top="15.0" />
+                                                   </VBox.margin>
                                                 </FontAwesomeIconView>
                                              </children>
-                                          </StackPane>
+                                          </VBox>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" StackPane.alignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" />
+                                             </StackPane.margin>
+                                          </Text>
+                                          <Rectangle fx:id="addLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="110.0" StackPane.alignment="CENTER_RIGHT">
+                                             <StackPane.margin>
+                                                <Insets right="70.0" />
+                                             </StackPane.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="OPEN_HAND" />
+                                             </cursor>
+                                          </Rectangle>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add loan" StackPane.alignment="CENTER_RIGHT">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets bottom="2.0" right="92.0" />
+                                             </StackPane.margin>
+                                          </Text>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <VBox alignment="CENTER" prefWidth="200.0">
+                                             <children>
+                                                <Button fx:id="btnGeneralCustomer" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="btnAddressCustomer" mnemonicParsing="false" onAction="#onAddressButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="btnLoansCustomer" mnemonicParsing="false" onAction="#onLoansButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Loans" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="btnEmployerCustomer" mnemonicParsing="false" onAction="#onEmployerButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="btnNotesCustomer" mnemonicParsing="false" onAction="#onNotesButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <HBox prefHeight="100.0" prefWidth="660.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <AnchorPane fx:id="customerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerId" text="123-456-789" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerTitle" text="Mr" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerName" text="John Doe" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerStatus" text="Active" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerDob" text="12-11-1990" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerOccupation" text="Test Dummy" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizenship" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerCitizenship" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Visa:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerVisa" text="N/A" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerPhone" text="+23 456-7890" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmail" text="john.doe@nowhere.com" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="customerAddressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address type:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerType" text="Residential" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerLine2" text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="customerLoansPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label text="loanstuff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="customerEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerName" text="Good company" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerLine2" text="Somehwhere" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerPhone" text="09-123-4567" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerEmail" text="manager@goodcompany.co.nz" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbCustomerEmployerWeb" text="https://www.fmoviesz.to" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="customerNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                         <children>
+                                                            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                                                                     <font>
+                                                                        <Font size="24.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <TextArea fx:id="taCustomerNotes" editable="false" opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: rgba(255,255,255,0.2);" VBox.vgrow="ALWAYS">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </TextArea>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <Circle fx:id="editCustomersCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
+                                                         <StackPane.margin>
+                                                            <Insets bottom="20.0" right="20.0" />
+                                                         </StackPane.margin>
+                                                         <cursor>
+                                                            <Cursor fx:constant="OPEN_HAND" />
+                                                         </cursor>
+                                                      </Circle>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
+                                                         <StackPane.margin>
+                                                            <Insets bottom="33.0" right="31.0" />
+                                                         </StackPane.margin>
+                                                      </FontAwesomeIconView>
+                                                   </children>
+                                                </StackPane>
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </HBox>
+                                    <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
                                  </children>
                               </HBox>
-                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
+                              <HBox fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </HBox>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
+                  <HBox prefHeight="60.0" prefWidth="200.0" VBox.vgrow="NEVER" />
                </children>
-            </HBox>
-            <HBox prefHeight="60.0" prefWidth="200.0" VBox.vgrow="NEVER" />
+            </VBox>
+            <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../images/logobank.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <image>
+                  <Image url="@../images/logobank2.png" />
+               </image>
+            </ImageView>
+            <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <buttons>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </buttons>
+            </ButtonBar>
+            <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
          </children>
-      </VBox>
-      <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank2.png" />
-         </image>
-      </ImageView>
-      <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-         <buttons>
-            <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-         </buttons>
-      </ButtonBar>
-      <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -9,7 +9,7 @@ public class CustomerAddress {
     private String line2;
     private String suburb;
     private String city;
-    private int postCode;
+    private String postCode;
     private String country;
     private Boolean isPrimary;
     private Boolean isMailing;
@@ -58,11 +58,11 @@ public class CustomerAddress {
         this.city = city;
     }
 
-    public int getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(int postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 

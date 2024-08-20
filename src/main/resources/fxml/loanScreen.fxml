@@ -62,41 +62,23 @@
                                  <children>
                                     <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="btnGeneralLoans" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                          <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+                                             <children>
+                                                <FontAwesomeIconView fx:id="loanBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onLoanBackClicked" size="24">
+                                                   <VBox.margin>
+                                                      <Insets top="15.0" />
+                                                   </VBox.margin>
+                                                </FontAwesomeIconView>
+                                             </children>
+                                          </VBox>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Loans" StackPane.alignment="CENTER">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnPaymentsLoans" mnemonicParsing="false" onAction="#onPaymentsButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Payments" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnCoborrowersLoans" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                          <Button fx:id="btnSummaryLoans" mnemonicParsing="false" onAction="#onSummaryButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Summary" textFill="WHITE">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" />
+                                             </StackPane.margin>
+                                          </Text>
                                        </children>
                                     </VBox>
                                     <HBox prefHeight="100.0" prefWidth="660.0" HBox.hgrow="ALWAYS">
@@ -555,20 +537,7 @@
                                                          </children>
                                                       </VBox>
                                                    </children>
-                                                </AnchorPane>
-                                                <Circle fx:id="editLoansCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="20.0" right="20.0" />
-                                                   </StackPane.margin>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Circle>
-                                                <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="33.0" right="31.0" />
-                                                   </StackPane.margin>
-                                                </FontAwesomeIconView>
+                                                </StackPane>
                                              </children>
                                           </StackPane>
                                        </children>
@@ -586,33 +555,37 @@
                      </children>
                   </VBox>
                </children>
-            </HBox>
-            <HBox prefHeight="60.0" prefWidth="200.0" VBox.vgrow="NEVER" />
-         </children>
-      </VBox>
-      <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <image>
-            <Image url="@../images/logobank2.png" />
-         </image>
-      </ImageView>
-      <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-         <buttons>
-            <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+            </VBox>
+            <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../images/logobank.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <image>
+                  <Image url="@../images/logobank2.png" />
+               </image>
+            </ImageView>
+            <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <buttons>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </buttons>
+            </ButtonBar>
+            <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
                <font>
                   <Font size="24.0" />
                </font>
