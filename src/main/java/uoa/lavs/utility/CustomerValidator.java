@@ -110,7 +110,7 @@ public class CustomerValidator {
             return false;
         }
 
-        if (customerMap.get("dateOfBirth") == null || customerMap.get("dateOfBirth").isEmpty()) {
+        if (customerMap.get("dob") == null || customerMap.get("dob").isEmpty()) {
             logger.error("Customer date of birth is not valid");
             return false;
         }

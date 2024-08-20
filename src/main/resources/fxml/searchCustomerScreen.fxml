@@ -4,7 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
+<?import javafx.scene.control.TextField?>
 <BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.SearchCustomerScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
@@ -69,14 +69,8 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="customerSearchResult1" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;">
-                                 <VBox.margin>
-                                    <Insets top="30.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="customerSearchResult2" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                              <TextField fx:id="customerSearchResult3" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                              <TextField fx:id="customerSearchResult4" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                              <ScrollPane fx:id="resultBox" prefHeight="347.0" prefWidth="680.0" style="-fx-background-color: transparent;">
+                              </ScrollPane>
                            </children>
                         </VBox>
                         <VBox fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" HBox.hgrow="ALWAYS" />

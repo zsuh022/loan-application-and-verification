@@ -65,9 +65,15 @@ public class NewCustomerScreenController {
     @FXML
     private TextField tfNewCustomerVisa;
     @FXML
-    private TextField tfNewCustomerPhone;
+    private TextField tfNewCustomerPhone111;
     @FXML
-    private TextField tfNewCustomerEmail;
+    private TextField tfNewCustomerEmail1;
+    @FXML
+    private TextField tfNewCustomerEmail11;
+    @FXML
+    private TextField tfNewCustomerEmail12;
+    @FXML
+    private TextField tfNewCustomerEmail13;
     // address
     @FXML
     private Button btnAddressNewCustomer;
@@ -181,7 +187,8 @@ public class NewCustomerScreenController {
         Main.setScreen(Screens.HOME);
     }
 
-    public boolean submitNewCustomer() {
+    @FXML
+    public void submitNewCustomer(MouseEvent event) {
         fillCustomerValuesMap();
         fillAddressValuesList();
         fillEmailValuesList();
@@ -192,11 +199,10 @@ public class NewCustomerScreenController {
                 employerValuesList, phoneValuesList)) {
             Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
                     emailValuesList, employerValuesList, phoneValuesList);
-            // TODO: send customer somewhere
-            return true;
+            CustomerBucket customerBucket = CustomerBucket.getInstance();
+            customerBucket.setCustomer(newCustomer);
+            Main.setScreen(Screens.CUSTOMER);
         }
-
-        return false;
     }
 
     private void fillCustomerValuesMap() {
