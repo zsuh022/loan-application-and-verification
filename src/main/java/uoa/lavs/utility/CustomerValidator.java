@@ -1,5 +1,7 @@
 package uoa.lavs.utility;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import uoa.lavs.models.*;
 
 import java.time.LocalDate;
@@ -7,7 +9,18 @@ import java.util.Map;
 
 public class CustomerValidator {
 
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(CustomerValidator.class);
+    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
+
+    public static String generateTemporaryCustomerId() {
+        String timestamp = String.valueOf(System.currentTimeMillis());
+        return TEMPORARY_CUSTOMER_ID_PREFIX + timestamp;
+    }
+
     public Customer createCustomer(Map<String, String> map) {
+        logger.info("Creating customer with id {}", map.get("id"));
+
         Customer customer = new Customer();
         customer.setCustomerId(map.get("customerId"));
         customer.setTitle(map.get("title"));
@@ -79,37 +92,46 @@ public class CustomerValidator {
             i++;
         }
 
+        logger.info("Created customer with id {}", customer.getId());
         return customer;
     }
 
     public boolean validateCustomer(Map<String, String> map) {
+        logger.info("Validating customer with id {}", map.get("customerId"));
 
         if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
+            logger.error("Customer id is not valid");
             return false;
         }
 
         if (map.get("name") == null || map.get("name").isEmpty()) {
+            logger.error("Customer name is not valid");
             return false;
         }
 
         String[] fullName = map.get("name").split(" ");
         if (fullName.length < 2) {
+            logger.error("Customer name is not valid");
             return false;
         }
 
         if (map.get("dateOfBirth") == null || map.get("dateOfBirth").isEmpty()) {
+            logger.error("Customer date of birth is not valid");
             return false;
         }
 
         if (map.get("occupation") == null || map.get("occupation").isEmpty()) {
+            logger.error("Customer occupation is not valid");
             return false;
         }
 
         if (map.get("citizenship") == null || map.get("citizenship").isEmpty()) {
+            logger.error("Customer citizenship is not valid");
             return false;
         }
 
         if (map.get("visa") == null || map.get("visa").isEmpty()) {
+            logger.error("Customer visa is not valid");
             return false;
         }
 
@@ -129,10 +151,12 @@ public class CustomerValidator {
             return false;
         }
 
+        logger.info("Validated customer with id {}", map.get("customerId"));
         return true;
     }
 
     public boolean validateAddress(Map<String, String> map) {
+        logger.info("Validating address");
 
         int i = 0;
         int primaryCount = 0;
@@ -176,16 +200,23 @@ public class CustomerValidator {
 
             i++;
         }
-        
-        if (primaryCount != 1 || mailingCount == 0) {
-            // only 1 primary address allowed, needs at least 1 mailing address
+
+        if (primaryCount != 1) {
+            logger.error("Address validation failed: there should be exactly one primary address, found {}", primaryCount);
             return false;
         }
 
+        if (mailingCount == 0) {
+            logger.error("Address validation failed: there should be at least one mailing address, found {}", mailingCount);
+            return false;
+        }
+
+        logger.info("Validated address successfully");
         return true;
     }
 
     public boolean validateEmail(Map<String, String> map) {
+        logger.info("Validating email");
 
         int i = 0;
         int primaryCount = 0;
@@ -246,13 +277,16 @@ public class CustomerValidator {
         }
 
         if (primaryCount != 1) {
+            logger.error("Email validation failed: there should be exactly one primary address, found {}", primaryCount);
             return false;
         }
 
+        logger.info("Validated email successfully");
         return true;
     }
 
     public boolean validateEmployer(Map<String, String> map) {
+        logger.info("Validating employer");
 
         int i = 0;
 
@@ -304,10 +338,12 @@ public class CustomerValidator {
             }
         }
 
+        logger.info("Validated employer successfully");
         return true;
     }
 
     public boolean validatePhone(Map<String, String> map) {
+        logger.info("Validating phone");
 
         int i = 0;
         int primaryCount = 0;
@@ -340,10 +376,17 @@ public class CustomerValidator {
             }
         }
 
-        if (primaryCount != 1 || textingCount == 0) {
+        if (primaryCount != 1) {
+            logger.error("Phone validation failed: there should be exactly one primary address, found {}", primaryCount);
             return false;
         }
 
+        if (textingCount == 0) {
+            logger.error("Phone validation failed: there should be at least one texting phone, found {}", textingCount);
+            return false;
+        }
+
+        logger.info("Validated phone successfully");
         return true;
     }
 }
