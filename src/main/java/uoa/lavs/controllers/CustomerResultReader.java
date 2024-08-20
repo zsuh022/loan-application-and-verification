@@ -13,6 +13,8 @@ public class CustomerResultReader {
         List<AnchorPane> panes = new ArrayList<>();
         for (CustomerSummary summary : searchSummaries) {
             AnchorPane pane = new AnchorPane();
+            pane.setPrefWidth(678);
+            pane.setPrefHeight(70);
             VBox left = new VBox();
             VBox right = new VBox();
             pane.getChildren().addAll(left, right);
@@ -21,11 +23,9 @@ public class CustomerResultReader {
 
             Label id = new Label("Customer ID: " + summary.getId());
             Label name = new Label("Customer Name: " + summary.getName());
-            Label dob = new Label("Customer Date of Birth: " + summary.getDob());
             Label address = new Label("Customer Address: " + summary.getAddress());
             left.getChildren().add(id);
             left.getChildren().add(name);
-            right.getChildren().add(dob);
             right.getChildren().add(address);
             panes.add(pane);
         }
