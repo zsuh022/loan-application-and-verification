@@ -9,8 +9,10 @@ public class CustomerPhone {
     private String number;
     private Boolean isPrimary;
     private Boolean isTexting;
+    private int index;
 
-    public CustomerPhone() {}
+    public CustomerPhone() {
+    }
 
     public String getType() {
         return type;
@@ -51,6 +53,14 @@ public class CustomerPhone {
     public void setIsTexting(Boolean isTexting) {
         this.isTexting = isTexting;
     }
+  
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     public boolean validatePrefix(String p) {
         // assume prefix 2 to 4 digits
@@ -60,7 +70,6 @@ public class CustomerPhone {
     public boolean validateNumber(String n) {
         // assume number is 7 or 8 digits
         return n.matches("\\d{7,8}");
-    }
 
     @Override
     public boolean equals(Object o) {

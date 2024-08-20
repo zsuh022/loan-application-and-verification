@@ -32,5 +32,22 @@ public abstract class Loan {
 
     public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
 
+    public void writeLoan(HashMap<String, String> map) {
+        map.put("loanId", loanId);
+        map.put("customerList", String.join(",", customerList));
+        map.put("principal", Double.toString(principal));
+        map.put("rateType", rateType);
+        map.put("rate", Double.toString(rate));
+        map.put("startDate", startDate.toString());
+        map.put("period", period);
+        map.put("compoundingFrequency", compoundingFrequency.toString());
+        map.put("paymentFrequency", paymentFrequency.toString());
+        map.put("paymentAmount", Double.toString(paymentAmount));
+        map.put("status", status.toString());
+        map.put("summary", summary.toString());
+    }
+
+    public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
+
     public abstract void writeLoan(HashMap<String, String> map);
 }

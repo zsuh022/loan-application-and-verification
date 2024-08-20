@@ -39,8 +39,11 @@ build/
 .DS_Store
 
 # Ignore local db and local log file
-lavs-data.db
 log.json
+lavs-data.db
+lavs-data.txt
 
 # LOG4J2 logs
+logs/
 logs
+logs/app.log

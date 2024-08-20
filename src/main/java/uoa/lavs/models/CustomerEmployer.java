@@ -15,8 +15,10 @@ public class CustomerEmployer {
     private String email;
     private String web;
     private Boolean isOwner;
+    private int index;
 
-    public CustomerEmployer() {}
+    public CustomerEmployer() {
+    }
 
     public String getName() {
         return name;
@@ -104,6 +106,14 @@ public class CustomerEmployer {
 
     public void setIsOwner(Boolean isOwner) {
         this.isOwner = isOwner;
+    }
+  
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     @Override
