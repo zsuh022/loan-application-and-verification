@@ -3,11 +3,11 @@ package uoa.lavs.utility;
 import uoa.lavs.models.*;
 
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.Map;
 
 public class CustomerValidator {
 
-    public Customer createCustomer(HashMap<String, String> map) {
+    public Customer createCustomer(Map<String, String> map) {
         Customer customer = new Customer();
         customer.setCustomerId(map.get("customerId"));
         customer.setTitle(map.get("title"));
@@ -82,7 +82,7 @@ public class CustomerValidator {
         return customer;
     }
 
-    public boolean validateCustomer(HashMap<String, String> map) {
+    public boolean validateCustomer(Map<String, String> map) {
 
         if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
             return false;
@@ -132,7 +132,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateAddress(HashMap<String, String> map) {
+    public boolean validateAddress(Map<String, String> map) {
 
         int i = 0;
         int primaryCount = 0;
@@ -185,7 +185,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateEmail(HashMap<String, String> map) {
+    public boolean validateEmail(Map<String, String> map) {
 
         int i = 0;
         int primaryCount = 0;
@@ -252,7 +252,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateEmployer(HashMap<String, String> map) {
+    public boolean validateEmployer(Map<String, String> map) {
 
         int i = 0;
 
@@ -307,7 +307,7 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validatePhone(HashMap<String, String> map) {
+    public boolean validatePhone(Map<String, String> map) {
 
         int i = 0;
         int primaryCount = 0;
