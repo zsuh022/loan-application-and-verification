@@ -43,7 +43,7 @@
                                                       <Insets top="15.0" />
                                                    </VBox.margin>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </FontAwesomeIconView>
                                              </children>
@@ -75,7 +75,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                                 <Button fx:id="btnCoborrowersNewLoan" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -83,7 +83,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                              </children>
@@ -291,7 +291,7 @@
                   <Image url="@../images/logobank.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
             <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />

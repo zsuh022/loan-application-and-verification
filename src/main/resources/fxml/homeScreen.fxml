@@ -75,7 +75,7 @@
                                           <Font size="18.0" />
                                        </font>
                                        <cursor>
-                                          <Cursor fx:constant="OPEN_HAND" />
+                                          <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </MenuButton>
                                  </children>
@@ -91,7 +91,7 @@
                                           <Font size="18.0" />
                                        </font>
                                        <cursor>
-                                          <Cursor fx:constant="OPEN_HAND" />
+                                          <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </MenuButton>
                                  </children>
@@ -103,7 +103,7 @@
                                           <Font name="System Italic" size="18.0" />
                                        </font>
                                        <cursor>
-                                          <Cursor fx:constant="OPEN_HAND" />
+                                          <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
                                  </children>
@@ -142,7 +142,7 @@
                   <Image url="@../images/logobank.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
             <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
