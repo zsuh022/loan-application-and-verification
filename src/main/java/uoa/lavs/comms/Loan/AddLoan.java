@@ -18,12 +18,18 @@ public class AddLoan extends AbstractWriter<Loan> {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AddLoan.class);
 
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
+
     // Returns ID for new loan
     @Override
     public String add(Connection conn, Loan loan) {
         UpdateLoan newLoan = new UpdateLoan();
         // null to indicate new loan
-        newLoan.setLoanId(loan.getId());
+        if (loan.getId().contains(TEMPORARY_LOAN_ID_PREFIX)) {
+            newLoan.setLoanId(null);
+        } else {
+            newLoan.setLoanId(loan.getId());
+        }
         newLoan.setCustomerId(loan.getCustomerId());
         newLoan.setCompounding(loan.getCompoundingFrequency());
         newLoan.setStartDate(loan.getStartDate());
