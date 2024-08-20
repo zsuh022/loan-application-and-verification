@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import uoa.lavs.models.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class CustomerValidator {
@@ -14,8 +16,9 @@ public class CustomerValidator {
     public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
 
     public static String generateTemporaryCustomerId() {
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        return TEMPORARY_CUSTOMER_ID_PREFIX + timestamp;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String timeAsString = LocalDateTime.now().toString();
+        return TEMPORARY_CUSTOMER_ID_PREFIX + timeAsString;
     }
 
     public Customer createCustomer(Map<String, String> map) {
