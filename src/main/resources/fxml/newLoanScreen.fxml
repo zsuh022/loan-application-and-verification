@@ -99,7 +99,7 @@
                                                                <children>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -114,7 +114,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Principal:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Principal*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -124,7 +124,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -144,7 +144,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -154,7 +154,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Period:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Period*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -164,7 +164,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compounding:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compounding*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -184,7 +184,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment freq:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment freq*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -204,7 +204,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment amt:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment amt*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
@@ -214,7 +214,7 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest only:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest only*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
