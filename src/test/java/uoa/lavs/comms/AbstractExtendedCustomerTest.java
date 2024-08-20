@@ -1,11 +1,14 @@
 package uoa.lavs.comms;
 
 import org.junit.jupiter.api.BeforeEach;
+import uoa.lavs.comms.Customer.AddAddress;
+import uoa.lavs.comms.Customer.AddEmail;
+import uoa.lavs.comms.Customer.AddPhone;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.models.CustomerAddress;
-import uoa.lavs.models.CustomerEmail;
-import uoa.lavs.models.CustomerPhone;
-import uoa.lavs.models.CustomerEmployer;
+import uoa.lavs.models.Customer.CustomerAddress;
+import uoa.lavs.models.Customer.CustomerEmail;
+import uoa.lavs.models.Customer.CustomerPhone;
+import uoa.lavs.models.Customer.CustomerEmployer;
 
 import java.io.IOException;
 
@@ -22,7 +25,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
 
     @Override
     @BeforeEach
-    void setup() throws IOException {
+    protected void setup() throws IOException {
         super.setup();
 
         // Initialize phone details

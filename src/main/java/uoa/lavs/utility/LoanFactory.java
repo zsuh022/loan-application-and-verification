@@ -1,7 +1,7 @@
 package uoa.lavs.utility;
 
-import uoa.lavs.models.Loan;
-import uoa.lavs.models.Mortgage;
+import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.Mortgage;
 
 public class LoanFactory {
 
