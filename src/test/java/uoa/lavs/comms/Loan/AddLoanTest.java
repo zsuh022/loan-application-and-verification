@@ -23,7 +23,6 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     @BeforeEach
     protected void setup() throws IOException {
         super.setup();
-        addCustomer.add(conn, customer);
         addLoan.add(conn, loan);
     }
 
@@ -32,7 +31,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     }
 
     @Test
-    protected void testCustomerSuccess() {
+    protected void testLoanSuccess() {
         Loan newLoan = searchLoan.findById(conn, "1-01");
         assertDetails(loan, newLoan);
     }

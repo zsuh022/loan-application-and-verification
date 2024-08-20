@@ -16,17 +16,16 @@ public class SearchLoanSummary extends AbstractSearchable<LoanDetails> {
 
     @Override
     public LoanDetails findById(Connection conn, String loanID) {
-        LoadLoanSummary loan = new LoadLoanSummary();
-        loan.setLoanId(loanID);
+        LoadLoanSummary summary = new LoadLoanSummary();
+        summary.setLoanId(loanID);
 
-        return processRequest(conn, loan, status -> {
+        return processRequest(conn, summary, status -> {
             LoanDetails value = new LoanDetails(
-                    loanID, loan.getCustomerIdFromServer(), loan.getCustomerNameFromServer(), loan.getPrincipalFromServer(),
-                    loan.getRateValueFromServer(), loan.getPayoffDateFromServer(), loan.getTermFromServer(), loan.getTotalInterestFromServer(),
-                    loan.getTotalLoanCostFromServer(), loan.getPaymentAmountFromServer(), loan.getPaymentFrequencyFromServer()
+                    loanID, summary.getCustomerIdFromServer(), summary.getCustomerNameFromServer(), summary.getPrincipalFromServer(),
+                    summary.getRateValueFromServer(), summary.getPayoffDateFromServer(), summary.getTermFromServer(), summary.getTotalInterestFromServer(),
+                    summary.getTotalLoanCostFromServer(), summary.getPaymentAmountFromServer(), summary.getPaymentFrequencyFromServer()
             );
-
-            logger.info("Loan Summary for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());
+            logger.info("Loan Summary for customer ID {}, successfully loaded", summary.getCustomerIdFromServer());
             return value;
         }, status -> {
             return new LoanDetails();

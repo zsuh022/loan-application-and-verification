@@ -22,12 +22,10 @@ public class AddCoborrowerTest extends AbstractLoanTest<Coborrower> {
     @BeforeEach
     protected void setup() throws IOException {
         super.setup();
-        addCustomer.add(conn, customer);
-        String id = addCustomer.add(conn, customer1);
         loanId = addLoan.add(conn, loan);
 
         Coborrower coborrower = new Coborrower();
-        coborrower.setId(id);
+        coborrower.setId(customerId1);
         coborrower.setName(customer1.getName());
         coborrower.setNumber(null);
 
