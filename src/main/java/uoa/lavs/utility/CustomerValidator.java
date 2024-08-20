@@ -2,7 +2,7 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import uoa.lavs.models.*;
+import uoa.lavs.models.Customer.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

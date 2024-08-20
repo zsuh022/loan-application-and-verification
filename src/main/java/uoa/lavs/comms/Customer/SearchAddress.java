@@ -30,7 +30,7 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
             newAddress.setLine2(address.getLine2FromServer());
             newAddress.setSuburb(address.getSuburbFromServer());
             newAddress.setCity(address.getCityFromServer());
-            newAddress.setPostCode(Integer.parseInt(address.getPostCodeFromServer()));
+            newAddress.setPostCode(address.getPostCodeFromServer());
             newAddress.setCountry(address.getCountryFromServer());
             newAddress.setIsPrimary(address.getIsPrimaryFromServer());
             newAddress.setIsMailing(address.getIsMailingFromServer());

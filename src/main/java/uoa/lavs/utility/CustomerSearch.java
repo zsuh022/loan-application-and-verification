@@ -1,6 +1,6 @@
 package uoa.lavs.utility;
 
-import uoa.lavs.models.Customer;
+import uoa.lavs.models.Customer.Customer;
 
 import java.util.ArrayList;
 

@@ -19,12 +19,16 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.utility.CustomerValidator;
+import uoa.lavs.models.Customer.Customer;
 
 import java.util.HashMap;
 
 public class NewCustomerScreenController {
 
     private HashMap<String, String> customerValuesMap = new HashMap<>();
+
+    private CustomerValidator customerValidator = new CustomerValidator();
 
     @FXML
     private FontAwesomeIconView newCustomerBack;
@@ -146,7 +150,7 @@ public class NewCustomerScreenController {
 
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         Tab firstTab = addressTabPane.getTabs().get(0);
         firstTab.setClosable(false);
         Tab firstPhoneTab = phoneTabPane.getTabs().get(0);
@@ -291,17 +295,17 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
 
     @FXML
-    private void addNewAddress(){
+    private void addNewAddress() {
         if (addressTabPane.getTabs().size() >= 4) {
             return;
         }
         int numTabs = addressTabPane.getTabs().size();
-        Tab tab = new Tab("Address "+(numTabs+1));
+        Tab tab = new Tab("Address " + (numTabs + 1));
         AnchorPane newContent;
         switch (numTabs) {
             case 1:
@@ -331,12 +335,12 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void addNewEmail(){
+    private void addNewEmail() {
         if (emailTabPane.getTabs().size() >= 4) {
             return;
         }
         int numTabs = emailTabPane.getTabs().size();
-        Tab tab = new Tab("Email "+(numTabs+1));
+        Tab tab = new Tab("Email " + (numTabs + 1));
         AnchorPane newContent;
         switch (numTabs) {
             case 1:
@@ -366,12 +370,12 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void addNewPhone(){
+    private void addNewPhone() {
         if (phoneTabPane.getTabs().size() >= 4) {
             return;
         }
         int numTabs = phoneTabPane.getTabs().size();
-        Tab tab = new Tab("Phone "+(numTabs+1));
+        Tab tab = new Tab("Phone " + (numTabs + 1));
         AnchorPane newContent;
         switch (numTabs) {
             case 1:
