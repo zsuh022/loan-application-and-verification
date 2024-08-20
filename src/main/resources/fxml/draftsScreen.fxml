@@ -21,9 +21,19 @@
          <children>
             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
-                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
-                  <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+                     <children>
+                        <FontAwesomeIconView fx:id="draftsBack" fill="WHITE" glyphName="ARROW_LEFT" onMouseClicked="#onDraftsBackClicked" size="24">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIconView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                      <children>
                         <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
                            <children>
@@ -61,37 +71,27 @@
                      </children>
                   </HBox>
                </children>
-            </VBox>
-            <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@../images/logobank.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-               <image>
-                  <Image url="@../images/logobank2.png" />
-               </image>
-            </ImageView>
-            <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-               <buttons>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
-               </buttons>
-            </ButtonBar>
-            <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
+            </HBox>
+         </children>
+      </VBox>
+      <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fitHeight="65.0" onMouseClicked="#logoClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/logobank.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@../images/logobank2.png" />
+         </image>
+      </ImageView>
+      <ButtonBar layoutX="858.0" layoutY="15.333333015441895" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+         <buttons>
+            <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" size="30" text="" translateX="-5.0" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" translateX="-5.0">
                <font>
                   <Font size="24.0" />
                </font>
