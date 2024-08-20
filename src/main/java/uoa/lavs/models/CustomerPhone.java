@@ -1,5 +1,7 @@
 package uoa.lavs.models;
 
+import java.util.Objects;
+
 public class CustomerPhone {
 
     private String type;
@@ -51,7 +53,7 @@ public class CustomerPhone {
     public void setIsTexting(Boolean isTexting) {
         this.isTexting = isTexting;
     }
-
+  
     public int getIndex() {
         return index;
     }
@@ -60,11 +62,29 @@ public class CustomerPhone {
         this.index = index;
     }
 
-    public void validatePrefix(String p) {
-        // TODO:
+    public boolean validatePrefix(String p) {
+        // assume prefix 2 to 4 digits
+        return p.matches("\\d{2,4}");
     }
 
-    public void validateNumber(String n) {
-        // TODO:
+    public boolean validateNumber(String n) {
+        // assume number is 7 or 8 digits
+        return n.matches("\\d{7,8}");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CustomerPhone that = (CustomerPhone) o;
+        return Objects.equals(type, that.type) &&
+                Objects.equals(prefix, that.prefix) &&
+                Objects.equals(number, that.number) &&
+                Objects.equals(isPrimary, that.isPrimary) &&
+                Objects.equals(isTexting, that.isTexting);
     }
 }

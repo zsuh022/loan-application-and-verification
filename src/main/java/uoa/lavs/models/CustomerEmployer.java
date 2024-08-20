@@ -1,5 +1,7 @@
 package uoa.lavs.models;
 
+import java.util.Objects;
+
 public class CustomerEmployer {
 
     private String name;
@@ -7,7 +9,7 @@ public class CustomerEmployer {
     private String line2;
     private String suburb;
     private String city;
-    private String postCode;
+    private int postCode;
     private String country;
     private String phone;
     private String email;
@@ -58,11 +60,11 @@ public class CustomerEmployer {
         this.city = city;
     }
 
-    public String getPostCode() {
+    public int getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(String postCode) {
+    public void setPostCode(int postCode) {
         this.postCode = postCode;
     }
 
@@ -105,12 +107,34 @@ public class CustomerEmployer {
     public void setIsOwner(Boolean isOwner) {
         this.isOwner = isOwner;
     }
-
+  
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CustomerEmployer that = (CustomerEmployer) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(line1, that.line1) &&
+                Objects.equals(line2, that.line2) &&
+                Objects.equals(suburb, that.suburb) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(postCode, that.postCode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(web, that.web) &&
+                Objects.equals(isOwner, that.isOwner);
     }
 }

@@ -18,6 +18,7 @@ public class Mortgage extends Loan {
 
     @Override
     public void writeLoan(HashMap<String, String> map) {
+        // TODO:
         super.writeLoan(map);
     }
 }

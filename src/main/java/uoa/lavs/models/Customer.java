@@ -118,24 +118,4 @@ public class Customer {
     public void addPhone(CustomerPhone phone) {
         this.phoneList.add(phone);
     }
-
-    public void writeCustomer(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void writePhone(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void writeNote(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void writeAddress(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void writeEmail(HashMap<String, String> map) {
-        // TODO:
-    }
 }
