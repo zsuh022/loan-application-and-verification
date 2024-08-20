@@ -342,25 +342,38 @@ public class CustomerValidator {
 
     public boolean validatePhone(HashMap<String, String> map) {
 
-        if (map.get("type") == null || map.get("type").isEmpty()) {
-            return false;
+        int i = 0;
+        int primaryCount = 0;
+        int textingCount = 0;
+
+        while (map.containsKey("phone type " + i)) {
+
+            if (map.get("phone type " + i) == null || map.get("phone type " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("phone prefix " + i) == null || map.get("phone prefix " + i).isEmpty() ||
+                    !map.get("phone prefix " + i).matches("\\d{3}")) {
+                // prefix exactly 3 digits
+                return false;
+            }
+
+            if (map.get("phone number " + i) == null || map.get("phone number " + i).isEmpty() ||
+                    !map.get("phone number " + i).matches("\\d+")) {
+                // number only has digits
+                return false;
+            }
+
+            if (Boolean.parseBoolean(map.get("phone isPrimary " + i))) {
+                primaryCount++;
+            }
+
+            if (Boolean.parseBoolean(map.get("phone isTexting " + i))) {
+                textingCount++;
+            }
         }
 
-        if (map.get("prefix") == null || map.get("prefix").matches("\\d{3}")) {
-            // prefix exactly 3 digits
-            return false;
-        }
-
-        if (map.get("number") == null || map.get("number").matches("\\d+")) {
-            // number only has digits
-            return false;
-        }
-
-        if (map.get("isPrimary") == null || map.get("isPrimary").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("isTexting") == null || map.get("isTexting").isEmpty()) {
+        if (primaryCount != 1 || textingCount == 0) {
             return false;
         }
 
