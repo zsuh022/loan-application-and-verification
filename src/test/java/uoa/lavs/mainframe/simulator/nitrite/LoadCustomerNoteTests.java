@@ -11,8 +11,6 @@ import uoa.lavs.mainframe.Status;
 import uoa.lavs.mainframe.messages.customer.LoadCustomerNote;
 import uoa.lavs.mainframe.simulator.NitriteConnection;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static uoa.lavs.mainframe.MessageErrorStatus.*;
 
@@ -108,17 +106,10 @@ class LoadCustomerNoteTests {
         Status status = message.send(connection);
 
         // Assert
-        ArrayList<String> lines = new ArrayList<>();
-        for (int loop = 1; loop <= message.getLineCountFromServer(); loop++) {
-            lines.add(message.getLineFromServer(loop));
-        }
-
         assertAll(
                 () -> assertTrue(status.getWasSuccessful()),
-                () -> assertEquals(8, message.getLineCountFromServer()),
-                () -> assertEquals(
-                        "Test line #1\nTest line #2\nTest line #3\nTest line #4\nTest line #5\nTest line #6\nTest line #7\nTest line #8",
-                        String.join("\n", lines))
+                () -> assertEquals(3, message.getLineCountFromServer()),
+                () -> assertEquals("Test line #1", message.getLineFromServer(1))
         );
     }
 

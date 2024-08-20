@@ -27,8 +27,8 @@ public class LocalLogManager {
     private final static LocalLogManager INSTANCE = new LocalLogManager();
     private final HashMap<String, String> temporaryCustomerIds = new HashMap<>();
     private final HashMap<String, String> temporaryLoanIds = new HashMap<>();
-    private JSONArray log = new JSONArray();
-    private int logCount = 0;
+    private JSONArray log;
+    private int logCount;
 
     private LocalLogManager(){
         // read log from file
@@ -40,6 +40,8 @@ public class LocalLogManager {
         } catch (Exception e) {
             // if file does not exist, create new log
             logger.error("Error reading log file: {}", e.getMessage());
+            log = new JSONArray();
+            logCount = 0;
         }
     }
 
@@ -52,9 +54,11 @@ public class LocalLogManager {
         INSTANCE.writeLog();
     }
 
-    public static boolean flushLog(Connection connection) {
+    public static boolean flushLog() {
 
         boolean succeeded = true;
+        // use singleton instance to send all log entries to mainframe
+        Connection connection = Instance.getConnection();
 
         for(int i = 0; i < INSTANCE.logCount; i++) {
             // for each log entry, create a request with recorded type and send it to mainframe
@@ -80,7 +84,7 @@ public class LocalLogManager {
 
             }
 
-            Request request = parseLogEntryToRequest(logEntry);
+            Request request = parseLogEntry(logEntry);
 
             Response response = connection.send(request);
             if(response.getStatus().getWasSuccessful()) {
@@ -113,16 +117,12 @@ public class LocalLogManager {
         return succeeded;
     }
 
-    // ONLY CALL OUTSIDE FOR TESTS!!!
-
-    public static void clearLog() {
+    private void clearLog() {
         logger.info("Clearing log");
-        INSTANCE.log.clear();
-        INSTANCE.logCount = 0;
+        log.clear();
+        logCount = 0;
         // clear log file
-        INSTANCE.writeLog();
-        INSTANCE.temporaryCustomerIds.clear();
-        INSTANCE.temporaryLoanIds.clear();
+        writeLog();
     }
 
     private void writeLog() {
@@ -138,7 +138,7 @@ public class LocalLogManager {
         }
     }
 
-    private static Request parseLogEntryToRequest(JSONObject logEntry) {
+    private static Request parseLogEntry(JSONObject logEntry) {
         // parse log entry into request
         Request request = new Request(logEntry.getInt("type"));
         for(String key : logEntry.keySet()) {
@@ -151,7 +151,6 @@ public class LocalLogManager {
                 } else if(id.startsWith(TEMPORARY_LOAN_ID_PREFIX)) {
                     id = INSTANCE.temporaryLoanIds.get(id);
                 }
-                System.out.println("ID: " + id);
                 request.setValue(key, id);
             } else {
                 request.setValue(key, logEntry.getString(key));

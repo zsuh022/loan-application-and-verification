@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.Message;
 import uoa.lavs.mainframe.Status;
 

@@ -19,16 +19,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewLoanScreenController">
-   <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewLoanScreenController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
+            <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.0" style="-fx-background-color: #3B3A7C;" VBox.vgrow="ALWAYS" />
-                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="6.0" style="-fx-background-color: linear-gradient(#2d2c5e, #3b3a7c);" />
-                  <HBox style="-fx-background-color: linear-gradient(#3b3a7c, #61592e);" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                            <children>
@@ -63,9 +62,10 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
+                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                    <VBox alignment="CENTER" prefWidth="200.0">
                                        <children>
                                           <Button fx:id="btnGeneralNewLoan" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
@@ -77,240 +77,206 @@
                                           </Button>
                                           <Button fx:id="btnCoborrowersNewLoan" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
                                              <font>
-                                                <Font size="24.0" />
+                                                <Font size="20.0" />
                                              </font>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
                                        </children>
-                                    </StackPane>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
-                                    <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                    </VBox>
+                                    <HBox prefHeight="100.0" prefWidth="660.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <VBox alignment="CENTER" prefWidth="200.0">
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Button fx:id="btnGeneralNewLoan" mnemonicParsing="false" onAction="#onGeneralButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="General" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
-                                                   </cursor>
-                                                </Button>
-                                                <Button fx:id="btnCoborrowersNewLoan" mnemonicParsing="false" onAction="#onCoborrowersButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Co-borrowers" textFill="WHITE" VBox.vgrow="ALWAYS">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
-                                                   </cursor>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                          <HBox prefHeight="100.0" prefWidth="660.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                <AnchorPane fx:id="newLoanGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
                                                    <children>
-                                                      <AnchorPane fx:id="newLoanGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                                <children>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanCustomerId" />
-                                                                        <Label text="Customer here" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Principal:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanPrincipal" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanRate" />
-                                                                        <CheckBox fx:id="cbNewLoanIsFloating" mnemonicParsing="false" text="Floating" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanIsFixed" mnemonicParsing="false" text="Fixed" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanStartDate" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Period:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanPeriod" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compounding:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingAnnually" mnemonicParsing="false" text="Annually" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment freq:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyFortnightly" mnemonicParsing="false" text="Fortnightly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment amt:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanAmount" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest only:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <CheckBox fx:id="cbNewLoanIsInterestOnly" mnemonicParsing="false" textFill="WHITE" />
-                                                                     </children>
-                                                                  </HBox>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanCustomerId" />
+                                                                  <Label text="Customer here" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin></Label>
                                                                </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane fx:id="newLoanCoborrowersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
-                                                         <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                <children>
-                                                                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" top="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewLoanCoborrowerId">
-                                                                           <HBox.margin>
-                                                                              <Insets top="27.0" />
-                                                                           </HBox.margin>
-                                                                        </TextField>
-                                                                        <Label text="coborrower name" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" right="30.0" top="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Principal:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanPrincipal" />
                                                                </children>
-                                                            </VBox>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanRate" />
+                                                                  <CheckBox fx:id="cbNewLoanIsFloating" mnemonicParsing="false" text="Floating" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                                  <CheckBox fx:id="cbNewLoanIsFixed" mnemonicParsing="false" text="Fixed" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanStartDate" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Period:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanPeriod" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compounding:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <CheckBox fx:id="cbNewLoanCompoundingWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
+                                                                  <CheckBox fx:id="cbNewLoanCompoundingMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                                  <CheckBox fx:id="cbNewLoanCompoundingAnnually" mnemonicParsing="false" text="Annually" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment freq:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <CheckBox fx:id="cbNewLoanFrequencyWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
+                                                                  <CheckBox fx:id="cbNewLoanFrequencyFortnightly" mnemonicParsing="false" text="Fortnightly" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                                  <CheckBox fx:id="cbNewLoanFrequencyMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
+                                                                     <HBox.margin>
+                                                                        <Insets left="20.0" />
+                                                                     </HBox.margin>
+                                                                  </CheckBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment amt:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanAmount" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest only:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <CheckBox fx:id="cbNewLoanIsInterestOnly" mnemonicParsing="false" textFill="WHITE" />
+                                                               </children>
+                                                            </HBox>
                                                          </children>
-                                                      </AnchorPane>
-                                                      <Rectangle fx:id="saveNewLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
-                                                         <StackPane.margin>
-                                                            <Insets bottom="15.0" right="15.0" />
-                                                         </StackPane.margin>
-                                                      </Rectangle>
-                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" StackPane.alignment="BOTTOM_RIGHT">
-                                                         <font>
-                                                            <Font size="16.0" />
-                                                         </font>
-                                                         <StackPane.margin>
-                                                            <Insets bottom="24.0" right="21.0" />
-                                                         </StackPane.margin>
-                                                      </Text>
+                                                      </VBox>
                                                    </children>
-                                                </StackPane>
+                                                </AnchorPane>
+                                                <AnchorPane fx:id="newLoanCoborrowersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                   <children>
+                                                      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                               <children>
+                                                                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" top="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Text>
+                                                                  <TextField fx:id="tfNewLoanCoborrowerId">
+                                                                     <HBox.margin>
+                                                                        <Insets top="27.0" />
+                                                                     </HBox.margin>
+                                                                  </TextField>
+                                                                  <Label text="coborrower name" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                     <HBox.margin>
+                                                                        <Insets left="30.0" right="30.0" top="30.0" />
+                                                                     </HBox.margin>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <Rectangle fx:id="saveNewLoanRectangle" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" stroke="WHITE" strokeType="INSIDE" width="130.0" StackPane.alignment="BOTTOM_RIGHT">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="15.0" right="15.0" />
+                                                   </StackPane.margin>
+                                                </Rectangle>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Save &amp; continue" StackPane.alignment="BOTTOM_RIGHT">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                   <StackPane.margin>
+                                                      <Insets bottom="24.0" right="21.0" />
+                                                   </StackPane.margin>
+                                                </Text>
                                              </children>
-                                          </HBox>
+                                          </StackPane>
                                        </children>
                                     </HBox>
-                                    <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
                                  </children>
                               </HBox>
-                              <HBox fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
+                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="50.0" />
                            </children>
-                        </VBox>
+                        </HBox>
+                        <HBox fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="60.0" prefWidth="200.0" VBox.vgrow="NEVER" />
+                  </VBox>
                </children>
             </HBox>
             <HBox prefHeight="60.0" prefWidth="200.0" VBox.vgrow="NEVER" />
@@ -338,8 +304,18 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
-         </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </buttons>
+      </ButtonBar>
+      <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
+   </children>
+</AnchorPane>
