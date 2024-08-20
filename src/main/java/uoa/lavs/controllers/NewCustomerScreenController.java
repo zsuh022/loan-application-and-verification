@@ -22,11 +22,17 @@ import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.utility.CustomerValidator;
 import uoa.lavs.models.Customer.Customer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NewCustomerScreenController {
 
     private HashMap<String, String> customerValuesMap = new HashMap<>();
+
+    private ArrayList<HashMap<String, String>> addressValuesList = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> emailValuesList = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> employerValuesList = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> phoneValuesList = new ArrayList<>();
 
     private CustomerValidator customerValidator = new CustomerValidator();
 
@@ -186,21 +192,32 @@ public class NewCustomerScreenController {
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());
 
         // address
-        customerValuesMap.put("address type 0", tfNewCustomerType.getText());
-        customerValuesMap.put("address line1 0", tfNewCustomerLine1.getText());
-        customerValuesMap.put("address line2 0", tfNewCustomerLine2.getText());
-        customerValuesMap.put("address suburb 0", tfNewCustomerSuburb.getText());
-        customerValuesMap.put("address city 0", tfNewCustomerCity.getText());
-        customerValuesMap.put("address postCode 0", tfNewCustomerPostcode.getText());
-        customerValuesMap.put("address country 0", tfNewCustomerCountry.getText());
-        customerValuesMap.put("address isPrimary 0", String.valueOf(cbNewCustomerIsPrimary.isSelected()));
-        customerValuesMap.put("address isMailing 0", String.valueOf(cbNewCustomerIsMailing.isSelected()));
+        for (Tab tab : addressTabPane.getTabs()) {
+            AnchorPane pane = (AnchorPane) tab.getContent();
+            HashMap<String, String> addressMap = new HashMap<>();
+            addressMap.put("type", ((TextField) pane.lookup("#tfNewCustomerType")).getText());
+            addressMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerLine1")).getText());
+            addressMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerLine2")).getText());
+            addressMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerSuburb")).getText());
+            addressMap.put("city", ((TextField) pane.lookup("#tfNewCustomerCity")).getText());
+            addressMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerPostcode")).getText());
+            addressMap.put("country", ((TextField) pane.lookup("#tfNewCustomerCountry")).getText());
+            addressMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPrimary")).isSelected()));
+            addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing")).isSelected()));
+            addressValuesList.add(addressMap);
+        }
 
         // email
-        customerValuesMap.put("email address 0", tfNewCustomerEmail.getText());
-        // TODO: customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
+        for (Tab tab : emailTabPane.getTabs()) {
+            AnchorPane pane = (AnchorPane) tab.getContent();
+            HashMap<String, String> emailMap = new HashMap<>();
+            emailMap.put("address", ((TextField) pane.lookup("#tfNewCustomerEmail")).getText());
+            // TODO: is primary
+            emailValuesList.add(emailMap);
+        }
 
         // employer
+        // TODO: update for multiple with integers
         customerValuesMap.put("employer name 0", tfNewCustomerEmployerName.getText());
         customerValuesMap.put("employer line1 0", tfNewCustomerEmployerLine1.getText());
         customerValuesMap.put("employer line2 0", tfNewCustomerEmployerLine2.getText());
@@ -214,10 +231,15 @@ public class NewCustomerScreenController {
         customerValuesMap.put("employer isOwner 0", String.valueOf(cbNewCustomerEmployerIsOwner.isSelected()));
 
         // phone
-        // TODO: customerValuesMap.put("phone type 0", tfNewCustomerPhoneType.getText());
-        customerValuesMap.put("phone number 0", tfNewCustomerPhone.getText());
-        // TODO: customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerPhoneIsPrimary.isSelected()));
-        // TODO: customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerPhoneIsTexting.isSelected()));
+        for (Tab tab : phoneTabPane.getTabs()) {
+            AnchorPane pane = (AnchorPane) tab.getContent();
+            HashMap<String, String> phoneMap = new HashMap<>();
+            phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhoneType")).getText());
+            phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhone")).getText());
+            phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerPhoneIsPrimary")).isSelected()));
+            phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerPhoneIsTexting")).isSelected()));
+            phoneValuesList.add(phoneMap);
+        }
 
         // note
         customerValuesMap.put("note", taNewCustomerNotes.getText());
