@@ -7,6 +7,7 @@ import uoa.lavs.models.Customer.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 public class CustomerValidator {
@@ -99,53 +100,55 @@ public class CustomerValidator {
         return customer;
     }
 
-    public boolean validateCustomer(Map<String, String> map) {
+    public boolean validateCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
+                                    List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                    List<Map<String, String>> phoneList) {
         logger.info("Validating customer");
 
-        if (map.get("name") == null || map.get("name").isEmpty()) {
+        if (customerMap.get("name") == null || customerMap.get("name").isEmpty()) {
             logger.error("Customer name is not valid");
             return false;
         }
 
-        String[] fullName = map.get("name").split(" ");
+        String[] fullName = customerMap.get("name").split(" ");
         if (fullName.length < 2) {
             logger.error("Customer name is not valid");
             return false;
         }
 
-        if (map.get("dateOfBirth") == null || map.get("dateOfBirth").isEmpty()) {
+        if (customerMap.get("dateOfBirth") == null || customerMap.get("dateOfBirth").isEmpty()) {
             logger.error("Customer date of birth is not valid");
             return false;
         }
 
-        if (map.get("occupation") == null || map.get("occupation").isEmpty()) {
+        if (customerMap.get("occupation") == null || customerMap.get("occupation").isEmpty()) {
             logger.error("Customer occupation is not valid");
             return false;
         }
 
-        if (map.get("citizenship") == null || map.get("citizenship").isEmpty()) {
+        if (customerMap.get("citizenship") == null || customerMap.get("citizenship").isEmpty()) {
             logger.error("Customer citizenship is not valid");
             return false;
         }
 
-        if (map.get("visa") == null || map.get("visa").isEmpty()) {
+        if (customerMap.get("visa") == null || customerMap.get("visa").isEmpty()) {
             logger.error("Customer visa is not valid");
             return false;
         }
 
-        if (!validateAddress(map)) {
+        if (!validateAddress(addressList)) {
             return false;
         }
 
-        if (!validateEmail(map)) {
+        if (!validateEmail(emailList)) {
             return false;
         }
 
-        if (!validateEmployer(map)) {
+        if (!validateEmployer(employerList)) {
             return false;
         }
 
-        if (!validatePhone(map)) {
+        if (!validatePhone(phoneList)) {
             return false;
         }
 
@@ -153,56 +156,53 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateAddress(Map<String, String> map) {
+    public boolean validateAddress(List<Map<String, String>> addressList) {
         logger.info("Validating address");
 
-        int i = 0;
         int primaryCount = 0;
         int mailingCount = 0;
 
-        while (map.containsKey("address type " + i)) {
+        for (Map<String, String> addressMap : addressList) {
 
-            if (map.get("address type " + i) == null || map.get("address type " + i).isEmpty()) {
+            if (addressMap.get("type") == null || addressMap.get("type").isEmpty()) {
                 logger.error("Address type is not valid");
                 return false;
             }
 
-            if (map.get("address line1 " + i) == null || map.get("address line1 " + i).isEmpty()) {
+            if (addressMap.get("line1") == null || addressMap.get("line1").isEmpty()) {
                 logger.error("Address line1 is not valid");
                 return false;
             }
 
-            if (map.get("address suburb" + i) == null || map.get("address suburb " + i).isEmpty()) {
+            if (addressMap.get("suburb") == null || addressMap.get("suburb").isEmpty()) {
                 logger.error("Address suburb is not valid");
                 return false;
             }
 
-            if (map.get("address city " + i) == null || map.get("address city " + i).isEmpty()) {
+            if (addressMap.get("city") == null || addressMap.get("city").isEmpty()) {
                 logger.error("Address city is not valid");
                 return false;
             }
 
-            if (map.get("address postCode " + i) == null || map.get("address postCode " + i).isEmpty() ||
-                    !map.get("address postCode " + i).matches("\\d{4}")) {
+            if (addressMap.get("postCode") == null || addressMap.get("postCode").isEmpty() ||
+                    !addressMap.get("postCode").matches("\\d{4}")) {
                 // assume post code is exactly 4 digits
                 logger.error("Address postCode is not valid");
                 return false;
             }
 
-            if (map.get("address country " + i) == null || map.get("address country " + i).isEmpty()) {
+            if (addressMap.get("country") == null || addressMap.get("country").isEmpty()) {
                 logger.error("Address country is not valid");
                 return false;
             }
 
-            if (Boolean.parseBoolean(map.get("address isPrimary " + i))) {
+            if (Boolean.parseBoolean(addressMap.get("isPrimary"))) {
                 primaryCount++;
             }
 
-            if (Boolean.parseBoolean(map.get("address isMailing " + i))) {
+            if (Boolean.parseBoolean(addressMap.get("isMailing"))) {
                 mailingCount++;
             }
-
-            i++;
         }
 
         if (primaryCount != 1) {
@@ -219,20 +219,18 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateEmail(Map<String, String> map) {
+    public boolean validateEmail(List<Map<String, String>> emailList) {
         logger.info("Validating email");
 
-        int i = 0;
         int primaryCount = 0;
 
-        while (map.containsKey("email type " + i)) {
-
-            if (map.get("email address " + i) == null || map.get("email address " + i).isEmpty()) {
+        for (Map<String, String> emailMap : emailList) {
+            if (emailMap.get("address") == null || emailMap.get("address").isEmpty()) {
                 logger.error("Email address is not valid: empty");
                 return false;
             }
 
-            String[] email = map.get("email address " + i).split("@");
+            String[] email = emailMap.get("address").split("@");
             if (email.length != 2) {
                 // email split into prefix and domain
                 logger.error("Email address is not valid: multiple @");
@@ -283,15 +281,13 @@ public class CustomerValidator {
                 }
             }
 
-            if (Boolean.parseBoolean(map.get("email isPrimary " + i))) {
+            if (Boolean.parseBoolean(emailMap.get("isPrimary"))) {
                 primaryCount++;
             }
-
-            i++;
         }
 
         if (primaryCount != 1) {
-            logger.error("Email validation failed: there should be exactly one primary address, found {}", primaryCount);
+            logger.error("Email validation failed: there should be exactly one primary email, found {}", primaryCount);
             return false;
         }
 
@@ -299,64 +295,61 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validateEmployer(Map<String, String> map) {
+    public boolean validateEmployer(List<Map<String, String>> employerList) {
         logger.info("Validating employer");
 
-        int i = 0;
-
-        while (map.containsKey("employer name " + i)) {
-
-            if (map.get("employer name " + i) == null || map.get("employer name " + i).isEmpty()) {
+        for (Map<String, String> employerMap : employerList) {
+            if (employerMap.get("name") == null || employerMap.get("name").isEmpty()) {
                 logger.error("Employer name is not valid: empty");
                 return false;
             }
 
-            String[] fullName = map.get("employer name " + i).split(" ");
+            String[] fullName = employerMap.get("name").split(" ");
             if (fullName.length < 2) {
                 logger.error("Employer name is not valid: name needs first and last name");
                 return false;
             }
 
-            if (map.get("employer line1 " + i) == null || map.get("employer line1 " + i).isEmpty()) {
+            if (employerMap.get("line1") == null || employerMap.get("line1").isEmpty()) {
                 logger.error("Employer line1 is not valid");
                 return false;
             }
 
-            if (map.get("employer suburb " + i) == null || map.get("employer suburb " + i).isEmpty()) {
+            if (employerMap.get("suburb") == null || employerMap.get("suburb").isEmpty()) {
                 logger.error("Employer suburb is not valid");
                 return false;
             }
 
-            if (map.get("employer city " + i) == null || map.get("employer city " + i).isEmpty()) {
+            if (employerMap.get("city") == null || employerMap.get("city").isEmpty()) {
                 logger.error("Employer city is not valid");
                 return false;
             }
 
-            if (map.get("employer postCode " + i) == null || map.get("employer postCode " + i).isEmpty() ||
-                    !map.get("employer postCode " + i).matches("\\d{4}")) {
+            if (employerMap.get("postCode") == null || employerMap.get("postCode").isEmpty() ||
+                    !employerMap.get("postCode").matches("\\d{4}")) {
                 // assume post code is 4 digits
                 logger.error("Employer postCode is not valid");
                 return false;
             }
 
-            if (map.get("employer country " + i) == null || map.get("employer country " + i).isEmpty()) {
+            if (employerMap.get("country") == null || employerMap.get("country").isEmpty()) {
                 logger.error("Employer country is not valid");
                 return false;
             }
 
-            if (map.get("employer phone " + i) == null || map.get("employer phone " + i).isEmpty() ||
-                    !map.get("employer phone " + i).matches("\\d+")) {
+            if (employerMap.get("phone") == null || employerMap.get("phone").isEmpty() ||
+                    !employerMap.get("phone").matches("\\d+")) {
                 // phone only has digits
                 logger.error("Employer phone is not valid");
                 return false;
             }
 
-            if (map.get("employer email " + i) == null || map.get("employer email " + i).isEmpty()) {
+            if (employerMap.get("email") == null || employerMap.get("email").isEmpty()) {
                 logger.error("Employer email is not valid");
                 return false;
             }
 
-            if (map.get("employer web " + i) == null || map.get("employer web " + i).isEmpty()) {
+            if (employerMap.get("web") == null || employerMap.get("web").isEmpty()) {
                 logger.error("Employer web is not valid");
                 return false;
             }
@@ -366,45 +359,43 @@ public class CustomerValidator {
         return true;
     }
 
-    public boolean validatePhone(Map<String, String> map) {
+    public boolean validatePhone(List<Map<String, String>> phoneList) {
         logger.info("Validating phone");
 
-        int i = 0;
         int primaryCount = 0;
         int textingCount = 0;
 
-        while (map.containsKey("phone type " + i)) {
-
-            if (map.get("phone type " + i) == null || map.get("phone type " + i).isEmpty()) {
+        for (Map<String, String> phoneMap : phoneList) {
+            if (phoneMap.get("type") == null || phoneMap.get("type").isEmpty()) {
                 logger.error("Phone type is not valid: empty");
                 return false;
             }
 
-            if (map.get("phone prefix " + i) == null || map.get("phone prefix " + i).isEmpty() ||
-                    !map.get("phone prefix " + i).matches("\\d{3}")) {
+            if (phoneMap.get("prefix") == null || phoneMap.get("prefix").isEmpty() ||
+                    !phoneMap.get("prefix").matches("\\d{3}")) {
                 // prefix exactly 3 digits
                 logger.error("Phone prefix is not valid");
                 return false;
             }
 
-            if (map.get("phone number " + i) == null || map.get("phone number " + i).isEmpty() ||
-                    !map.get("phone number " + i).matches("\\d+")) {
+            if (phoneMap.get("number") == null || phoneMap.get("number").isEmpty() ||
+                    !phoneMap.get("number").matches("\\d+")) {
                 // number only has digits
                 logger.error("Phone number is not valid");
                 return false;
             }
 
-            if (Boolean.parseBoolean(map.get("phone isPrimary " + i))) {
+            if (Boolean.parseBoolean(phoneMap.get("isPrimary"))) {
                 primaryCount++;
             }
 
-            if (Boolean.parseBoolean(map.get("phone isTexting " + i))) {
+            if (Boolean.parseBoolean(phoneMap.get("isTexting"))) {
                 textingCount++;
             }
         }
 
         if (primaryCount != 1) {
-            logger.error("Phone validation failed: there should be exactly one primary address, found {}", primaryCount);
+            logger.error("Phone validation failed: there should be exactly one primary phone, found {}", primaryCount);
             return false;
         }
 
