@@ -58,7 +58,7 @@
                                                 <Insets right="70.0" />
                                              </StackPane.margin>
                                              <cursor>
-                                                <Cursor fx:constant="OPEN_HAND" />
+                                                <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Rectangle>
                                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add loan" StackPane.alignment="CENTER_RIGHT">
@@ -88,7 +88,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                                 <Button fx:id="btnAddressCustomer" mnemonicParsing="false" onAction="#onAddressButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Address" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -99,7 +99,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                                 <Button fx:id="btnLoansCustomer" mnemonicParsing="false" onAction="#onLoansButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Loans" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -107,7 +107,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                                 <Button fx:id="btnEmployerCustomer" mnemonicParsing="false" onAction="#onEmployerButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Employer" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -118,7 +118,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                                 <Button fx:id="btnNotesCustomer" mnemonicParsing="false" onAction="#onNotesButtonClicked" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-text-fill: ffffff; -fx-border-color: ffffff;" text="Notes" textFill="WHITE">
@@ -126,7 +126,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                    <cursor>
-                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                      <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
                                              </children>
@@ -596,7 +596,7 @@
                                                             <Insets bottom="20.0" right="20.0" />
                                                          </StackPane.margin>
                                                          <cursor>
-                                                            <Cursor fx:constant="OPEN_HAND" />
+                                                            <Cursor fx:constant="HAND" />
                                                          </cursor>
                                                       </Circle>
                                                       <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
@@ -630,7 +630,7 @@
                   <Image url="@../images/logobank.png" />
                </image>
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
             <BorderPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #303048;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
