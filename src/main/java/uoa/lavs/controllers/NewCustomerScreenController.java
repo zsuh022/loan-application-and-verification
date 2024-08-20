@@ -155,11 +155,6 @@ public class NewCustomerScreenController {
         firstEmailTab.setClosable(false);
     }
 
-    public boolean submitNewCustomer() {
-        // TODO:
-        return false;
-    }
-
     @FXML
     private void onNewCustomerBackClicked(MouseEvent event) {
         // go to ...
