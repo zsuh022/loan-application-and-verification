@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import uoa.lavs.models.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class CustomerValidator {
@@ -14,15 +16,16 @@ public class CustomerValidator {
     public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
 
     public static String generateTemporaryCustomerId() {
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        return TEMPORARY_CUSTOMER_ID_PREFIX + timestamp;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String timeAsString = LocalDateTime.now().toString();
+        return TEMPORARY_CUSTOMER_ID_PREFIX + timeAsString;
     }
 
     public Customer createCustomer(Map<String, String> map) {
-        logger.info("Creating customer with id {}", map.get("id"));
+        logger.info("Creating customer");
 
         Customer customer = new Customer();
-        customer.setCustomerId(map.get("customerId"));
+        customer.setCustomerId(generateTemporaryCustomerId());
         customer.setTitle(map.get("title"));
         customer.setName(map.get("name"));
         customer.setDateOfBirth(LocalDate.parse(map.get("dateOfBirth")));
@@ -38,7 +41,7 @@ public class CustomerValidator {
             address.setLine2(map.get("address line2 " + i));
             address.setSuburb(map.get("address suburb " + i));
             address.setCity(map.get("address city " + i));
-            address.setPostCode(Integer.parseInt(map.get("address postCode " + i)));
+            address.setPostCode(map.get("address postCode " + i));
             address.setCountry(map.get("address country " + i));
             address.setIsPrimary(Boolean.parseBoolean(map.get("address isPrimary " + i)));
             address.setIsMailing(Boolean.parseBoolean(map.get("address isMailing " + i)));
@@ -92,17 +95,12 @@ public class CustomerValidator {
             i++;
         }
 
-        logger.info("Created customer with id {}", customer.getId());
+        logger.info("Created customer");
         return customer;
     }
 
     public boolean validateCustomer(Map<String, String> map) {
-        logger.info("Validating customer with id {}", map.get("customerId"));
-
-        if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
-            logger.error("Customer id is not valid");
-            return false;
-        }
+        logger.info("Validating customer");
 
         if (map.get("name") == null || map.get("name").isEmpty()) {
             logger.error("Customer name is not valid");
@@ -151,7 +149,7 @@ public class CustomerValidator {
             return false;
         }
 
-        logger.info("Validated customer with id {}", map.get("customerId"));
+        logger.info("Validated customer");
         return true;
     }
 
