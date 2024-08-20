@@ -82,51 +82,18 @@ public class CustomerValidator {
         return customer;
     }
 
-    private boolean isValidAddress(HashMap<String, String> map) {
-        if (map.get("line1") == null || map.get("line1").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("suburb") == null || map.get("suburb").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("city") == null || map.get("city").isEmpty()) {
-            return false;
-        }
-
-        if (map.get("postCode") == null || map.get("postCode").isEmpty() || map.get("postCode").matches("\\d{4}")) {
-            // assume post code is 4 digits
-            return false;
-        }
-
-        if (map.get("country") == null || map.get("country").isEmpty()) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean isValidName(HashMap<String, String> map) {
-        if (map.get("name") == null || map.get("name").isEmpty()) {
-            return false;
-        }
-
-        String[] fullName = map.get("name").split(" ");
-        if (fullName.length < 2) {
-            return false;
-        }
-
-        return true;
-    }
-
     public boolean validateCustomer(HashMap<String, String> map) {
 
         if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
             return false;
         }
 
-        if (!isValidName(map)) {
+        if (map.get("name") == null || map.get("name").isEmpty()) {
+            return false;
+        }
+
+        String[] fullName = map.get("name").split(" ");
+        if (fullName.length < 2) {
             return false;
         }
 
