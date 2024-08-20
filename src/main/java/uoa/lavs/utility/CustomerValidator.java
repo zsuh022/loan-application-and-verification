@@ -144,7 +144,25 @@ public class CustomerValidator {
             return false;
         }
 
-        // validate array lists?
+        if (!validateAddress(map)) {
+            return false;
+        }
+
+        if (!validateEmail(map)) {
+            return false;
+        }
+
+        if (!validateEmployer(map)) {
+            return false;
+        }
+
+        if (!validatePhone(map)) {
+            return false;
+        }
+
+        if (!validateNote(map)) {
+            return false;
+        }
 
         return true;
     }
