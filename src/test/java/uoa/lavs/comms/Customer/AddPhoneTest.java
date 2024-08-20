@@ -122,7 +122,7 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
     }
 
     @Test
-    void testAddPhoneFailure() {
+    protected void testAddPhoneFailure() {
         Status errorStatus = new Status(404, "Some problem", 123456);
         Response errorResponse = new Response(errorStatus, new HashMap<>());
 
@@ -137,4 +137,6 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
         List<CustomerPhone> phones = searchPhone.findAll(mockConnection, customerId);
         assertEquals(0, phones.size());
     }
+
+   
 }
