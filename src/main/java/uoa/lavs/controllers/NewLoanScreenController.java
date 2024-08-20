@@ -4,6 +4,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class NewLoanScreenController {
@@ -37,7 +39,7 @@ public class NewLoanScreenController {
     @FXML
     private CheckBox cbNewLoanIsFixed;
     @FXML
-    private TextField tfNewLoanStartDate;
+    private DatePicker dpNewLoanStartDate;
     @FXML
     private TextField tfNewLoanPeriod;
     @FXML
