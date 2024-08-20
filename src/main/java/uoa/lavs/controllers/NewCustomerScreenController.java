@@ -166,6 +166,64 @@ public class NewCustomerScreenController {
         Main.setScreen(Screens.HOME);
     }
 
+    public boolean submitNewCustomer() {
+        fillCustomerValuesMap();
+
+        if (customerValidator.validateCustomer(customerValuesMap)) {
+            Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void fillCustomerValuesMap() {
+        // general
+        customerValuesMap.put("title", tfNewCustomerTitle.getText());
+        customerValuesMap.put("name", tfNewCustomerName.getText());
+        customerValuesMap.put("dob", tfNewCustomerDob.getText());
+        customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
+        customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
+        customerValuesMap.put("visa", tfNewCustomerVisa.getText());
+
+        // address
+        customerValuesMap.put("address type 0", tfNewCustomerType.getText());
+        customerValuesMap.put("address line1 0", tfNewCustomerLine1.getText());
+        customerValuesMap.put("address line2 0", tfNewCustomerLine2.getText());
+        customerValuesMap.put("address suburb 0", tfNewCustomerSuburb.getText());
+        customerValuesMap.put("address city 0", tfNewCustomerCity.getText());
+        customerValuesMap.put("address postCode 0", tfNewCustomerPostcode.getText());
+        customerValuesMap.put("address country 0", tfNewCustomerCountry.getText());
+        customerValuesMap.put("address isPrimary 0", String.valueOf(cbNewCustomerIsPrimary.isSelected()));
+        customerValuesMap.put("address isMailing 0", String.valueOf(cbNewCustomerIsMailing.isSelected()));
+
+        // email
+        customerValuesMap.put("email address 0", tfNewCustomerEmail.getText());
+        // TODO: customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
+
+        // employer
+        customerValuesMap.put("employer name 0", tfNewCustomerEmployerName.getText());
+        customerValuesMap.put("employer line1 0", tfNewCustomerEmployerLine1.getText());
+        customerValuesMap.put("employer line2 0", tfNewCustomerEmployerLine2.getText());
+        customerValuesMap.put("employer suburb 0", tfNewCustomerEmployerSuburb.getText());
+        customerValuesMap.put("employer city 0", tfNewCustomerEmployerCity.getText());
+        customerValuesMap.put("employer postCode 0", tfNewCustomerEmployerPostcode.getText());
+        customerValuesMap.put("employer country 0", tfNewCustomerEmployerCountry.getText());
+        customerValuesMap.put("employer phone 0", tfNewCustomerEmployerPhone.getText());
+        customerValuesMap.put("employer email 0", tfNewCustomerEmployerEmail.getText());
+        customerValuesMap.put("employer web 0", tfNewCustomerEmployerWeb.getText());
+        customerValuesMap.put("employer isOwner 0", String.valueOf(cbNewCustomerEmployerIsOwner.isSelected()));
+
+        // phone
+        // TODO: customerValuesMap.put("phone type 0", tfNewCustomerPhoneType.getText());
+        customerValuesMap.put("phone number 0", tfNewCustomerPhone.getText());
+        // TODO: customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerPhoneIsPrimary.isSelected()));
+        // TODO: customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerPhoneIsTexting.isSelected()));
+
+        // note
+        customerValuesMap.put("note", taNewCustomerNotes.getText());
+    }
+
 
     @FXML
     private void onGeneralButtonClicked() {
