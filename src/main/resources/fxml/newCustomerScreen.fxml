@@ -22,8 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewCustomerScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.NewCustomerScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -960,120 +959,132 @@
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="newCustomerEmployerPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <children>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerName" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerLine1" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerLine2" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerSuburb" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerCity" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerPostcode" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerCountry" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerPhone" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerEmail" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <TextField fx:id="tfNewCustomerEmployerWeb" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <CheckBox fx:id="cbNewCustomerEmployerIsOwner" mnemonicParsing="false" textFill="WHITE" />
-                                                                     </children>
-                                                                  </HBox>
-                                                               </children>
-                                                            </VBox>
+                                                            <TabPane fx:id="employerTabPane" prefHeight="200.0" prefWidth="200.0" side="RIGHT" stylesheets="@../screens.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <tabs>
+                                                                <Tab text="Untitled Tab 1">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerName" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerLine1" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerLine2" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerSuburb" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerCity" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerPostcode" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerCountry" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerPhone" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerEmail" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <TextField fx:id="tfNewCustomerEmployerWeb" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <CheckBox fx:id="cbNewCustomerEmployerIsOwner" mnemonicParsing="false" textFill="WHITE" />
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                  </content>
+                                                                </Tab>
+                                                              </tabs>
+                                                            </TabPane>
                                                             <Rectangle fx:id="saveNewCustomerGeneral2" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onNotesButtonClicked" stroke="WHITE" strokeType="INSIDE" width="130.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                                                                <cursor>
                                                                   <Cursor fx:constant="HAND" />
@@ -1087,6 +1098,488 @@
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                             </Text>
+                                                            <AnchorPane fx:id="employerTab1" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerName1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine11" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine21" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerSuburb1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCity1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPostcode1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCountry1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPhone1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerEmail1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerWeb1" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <CheckBox fx:id="cbNewCustomerEmployerIsOwner1" mnemonicParsing="false" textFill="WHITE" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane fx:id="employerTab2" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerName2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine12" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine22" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerSuburb2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCity2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPostcode2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCountry2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPhone2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerEmail2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerWeb2" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <CheckBox fx:id="cbNewCustomerEmployerIsOwner2" mnemonicParsing="false" textFill="WHITE" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane fx:id="employerTab3" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerName3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine13" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine23" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerSuburb3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCity3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPostcode3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCountry3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPhone3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerEmail3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerWeb3" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <CheckBox fx:id="cbNewCustomerEmployerIsOwner3" mnemonicParsing="false" textFill="WHITE" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane fx:id="employerTab4" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer name:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerName4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine14" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerLine24" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerSuburb4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCity4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPostcode4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerCountry4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerPhone4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerEmail4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <TextField fx:id="tfNewCustomerEmployerWeb4" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                 <HBox.margin>
+                                                                                    <Insets left="30.0" />
+                                                                                 </HBox.margin>
+                                                                              </Text>
+                                                                              <CheckBox fx:id="cbNewCustomerEmployerIsOwner4" mnemonicParsing="false" textFill="WHITE" />
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <Circle fx:id="btnNewPhone1" fill="#4b4999" layoutX="20.0" layoutY="20.0" onMouseClicked="#addNewPhone" radius="20.0" stroke="WHITE" strokeType="INSIDE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="18.0">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </Circle>
+                                                            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="20.0" layoutY="20.0" onMouseClicked="#addNewPhone" size="24" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="27.0">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </FontAwesomeIconView>
                                                          </children>
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="newCustomerNotesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
