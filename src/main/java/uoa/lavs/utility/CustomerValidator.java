@@ -17,7 +17,7 @@ public class CustomerValidator {
 
     public static String generateTemporaryCustomerId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-        String timeAsString = LocalDateTime.now().toString();
+        String timeAsString = LocalDateTime.now().format(dtf);
         return TEMPORARY_CUSTOMER_ID_PREFIX + timeAsString;
     }
 
