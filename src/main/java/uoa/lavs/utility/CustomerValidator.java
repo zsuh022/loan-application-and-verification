@@ -22,78 +22,72 @@ public class CustomerValidator {
         return TEMPORARY_CUSTOMER_ID_PREFIX + timeAsString;
     }
 
-    public Customer createCustomer(Map<String, String> map) {
+    public Customer createCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
+                                   List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                   List<Map<String, String>> phoneList) {
         logger.info("Creating customer");
 
         Customer customer = new Customer();
         customer.setCustomerId(generateTemporaryCustomerId());
-        customer.setTitle(map.get("title"));
-        customer.setName(map.get("name"));
-        customer.setDateOfBirth(LocalDate.parse(map.get("dateOfBirth")));
-        customer.setOccupation(map.get("occupation"));
-        customer.setCitizenship(map.get("citizenship"));
-        customer.setVisa(map.get("visa"));
+        customer.setTitle(customerMap.get("title"));
+        customer.setName(customerMap.get("name"));
+        customer.setDateOfBirth(LocalDate.parse(customerMap.get("dateOfBirth")));
+        customer.setOccupation(customerMap.get("occupation"));
+        customer.setCitizenship(customerMap.get("citizenship"));
+        customer.setVisa(customerMap.get("visa"));
 
-        int i = 0;
-        while (map.containsKey("address type " + i)) {
+        for (Map<String, String> addressMap : addressList) {
             CustomerAddress address = new CustomerAddress();
-            address.setType(map.get("address type " + i));
-            address.setLine1(map.get("address line1 " + i));
-            address.setLine2(map.get("address line2 " + i));
-            address.setSuburb(map.get("address suburb " + i));
-            address.setCity(map.get("address city " + i));
-            address.setPostCode(map.get("address postCode " + i));
-            address.setCountry(map.get("address country " + i));
-            address.setIsPrimary(Boolean.parseBoolean(map.get("address isPrimary " + i)));
-            address.setIsMailing(Boolean.parseBoolean(map.get("address isMailing " + i)));
+            address.setType(addressMap.get("type"));
+            address.setLine1(addressMap.get("line1"));
+            address.setLine2(addressMap.get("line2"));
+            address.setSuburb(addressMap.get("suburb"));
+            address.setCity(addressMap.get("city"));
+            address.setPostCode(addressMap.get("postCode"));
+            address.setCountry(addressMap.get("country"));
+            address.setIsPrimary(Boolean.parseBoolean(addressMap.get("isPrimary")));
+            address.setIsMailing(Boolean.parseBoolean(addressMap.get("isMailing")));
             customer.addAddress(address);
-            i++;
         }
 
-        i = 0;
-        while (map.containsKey("email address " + i)) {
+        for (Map<String, String> emailMap : emailList) {
             CustomerEmail email = new CustomerEmail();
-            email.setAddress(map.get("email address " + i));
-            email.setIsPrimary(Boolean.parseBoolean(map.get("email isPrimary " + i)));
+            email.setAddress(emailMap.get("address"));
+            email.setIsPrimary(Boolean.parseBoolean(emailMap.get("isPrimary")));
             customer.addEmail(email);
-            i++;
         }
 
-        i = 0;
-        while (map.containsKey("employer name " + i)) {
+        for (Map<String, String> employerMap : employerList) {
             CustomerEmployer employer = new CustomerEmployer();
-            employer.setName(map.get("employer name " + i));
-            employer.setLine1(map.get("employer line1 " + i));
-            employer.setLine2(map.get("employer line2 " + i));
-            employer.setSuburb(map.get("employer suburb " + i));
-            employer.setCity(map.get("employer city " + i));
-            employer.setPostCode(map.get("employer postCode " + i));
-            employer.setCountry(map.get("employer country " + i));
-            employer.setPhone(map.get("employer phone " + i));
-            employer.setEmail(map.get("employer email " + i));
-            employer.setWeb(map.get("employer web " + i));
-            employer.setIsOwner(Boolean.parseBoolean(map.get("employer isOwner " + i)));
+            employer.setName(employerMap.get("name"));
+            employer.setLine1(employerMap.get("line1"));
+            employer.setLine2(employerMap.get("line2"));
+            employer.setSuburb(employerMap.get("suburb"));
+            employer.setCity(employerMap.get("city"));
+            employer.setPostCode(employerMap.get("postCode"));
+            employer.setCountry(employerMap.get("country"));
+            employer.setPhone(employerMap.get("phone"));
+            employer.setEmail(employerMap.get("email"));
+            employer.setWeb(employerMap.get("web"));
+            employer.setIsOwner(Boolean.parseBoolean(employerMap.get("isOwner")));
             customer.addEmployer(employer);
-            i++;
         }
 
         // only 1 note
-        if (map.containsKey("note")) {
+        if (customerMap.containsKey("note")) {
             CustomerNote note = new CustomerNote();
-            note.setNote(map.get("note"));
+            note.setNote(customerMap.get("note"));
             customer.setNote(note);
         }
 
-        i = 0;
-        while (map.containsKey("phone type " + i)) {
+        for (Map<String, String> phoneMap : phoneList) {
             CustomerPhone phone = new CustomerPhone();
-            phone.setType(map.get("phone type " + i));
-            phone.setPrefix(map.get("phone prefix " + i));
-            phone.setNumber(map.get("phone number " + i));
-            phone.setIsPrimary(Boolean.parseBoolean(map.get("phone isPrimary " + i)));
-            phone.setIsTexting(Boolean.parseBoolean(map.get("phone isTexting " + i)));
+            phone.setType(phoneMap.get("type"));
+            phone.setPrefix(phoneMap.get("prefix"));
+            phone.setNumber(phoneMap.get("number"));
+            phone.setIsPrimary(Boolean.parseBoolean(phoneMap.get("isPrimary")));
+            phone.setIsTexting(Boolean.parseBoolean(phoneMap.get("isTexting")));
             customer.addPhone(phone);
-            i++;
         }
 
         logger.info("Created customer");
