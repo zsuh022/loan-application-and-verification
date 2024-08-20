@@ -24,15 +24,16 @@ import uoa.lavs.models.Customer.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class NewCustomerScreenController {
 
-    private HashMap<String, String> customerValuesMap = new HashMap<>();
+    private Map<String, String> customerValuesMap = new HashMap<>();
 
-    private ArrayList<HashMap<String, String>> addressValuesList = new ArrayList<>();
-    private ArrayList<HashMap<String, String>> emailValuesList = new ArrayList<>();
-    private ArrayList<HashMap<String, String>> employerValuesList = new ArrayList<>();
-    private ArrayList<HashMap<String, String>> phoneValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> addressValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> emailValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> employerValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> phoneValuesList = new ArrayList<>();
 
     private CustomerValidator customerValidator = new CustomerValidator();
 
@@ -174,31 +175,9 @@ public class NewCustomerScreenController {
     public boolean submitNewCustomer() {
         fillCustomerValuesMap();
 
-        if (customerValidator.validateCustomer(customerValuesMap)) {
-            for (HashMap<String, String> addressMap : addressValuesList) {
-                if (!customerValidator.validateAddress(addressMap)) {
-                    return false;
-                }
-            }
-            for (HashMap<String, String> emailMap : emailValuesList) {
-                if (!customerValidator.validateEmail(emailMap)) {
-                    return false;
-                }
-            }
-            if (!customerValuesMap.get("occupation").equalsIgnoreCase("unemployed")) {
-                for (HashMap<String, String> employerMap : employerValuesList) {
-                    if (!customerValidator.validateEmployer(employerMap)) {
-                        return false;
-                    }
-                }
-            }
-            for (HashMap<String, String> phoneMap : phoneValuesList) {
-                if (!customerValidator.validatePhone(phoneMap)) {
-                    return false;
-                }
-            }
-
-            Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
+        if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
+                employerValuesList, phoneValuesList)) {
+            Customer newCustomer = customerValidator.createCustomer(customerValuesMap, );
             return true;
         }
 
