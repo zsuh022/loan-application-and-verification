@@ -66,7 +66,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address1.setLine2("Apt 4");
         address1.setSuburb("CBD");
         address1.setCity("Auckland");
-        address1.setPostCode(1010);
+        address1.setPostCode("1010");
         address1.setCountry("New Zealand");
         address1.setIsPrimary(true);
         address1.setIsMailing(true);
@@ -77,7 +77,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address2.setLine2("Level 2");
         address2.setSuburb("CBD");
         address2.setCity("Auckland");
-        address2.setPostCode(1020);
+        address2.setPostCode("1020");
         address2.setCountry("New Zealand");
         address2.setIsPrimary(false);
         address2.setIsMailing(false);
@@ -88,7 +88,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address3.setLine2("Suite 300");
         address3.setSuburb("CBD");
         address3.setCity("Auckland");
-        address3.setPostCode(1030);
+        address3.setPostCode("1030");
         address3.setCountry("New Zealand");
         address3.setIsPrimary(false);
         address3.setIsMailing(true);
@@ -99,7 +99,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address4.setLine2("Unit 5");
         address4.setSuburb("CBD");
         address4.setCity("Auckland");
-        address4.setPostCode(1040);
+        address4.setPostCode("1040");
         address4.setCountry("New Zealand");
         address4.setIsPrimary(false);
         address4.setIsMailing(false);
@@ -110,7 +110,7 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         address5.setLine2("Cabin 7");
         address5.setSuburb("North Shore");
         address5.setCity("Auckland");
-        address5.setPostCode(1050);
+        address5.setPostCode("1050");
         address5.setCountry("New Zealand");
         address5.setIsPrimary(false);
         address5.setIsMailing(false);

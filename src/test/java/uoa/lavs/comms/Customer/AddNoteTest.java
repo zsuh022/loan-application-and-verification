@@ -20,6 +20,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
     private final SearchNote searchNote = new SearchNote();
 
     private final CustomerNote note1 = new CustomerNote();
+    private String customerID = null;
 
     @Override
     @BeforeEach
@@ -53,11 +54,11 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
     @Test
     void testAddNoteSuccess() {
-        String customerId = addCustomer.add(conn, customer);
-        addNote.add(conn, note1, customerId);
+        customerID = addCustomer.add(conn, customer);
+        addNote.add(conn, note1, customerID);
 
 
-        CustomerNote dbNote = searchNote.findById(conn, customerId);
+        CustomerNote dbNote = searchNote.findById(conn, customerID);
 
         CustomerNote expectedNote = customer.getNote();
 
@@ -87,7 +88,7 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
         Connection mockConnection = new MockConnection(errorResponse);
 
-        String customerId = addNote.add(mockConnection, note1, customer.getId());
+        String customerId = addNote.add(mockConnection, note1, customerID);
 
         CustomerNote notes = searchNote.findById(mockConnection, customerId);
         assertNull(notes);

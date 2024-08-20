@@ -44,7 +44,7 @@ public class CombinedNameSearchTest extends AbstractCustomerTest<CustomerSummary
         addy1.setType("Residential");
         addy1.setLine1("123 Apple Road");
         addy1.setCity("Auckland");
-        addy1.setPostCode(1234);
+        addy1.setPostCode("1234");
         addy1.setCountry("New Zealand");
         addy1.setIsPrimary(true);
         addy1.setIsMailing(true);
