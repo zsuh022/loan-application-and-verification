@@ -19,10 +19,10 @@ public class CustomerValidator {
     }
 
     public Customer createCustomer(Map<String, String> map) {
-        logger.info("Creating customer with id {}", map.get("id"));
+        logger.info("Creating customer");
 
         Customer customer = new Customer();
-        customer.setCustomerId(map.get("customerId"));
+        customer.setCustomerId(generateTemporaryCustomerId());
         customer.setTitle(map.get("title"));
         customer.setName(map.get("name"));
         customer.setDateOfBirth(LocalDate.parse(map.get("dateOfBirth")));
@@ -92,17 +92,12 @@ public class CustomerValidator {
             i++;
         }
 
-        logger.info("Created customer with id {}", customer.getId());
+        logger.info("Created customer");
         return customer;
     }
 
     public boolean validateCustomer(Map<String, String> map) {
-        logger.info("Validating customer with id {}", map.get("customerId"));
-
-        if (map.get("customerId") == null || map.get("customerId").isEmpty()) {
-            logger.error("Customer id is not valid");
-            return false;
-        }
+        logger.info("Validating customer");
 
         if (map.get("name") == null || map.get("name").isEmpty()) {
             logger.error("Customer name is not valid");
@@ -151,7 +146,7 @@ public class CustomerValidator {
             return false;
         }
 
-        logger.info("Validated customer with id {}", map.get("customerId"));
+        logger.info("Validated customer");
         return true;
     }
 
