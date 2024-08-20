@@ -18,8 +18,8 @@ public class Instance {
     // internal class to initialize the singleton, this enables lazy-loading
     // for the singleton
     private static class SingletonHelper {
-        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new NFailsPerMRequestsPolicy(1, 3));
-//        private static final Connection INSTANCE = new NitriteConnection(dataPath);
+        //        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new NFailsPerMRequestsPolicy(1, 3));
+        private static final Connection INSTANCE = new NitriteConnection(dataPath);
 //        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new RandomPolicy(10, false));
     }
 

@@ -1,6 +1,5 @@
 package uoa.lavs.mainframe.simulator;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.mainframe.Request;
 import uoa.lavs.mainframe.Response;
@@ -10,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // WARNING: Some of these tests are fragile as they test against hard-coded strings. If the underlying string
 // generation changes, then some of these tests will fail.
-@Disabled
 class DataParserTests {
     @Test
     public void convertResponseFromData() {

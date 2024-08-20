@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
-import uoa.lavs.models.Customer;
+import uoa.lavs.models.Customer.Customer;
 
 import java.util.HashMap;
 
@@ -211,7 +211,7 @@ public class CustomerScreenController {
     }
 
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
 }

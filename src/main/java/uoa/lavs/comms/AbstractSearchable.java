@@ -24,7 +24,7 @@ public abstract class AbstractSearchable<T> {
     }
 
     public abstract List<T> findAll(Connection conn, String customerId);
-
+    
     protected <R extends Message, Y> Y processRequest(Connection conn, R request,
                                                       Function<Status, Y> onSuccess, Function<Status, Y> onFailure) {
         try {

@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.Message;
 import uoa.lavs.mainframe.Status;
 
@@ -18,7 +17,7 @@ public abstract class AbstractWriter<T> {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AbstractWriter.class);
 
-    protected String add(Connection conn, T entity) {
+    public String add(Connection conn, T entity) {
         throw new UnsupportedOperationException("add with No customerID is not supported for this entity.");
     }
 
@@ -30,7 +29,7 @@ public abstract class AbstractWriter<T> {
 
     protected <R extends Message, Y> Y processRequest(Connection conn, R request, T entity,
                                                       Function<Status, Y> onSuccess, Function<Status, Y> onFailure,
-                                                      int logType, String entityName, String customerID) {
+                                                      int logType, String entityName, String ID) {
         try {
             Status status = request.send(conn);
 
@@ -38,7 +37,7 @@ public abstract class AbstractWriter<T> {
                 logger.info("Successfully wrote data using {}, Transaction ID = {}", request.getClass().getName(), status.getTransactionId());
                 return onSuccess.apply(status);
             } else {
-                writeToLog(logType, entity, entityName, status.getTransactionId(), customerID);
+                writeToLog(logType, entity, entityName, status.getTransactionId(), ID);
                 return onFailure.apply(status);
             }
         } catch (IOException e) {
