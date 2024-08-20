@@ -20,9 +20,9 @@ public class AddEmail extends AbstractWriter<CustomerEmail> {
     @Override
     public String add(Connection conn, CustomerEmail value, String customerID) {
         UpdateCustomerEmail newValue = new UpdateCustomerEmail();
+        newValue.setNumber(value.getIndex());
         newValue.setCustomerId(customerID);
         newValue.setAddress(value.getAddress());
-        newValue.setNumber(null);
         newValue.setIsPrimary(value.getIsPrimary());
 
 

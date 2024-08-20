@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.comms.AbstractExtendedCustomerTest;
 import uoa.lavs.models.Customer.CustomerPhone;
-import uoa.lavs.models.Customer.CustomerPhoneDTO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,8 +12,7 @@ import java.util.List;
 
 public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Void> {
 
-    private final CustomerPhoneDTO phone = new CustomerPhoneDTO();
-    private final ChangePhone change = new ChangePhone();
+    private final CustomerPhone phone = new CustomerPhone();
     private final SearchPhone search = new SearchPhone();
 
     @Override
@@ -32,18 +30,13 @@ public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Void> {
         phone.setNumber("99999999");
         phone.setPrefix("+11");
         phone.setIndex(1);
-        phone.setPrimary(false);
-        phone.setTexting(false);
+        phone.setIsPrimary(false);
+        phone.setIsTexting(false);
 
-        change.add(conn, phone, id);
+        addPhone.add(conn, phone, id);
 
         List<CustomerPhone> list = search.findAll(conn, id);
-
-        for (CustomerPhone e : list) {
-            System.out.println(e.getNumber());
-        }
-
-
+        
     }
 
 //    @Test

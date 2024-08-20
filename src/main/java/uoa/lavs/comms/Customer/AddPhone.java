@@ -21,7 +21,7 @@ public class AddPhone extends AbstractWriter<CustomerPhone> {
     public String add(Connection conn, CustomerPhone value, String customerID) {
         UpdateCustomerPhoneNumber newValue = new UpdateCustomerPhoneNumber();
         newValue.setCustomerId(customerID);
-        newValue.setNumber(null);
+        newValue.setNumber(value.getIndex());
         newValue.setPhoneNumber(value.getNumber());
         newValue.setType(value.getType());
         newValue.setPrefix(value.getPrefix());
