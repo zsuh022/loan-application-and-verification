@@ -20,8 +20,11 @@ public class AddCustomer extends AbstractWriter<Customer> {
     @Override
     public String add(Connection conn, Customer customer) {
         UpdateCustomer newCustomer = new UpdateCustomer();
-        // null to indicate new customer
-        newCustomer.setCustomerId(null);
+        if (customer.getId().contains(TEMPORARY_CUSTOMER_ID_PREFIX)) {
+            newCustomer.setCustomerId(null);
+        } else {
+            newCustomer.setCustomerId(customer.getId());
+        }
         newCustomer.setTitle(customer.getTitle());
         newCustomer.setName(customer.getName());
         newCustomer.setDateofBirth(customer.getDateOfBirth());

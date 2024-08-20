@@ -22,9 +22,9 @@ public class AddCoborrower extends AbstractWriter<Coborrower> {
     @Override
     public String add(Connection conn, Coborrower co, String loanID) {
         UpdateLoanCoborrower newCo = new UpdateLoanCoborrower();
-        
+
         newCo.setCoborrowerId(co.getId());
-        newCo.setNumber(null);
+        newCo.setNumber(co.getNumber());
         newCo.setLoanId(loanID);
 
         return processRequest(conn, newCo, co, status -> {

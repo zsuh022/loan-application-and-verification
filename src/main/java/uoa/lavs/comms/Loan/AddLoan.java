@@ -23,7 +23,7 @@ public class AddLoan extends AbstractWriter<Loan> {
     public String add(Connection conn, Loan loan) {
         UpdateLoan newLoan = new UpdateLoan();
         // null to indicate new loan
-        newLoan.setLoanId(null);
+        newLoan.setLoanId(loan.getId());
         newLoan.setCustomerId(loan.getCustomerId());
         newLoan.setCompounding(loan.getCompoundingFrequency());
         newLoan.setStartDate(loan.getStartDate());

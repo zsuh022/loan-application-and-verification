@@ -20,9 +20,9 @@ public class AddAddress extends AbstractWriter<CustomerAddress> {
     @Override
     public String add(Connection conn, CustomerAddress addy, String customerID) {
         UpdateCustomerAddress newAddy = new UpdateCustomerAddress();
+        newAddy.setNumber(addy.getIndex());
         newAddy.setCustomerId(customerID);
         newAddy.setType(addy.getType());
-        newAddy.setNumber(null);
         newAddy.setLine1(addy.getLine1());
         newAddy.setLine2(addy.getLine2());
         newAddy.setSuburb(addy.getSuburb());
