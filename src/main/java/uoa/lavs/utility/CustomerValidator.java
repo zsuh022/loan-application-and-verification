@@ -61,9 +61,11 @@ public class CustomerValidator {
         }
 
         // only 1 note
-        CustomerNote note = new CustomerNote();
-        note.setNote(map.get("note"));
-        customer.addNote(note);
+        if (map.containsKey("note")) {
+            CustomerNote note = new CustomerNote();
+            note.setNote(map.get("note"));
+            customer.addNote(note);
+        }
 
         i = 0;
         while (map.containsKey("phone type " + i)) {
@@ -157,10 +159,6 @@ public class CustomerValidator {
         }
 
         if (!validatePhone(map)) {
-            return false;
-        }
-
-        if (!validateNote(map)) {
             return false;
         }
 
@@ -328,11 +326,6 @@ public class CustomerValidator {
             return false;
         }
 
-        return true;
-    }
-
-    public boolean validateNote(HashMap<String, String> map) {
-        // note is optional
         return true;
     }
 }
