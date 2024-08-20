@@ -11,12 +11,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.models.Customer;
+import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class NewCustomerScreenController {
 
-    private HashMap<String, String> customerValuesMap = new HashMap<>();
+    private CustomerValidator customerValidator = new CustomerValidator();
+    private Map<String, String> customerValuesMap = new HashMap<>();
 
     @FXML
     private FontAwesomeIconView newCustomerBack;
@@ -104,8 +108,17 @@ public class NewCustomerScreenController {
 
 
     public boolean submitNewCustomer() {
-        // TODO:
+        fillCustomerValuesMap();
+
+        if (customerValidator.validateCustomer(customerValuesMap)) {
+            Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
+            return true;
+        }
+
         return false;
+    }
+
+    private void fillCustomerValuesMap() {
     }
 
     @FXML
