@@ -175,6 +175,29 @@ public class NewCustomerScreenController {
         fillCustomerValuesMap();
 
         if (customerValidator.validateCustomer(customerValuesMap)) {
+            for (HashMap<String, String> addressMap : addressValuesList) {
+                if (!customerValidator.validateAddress(addressMap)) {
+                    return false;
+                }
+            }
+            for (HashMap<String, String> emailMap : emailValuesList) {
+                if (!customerValidator.validateEmail(emailMap)) {
+                    return false;
+                }
+            }
+            if (!customerValuesMap.get("occupation").equalsIgnoreCase("unemployed")) {
+                for (HashMap<String, String> employerMap : employerValuesList) {
+                    if (!customerValidator.validateEmployer(employerMap)) {
+                        return false;
+                    }
+                }
+            }
+            for (HashMap<String, String> phoneMap : phoneValuesList) {
+                if (!customerValidator.validatePhone(phoneMap)) {
+                    return false;
+                }
+            }
+
             Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
             return true;
         }
