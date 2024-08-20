@@ -70,6 +70,7 @@ public class CustomerPhone {
     public boolean validateNumber(String n) {
         // assume number is 7 or 8 digits
         return n.matches("\\d{7,8}");
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -46,8 +46,4 @@ public abstract class Loan {
         map.put("status", status.toString());
         map.put("summary", summary.toString());
     }
-
-    public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
-
-    public abstract void writeLoan(HashMap<String, String> map);
 }

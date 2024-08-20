@@ -77,7 +77,7 @@ public class CustomerValidator {
         if (map.containsKey("note")) {
             CustomerNote note = new CustomerNote();
             note.setNote(map.get("note"));
-            customer.addNote(note);
+            customer.setNote(note);
         }
 
         i = 0;
