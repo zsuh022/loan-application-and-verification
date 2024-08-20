@@ -165,28 +165,34 @@ public class CustomerValidator {
         while (map.containsKey("address type " + i)) {
 
             if (map.get("address type " + i) == null || map.get("address type " + i).isEmpty()) {
+                logger.error("Address type is not valid");
                 return false;
             }
 
             if (map.get("address line1 " + i) == null || map.get("address line1 " + i).isEmpty()) {
+                logger.error("Address line1 is not valid");
                 return false;
             }
 
             if (map.get("address suburb" + i) == null || map.get("address suburb " + i).isEmpty()) {
+                logger.error("Address suburb is not valid");
                 return false;
             }
 
             if (map.get("address city " + i) == null || map.get("address city " + i).isEmpty()) {
+                logger.error("Address city is not valid");
                 return false;
             }
 
             if (map.get("address postCode " + i) == null || map.get("address postCode " + i).isEmpty() ||
                     !map.get("address postCode " + i).matches("\\d{4}")) {
-                // assume post code is 4 digits
+                // assume post code is exactly 4 digits
+                logger.error("Address postCode is not valid");
                 return false;
             }
 
             if (map.get("address country " + i) == null || map.get("address country " + i).isEmpty()) {
+                logger.error("Address country is not valid");
                 return false;
             }
 
@@ -224,47 +230,57 @@ public class CustomerValidator {
         while (map.containsKey("email type " + i)) {
 
             if (map.get("email address " + i) == null || map.get("email address " + i).isEmpty()) {
+                logger.error("Email address is not valid: empty");
                 return false;
             }
 
             String[] email = map.get("email address " + i).split("@");
             if (email.length != 2) {
                 // email split into prefix and domain
+                logger.error("Email address is not valid: multiple @");
                 return false;
             }
 
             String prefix = email[0];
             if (!prefix.matches("^[a-zA-Z0-9._-]+$")) {
+                logger.error("Email address is not valid: prefix contains invalid characters");
                 return false;
             }
 
             if (!Character.isLetter(prefix.charAt(0)) || !Character.isLetterOrDigit(prefix.charAt(prefix.length() - 1))) {
+                logger.error("Email address is not valid: prefix starts or ends with invalid characters");
                 return false;
             }
 
             if (prefix.contains("..") || prefix.contains("__") || prefix.contains("--")) {
+                logger.error("Email address is not valid: prefix has invalid adjacent characters");
                 return false;
             }
 
             String[] domain = email[1].split("\\.");
             if (domain.length <= 1) {
+                logger.error("Email address is not valid: domain has no full stop");
                 return false;
             }
 
             for (String domainPart : domain) {
                 if (domainPart.isEmpty()) {
+                    logger.error("Email address is not valid: domain empty");
                     return false;
                 }
 
                 if (!domainPart.matches("^[a-zA-Z0-9-]+$")) {
+                    logger.error("Email address is not valid: domain contains invalid characters");
                     return false;
                 }
 
                 if (!Character.isLetterOrDigit(domainPart.charAt(0)) || !Character.isLetterOrDigit(domainPart.charAt(domainPart.length() - 1))) {
+                    logger.error("Email address is not valid: domain starts or ends with invalid characters");
                     return false;
                 }
 
                 if (domainPart.contains("..") || domainPart.contains("--")) {
+                    logger.error("Email address is not valid: domain has invalid adjacent characters");
                     return false;
                 }
             }
@@ -293,47 +309,57 @@ public class CustomerValidator {
         while (map.containsKey("employer name " + i)) {
 
             if (map.get("employer name " + i) == null || map.get("employer name " + i).isEmpty()) {
+                logger.error("Employer name is not valid: empty");
                 return false;
             }
 
             String[] fullName = map.get("employer name " + i).split(" ");
             if (fullName.length < 2) {
+                logger.error("Employer name is not valid: name needs first and last name");
                 return false;
             }
 
             if (map.get("employer line1 " + i) == null || map.get("employer line1 " + i).isEmpty()) {
+                logger.error("Employer line1 is not valid");
                 return false;
             }
 
             if (map.get("employer suburb " + i) == null || map.get("employer suburb " + i).isEmpty()) {
+                logger.error("Employer suburb is not valid");
                 return false;
             }
 
             if (map.get("employer city " + i) == null || map.get("employer city " + i).isEmpty()) {
+                logger.error("Employer city is not valid");
                 return false;
             }
 
             if (map.get("employer postCode " + i) == null || map.get("employer postCode " + i).isEmpty() ||
                     !map.get("employer postCode " + i).matches("\\d{4}")) {
                 // assume post code is 4 digits
+                logger.error("Employer postCode is not valid");
                 return false;
             }
 
             if (map.get("employer country " + i) == null || map.get("employer country " + i).isEmpty()) {
+                logger.error("Employer country is not valid");
                 return false;
             }
 
             if (map.get("employer phone " + i) == null || map.get("employer phone " + i).isEmpty() ||
                     !map.get("employer phone " + i).matches("\\d+")) {
                 // phone only has digits
+                logger.error("Employer phone is not valid");
                 return false;
             }
 
             if (map.get("employer email " + i) == null || map.get("employer email " + i).isEmpty()) {
+                logger.error("Employer email is not valid");
                 return false;
             }
 
             if (map.get("employer web " + i) == null || map.get("employer web " + i).isEmpty()) {
+                logger.error("Employer web is not valid");
                 return false;
             }
         }
@@ -352,18 +378,21 @@ public class CustomerValidator {
         while (map.containsKey("phone type " + i)) {
 
             if (map.get("phone type " + i) == null || map.get("phone type " + i).isEmpty()) {
+                logger.error("Phone type is not valid: empty");
                 return false;
             }
 
             if (map.get("phone prefix " + i) == null || map.get("phone prefix " + i).isEmpty() ||
                     !map.get("phone prefix " + i).matches("\\d{3}")) {
                 // prefix exactly 3 digits
+                logger.error("Phone prefix is not valid");
                 return false;
             }
 
             if (map.get("phone number " + i) == null || map.get("phone number " + i).isEmpty() ||
                     !map.get("phone number " + i).matches("\\d+")) {
                 // number only has digits
+                logger.error("Phone number is not valid");
                 return false;
             }
 
