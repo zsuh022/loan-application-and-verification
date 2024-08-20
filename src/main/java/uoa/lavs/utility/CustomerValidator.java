@@ -60,13 +60,10 @@ public class CustomerValidator {
             i++;
         }
 
-        i = 0;
-        while (map.containsKey("note " + i)) {
-            CustomerNote note = new CustomerNote();
-            note.setNote(map.get("note " + i));
-            customer.addNote(note);
-            i++;
-        }
+        // only 1 note
+        CustomerNote note = new CustomerNote();
+        note.setNote(map.get("note"));
+        customer.addNote(note);
 
         i = 0;
         while (map.containsKey("phone type " + i)) {
