@@ -190,7 +190,7 @@ public class CustomerValidator {
             }
 
             if (map.get("address postCode " + i) == null || map.get("address postCode " + i).isEmpty() ||
-                    map.get("address postCode " + i).matches("\\d{4}")) {
+                    !map.get("address postCode " + i).matches("\\d{4}")) {
                 // assume post code is 4 digits
                 return false;
             }
@@ -287,29 +287,54 @@ public class CustomerValidator {
 
     public boolean validateEmployer(HashMap<String, String> map) {
 
-        if (!isValidName(map)) {
-            return false;
-        }
+        int i = 0;
 
-        if (!isValidAddress(map)) {
-            return false;
-        }
+        while (map.containsKey("employer name " + i)) {
 
-        if (map.get("phone") == null || map.get("phone").isEmpty() || map.get("phone").matches("\\d+")) {
-            // phone only has digits
-            return false;
-        }
+            if (map.get("employer name " + i) == null || map.get("employer name " + i).isEmpty()) {
+                return false;
+            }
 
-        if (map.get("email") == null || map.get("email").isEmpty()) {
-            return false;
-        }
+            String[] fullName = map.get("employer name " + i).split(" ");
+            if (fullName.length < 2) {
+                return false;
+            }
 
-        if (map.get("web") == null || map.get("web").isEmpty()) {
-            return false;
-        }
+            if (map.get("employer line1 " + i) == null || map.get("employer line1 " + i).isEmpty()) {
+                return false;
+            }
 
-        if (map.get("isOwner") == null || map.get("isOwner").isEmpty()) {
-            return false;
+            if (map.get("employer suburb " + i) == null || map.get("employer suburb " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("employer city " + i) == null || map.get("employer city " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("employer postCode " + i) == null || map.get("employer postCode " + i).isEmpty() ||
+                    !map.get("employer postCode " + i).matches("\\d{4}")) {
+                // assume post code is 4 digits
+                return false;
+            }
+
+            if (map.get("employer country " + i) == null || map.get("employer country " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("employer phone " + i) == null || map.get("employer phone " + i).isEmpty() ||
+                    !map.get("employer phone " + i).matches("\\d+")) {
+                // phone only has digits
+                return false;
+            }
+
+            if (map.get("employer email " + i) == null || map.get("employer email " + i).isEmpty()) {
+                return false;
+            }
+
+            if (map.get("employer web " + i) == null || map.get("employer web " + i).isEmpty()) {
+                return false;
+            }
         }
 
         return true;
