@@ -25,7 +25,7 @@ public class CustomerValidator {
     public Customer createCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
                                    List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                    List<Map<String, String>> phoneList) {
-        logger.info("Creating customer");
+        logger.info("Creating customer in CustomerValidator with name {}", customerMap.get("name"));
 
         Customer customer = new Customer();
         customer.setCustomerId(generateTemporaryCustomerId());
@@ -92,17 +92,17 @@ public class CustomerValidator {
             customer.addPhone(phone);
         }
 
-        logger.info("Created customer");
+        logger.info("Created customer in CustomerValidator with name {}", customerMap.get("name"));
         return customer;
     }
 
     public boolean validateCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                     List<Map<String, String>> phoneList) {
-        logger.info("Validating customer");
+        logger.info("Validating customer with name {}", customerMap.get("name"));
 
         if (customerMap.get("name") == null || customerMap.get("name").isEmpty()) {
-            logger.error("Customer name is not valid");
+            logger.error("ValidateCustomer method failed: Customer name is empty");
             return false;
         }
 
@@ -151,7 +151,7 @@ public class CustomerValidator {
             return false;
         }
 
-        logger.info("Validated customer");
+        logger.info("Validated customer with name {}", customerMap.get("name"));
         return true;
     }
 

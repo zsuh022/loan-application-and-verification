@@ -57,6 +57,10 @@ public class NewCustomerScreenController {
     @FXML
     private TextField tfNewCustomerName;
     @FXML
+    private TextField tfNewCustomerName1;
+    @FXML
+    private TextField tfNewCustomerName2;
+    @FXML
     private TextField tfNewCustomerDob;
     @FXML
     private TextField tfNewCustomerOccupation;
@@ -424,7 +428,9 @@ public class NewCustomerScreenController {
 
     private void fillCustomerValuesMap() {
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
-        customerValuesMap.put("name", tfNewCustomerName.getText());
+        customerValuesMap.put("firstName", tfNewCustomerName.getText());
+        customerValuesMap.put("middleName", tfNewCustomerName1.getText());
+        customerValuesMap.put("lastName", tfNewCustomerName2.getText());
         customerValuesMap.put("dob", tfNewCustomerDob.getText());
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
