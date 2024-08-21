@@ -1,6 +1,10 @@
 package uoa.lavs;
 
+import javafx.beans.value.ChangeListener;
+import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Customer.AddCustomer;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
@@ -17,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uoa.lavs.models.Customer.Customer;
 
 public class Main extends Application{
 
@@ -63,7 +68,45 @@ public class Main extends Application{
         scene = new Scene(SceneManager.getScreen(Screens.HOME), 960, 540);
         stage.setScene(scene);
         stage.show();
+        // scale the content to fit the resized window
+        ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) -> scaleContent();
+        scene.widthProperty().addListener(stageSizeListener);
+        scene.heightProperty().addListener(stageSizeListener);
 
     }
 
+    private void scaleContent() {
+        double width = scene.getWidth();
+        double height = scene.getHeight();
+        // check if height is the limiting factor
+        if (height / 9 > width / 16) {
+            // if so, keep the width and calculate the height based on 16:9
+            height = width / 16 * 9;
+        } else {
+            // otherwise, keep the height to 16:9 and calculate the width
+            width = height / 9 * 16;
+        }
+        double scale = width / 960;
+        try{
+            // try to get the root of the scene and cast it to a BorderPane
+            BorderPane border = (BorderPane) scene.getRoot();
+            // get the content of the BorderPane
+            // !!! ONLY ALLOWED TO HAVE ONE CHILD !!!
+            Node content = border.getChildren().get(0);
+            // transform entirety of content
+            content.setScaleX(scale);
+            content.setScaleY(scale);
+            // calculate and set the margins
+            double verticalMargin = (height - 1080) / 2 + (scene.getHeight() - height) / 2;
+            double horizontalMargin = (width - 1920) / 2 + (scene.getWidth() - width) / 2;
+            BorderPane.setMargin(
+                    content,
+                    new javafx.geometry.Insets(
+                            verticalMargin, horizontalMargin, verticalMargin, horizontalMargin));
+        } catch (Exception e){
+            // TAKE THIS OUT AFTER
+            System.out.println("Error scaling");
+            e.printStackTrace();
+        }
+    }
 }
