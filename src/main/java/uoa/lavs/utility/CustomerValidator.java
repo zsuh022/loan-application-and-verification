@@ -37,7 +37,7 @@ public class CustomerValidator {
         String fullName = firstName + (middleName != null && !middleName.isEmpty() ? " " + middleName : "") + " " + lastName;
         customer.setName(fullName);
 
-        customer.setDateOfBirth(LocalDate.parse(customerMap.get("dob")));
+        customer.setDateOfBirth(LocalDate.parse(customerMap.get("dateOfBirth")));
         customer.setOccupation(customerMap.get("occupation"));
         customer.setCitizenship(customerMap.get("citizenship"));
         customer.setVisa(customerMap.get("visa"));
@@ -146,7 +146,7 @@ public class CustomerValidator {
         }
 
         // if unemployed, employer is optional
-        if (!customerMap.get("occupation").equalsIgnoreCase("unemployed")) {
+        if (!customerMap.get("occupation").equals("unemployed")) {
             if (!validateEmployer(employerList)) {
                 return false;
             }
@@ -279,7 +279,7 @@ public class CustomerValidator {
                     return false;
                 }
 
-                if (domainPart.contains("--")) {
+                if (domainPart.contains("..") || domainPart.contains("--")) {
                     logger.error("ValidateEmail method failed: Email domain part contains invalid adjacent characters");
                     return false;
                 }
@@ -305,6 +305,12 @@ public class CustomerValidator {
         for (Map<String, String> employerMap : employerList) {
             if (employerMap.get("name") == null || employerMap.get("name").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer name is empty");
+                return false;
+            }
+
+            String[] fullName = employerMap.get("name").split(" ");
+            if (fullName.length < 2) {
+                logger.error("ValidateEmployer method failed: Customer employer name needs first and last name");
                 return false;
             }
 

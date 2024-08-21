@@ -27,7 +27,7 @@ public class AddCustomer extends AbstractWriter<Customer> {
         }
         newCustomer.setTitle(customer.getTitle());
         newCustomer.setName(customer.getName());
-        newCustomer.setDateofBirth(customer.getDob());
+        newCustomer.setDateofBirth(customer.getDateOfBirth());
         newCustomer.setOccupation(customer.getOccupation());
         newCustomer.setCitizenship(customer.getCitizenship());
         newCustomer.setVisa(customer.getVisa());
@@ -52,7 +52,7 @@ public class AddCustomer extends AbstractWriter<Customer> {
         properties.put("id", customer.getId());
         properties.put("title", customer.getTitle());
         properties.put("name", customer.getName());
-        properties.put("dateOfBirth", customer.getDob().toString());
+        properties.put("dateOfBirth", customer.getDateOfBirth().toString());
         properties.put("occupation", customer.getOccupation());
         properties.put("citizenship", customer.getCitizenship());
         properties.put("visa", customer.getVisa());
