@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class CustomerScreenController {
 
-    private static  CustomerScreenController instance;
+    private static CustomerScreenController instance;
 
     private Customer activeCustomer;
 
@@ -836,7 +836,7 @@ public class CustomerScreenController {
     }
 
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 
