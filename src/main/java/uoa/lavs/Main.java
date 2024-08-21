@@ -31,6 +31,9 @@ public class Main extends Application{
 
     public static void main(String[] args) {
         // flush log immediately to avoid inconsistencies with mainframe
+        //test stuff start
+
+        //test stuff end
         LocalLogManager.flushLog();
         launch();
         // the following shows two ways of using the mainframe interface

@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,14 +58,11 @@
                                     <Insets left="15.0" right="30.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="loanSearchResult1" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;">
+                              <ScrollPane fx:id="resultBox" opacity="0.8" prefWidth="680.0" stylesheets="@../screens.css" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
-                                    <Insets top="30.0" />
+                                    <Insets bottom="80.0" top="20.0" />
                                  </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="loanSearchResult2" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                              <TextField fx:id="loanSearchResult3" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
-                              <TextField fx:id="loanSearchResult4" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff; -fx-border-width: 1; -fx-border-radius: 2;" />
+                              </ScrollPane>
                            </children>
                         </VBox>
                         <VBox fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" HBox.hgrow="ALWAYS" />

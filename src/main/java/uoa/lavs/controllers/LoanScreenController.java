@@ -102,6 +102,8 @@ public class LoanScreenController {
     @FXML
     private Label lbSummaryLoansPayoffDate;
 
+    private static  LoanScreenController instance;
+
     public boolean submitLoanUpdate() {
         // TODO:
         return true;
@@ -168,5 +170,10 @@ public class LoanScreenController {
     @FXML
     private void btnLogOut(){
         Main.setScreen(Screens.LOGIN);
+    }
+
+    public static void updateLoan() {
+        // get the current customer in the customer bucket and set it as the active customer
+        instance.activeLoan = LoanBucket.getInstance().getLoan();
     }
 }
