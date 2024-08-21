@@ -118,10 +118,10 @@ public class CustomerScreenController {
     public void submitCustomerUpdate(HashMap<String, String> customerMap, List<Map<String, String>> addressList,
                                      List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                      List<Map<String, String>> phoneList) {
-        // validate
         if (customerValidator.validateCustomer(customerMap, addressList, emailList, employerList, phoneList)) {
-            // replace active customer
+            // validate and replace active customer with updated customer
             Customer updatedCustomer = customerValidator.createCustomer(customerMap, addressList, emailList, employerList, phoneList);
+            updatedCustomer.setCustomerId(activeCustomer.getId());
             activeCustomer = updatedCustomer;
         }
     }
