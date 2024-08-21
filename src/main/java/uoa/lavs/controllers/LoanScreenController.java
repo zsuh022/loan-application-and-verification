@@ -118,7 +118,7 @@ public class LoanScreenController {
 
     @FXML
     private void onLoanBackClicked(MouseEvent event) {
-        // go to drafts?
+        Main.setScreen(Screens.SEARCH_LOAN);
     }
 
     @FXML
