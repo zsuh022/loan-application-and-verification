@@ -102,6 +102,16 @@ public class NewLoanScreenController {
 
 
     public boolean submitNewLoan() {
+        fillLoanValuesMap();
+
+        if (!validateLoan()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void fillLoanValuesMap() {
         loanValuesMap.clear();
 
         loanValuesMap.put("customerId", tfNewLoanCustomerId.getText());
@@ -132,12 +142,6 @@ public class NewLoanScreenController {
                 loanValuesMap.put("coborrowerId" + i, coborrowerId.getText());
             }
         }
-
-        if (!validateLoan()) {
-            return false;
-        }
-
-        return true;
     }
 
     private boolean validateLoan() {
