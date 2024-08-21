@@ -60,12 +60,13 @@ public class Main extends Application{
         SceneManager.addScreenUi(Screens.DRAFTS, loadFxml("draftsScreen"));
         SceneManager.addScreenUi(Screens.HOME, loadFxml("homeScreen"));
         SceneManager.addScreenUi(Screens.LOAN, loadFxml("loanScreen"));
+        SceneManager.addScreenUi(Screens.LOGIN, loadFxml("loginScreen"));
         SceneManager.addScreenUi(Screens.NEW_CUSTOMER, loadFxml("newCustomerScreen"));
         SceneManager.addScreenUi(Screens.NEW_LOAN, loadFxml("newLoanScreen"));
         SceneManager.addScreenUi(Screens.SEARCH_CUSTOMER, loadFxml("searchCustomerScreen"));
         SceneManager.addScreenUi(Screens.SEARCH_LOAN, loadFxml("searchLoanScreen"));
         
-        scene = new Scene(SceneManager.getScreen(Screens.HOME), 960, 540);
+        scene = new Scene(SceneManager.getScreen(Screens.LOGIN), 960, 540);
         stage.setScene(scene);
         stage.show();
         // scale the content to fit the resized window

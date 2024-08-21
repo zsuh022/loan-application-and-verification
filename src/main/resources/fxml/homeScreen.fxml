@@ -157,10 +157,13 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
+                  <Text fill="WHITE" onMouseClicked="#btnLogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out">
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Text>
                </buttons>
             </ButtonBar>
