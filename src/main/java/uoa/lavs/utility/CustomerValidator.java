@@ -37,7 +37,7 @@ public class CustomerValidator {
         String fullName = firstName + (middleName != null && !middleName.isEmpty() ? " " + middleName : "") + " " + lastName;
         customer.setName(fullName);
 
-        customer.setDateOfBirth(LocalDate.parse(customerMap.get("dateOfBirth")));
+        customer.setDateOfBirth(LocalDate.parse(customerMap.get("dob")));
         customer.setOccupation(customerMap.get("occupation"));
         customer.setCitizenship(customerMap.get("citizenship"));
         customer.setVisa(customerMap.get("visa"));
