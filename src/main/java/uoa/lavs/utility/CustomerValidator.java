@@ -279,7 +279,7 @@ public class CustomerValidator {
                     return false;
                 }
 
-                if (domainPart.contains("..") || domainPart.contains("--")) {
+                if (domainPart.contains("--")) {
                     logger.error("ValidateEmail method failed: Email domain part contains invalid adjacent characters");
                     return false;
                 }
@@ -305,12 +305,6 @@ public class CustomerValidator {
         for (Map<String, String> employerMap : employerList) {
             if (employerMap.get("name") == null || employerMap.get("name").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer name is empty");
-                return false;
-            }
-
-            String[] fullName = employerMap.get("name").split(" ");
-            if (fullName.length < 2) {
-                logger.error("ValidateEmployer method failed: Customer employer name needs first and last name");
                 return false;
             }
 
@@ -350,11 +344,6 @@ public class CustomerValidator {
 
             if (employerMap.get("email") == null || employerMap.get("email").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer email is empty");
-                return false;
-            }
-
-            if (employerMap.get("web") == null || employerMap.get("web").isEmpty()) {
-                logger.error("ValidateEmployer method failed: Customer employer web is empty");
                 return false;
             }
         }

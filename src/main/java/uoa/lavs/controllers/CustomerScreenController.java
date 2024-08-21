@@ -14,8 +14,11 @@ import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CustomerScreenController {
 
@@ -24,6 +27,8 @@ public class CustomerScreenController {
     private Customer activeCustomer;
 
     private HashMap<String, String> changeMap = new HashMap<>();
+
+    private CustomerValidator customerValidator = new CustomerValidator();
 
     @FXML
     private Rectangle addLoanRectangle;
@@ -504,29 +509,44 @@ public class CustomerScreenController {
         instance = this;
     }
 
-    public boolean submitCustomerUpdate(HashMap<String, String> map) {
-        // TODO:
-        return true;
+    public void submitCustomerUpdate(HashMap<String, String> customerMap, List<Map<String, String>> addressList,
+                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                     List<Map<String, String>> phoneList) {
+        if (customerValidator.validateCustomer(customerMap, addressList, emailList, employerList, phoneList)) {
+            // validate and replace active customer with updated customer
+            Customer updatedCustomer = customerValidator.createCustomer(customerMap, addressList, emailList, employerList, phoneList);
+            updatedCustomer.setCustomerId(activeCustomer.getId());
+            activeCustomer = updatedCustomer;
+        }
     }
 
-    public boolean submitAddressUpdate(HashMap<String, String> map) {
-        // TODO:
-        return true;
+    public void setGeneralPaneInformation() {
+        lbCustomerId.setText(activeCustomer.getId());
+        lbCustomerTitle.setText(activeCustomer.getTitle());
+        lbCustomerName.setText(activeCustomer.getName());
+        // TODO: lbCustomerStatus.setText("Active");
+        lbCustomerDob.setText(String.valueOf(activeCustomer.getDateOfBirth()));
+        lbCustomerOccupation.setText(activeCustomer.getOccupation());
+        lbCustomerCitizenship.setText(activeCustomer.getCitizenship());
+        lbCustomerVisa.setText(activeCustomer.getVisa());
+        // TODO: lbCustomerPhone.setText(activeCustomer.getPhoneList())
+        // TODO: lbCustomerEmail.setText(activeCustomer.getEmailList());
     }
 
-    public boolean submitEmailUpdate(HashMap<String, String> map) {
+    public void setAddressPaneInformation() {
         // TODO:
-        return true;
     }
 
-    public boolean submitNoteUpdate(HashMap<String, String> map) {
+    public void setLoanPaneInformation() {
         // TODO:
-        return true;
     }
 
-    public boolean submitPhoneUpdate(HashMap<String, String> map) {
+    public void setEmployerPaneInformation() {
         // TODO:
-        return true;
+    }
+
+    public void setNotesPaneInformation() {
+        taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
     }
 
     @FXML
