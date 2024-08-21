@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.models.Customer.*;
+import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
@@ -582,21 +583,144 @@ public class CustomerScreenController {
 
     public void setContactsPaneInformation() {
         List<CustomerPhone> phoneList = activeCustomer.getPhoneList();
-
-
         List<CustomerEmail> emailList = activeCustomer.getEmailList();
 
+        if (!phoneList.isEmpty()) {
+            lbCustomerPhType.setText(phoneList.get(0).getType());
+            lbCustomerPhPrefix.setText(phoneList.get(0).getPrefix());
+            lbCustomerPhNum.setText(phoneList.get(0).getNumber());
+            cbCustomerIsPhPrimary.setSelected(phoneList.get(0).getIsPrimary());
+            cbCustomerIsPhSMS.setSelected(phoneList.get(0).getIsTexting());
+        }
+        if (phoneList.size() > 1) {
+            lbCustomerPhType1.setText(phoneList.get(1).getType());
+            lbCustomerPhPrefix1.setText(phoneList.get(1).getPrefix());
+            lbCustomerPhNum1.setText(phoneList.get(1).getNumber());
+            cbCustomerIsPhPrimary1.setSelected(phoneList.get(1).getIsPrimary());
+            cbCustomerIsPhSMS1.setSelected(phoneList.get(1).getIsTexting());
+        }
+        if (phoneList.size() > 2) {
+            lbCustomerPhType2.setText(phoneList.get(2).getType());
+            lbCustomerPhPrefix2.setText(phoneList.get(2).getPrefix());
+            lbCustomerPhNum2.setText(phoneList.get(2).getNumber());
+            cbCustomerIsPhPrimary2.setSelected(phoneList.get(2).getIsPrimary());
+            cbCustomerIsPhSMS2.setSelected(phoneList.get(2).getIsTexting());
+        }
+        if (phoneList.size() > 3) {
+            lbCustomerPhType3.setText(phoneList.get(3).getType());
+            lbCustomerPhPrefix3.setText(phoneList.get(3).getPrefix());
+            lbCustomerPhNum3.setText(phoneList.get(3).getNumber());
+            cbCustomerIsPhPrimary3.setSelected(phoneList.get(3).getIsPrimary());
+            cbCustomerIsPhSMS3.setSelected(phoneList.get(3).getIsTexting());
+        }
 
+        if (!emailList.isEmpty()) {
+            lbCustomerEmail.setText(emailList.get(0).getAddress());
+            lbCustomerIsPrimary.setSelected(emailList.get(0).getIsPrimary());
+        }
+        if (emailList.size() > 1) {
+            lbCustomerEmail1.setText(emailList.get(1).getAddress());
+            lbCustomerIsPrimary1.setSelected(emailList.get(1).getIsPrimary());
+        }
+        if (emailList.size() > 2) {
+            lbCustomerEmail2.setText(emailList.get(2).getAddress());
+            lbCustomerIsPrimary2.setSelected(emailList.get(2).getIsPrimary());
+        }
+        if (emailList.size() > 3) {
+            lbCustomerEmail3.setText(emailList.get(3).getAddress());
+            lbCustomerIsPrimary3.setSelected(emailList.get(3).getIsPrimary());
+        }
     }
 
     public void setLoanPaneInformation() {
-        // TODO:
+        // TODO: get loan
+        List<Loan> loanList;
+
+        if (loanList.isEmpty()) {
+            lbLoanId.setText(loanList.get(0).getId());
+            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
+            // TODO: cbLoanStatus;
+        }
+        if (loanList.size() > 1) {
+            lbLoanId1.setText(loanList.get(1).getId());
+            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
+            // TODO: cbLoanStatus;
+        }
+        if (loanList.size() > 2) {
+            lbLoanId2.setText(loanList.get(2).getId());
+            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
+            // TODO: cbLoanStatus;
+        }
+        if (loanList.size() > 3) {
+            lbLoanId3.setText(loanList.get(3).getId());
+            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
+            // TODO: cbLoanStatus;
+        }
     }
 
     public void setEmployerPaneInformation() {
         List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
 
-
+        if (!employerList.isEmpty()) {
+            lbCustomerEmployerName.setText(employerList.get(0).getName());
+            lbCustomerEmployerLine1.setText(employerList.get(0).getLine1());
+            lbCustomerEmployerLine2.setText(employerList.get(0).getLine2());
+            lbCustomerEmployerSuburb.setText(employerList.get(0).getSuburb());
+            lbCustomerEmployerCity.setText(employerList.get(0).getCity());
+            lbCustomerEmployerPostcode.setText(employerList.get(0).getPostCode());
+            lbCustomerEmployerCountry.setText(employerList.get(0).getCountry());
+            lbCustomerEmployerPhone.setText(employerList.get(0).getPhone());
+            lbCustomerEmployerEmail.setText(employerList.get(0).getEmail());
+            lbCustomerEmployerWeb.setText(employerList.get(0).getWeb());
+        }
+        if (employerList.size() > 1) {
+            lbCustomerEmployerName1.setText(employerList.get(1).getName());
+            lbCustomerEmployerLine11.setText(employerList.get(1).getLine1());
+            lbCustomerEmployerLine21.setText(employerList.get(1).getLine2());
+            lbCustomerEmployerSuburb1.setText(employerList.get(1).getSuburb());
+            lbCustomerEmployerCity1.setText(employerList.get(1).getCity());
+            lbCustomerEmployerPostcode1.setText(employerList.get(1).getPostCode());
+            lbCustomerEmployerCountry1.setText(employerList.get(1).getCountry());
+            lbCustomerEmployerPhone1.setText(employerList.get(1).getPhone());
+            lbCustomerEmployerEmail1.setText(employerList.get(1).getEmail());
+            lbCustomerEmployerWeb1.setText(employerList.get(1).getWeb());
+        }
+        if (employerList.size() > 2) {
+            lbCustomerEmployerName2.setText(employerList.get(2).getName());
+            lbCustomerEmployerLine12.setText(employerList.get(2).getLine2());
+            lbCustomerEmployerLine22.setText(employerList.get(2).getLine2());
+            lbCustomerEmployerSuburb2.setText(employerList.get(2).getSuburb());
+            lbCustomerEmployerCity2.setText(employerList.get(2).getCity());
+            lbCustomerEmployerPostcode2.setText(employerList.get(2).getPostCode());
+            lbCustomerEmployerCountry2.setText(employerList.get(2).getCountry());
+            lbCustomerEmployerPhone2.setText(employerList.get(2).getPhone());
+            lbCustomerEmployerEmail2.setText(employerList.get(2).getEmail());
+            lbCustomerEmployerWeb2.setText(employerList.get(2).getWeb());
+        }
+        if (employerList.size() > 3) {
+            lbCustomerEmployerName3.setText(employerList.get(3).getName());
+            lbCustomerEmployerLine13.setText(employerList.get(3).getLine1());
+            lbCustomerEmployerLine23.setText(employerList.get(3).getLine2());
+            lbCustomerEmployerSuburb3.setText(employerList.get(3).getSuburb());
+            lbCustomerEmployerCity3.setText(employerList.get(3).getCity());
+            lbCustomerEmployerPostcode3.setText(employerList.get(3).getPostCode());
+            lbCustomerEmployerCountry3.setText(employerList.get(3).getCountry());
+            lbCustomerEmployerPhone3.setText(employerList.get(3).getPhone());
+            lbCustomerEmployerEmail3.setText(employerList.get(3).getEmail());
+            lbCustomerEmployerWeb3.setText(employerList.get(3).getWeb());
+        }
+        if (employerList.size() > 4) {
+            lbCustomerEmployerName4.setText(employerList.get(4).getName());
+            lbCustomerEmployerLine14.setText(employerList.get(4).getLine1());
+            lbCustomerEmployerLine24.setText(employerList.get(4).getLine2());
+            lbCustomerEmployerSuburb4.setText(employerList.get(4).getSuburb());
+            lbCustomerEmployerCity4.setText(employerList.get(4).getCity());
+            lbCustomerEmployerPostcode4.setText(employerList.get(4).getPostCode());
+            lbCustomerEmployerCountry4.setText(employerList.get(4).getCountry());
+            lbCustomerEmployerPhone4.setText(employerList.get(4).getPhone());
+            lbCustomerEmployerEmail4.setText(employerList.get(4).getEmail());
+            lbCustomerEmployerWeb4.setText(employerList.get(4).getWeb());
+        }
     }
 
     public void setNotesPaneInformation() {
