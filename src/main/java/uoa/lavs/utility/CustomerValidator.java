@@ -25,12 +25,18 @@ public class CustomerValidator {
     public Customer createCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
                                    List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                    List<Map<String, String>> phoneList) {
-        logger.info("Creating customer in CustomerValidator with name {}", customerMap.get("name"));
+        logger.info("Creating customer in CustomerValidator with name {}", customerMap.get("firstName"));
 
         Customer customer = new Customer();
         customer.setCustomerId(generateTemporaryCustomerId());
         customer.setTitle(customerMap.get("title"));
-        customer.setName(customerMap.get("name"));
+
+        String firstName = customerMap.get("firstName");
+        String middleName = customerMap.get("middleName");
+        String lastName = customerMap.get("lastName");
+        String fullName = firstName + (middleName != null && !middleName.isEmpty() ? " " + middleName : "") + " " + lastName;
+        customer.setName(fullName);
+
         customer.setDateOfBirth(LocalDate.parse(customerMap.get("dateOfBirth")));
         customer.setOccupation(customerMap.get("occupation"));
         customer.setCitizenship(customerMap.get("citizenship"));
@@ -92,17 +98,22 @@ public class CustomerValidator {
             customer.addPhone(phone);
         }
 
-        logger.info("Created customer in CustomerValidator with name {}", customerMap.get("name"));
+        logger.info("Created customer in CustomerValidator with name {}", customerMap.get("firstName"));
         return customer;
     }
 
     public boolean validateCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                     List<Map<String, String>> phoneList) {
-        logger.info("Validating customer with name {}", customerMap.get("name"));
+        logger.info("Validating customer with name {}", customerMap.get("firstName"));
 
-        if (customerMap.get("name") == null || customerMap.get("name").isEmpty()) {
-            logger.error("ValidateCustomer method failed: Customer name is empty");
+        if (customerMap.get("firstName") == null || customerMap.get("firstName").isEmpty()) {
+            logger.error("ValidateCustomer method failed: Customer first name is empty");
+            return false;
+        }
+
+        if (customerMap.get("lastName") == null || customerMap.get("lastName").isEmpty()) {
+            logger.error("ValidateCustomer method failed: Customer last name is empty");
             return false;
         }
 
@@ -151,7 +162,7 @@ public class CustomerValidator {
             return false;
         }
 
-        logger.info("Validated customer with name {}", customerMap.get("name"));
+        logger.info("Validated customer with name {}", customerMap.get("firstName"));
         return true;
     }
 
