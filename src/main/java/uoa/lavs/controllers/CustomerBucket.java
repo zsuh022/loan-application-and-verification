@@ -1,6 +1,10 @@
 package uoa.lavs.controllers;
 
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import uoa.lavs.models.Customer.Customer;
 
 public class CustomerBucket {
