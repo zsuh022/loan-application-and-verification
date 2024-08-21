@@ -102,13 +102,50 @@ public class NewLoanScreenController {
 
 
     public boolean submitNewLoan() {
-        // TODO:
+        loanValuesMap.clear();
+
+        loanValuesMap.put("customerId", tfNewLoanCustomerId.getText());
+        loanValuesMap.put("principal", tfNewLoanPrincipal.getText());
+        loanValuesMap.put("rate", tfNewLoanRate.getText());
+        loanValuesMap.put("isFloating", String.valueOf(cbNewLoanIsFloating.isSelected()));
+        loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
+        loanValuesMap.put("startDate", dpNewLoanStartDate.getValue().toString());
+        loanValuesMap.put("period", tfNewLoanPeriod.getText());
+        loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));
+        loanValuesMap.put("compoundingMonthly", String.valueOf(cbNewLoanCompoundingMonthly.isSelected()));
+        loanValuesMap.put("compoundingAnnually", String.valueOf(cbNewLoanCompoundingAnnually.isSelected()));
+        loanValuesMap.put("frequencyWeekly", String.valueOf(cbNewLoanFrequencyWeekly.isSelected()));
+        loanValuesMap.put("frequencyFortnightly", String.valueOf(cbNewLoanFrequencyFortnightly.isSelected()));
+        loanValuesMap.put("frequencyMonthly", String.valueOf(cbNewLoanFrequencyMonthly.isSelected()));
+        loanValuesMap.put("amount", tfNewLoanAmount.getText());
+        loanValuesMap.put("isInterestOnly", String.valueOf(cbNewLoanIsInterestOnly.isSelected()));
+
+        for (int i = 0; i < 18; i++) {
+            TextField coborrowerId;
+            if (i == 0) {
+                coborrowerId = (TextField) newLoanCoborrowersPane.lookup("#tfNewLoanCoborrowerId");
+            } else {
+                coborrowerId = (TextField) newLoanCoborrowersPane.lookup("#tfNewLoanCoborrowerId" + i);
+            }
+
+            if (coborrowerId != null && !coborrowerId.getText().isEmpty()) {
+                loanValuesMap.put("coborrowerId" + i, coborrowerId.getText());
+            }
+        }
+
+        if (!validateLoan()) {
+            return false;
+        }
+
         return true;
+    }
+
+    private boolean validateLoan() {
     }
 
     @FXML
     private void onNewLoanBackClicked(MouseEvent event) {
-        // go to ... previous screen
+        // go to previous screen
         Main.setScreen(Screens.HOME);
     }
 
