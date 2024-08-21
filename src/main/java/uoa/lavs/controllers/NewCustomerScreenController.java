@@ -430,10 +430,41 @@ public class NewCustomerScreenController {
         customerValuesMap.put("address country 0", tfNewCustomerCountry.getText());
         customerValuesMap.put("address isPrimary 0", String.valueOf(cbNewCustomerIsPrimary.isSelected()));
         customerValuesMap.put("address isMailing 0", String.valueOf(cbNewCustomerIsMailing.isSelected()));
+        customerValuesMap.put("address type 1", tfNewCustomerType1.getText());
+        customerValuesMap.put("address line1 1", tfNewCustomerLine11.getText());
+        customerValuesMap.put("address line2 1", tfNewCustomerLine21.getText());
+        customerValuesMap.put("address suburb 1", tfNewCustomerSuburb1.getText());
+        customerValuesMap.put("address city 1", tfNewCustomerCity1.getText());
+        customerValuesMap.put("address postCode 1", tfNewCustomerPostcode1.getText());
+        customerValuesMap.put("address country 1", tfNewCustomerCountry1.getText());
+        customerValuesMap.put("address isPrimary 1", String.valueOf(cbNewCustomerIsPrimary1.isSelected()));
+        customerValuesMap.put("address isMailing 1", String.valueOf(cbNewCustomerIsMailing1.isSelected()));
+        customerValuesMap.put("address type 2", tfNewCustomerType2.getText());
+        customerValuesMap.put("address line1 2", tfNewCustomerLine12.getText());
+        customerValuesMap.put("address line2 2", tfNewCustomerLine22.getText());
+        customerValuesMap.put("address suburb 2", tfNewCustomerSuburb2.getText());
+        customerValuesMap.put("address city 2", tfNewCustomerCity2.getText());
+        customerValuesMap.put("address postCode 2", tfNewCustomerPostcode2.getText());
+        customerValuesMap.put("address country 2", tfNewCustomerCountry2.getText());
+        customerValuesMap.put("address isPrimary 2", String.valueOf(cbNewCustomerIsPrimary2.isSelected()));
+        customerValuesMap.put("address isMailing 2", String.valueOf(cbNewCustomerIsMailing2.isSelected()));
+        customerValuesMap.put("address type 3", tfNewCustomerType3.getText());
+        customerValuesMap.put("address line1 3", tfNewCustomerLine13.getText());
+        customerValuesMap.put("address line2 3", tfNewCustomerLine23.getText());
+        customerValuesMap.put("address suburb 3", tfNewCustomerSuburb3.getText());
+        customerValuesMap.put("address city 3", tfNewCustomerCity3.getText());
+        customerValuesMap.put("address postCode 3", tfNewCustomerPostcode3.getText());
+        customerValuesMap.put("address country 3", tfNewCustomerCountry3.getText());
+        customerValuesMap.put("address isPrimary 3", String.valueOf(cbNewCustomerIsPrimary3.isSelected()));
+        customerValuesMap.put("address isMailing 3", String.valueOf(cbNewCustomerIsMailing3.isSelected()));
 
-        // email
-        customerValuesMap.put("email address 0", tfNewCustomerEmail1.getText());
-        // TODO: customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
+        // contacts
+        customerValuesMap.put("phone type 0", tfNewCustomerPhType.getText());
+        customerValuesMap.put("phone number 0", tfNewCustomerPhNum.getText());
+        customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerIsPhPrimary.isSelected()));
+        customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerIsPhSMS.isSelected()));
+        customerValuesMap.put("email address 0", tfNewCustomerEmail.getText());
+        customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
 
         // employer
         customerValuesMap.put("employer name 0", tfNewCustomerEmployerName.getText());
@@ -447,12 +478,6 @@ public class NewCustomerScreenController {
         customerValuesMap.put("employer email 0", tfNewCustomerEmployerEmail.getText());
         customerValuesMap.put("employer web 0", tfNewCustomerEmployerWeb.getText());
         customerValuesMap.put("employer isOwner 0", String.valueOf(cbNewCustomerEmployerIsOwner.isSelected()));
-
-        // phone
-        // TODO: customerValuesMap.put("phone type 0", tfNewCustomerPhoneType.getText());
-        customerValuesMap.put("phone number 0", tfNewCustomerPhNum.getText());
-        // TODO: customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerPhoneIsPrimary.isSelected()));
-        // TODO: customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerPhoneIsTexting.isSelected()));
 
         // note
         customerValuesMap.put("note", taNewCustomerNotes.getText());
