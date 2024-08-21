@@ -10,6 +10,7 @@ import uoa.lavs.utility.PaymentFrequency;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Loan {
 
@@ -150,5 +151,87 @@ public abstract class Loan {
     }
 
     public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            System.out.println("Class mismatch or null object.");
+            return false;
+        }
+        Loan loan = (Loan) obj;
+
+        if (!Objects.equals(loanId, loan.loanId)) {
+            System.out.println("Loan ID mismatch: " + loanId + " vs " + loan.loanId);
+            return false;
+        }
+        if (!Objects.equals(customerID, loan.customerID)) {
+            System.out.println("Customer ID mismatch: " + customerID + " vs " + loan.customerID);
+            return false;
+        }
+        if (!Objects.equals(customerName, loan.customerName)) {
+            System.out.println("Customer Name mismatch: " + customerName + " vs " + loan.customerName);
+            return false;
+        }
+        if (!Objects.equals(coborrowerList, loan.coborrowerList)) {
+            System.out.println("Coborrower List mismatch: " + coborrowerList + " vs " + loan.coborrowerList);
+            return false;
+        }
+        if (!Objects.equals(principal, loan.principal)) {
+            System.out.println("Principal mismatch: " + principal + " vs " + loan.principal);
+            return false;
+        }
+        if (rateType != loan.rateType) {
+            System.out.println("Rate Type mismatch: " + rateType + " vs " + loan.rateType);
+            return false;
+        }
+        if (!Objects.equals(rate, loan.rate)) {
+            System.out.println("Rate mismatch: " + rate + " vs " + loan.rate);
+            return false;
+        }
+        if (!Objects.equals(startDate, loan.startDate)) {
+            System.out.println("Start Date mismatch: " + startDate + " vs " + loan.startDate);
+            return false;
+        }
+        if (!Objects.equals(period, loan.period)) {
+            System.out.println("Period mismatch: " + period + " vs " + loan.period);
+            return false;
+        }
+        if (compoundingFrequency != loan.compoundingFrequency) {
+            System.out.println("Compounding Frequency mismatch: " + compoundingFrequency + " vs " + loan.compoundingFrequency);
+            return false;
+        }
+        if (paymentFrequency != loan.paymentFrequency) {
+            System.out.println("Payment Frequency mismatch: " + paymentFrequency + " vs " + loan.paymentFrequency);
+            return false;
+        }
+        if (!Objects.equals(paymentAmount, loan.paymentAmount)) {
+            System.out.println("Payment Amount mismatch: " + paymentAmount + " vs " + loan.paymentAmount);
+            return false;
+        }
+        if (status != loan.status) {
+            System.out.println("Status mismatch: " + status + " vs " + loan.status);
+            return false;
+        }
+        if (!Objects.equals(summary, loan.summary)) {
+            System.out.println("Summary mismatch: " + summary + " vs " + loan.summary);
+            return false;
+        }
+        if (!Objects.equals(term, loan.term)) {
+            System.out.println("Term mismatch: " + term + " vs " + loan.term);
+            return false;
+        }
+
+        return true;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loanId, customerID, customerName, coborrowerList, principal, rateType, rate, startDate, period, compoundingFrequency, paymentFrequency, paymentAmount, status, summary, term);
+    }
+
 
 }

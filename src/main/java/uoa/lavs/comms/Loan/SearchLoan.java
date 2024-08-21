@@ -36,11 +36,10 @@ public class SearchLoan extends AbstractSearchable<Loan> {
             LoanStatus stat = null;
             String statFromSvr = loan.getStatusFromServer();
             switch (statFromSvr) {
-                case "New" -> stat = LoanStatus.New;
-                case "Pending" -> stat = LoanStatus.Pending;
-                case "Cancelled" -> stat = LoanStatus.Cancelled;
-                case "Active" -> stat = LoanStatus.Active;
-                case "Unknown" -> stat = LoanStatus.Unknown;
+                case "1" -> stat = LoanStatus.New;
+                case "2" -> stat = LoanStatus.Pending;
+                case "5" -> stat = LoanStatus.Active;
+                case "8" -> stat = LoanStatus.Cancelled;
             }
             newLoan.setStatus(stat);
             newLoan.setTerm(loan.getTermFromServer());
@@ -54,7 +53,6 @@ public class SearchLoan extends AbstractSearchable<Loan> {
                 case Fortnightly -> freq = PaymentFrequency.Fortnightly;
                 case Monthly -> freq = PaymentFrequency.Monthly;
             }
-
             newLoan.setPaymentFrequency(freq);
 
             logger.info("Loan for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());
