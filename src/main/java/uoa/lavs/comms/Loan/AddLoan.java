@@ -10,6 +10,7 @@ import uoa.lavs.mainframe.messages.loan.UpdateLoan;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.PaymentFrequency;
 
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,13 +70,14 @@ public class AddLoan extends AbstractWriter<Loan> {
         properties.put("status", loan.getStatus().toString());
         properties.put("principal", loan.getPrincipal().toString());
         properties.put("rate.value", loan.getRate().toString());
-        properties.put("rate.type", loan.getRate().toString());
-        properties.put("date", loan.getStartDate().toString());
+        properties.put("rate.type", Integer.toString(loan.getRateType().ordinal()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        properties.put("date", loan.getStartDate().format(formatter));
         properties.put("period", loan.getPeriod().toString());
         properties.put("term", loan.getTerm().toString());
         properties.put("payment.amount", loan.getPaymentAmount().toString());
-        properties.put("payment.freq", loan.getPaymentFrequency().toString());
-        properties.put("compounding", loan.getCompoundingFrequency().toString());
+        properties.put("payment.freq", Integer.toString(loan.getPaymentFrequency().ordinal()));
+        properties.put("compounding", Integer.toString(loan.getCompoundingFrequency().ordinal()));
         return properties;
     }
 }
