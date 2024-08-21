@@ -164,4 +164,9 @@ public class LoanScreenController {
     private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
+
+    @FXML
+    private void btnLogOut(){
+        Main.setScreen(Screens.LOGIN);
+    }
 }

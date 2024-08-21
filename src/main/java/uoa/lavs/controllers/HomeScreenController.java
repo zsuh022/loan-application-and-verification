@@ -49,4 +49,9 @@ public class HomeScreenController
     void addCustomerClicked(ActionEvent event){
         Main.setScreen(Screens.NEW_CUSTOMER);
     }
+
+    @FXML
+    private void btnLogOut(){
+        Main.setScreen(Screens.LOGIN);
+    }
 }
