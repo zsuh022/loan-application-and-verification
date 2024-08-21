@@ -19,6 +19,8 @@ import java.util.HashMap;
 
 public class CustomerScreenController {
 
+    private static  CustomerScreenController instance;
+
     private Customer activeCustomer;
 
     private HashMap<String, String> changeMap = new HashMap<>();
@@ -497,6 +499,11 @@ public class CustomerScreenController {
     @FXML
     private TextArea taCustomerNotes;
 
+    @FXML
+    public void initialize() {
+        instance = this;
+    }
+
     public boolean submitCustomerUpdate(HashMap<String, String> map) {
         // TODO:
         return true;
@@ -631,5 +638,10 @@ public class CustomerScreenController {
     @FXML
     private void btnLogOut(){
         Main.setScreen(Screens.LOGIN);
+    }
+
+    public static void updateCustomer() {
+        // get the current customer in the customer bucket and set it as the active customer
+        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
     }
 }

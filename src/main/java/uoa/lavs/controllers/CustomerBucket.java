@@ -1,6 +1,5 @@
 package uoa.lavs.controllers;
 
-
 import uoa.lavs.models.Customer.Customer;
 
 public class CustomerBucket {
