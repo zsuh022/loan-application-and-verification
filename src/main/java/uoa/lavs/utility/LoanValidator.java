@@ -2,6 +2,8 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.mainframe.RateType;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.Mortgage;
@@ -31,20 +33,14 @@ public class LoanValidator {
         loan.setCustomerID(loanValuesMap.get("customerId"));
         loan.setPrincipal(Double.parseDouble(loanValuesMap.get("principal")));
         loan.setRate(Double.parseDouble(loanValuesMap.get("rate")));
-
-        // loan.setRateType();
-
+        loan.setRateType(discoverRateType(loanValuesMap));
         loan.setStartDate(LocalDate.parse(loanValuesMap.get("startDate")));
         loan.setPeriod(Integer.parseInt(loanValuesMap.get("period")));
-
-        // loan.setCompoundingFrequency();
-        // loan.setPaymentFrequency();
-
+        loan.setCompoundingFrequency(discoverCompoundingFrequency(loanValuesMap));
+        loan.setPaymentFrequency(discoverPaymentFrequency(loanValuesMap));
         loan.setPaymentAmount(Double.parseDouble(loanValuesMap.get("amount")));
 
-        // isInterestOnly
-
-        // loan.setStatus(LoanStatus.Active);
+        // TODO: loan.setStatus(LoanStatus.Active);
 
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanValuesMap.get("coborrowerId" + i);
@@ -55,6 +51,39 @@ public class LoanValidator {
         }
 
         return loan;
+    }
+
+    private RateType discoverRateType(Map<String, String> loanMap) {
+        if ("true".equals(loanMap.get("isFloating"))) {
+            return RateType.Floating;
+        } else if ("true".equals(loanMap.get("isFixed"))) {
+            return RateType.Fixed;
+        } else if ("true".equals(loanMap.get("isInterestOnly"))) {
+            return RateType.InterestOnly;
+        }
+        return null;
+    }
+
+    private Frequency discoverCompoundingFrequency(Map<String, String> loanMap) {
+        if ("true".equals(loanMap.get("compoundingWeekly"))) {
+            return Frequency.Weekly;
+        } else if ("true".equals(loanMap.get("compoundingMonthly"))) {
+            return Frequency.Monthly;
+        } else if ("true".equals(loanMap.get("compoundingAnnually"))) {
+            return Frequency.Yearly;
+        }
+        return null;
+    }
+
+    private PaymentFrequency discoverPaymentFrequency(Map<String, String> loanMap) {
+        if ("true".equals(loanMap.get("frequencyWeekly"))) {
+            return PaymentFrequency.Weekly;
+        } else if ("true".equals(loanMap.get("frequencyFortnightly"))) {
+            return PaymentFrequency.Fortnightly;
+        } else if ("true".equals(loanMap.get("frequencyMonthly"))) {
+            return PaymentFrequency.Monthly;
+        }
+        return null;
     }
 
     public boolean validateLoan(Map<String, String> loanMap) {
