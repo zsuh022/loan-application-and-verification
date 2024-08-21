@@ -7,6 +7,7 @@ import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomer;
 import uoa.lavs.models.Customer.Customer;
 
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +53,8 @@ public class AddCustomer extends AbstractWriter<Customer> {
         properties.put("id", customer.getId());
         properties.put("title", customer.getTitle());
         properties.put("name", customer.getName());
-        properties.put("dateOfBirth", customer.getDateOfBirth().toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        properties.put("dateOfBirth", customer.getDateOfBirth().format(formatter));
         properties.put("occupation", customer.getOccupation());
         properties.put("citizenship", customer.getCitizenship());
         properties.put("visa", customer.getVisa());

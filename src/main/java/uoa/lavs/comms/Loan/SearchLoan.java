@@ -4,11 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
 import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.Frequency;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.mainframe.messages.loan.LoadLoan;
 import uoa.lavs.models.Loan.Mortgage;
 import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.utility.PaymentFrequency;
 
 import java.util.List;
 
@@ -34,18 +36,24 @@ public class SearchLoan extends AbstractSearchable<Loan> {
             LoanStatus stat = null;
             String statFromSvr = loan.getStatusFromServer();
             switch (statFromSvr) {
-                case "New" -> stat = LoanStatus.New;
-                case "Pending" -> stat = LoanStatus.Pending;
-                case "Cancelled" -> stat = LoanStatus.Cancelled;
-                case "Active" -> stat = LoanStatus.Active;
-                case "Unknown" -> stat = LoanStatus.Unknown;
+                case "1" -> stat = LoanStatus.New;
+                case "2" -> stat = LoanStatus.Pending;
+                case "5" -> stat = LoanStatus.Active;
+                case "8" -> stat = LoanStatus.Cancelled;
             }
             newLoan.setStatus(stat);
             newLoan.setTerm(loan.getTermFromServer());
-            newLoan.setStartDate(newLoan.getStartDate());
-            newLoan.setCompoundingFrequency(newLoan.getCompoundingFrequency());
-            newLoan.setPaymentAmount(newLoan.getPaymentAmount());
-            newLoan.setPaymentFrequency(newLoan.getPaymentFrequency());
+            newLoan.setStartDate(loan.getStartDateFromServer());
+            newLoan.setCompoundingFrequency(loan.getCompoundingFromServer());
+            newLoan.setPaymentAmount(loan.getPaymentAmountFromServer());
+            PaymentFrequency freq = null;
+            Frequency freqFromSvr = loan.getPaymentFrequencyFromServer();
+            switch (freqFromSvr) {
+                case Weekly -> freq = PaymentFrequency.Weekly;
+                case Fortnightly -> freq = PaymentFrequency.Fortnightly;
+                case Monthly -> freq = PaymentFrequency.Monthly;
+            }
+            newLoan.setPaymentFrequency(freq);
 
             logger.info("Loan for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());
             return newLoan;

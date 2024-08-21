@@ -9,6 +9,7 @@ public class SceneManager {
         DRAFTS,
         HOME,
         LOAN,
+        LOGIN,
         NEW_CUSTOMER,
         NEW_LOAN,
         SCREEN,
