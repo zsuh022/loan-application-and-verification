@@ -17,11 +17,18 @@ import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.utility.CustomerValidator;
 import uoa.lavs.models.Customer.Customer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class NewCustomerScreenController {
 
-    private HashMap<String, String> customerValuesMap = new HashMap<>();
+    private Map<String, String> customerValuesMap = new HashMap<>();
+
+    private ArrayList<Map<String, String>> addressValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> emailValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> employerValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> phoneValuesList = new ArrayList<>();
 
     private CustomerValidator customerValidator = new CustomerValidator();
 
@@ -45,6 +52,10 @@ public class NewCustomerScreenController {
     @FXML
     private TextField tfNewCustomerName;
     @FXML
+    private TextField tfNewCustomerName1;
+    @FXML
+    private TextField tfNewCustomerName2;
+    @FXML
     private DatePicker dpNewCustomerDob;
     @FXML
     private TextField tfNewCustomerOccupation;
@@ -52,16 +63,6 @@ public class NewCustomerScreenController {
     private TextField tfNewCustomerCitizenship;
     @FXML
     private TextField tfNewCustomerVisa;
-    @FXML
-    private TextField tfNewCustomerPhone111;
-    @FXML
-    private TextField tfNewCustomerEmail1;
-    @FXML
-    private TextField tfNewCustomerEmail11;
-    @FXML
-    private TextField tfNewCustomerEmail12;
-    @FXML
-    private TextField tfNewCustomerEmail13;
     // address
     @FXML
     private Button btnAddressNewCustomer;
@@ -85,11 +86,133 @@ public class NewCustomerScreenController {
     private CheckBox cbNewCustomerIsPrimary;
     @FXML
     private CheckBox cbNewCustomerIsMailing;
+    @FXML
+    private Button btnAddressNewCustomer1;
+    @FXML
+    private AnchorPane newCustomerAddressPane1;
+    @FXML
+    private TextField tfNewCustomerType1;
+    @FXML
+    private TextField tfNewCustomerLine11;
+    @FXML
+    private TextField tfNewCustomerLine21;
+    @FXML
+    private TextField tfNewCustomerSuburb1;
+    @FXML
+    private TextField tfNewCustomerCity1;
+    @FXML
+    private TextField tfNewCustomerPostcode1;
+    @FXML
+    private TextField tfNewCustomerCountry1;
+    @FXML
+    private CheckBox cbNewCustomerIsPrimary1;
+    @FXML
+    private CheckBox cbNewCustomerIsMailing1;
+    @FXML
+    private Button btnAddressNewCustomer2;
+    @FXML
+    private AnchorPane newCustomerAddressPane2;
+    @FXML
+    private TextField tfNewCustomerType2;
+    @FXML
+    private TextField tfNewCustomerLine12;
+    @FXML
+    private TextField tfNewCustomerLine22;
+    @FXML
+    private TextField tfNewCustomerSuburb2;
+    @FXML
+    private TextField tfNewCustomerCity2;
+    @FXML
+    private TextField tfNewCustomerPostcode2;
+    @FXML
+    private TextField tfNewCustomerCountry2;
+    @FXML
+    private CheckBox cbNewCustomerIsPrimary2;
+    @FXML
+    private CheckBox cbNewCustomerIsMailing2;
+    @FXML
+    private Button btnAddressNewCustomer3;
+    @FXML
+    private AnchorPane newCustomerAddressPane3;
+    @FXML
+    private TextField tfNewCustomerType3;
+    @FXML
+    private TextField tfNewCustomerLine13;
+    @FXML
+    private TextField tfNewCustomerLine23;
+    @FXML
+    private TextField tfNewCustomerSuburb3;
+    @FXML
+    private TextField tfNewCustomerCity3;
+    @FXML
+    private TextField tfNewCustomerPostcode3;
+    @FXML
+    private TextField tfNewCustomerCountry3;
+    @FXML
+    private CheckBox cbNewCustomerIsPrimary3;
+    @FXML
+    private CheckBox cbNewCustomerIsMailing3;
     //contacts
     @FXML
     private AnchorPane newCustomerContactsPane;
     @FXML
     private Button btnContactsNewCustomer;
+    @FXML
+    private TextField tfNewCustomerPhType;
+    @FXML
+    private TextField tfNewCustomerPhPrefix;
+    @FXML
+    private TextField tfNewCustomerPhNum;
+    @FXML
+    private CheckBox cbNewCustomerIsPhPrimary;
+    @FXML
+    private CheckBox cbNewCustomerIsPhSMS;
+    @FXML
+    private TextField tfNewCustomerEmail;
+    @FXML
+    private CheckBox cbNewCustomerEmailIsPrimary;
+    @FXML
+    private TextField tfNewCustomerPhType1;
+    @FXML
+    private TextField tfNewCustomerPhPrefix1;
+    @FXML
+    private TextField tfNewCustomerPhNum1;
+    @FXML
+    private CheckBox cbNewCustomerIsPhPrimary1;
+    @FXML
+    private CheckBox cbNewCustomerIsPhSMS1;
+    @FXML
+    private TextField tfNewCustomerEmail1;
+    @FXML
+    private CheckBox cbNewCustomerEmailIsPrimary1;
+    @FXML
+    private TextField tfNewCustomerPhType2;
+    @FXML
+    private TextField tfNewCustomerPhPrefix2;
+    @FXML
+    private TextField tfNewCustomerPhNum2;
+    @FXML
+    private CheckBox cbNewCustomerIsPhPrimary2;
+    @FXML
+    private CheckBox cbNewCustomerIsPhSMS2;
+    @FXML
+    private TextField tfNewCustomerEmail2;
+    @FXML
+    private CheckBox cbNewCustomerEmailIsPrimary2;
+    @FXML
+    private TextField tfNewCustomerPhType3;
+    @FXML
+    private TextField tfNewCustomerPhPrefix3;
+    @FXML
+    private TextField tfNewCustomerPhNum3;
+    @FXML
+    private CheckBox cbNewCustomerIsPhPrimary3;
+    @FXML
+    private CheckBox cbNewCustomerIsPhSMS3;
+    @FXML
+    private TextField tfNewCustomerEmail3;
+    @FXML
+    private CheckBox cbNewCustomerEmailIsPrimary3;
     // employer
     @FXML
     private Button btnEmployerNewCustomer;
@@ -117,6 +240,110 @@ public class NewCustomerScreenController {
     private TextField tfNewCustomerEmployerWeb;
     @FXML
     private CheckBox cbNewCustomerEmployerIsOwner;
+    @FXML
+    private Button btnEmployerNewCustomer1;
+    @FXML
+    private AnchorPane newCustomerEmployerPane1;
+    @FXML
+    private TextField tfNewCustomerEmployerName1;
+    @FXML
+    private TextField tfNewCustomerEmployerLine11;
+    @FXML
+    private TextField tfNewCustomerEmployerLine21;
+    @FXML
+    private TextField tfNewCustomerEmployerSuburb1;
+    @FXML
+    private TextField tfNewCustomerEmployerCity1;
+    @FXML
+    private TextField tfNewCustomerEmployerPostcode1;
+    @FXML
+    private TextField tfNewCustomerEmployerCountry1;
+    @FXML
+    private TextField tfNewCustomerEmployerPhone1;
+    @FXML
+    private TextField tfNewCustomerEmployerEmail1;
+    @FXML
+    private TextField tfNewCustomerEmployerWeb1;
+    @FXML
+    private CheckBox cbNewCustomerEmployerIsOwner1;
+    @FXML
+    private Button btnEmployerNewCustomer2;
+    @FXML
+    private AnchorPane newCustomerEmployerPane2;
+    @FXML
+    private TextField tfNewCustomerEmployerName2;
+    @FXML
+    private TextField tfNewCustomerEmployerLine12;
+    @FXML
+    private TextField tfNewCustomerEmployerLine22;
+    @FXML
+    private TextField tfNewCustomerEmployerSuburb2;
+    @FXML
+    private TextField tfNewCustomerEmployerCity2;
+    @FXML
+    private TextField tfNewCustomerEmployerPostcode2;
+    @FXML
+    private TextField tfNewCustomerEmployerCountry2;
+    @FXML
+    private TextField tfNewCustomerEmployerPhone2;
+    @FXML
+    private TextField tfNewCustomerEmployerEmail2;
+    @FXML
+    private TextField tfNewCustomerEmployerWeb2;
+    @FXML
+    private CheckBox cbNewCustomerEmployerIsOwner2;
+    @FXML
+    private Button btnEmployerNewCustomer3;
+    @FXML
+    private AnchorPane newCustomerEmployerPane3;
+    @FXML
+    private TextField tfNewCustomerEmployerName3;
+    @FXML
+    private TextField tfNewCustomerEmployerLine13;
+    @FXML
+    private TextField tfNewCustomerEmployerLine23;
+    @FXML
+    private TextField tfNewCustomerEmployerSuburb3;
+    @FXML
+    private TextField tfNewCustomerEmployerCity3;
+    @FXML
+    private TextField tfNewCustomerEmployerPostcode3;
+    @FXML
+    private TextField tfNewCustomerEmployerCountry3;
+    @FXML
+    private TextField tfNewCustomerEmployerPhone3;
+    @FXML
+    private TextField tfNewCustomerEmployerEmail3;
+    @FXML
+    private TextField tfNewCustomerEmployerWeb3;
+    @FXML
+    private CheckBox cbNewCustomerEmployerIsOwner3;
+    @FXML
+    private Button btnEmployerNewCustomer4;
+    @FXML
+    private AnchorPane newCustomerEmployerPane4;
+    @FXML
+    private TextField tfNewCustomerEmployerName4;
+    @FXML
+    private TextField tfNewCustomerEmployerLine14;
+    @FXML
+    private TextField tfNewCustomerEmployerLine24;
+    @FXML
+    private TextField tfNewCustomerEmployerSuburb4;
+    @FXML
+    private TextField tfNewCustomerEmployerCity4;
+    @FXML
+    private TextField tfNewCustomerEmployerPostcode4;
+    @FXML
+    private TextField tfNewCustomerEmployerCountry4;
+    @FXML
+    private TextField tfNewCustomerEmployerPhone4;
+    @FXML
+    private TextField tfNewCustomerEmployerEmail4;
+    @FXML
+    private TextField tfNewCustomerEmployerWeb4;
+    @FXML
+    private CheckBox cbNewCustomerEmployerIsOwner4;
     // notes
     @FXML
     private Button btnNotesNewCustomer;
@@ -124,6 +351,7 @@ public class NewCustomerScreenController {
     private AnchorPane newCustomerNotesPane;
     @FXML
     private TextArea taNewCustomerNotes;
+    //tab panes
     @FXML
     private TabPane addressTabPane;
     @FXML
@@ -172,70 +400,150 @@ public class NewCustomerScreenController {
 
     @FXML
     private void onNewCustomerBackClicked(MouseEvent event) {
-        // go to ...
         Main.setScreen(Screens.HOME);
     }
 
     @FXML
     public void submitNewCustomer(MouseEvent event) {
         fillCustomerValuesMap();
+        fillAddressValuesList();
+        fillEmailValuesList();
+        fillEmployerValuesList();
+        fillPhoneValuesList();
 
-        if (customerValidator.validateCustomer(customerValuesMap)) {
-            Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
+        if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
+                employerValuesList, phoneValuesList)) {
+            Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
+                    emailValuesList, employerValuesList, phoneValuesList);
             CustomerBucket customerBucket = CustomerBucket.getInstance();
             customerBucket.setCustomer(newCustomer);
-
             Main.setScreen(Screens.CUSTOMER);
         }
     }
 
     private void fillCustomerValuesMap() {
-        // general
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
-        customerValuesMap.put("name", tfNewCustomerName.getText());
+        customerValuesMap.put("firstName", tfNewCustomerName.getText());
+        customerValuesMap.put("middleName", tfNewCustomerName1.getText());
+        customerValuesMap.put("lastName", tfNewCustomerName2.getText());
         customerValuesMap.put("dob", dpNewCustomerDob.getValue().toString());
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());
-
-        // address
-        customerValuesMap.put("address type 0", tfNewCustomerType.getText());
-        customerValuesMap.put("address line1 0", tfNewCustomerLine1.getText());
-        customerValuesMap.put("address line2 0", tfNewCustomerLine2.getText());
-        customerValuesMap.put("address suburb 0", tfNewCustomerSuburb.getText());
-        customerValuesMap.put("address city 0", tfNewCustomerCity.getText());
-        customerValuesMap.put("address postCode 0", tfNewCustomerPostcode.getText());
-        customerValuesMap.put("address country 0", tfNewCustomerCountry.getText());
-        customerValuesMap.put("address isPrimary 0", String.valueOf(cbNewCustomerIsPrimary.isSelected()));
-        customerValuesMap.put("address isMailing 0", String.valueOf(cbNewCustomerIsMailing.isSelected()));
-
-        // email
-        customerValuesMap.put("email address 0", tfNewCustomerEmail1.getText());
-        // TODO: customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
-
-        // employer
-        customerValuesMap.put("employer name 0", tfNewCustomerEmployerName.getText());
-        customerValuesMap.put("employer line1 0", tfNewCustomerEmployerLine1.getText());
-        customerValuesMap.put("employer line2 0", tfNewCustomerEmployerLine2.getText());
-        customerValuesMap.put("employer suburb 0", tfNewCustomerEmployerSuburb.getText());
-        customerValuesMap.put("employer city 0", tfNewCustomerEmployerCity.getText());
-        customerValuesMap.put("employer postCode 0", tfNewCustomerEmployerPostcode.getText());
-        customerValuesMap.put("employer country 0", tfNewCustomerEmployerCountry.getText());
-        customerValuesMap.put("employer phone 0", tfNewCustomerEmployerPhone.getText());
-        customerValuesMap.put("employer email 0", tfNewCustomerEmployerEmail.getText());
-        customerValuesMap.put("employer web 0", tfNewCustomerEmployerWeb.getText());
-        customerValuesMap.put("employer isOwner 0", String.valueOf(cbNewCustomerEmployerIsOwner.isSelected()));
-
-        // phone
-        // TODO: customerValuesMap.put("phone type 0", tfNewCustomerPhoneType.getText());
-        customerValuesMap.put("phone number 0", tfNewCustomerPhone111.getText());
-        // TODO: customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerPhoneIsPrimary.isSelected()));
-        // TODO: customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerPhoneIsTexting.isSelected()));
-
-        // note
         customerValuesMap.put("note", taNewCustomerNotes.getText());
     }
 
+    private void fillAddressValuesList() {
+        addressValuesList.clear();
+
+        for (int i = 0; i < addressValuesList.size(); i++) {
+            AnchorPane pane = (AnchorPane) addressTabPane.getTabs().get(i).getContent();
+            Map<String, String> addressMap = new HashMap<>();
+
+            if (i == 0) {
+                addressMap.put("type", ((TextField) pane.lookup("#tfNewCustomerType")).getText());
+                addressMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerLine1")).getText());
+                addressMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerLine2")).getText());
+                addressMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerSuburb")).getText());
+                addressMap.put("city", ((TextField) pane.lookup("#tfNewCustomerCity")).getText());
+                addressMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerPostcode")).getText());
+                addressMap.put("country", ((TextField) pane.lookup("#tfNewCustomerCountry")).getText());
+                addressMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPrimary")).isSelected()));
+                addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing")).isSelected()));
+            } else {
+                addressMap.put("type", ((TextField) pane.lookup("#tfNewCustomerType" + i)).getText());
+                addressMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerLine1" + i)).getText());
+                addressMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerLine2" + i)).getText());
+                addressMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerSuburb" + i)).getText());
+                addressMap.put("city", ((TextField) pane.lookup("#tfNewCustomerCity" + i)).getText());
+                addressMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerPostcode" + i)).getText());
+                addressMap.put("country", ((TextField) pane.lookup("#tfNewCustomerCountry" + i)).getText());
+                addressMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPrimary" + i)).isSelected()));
+                addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing" + i)).isSelected()));
+            }
+            addressValuesList.add(addressMap);
+        }
+    }
+
+    private void fillEmailValuesList() {
+        emailValuesList.clear();
+
+        for (int i = 0; i < emailTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) emailTabPane.getTabs().get(i).getContent();
+            Map<String, String> emailMap = new HashMap<>();
+
+            if (i == 0) {
+                emailMap.put("address", ((TextField) pane.lookup("#tfNewCustomerEmail")).getText());
+                emailMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmailIsPrimary")).isSelected()));
+            } else {
+                emailMap.put("address", ((TextField) pane.lookup("#tfNewCustomerEmail" + i)).getText());
+                emailMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmailIsPrimary" + i)).isSelected()));
+            }
+            emailValuesList.add(emailMap);
+        }
+    }
+
+    private void fillEmployerValuesList() {
+        employerValuesList.clear();
+
+        for (int i = 0; i < employerTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) employerTabPane.getTabs().get(i).getContent();
+            Map<String, String> employerMap = new HashMap<>();
+
+            if (i == 0) {
+                employerMap.put("name", ((TextField) pane.lookup("#tfNewCustomerEmployerName")).getText());
+                employerMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerEmployerLine1")).getText());
+                employerMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerEmployerLine2")).getText());
+                employerMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerEmployerSuburb")).getText());
+                employerMap.put("city", ((TextField) pane.lookup("#tfNewCustomerEmployerCity")).getText());
+                employerMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerEmployerPostcode")).getText());
+                employerMap.put("country", ((TextField) pane.lookup("#tfNewCustomerEmployerCountry")).getText());
+                employerMap.put("phone", ((TextField) pane.lookup("#tfNewCustomerEmployerPhone")).getText());
+                employerMap.put("email", ((TextField) pane.lookup("#tfNewCustomerEmployerEmail")).getText());
+                employerMap.put("web", ((TextField) pane.lookup("#tfNewCustomerEmployerWeb")).getText());
+                employerMap.put("isOwner", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmployerIsOwner")).isSelected()));
+            } else {
+                employerMap.put("name", ((TextField) pane.lookup("#tfNewCustomerEmployerName" + i)).getText());
+                employerMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerEmployerLine1" + i)).getText());
+                employerMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerEmployerLine2" + i)).getText());
+                employerMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerEmployerSuburb" + i)).getText());
+                employerMap.put("city", ((TextField) pane.lookup("#tfNewCustomerEmployerCity" + i)).getText());
+                employerMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerEmployerPostcode" + i)).getText());
+                employerMap.put("country", ((TextField) pane.lookup("#tfNewCustomerEmployerCountry" + i)).getText());
+                employerMap.put("phone", ((TextField) pane.lookup("#tfNewCustomerEmployerPhone" + i)).getText());
+                employerMap.put("email", ((TextField) pane.lookup("#tfNewCustomerEmployerEmail" + i)).getText());
+                employerMap.put("web", ((TextField) pane.lookup("#tfNewCustomerEmployerWeb" + i)).getText());
+                employerMap.put("isOwner", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmployerIsOwner" + i)).isSelected()));
+            }
+
+            employerValuesList.add(employerMap);
+        }
+    }
+
+    private void fillPhoneValuesList() {
+        phoneValuesList.clear();
+
+        for (int i = 0; i < phoneTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) phoneTabPane.getTabs().get(i).getContent();
+            Map<String, String> phoneMap = new HashMap<>();
+
+            if (i == 0) {
+                phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhType")).getText());
+                phoneMap.put("prefix", ((TextField) pane.lookup("#tfNewCustomerPhPrefix")).getText());
+                phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhNum")).getText());
+                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhPrimary")).isSelected()));
+                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhSMS")).isSelected()));
+            } else {
+                phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhType" + i)).getText());
+                phoneMap.put("prefix", ((TextField) pane.lookup("#tfNewCustomerPhPrefix" + i)).getText());
+                phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhNum" + i)).getText());
+                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhPrimary" + i)).isSelected()));
+                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhSMS" + i)).isSelected()));
+            }
+
+            phoneValuesList.add(phoneMap);
+        }
+    }
 
     @FXML
     private void onGeneralButtonClicked() {

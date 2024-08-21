@@ -461,7 +461,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerType11" />
+                                                                              <TextField fx:id="tfNewCustomerType2" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -471,7 +471,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerLine111" />
+                                                                              <TextField fx:id="tfNewCustomerLine12" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -481,7 +481,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerLine211" />
+                                                                              <TextField fx:id="tfNewCustomerLine22" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -491,7 +491,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerSuburb11" />
+                                                                              <TextField fx:id="tfNewCustomerSuburb2" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -501,7 +501,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerCity11" />
+                                                                              <TextField fx:id="tfNewCustomerCity2" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -511,7 +511,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerPostcode11" />
+                                                                              <TextField fx:id="tfNewCustomerPostcode2" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -521,17 +521,17 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerCountry11" />
+                                                                              <TextField fx:id="tfNewCustomerCountry2" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                            <children>
-                                                                              <CheckBox fx:id="cbNewCustomerIsPrimary11" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                              <CheckBox fx:id="cbNewCustomerIsPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                  <HBox.margin>
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </CheckBox>
-                                                                              <CheckBox fx:id="cbNewCustomerIsMailing11" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                              <CheckBox fx:id="cbNewCustomerIsMailing2" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                  <HBox.margin>
                                                                                     <Insets left="20.0" />
                                                                                  </HBox.margin>
@@ -553,7 +553,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerType12" />
+                                                                              <TextField fx:id="tfNewCustomerType3" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -563,7 +563,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerLine112" />
+                                                                              <TextField fx:id="tfNewCustomerLine13" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -573,7 +573,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerLine212" />
+                                                                              <TextField fx:id="tfNewCustomerLine23" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -583,7 +583,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerSuburb12" />
+                                                                              <TextField fx:id="tfNewCustomerSuburb3" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -593,7 +593,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerCity12" />
+                                                                              <TextField fx:id="tfNewCustomerCity3" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -603,7 +603,7 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerPostcode12" />
+                                                                              <TextField fx:id="tfNewCustomerPostcode3" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -613,17 +613,17 @@
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </Text>
-                                                                              <TextField fx:id="tfNewCustomerCountry12" />
+                                                                              <TextField fx:id="tfNewCustomerCountry3" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                            <children>
-                                                                              <CheckBox fx:id="cbNewCustomerIsPrimary12" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                              <CheckBox fx:id="cbNewCustomerIsPrimary3" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                  <HBox.margin>
                                                                                     <Insets left="30.0" />
                                                                                  </HBox.margin>
                                                                               </CheckBox>
-                                                                              <CheckBox fx:id="cbNewCustomerIsMailing12" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                              <CheckBox fx:id="cbNewCustomerIsMailing3" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                  <HBox.margin>
                                                                                     <Insets left="20.0" />
                                                                                  </HBox.margin>
@@ -657,7 +657,7 @@
                                                                                                             <Insets left="30.0" />
                                                                                                          </HBox.margin>
                                                                                                       </Text>
-                                                                                                      <TextField fx:id="tfNewCustomerPhone111" />
+                                                                                                      <TextField fx:id="tfNewCustomerPhType" />
                                                                                                    </children>
                                                                                                 </HBox>
                                                                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -667,7 +667,7 @@
                                                                                                             <Insets left="30.0" />
                                                                                                          </HBox.margin>
                                                                                                       </Text>
-                                                                                                      <TextField fx:id="tfNewCustomerPhone11" />
+                                                                                                      <TextField fx:id="tfNewCustomerPhPrefix" />
                                                                                                    </children>
                                                                                                 </HBox>
                                                                                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -677,13 +677,13 @@
                                                                                                             <Insets left="30.0" />
                                                                                                          </HBox.margin>
                                                                                                       </Text>
-                                                                                                      <TextField fx:id="tfNewCustomerPhone1" />
-                                                                                                      <CheckBox fx:id="cbNewCustomerIsPrimary31" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                                      <TextField fx:id="tfNewCustomerPhNum" />
+                                                                                                      <CheckBox fx:id="cbNewCustomerIsPhPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                                          <HBox.margin>
                                                                                                             <Insets left="20.0" />
                                                                                                          </HBox.margin>
                                                                                                       </CheckBox>
-                                                                                                      <CheckBox fx:id="cbNewCustomerIsMailing31" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                                      <CheckBox fx:id="cbNewCustomerIsPhSMS" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                                          <HBox.margin>
                                                                                                             <Insets left="20.0" />
                                                                                                          </HBox.margin>
@@ -709,7 +709,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone1111" />
+                                                                                          <TextField fx:id="tfNewCustomerPhType1" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -719,7 +719,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone111" />
+                                                                                          <TextField fx:id="tfNewCustomerPhPrefix1" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -729,13 +729,13 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone11" />
-                                                                                          <CheckBox fx:id="cbNewCustomerIsPrimary311" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <TextField fx:id="tfNewCustomerPhNum1" />
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsPrimary1" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbNewCustomerIsMailing311" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsSMS1" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
@@ -757,7 +757,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone1112" />
+                                                                                          <TextField fx:id="tfNewCustomerPhType2" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -767,7 +767,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone111" />
+                                                                                          <TextField fx:id="tfNewCustomerPhPrefix2" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -777,13 +777,13 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone11" />
-                                                                                          <CheckBox fx:id="cbNewCustomerIsPrimary312" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <TextField fx:id="tfNewCustomerPhNum2" />
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbNewCustomerIsMailing312" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsSMS2" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
@@ -805,7 +805,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone1113" />
+                                                                                          <TextField fx:id="tfNewCustomerPhType3" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -815,7 +815,7 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone111" />
+                                                                                          <TextField fx:id="tfNewCustomerPhPrefix3" />
                                                                                        </children>
                                                                                     </HBox>
                                                                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -825,13 +825,13 @@
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewCustomerPhone11" />
-                                                                                          <CheckBox fx:id="cbNewCustomerIsPrimary313" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <TextField fx:id="tfNewCustomerPhNum3" />
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsPrimary3" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbNewCustomerIsMailing313" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbNewCustomerPhIsSMS3" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="20.0" />
                                                                                              </HBox.margin>
@@ -859,8 +859,8 @@
                                                                                                       <Insets left="30.0" />
                                                                                                    </HBox.margin>
                                                                                                 </Text>
-                                                                                                <TextField fx:id="tfNewCustomerEmail1" />
-                                                                                                <CheckBox fx:id="cbNewCustomerIsPrimary21" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                                <TextField fx:id="tfNewCustomerEmail" />
+                                                                                                <CheckBox fx:id="cbNewCustomerEmailIsPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                                    <HBox.margin>
                                                                                                       <Insets left="20.0" />
                                                                                                    </HBox.margin>
@@ -882,8 +882,8 @@
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Text>
-                                                                                    <TextField fx:id="tfNewCustomerEmail11" />
-                                                                                    <CheckBox fx:id="cbNewCustomerIsPrimary211" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <TextField fx:id="tfNewCustomerEmail1" />
+                                                                                    <CheckBox fx:id="cbNewCustomerEmailIsPrimary1" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -904,8 +904,8 @@
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Text>
-                                                                                    <TextField fx:id="tfNewCustomerEmail12" />
-                                                                                    <CheckBox fx:id="cbNewCustomerIsPrimary212" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <TextField fx:id="tfNewCustomerEmail2" />
+                                                                                    <CheckBox fx:id="cbNewCustomerEmailIsPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -926,8 +926,8 @@
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Text>
-                                                                                    <TextField fx:id="tfNewCustomerEmail13" />
-                                                                                    <CheckBox fx:id="cbNewCustomerIsPrimary213" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <TextField fx:id="tfNewCustomerEmail3" />
+                                                                                    <CheckBox fx:id="cbNewCustomerEmailIsPrimary3" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -1624,7 +1624,7 @@
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                             </Rectangle>
-                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="29.0">
+                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="29.0">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>

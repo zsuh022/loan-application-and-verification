@@ -65,6 +65,40 @@ public class NewLoanScreenController {
     private AnchorPane newLoanCoborrowersPane;
     @FXML
     private TextField tfNewLoanCoborrowerId;
+    @FXML
+    private TextField tfNewLoanCoborrowerId1;
+    @FXML
+    private TextField tfNewLoanCoborrowerId2;
+    @FXML
+    private TextField tfNewLoanCoborrowerId3;
+    @FXML
+    private TextField tfNewLoanCoborrowerId4;
+    @FXML
+    private TextField tfNewLoanCoborrowerId5;
+    @FXML
+    private TextField tfNewLoanCoborrowerId6;
+    @FXML
+    private TextField tfNewLoanCoborrowerId7;
+    @FXML
+    private TextField tfNewLoanCoborrowerId8;
+    @FXML
+    private TextField tfNewLoanCoborrowerId9;
+    @FXML
+    private TextField tfNewLoanCoborrowerId10;
+    @FXML
+    private TextField tfNewLoanCoborrowerId11;
+    @FXML
+    private TextField tfNewLoanCoborrowerId12;
+    @FXML
+    private TextField tfNewLoanCoborrowerId13;
+    @FXML
+    private TextField tfNewLoanCoborrowerId14;
+    @FXML
+    private TextField tfNewLoanCoborrowerId15;
+    @FXML
+    private TextField tfNewLoanCoborrowerId16;
+    @FXML
+    private TextField tfNewLoanCoborrowerId17;
 
 
     public boolean submitNewLoan() {
