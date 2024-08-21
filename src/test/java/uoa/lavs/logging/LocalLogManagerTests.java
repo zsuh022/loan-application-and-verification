@@ -2,7 +2,9 @@ package uoa.lavs.logging;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.MessageDescription;
 import uoa.lavs.mainframe.Status;
@@ -11,6 +13,9 @@ import uoa.lavs.mainframe.messages.customer.FindCustomerAdvanced;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomer;
 
 import java.io.File;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +24,35 @@ import java.util.HashMap;
 import static uoa.lavs.logging.LocalLogManager.*;
 
 public class LocalLogManagerTests {
+
+    @BeforeEach
+    public void setup() {
+        // delete lavs-data.db
+        File db = new File("lavs-data.db");
+        // clear log
+        File file = new File("log.json");
+        try {
+            Files.deleteIfExists(file.toPath());
+            Files.deleteIfExists(db.toPath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        // delete lavs-data.db
+        File db = new File("lavs-data.db");
+        // clear log
+        File file = new File("log.json");
+        try {
+            Files.deleteIfExists(file.toPath());
+            Files.deleteIfExists(db.toPath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Test
     public void testWriteLog() {
         int type = 1201;
@@ -92,7 +126,7 @@ public class LocalLogManagerTests {
         int type = 1201;
         String customerId = TEMPORARY_CUSTOMER_ID_PREFIX+"1";
         String title = "Mr";
-        String name = "John Doe";
+        String name = "Jerry";
         LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
         String occupation = "Software Engineer";
         String citizenship = "New Zealand";
@@ -109,7 +143,7 @@ public class LocalLogManagerTests {
 
         HashMap<String, String> properties2 = new HashMap<>(properties);
         properties.put("name", name);
-        properties2.put("name", "Doe John");
+        properties2.put("name", "Terry");
         // write to log
         writeToLog(type, properties);
         writeToLog(type, properties2);
@@ -118,7 +152,7 @@ public class LocalLogManagerTests {
         assert flushLog();
         // search for Doe John in database
         FindCustomerAdvanced search = new FindCustomerAdvanced();
-        search.setSearchName("Doe John");
+        search.setSearchName("Terry");
         search.send(Instance.getConnection());
         assert search.getCustomerCountFromServer() == 1;
     }
@@ -170,4 +204,73 @@ public class LocalLogManagerTests {
 
     }
 
+    @Test
+    public void testMalformedLog(){
+        // add a log entry
+        int type = 1201;
+        String title = "Mr";
+        String name = "John Doe";
+        LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
+        String occupation = "Software Engineer";
+        String citizenship = "New Zealand";
+        String visa = "Work Visa";
+        // create hashmap for a new customer entry
+        HashMap<String, String> properties = new HashMap<>();
+        properties.put("title", title);
+        properties.put("name", name);
+        properties.put("id", "543252625");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        properties.put("dob", formatter.format(dateOfBirth));
+        properties.put("occupation", occupation);
+        properties.put("citizenship", citizenship);
+        properties.put("visa", visa);
+        // write to log
+        writeToLog(type, properties);
+        // should write to log.json
+        // flush log
+        assert !flushLog();
+    }
+
+    @Test
+    public void testCannotWrite(){
+        // lock log.json
+        try{
+            RandomAccessFile logfile = new RandomAccessFile("log.json", "rw");
+            FileChannel channel = logfile.getChannel();
+            FileLock lock = channel.lock();
+            int type = 1201;
+            String title = "Mr";
+            String name = "John Doe";
+            LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
+            String occupation = "Software Engineer";
+            String citizenship = "New Zealand";
+            String visa = "Work Visa";
+            // create hashmap for a new customer entry
+            HashMap<String, String> properties = new HashMap<>();
+            properties.put("title", title);
+            properties.put("name", name);
+            properties.put("id", null);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            properties.put("dob", formatter.format(dateOfBirth));
+            properties.put("occupation", occupation);
+            properties.put("citizenship", citizenship);
+            properties.put("visa", visa);
+            // write to log
+            writeToLog(type, properties);
+            //unlock log.json
+
+            //read log.json
+            JSONArray log = null;
+            File file = new File("log.json");
+            try{
+                log = new JSONArray(Files.readString(file.toPath()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            assert log == null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
