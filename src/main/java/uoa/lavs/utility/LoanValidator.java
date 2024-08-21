@@ -1,8 +1,29 @@
 package uoa.lavs.utility;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.Mortgage;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class LoanValidator {
+
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(LoanValidator.class);
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
+
+    public static String generateTemporaryLoanId() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String timeAsString = LocalDateTime.now().format(dtf);
+        return TEMPORARY_LOAN_ID_PREFIX + timeAsString;
+    }
+
+    public Loan createLoan(Map<String, String> loanValuesMap) {
+
+    }
 
     public boolean validateLoan(Map<String, String> loanValuesMap) {
 
