@@ -102,14 +102,13 @@ public class NewLoanScreenController {
     private TextField tfNewLoanCoborrowerId17;
 
 
-    public boolean submitNewLoan() {
+    public void submitNewLoan() {
         fillLoanValuesMap();
 
-        if (!validateLoan(loanValuesMap)) {
-            return false;
+        if (validateLoan(loanValuesMap)) {
+            // create loan
+            // do something
         }
-
-        return true;
     }
 
     private void fillLoanValuesMap() {
