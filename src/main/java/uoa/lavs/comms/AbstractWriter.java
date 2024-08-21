@@ -55,12 +55,9 @@ public abstract class AbstractWriter<T> {
                 name,
                 type,
                 tranID);
-        try {
-            Map<String, String> properties = extractLogProperties(entity, customerID);
-            LocalLogManager.writeToLog(type, (HashMap<String, String>) properties);
-        } catch (Exception e) {
-            logger.fatal("Failed to write to log!! Error: {}", e.getMessage());
-        }
+
+        Map<String, String> properties = extractLogProperties(entity, customerID);
+        LocalLogManager.writeToLog(type, (HashMap<String, String>) properties);
     }
 
     protected void mainframeError(int code, String message, String customerID, T entity) {

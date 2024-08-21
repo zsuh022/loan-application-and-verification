@@ -6,6 +6,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,6 +42,9 @@
                                                    <VBox.margin>
                                                       <Insets top="15.0" />
                                                    </VBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </FontAwesomeIconView>
                                              </children>
                                           </VBox>
@@ -284,144 +290,307 @@
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="loanPaymentsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <children>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PAYMENT STUFF:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label text="HERE" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 1:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansLine1" text="123 Nowhere Lane" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address 2:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansLine2" text="Somewhere" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Suburb:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansSuburb" text="Important" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansCity" text="Auckland" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansPostcode" text="1234" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label fx:id="lbPaymentsLoansCountry" text="New Zealand" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                               </children>
-                                                            </VBox>
+                                                            <ScrollPane fx:id="loanPaymentScrollPane" opacity="0.8" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                              <content>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                                                              </content>
+                                                            </ScrollPane>
                                                          </children>
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="loanCoborrowersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <children>
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                                     <children>
-                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets left="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Text>
-                                                                        <Label text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                                                           <HBox.margin>
-                                                                              <Insets right="30.0" />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                  </HBox>
-                                                               </children>
-                                                            </VBox>
+                                                            <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../screens.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <tabs>
+                                                                <Tab text="Coborrowers">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower1" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower2" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower3" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower4" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower5" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                  </content>
+                                                                </Tab>
+                                                                <Tab text="Coborrowers">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower6" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower7" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower8" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower9" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower10" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower11" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                  </content>
+                                                                </Tab>
+                                                                  <Tab text="Coborrowers">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                 <children>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower12" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower13" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower14" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower15" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower16" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coborrower:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets left="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Text>
+                                                                                          <Label fx:id="lbLoansCoborrower17" text="corborrowe styff" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                                             <HBox.margin>
+                                                                                                <Insets right="30.0" />
+                                                                                             </HBox.margin>
+                                                                                          </Label>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </content>
+                                                                  </Tab>
+                                                              </tabs>
+                                                            </TabPane>
                                                          </children>
                                                       </AnchorPane>
                                                       <AnchorPane fx:id="loanSummaryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">

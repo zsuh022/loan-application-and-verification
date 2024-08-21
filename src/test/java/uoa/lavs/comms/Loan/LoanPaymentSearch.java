@@ -2,7 +2,9 @@ package uoa.lavs.comms.Loan;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import uoa.lavs.comms.AbstractLoanTest;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Payments;
 
 import java.io.IOException;
@@ -37,4 +39,23 @@ public class LoanPaymentSearch extends AbstractLoanTest<Payments> {
         }
 
     }
+
+    @Test
+    protected void testPaymentFail() {
+        List<Payments> list = sum.findAll(mockConnection, loanId);
+
+        assertEquals(0, list.size());
+
+    }
+
+    @Test
+    protected void testUnsupportedMethod() {
+        Executable executable = () -> {
+            Payments result = sum.findById(conn, "1");
+        };
+
+        assertThrows(UnsupportedOperationException.class, executable, "findAll should throw UnsupportedOperationException");
+    }
+
+
 }

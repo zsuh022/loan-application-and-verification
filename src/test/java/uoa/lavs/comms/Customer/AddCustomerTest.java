@@ -2,26 +2,31 @@ package uoa.lavs.comms.Customer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import uoa.lavs.comms.AbstractCustomerTest;
-import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.MockConnection;
-import uoa.lavs.mainframe.Response;
-import uoa.lavs.mainframe.Status;
+import uoa.lavs.mainframe.*;
+import uoa.lavs.mainframe.messages.customer.LoadCustomerEmail;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Customer.CustomerEmail;
+import uoa.lavs.models.Loan.LoanDetails;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AddCustomerTest extends AbstractCustomerTest<Customer> {
-
+    String id = null;
 
     @Override
     @BeforeEach
     protected void setup() throws IOException {
         super.setup();
-        addCustomer.add(conn, customer);
+        id = addCustomer.add(conn, customer);
     }
 
     @Override
@@ -37,19 +42,14 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
 
     @Test
     protected void testCustomerSuccess() {
-        Customer cus = searchCustomer.findById(conn, "1");
+        Customer cus = searchCustomer.findById(conn, id);
 
         assertDetails(customer, cus);
     }
 
     @Test
     protected void testCustomerFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456L);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
-        Customer cus = searchCustomer.findById(mockConnection, String.valueOf(1));
+        Customer cus = searchCustomer.findById(mockConnection, "1");
 
         assertNull(cus.getTitle());
         assertNull(cus.getName());
@@ -57,6 +57,15 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
         assertNull(cus.getOccupation());
         assertNull(cus.getCitizenship());
         assertNull(cus.getVisa());
+    }
+
+    @Test
+    protected void testUnsupportedMethod() {
+        Executable executable = () -> {
+            List<Customer> result = searchCustomer.findAll(conn, "1");
+        };
+
+        assertThrows(UnsupportedOperationException.class, executable, "findAll should throw UnsupportedOperationException");
     }
 
 }

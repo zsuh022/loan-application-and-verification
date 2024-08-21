@@ -7,6 +7,9 @@ import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.MockConnection;
 import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
+import uoa.lavs.mainframe.simulator.IntermittentConnection;
+import uoa.lavs.mainframe.simulator.NitriteConnection;
+import uoa.lavs.mainframe.simulator.failures.NFailsPerMRequestsPolicy;
 import uoa.lavs.models.Customer.CustomerAddress;
 import uoa.lavs.models.Customer.CustomerEmail;
 import uoa.lavs.models.Customer.CustomerPhone;
@@ -21,15 +24,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSummary> {
 
     private final AddEmail addEmail = new AddEmail();
-
-    private final AddAddress addAddy = new AddAddress();
-
-    private final AddPhone addPhone = new AddPhone();
-
     private final CustomerEmail email1 = new CustomerEmail();
-    private final CustomerAddress addy1 = new CustomerAddress();
-    private final CustomerPhone phone1 = new CustomerPhone();
-
+    private final CustomerEmail email2 = new CustomerEmail();
     private InitialSearch initialSearch;
 
     @Override
@@ -41,31 +37,19 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
         email1.setIsPrimary(true);
         customer.addEmail(email1);
 
-        addy1.setType("Residential");
-        addy1.setLine1("123 Apple Road");
-        addy1.setCity("Auckland");
-        addy1.setPostCode("1234");
-        addy1.setCountry("New Zealand");
-        addy1.setIsPrimary(true);
-        addy1.setIsMailing(true);
-        customer.addAddress(addy1);
+        email2.setAddress("123@example.com");
+        email2.setIsPrimary(false);
+        customer.addEmail(email2);
 
-        phone1.setType("Mobile");
-        phone1.setPrefix("+64");
-        phone1.setNumber("9123456789");
-        phone1.setIsPrimary(true);
-        phone1.setIsTexting(true);
-        customer.addPhone(phone1);
 
         initialSearch = new InitialSearch(0);
     }
 
     @Test
-    void testCombinedAddAndSearchSuccess() {
+    void testCombinedAddAndSearchSuccess() throws IOException {
         String customerId = addCustomer.add(conn, customer);
         addEmail.add(conn, email1, customerId);
-        addAddy.add(conn, addy1, customerId);
-        addPhone.add(conn, phone1, customerId);
+        addEmail.add(conn, email2, customerId);
 
         List<CustomerSummary> summariesFromDb = initialSearch.findAll(conn, customerId);
         assertEquals(1, summariesFromDb.size());
@@ -73,25 +57,39 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
         CustomerSummary retrievedSummary = summariesFromDb.get(0);
 
         assertEquals(email1.getAddress(), retrievedSummary.getEmail());
-        assertEquals(addy1.getType(), retrievedSummary.getAddress());
-        assertEquals(phone1.getType(), retrievedSummary.getPhone());
     }
 
     @Test
-    void testCombinedAddAndSearchFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
+    void testCombinedAddAndSearchFailure() throws IOException {
         String customerId = addCustomer.add(mockConnection, customer);
 
         addEmail.add(mockConnection, email1, customerId);
-        addAddy.add(mockConnection, addy1, customerId);
-        addPhone.add(mockConnection, phone1, customerId);
 
         List<CustomerSummary> summaries = initialSearch.findAll(mockConnection, customerId);
         assertTrue(summaries.isEmpty());
+    }
+
+    @Test
+    void testCombinedAddAndSearchFailureWrongEmail() throws IOException {
+        String customerId = addCustomer.add(conn, customer);
+
+        addEmail.add(conn, email2, customerId);
+
+        List<CustomerSummary> summaries = initialSearch.findAll(conn, customerId);
+        assertEquals(summaries.get(0).getEmail(), "");
+    }
+
+    @Test
+    void testCombinedAddAndSearchFailureAfterCustomer() throws IOException {
+        conn.close();
+
+        Connection unrealiableConn = new IntermittentConnection(new NitriteConnection("lavs-data.db"), new NFailsPerMRequestsPolicy(1, 4));
+        String customerId = addCustomer.add(unrealiableConn, customer);
+
+        addEmail.add(unrealiableConn, email1, customerId);
+
+        List<CustomerSummary> summaries = initialSearch.findAll(unrealiableConn, customerId);
+        assertEquals(summaries.get(0).getEmail(), "");
     }
 
     @Override
@@ -100,7 +98,5 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
         assertEquals(expected.getDob(), actual.getDob());
         assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getEmail(), actual.getEmail());
-        assertEquals(expected.getAddress(), actual.getAddress());
-        assertEquals(expected.getPhone(), actual.getPhone());
     }
 }

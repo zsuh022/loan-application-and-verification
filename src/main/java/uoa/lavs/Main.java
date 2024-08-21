@@ -5,11 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.AddCustomer;
+import uoa.lavs.comms.Loan.AddLoan;
 import uoa.lavs.logging.LocalLogManager;
-import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.Instance;
-import uoa.lavs.mainframe.Status;
+import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
+import uoa.lavs.mainframe.simulator.NitriteConnection;
 import uoa.lavs.mainframe.simulator.RecorderConnection;
 import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +22,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.utility.LoanFactory;
+import uoa.lavs.utility.LoanType;
+import uoa.lavs.utility.PaymentFrequency;
 
 public class Main extends Application{
 
@@ -31,6 +35,38 @@ public class Main extends Application{
 
     public static void main(String[] args) {
         // flush log immediately to avoid inconsistencies with mainframe
+        //test stuff start
+
+        Customer customer = new Customer();
+        customer.setCustomerId("TEMP_CUSTOMER_");
+        customer.setTitle("Mr");
+        customer.setName("John Doe");
+        customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
+        customer.setOccupation("Engineer");
+        customer.setCitizenship("New Zealand");
+        customer.setVisa(null);
+        AddCustomer addCustomer = new AddCustomer();
+        String customerId = addCustomer.add(Instance.getConnection(), customer);
+        System.out.println("Customer ID: " + customerId);
+        AddLoan addLoan = new AddLoan();
+        Loan loan = new LoanFactory().getLoan(LoanType.Mortgage);
+        loan.setLoanId("TEMP_LOAN_");
+        loan.setCustomerID(customerId);
+        loan.setCustomerName(customer.getName());
+        loan.setPrincipal(10000.0);
+        loan.setRateType(RateType.Fixed);
+        loan.setRate(10.0);
+        loan.setStartDate(java.time.LocalDate.of(2024, 2, 11));
+        loan.setPeriod(5);
+        loan.setCompoundingFrequency(Frequency.Yearly);
+        loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
+        loan.setPaymentAmount(1000.0);
+        loan.setStatus(LoanStatus.Active);
+        loan.setTerm(360);
+        String loanId = addLoan.add(Instance.getConnection(), loan);
+        System.out.println("Loan ID: " + loanId);
+
+        //test stuff end
         LocalLogManager.flushLog();
         launch();
         // the following shows two ways of using the mainframe interface

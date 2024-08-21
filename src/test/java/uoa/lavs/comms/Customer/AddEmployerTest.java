@@ -7,6 +7,7 @@ import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.MockConnection;
 import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
+import uoa.lavs.models.Customer.CustomerEmail;
 import uoa.lavs.models.Customer.CustomerEmployer;
 
 import java.io.IOException;
@@ -99,7 +100,7 @@ public class AddEmployerTest extends AbstractCustomerTest<CustomerEmployer> {
     }
 
     @Test
-    void testAddEmployerSuccess() {
+    void testAddEmployerSuccess() throws IOException {
         String customerId = addCustomer.add(conn, customer);
 
         for (CustomerEmployer employer : customer.getEmployerList()) {
@@ -158,12 +159,7 @@ public class AddEmployerTest extends AbstractCustomerTest<CustomerEmployer> {
     }
 
     @Test
-    void testAddEmployerFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
+    void testAddEmployerFailureAll() throws IOException {
         String customerId = addCustomer.add(mockConnection, customer);
 
         for (CustomerEmployer employer : customer.getEmployerList()) {
@@ -172,5 +168,17 @@ public class AddEmployerTest extends AbstractCustomerTest<CustomerEmployer> {
 
         List<CustomerEmployer> employers = searchEmployer.findAll(mockConnection, customerId);
         assertEquals(0, employers.size());
+    }
+
+    @Test
+    void testAddEmployerFailureSingular() throws IOException {
+        String customerId = addCustomer.add(mockConnection, customer);
+
+        for (CustomerEmployer employer : customer.getEmployerList()) {
+            addEmployer.add(mockConnection, employer, customerId);
+        }
+
+        CustomerEmployer employer = searchEmployer.findById(mockConnection, customerId, 1, 1);
+        assertNull(employer.getName());
     }
 }

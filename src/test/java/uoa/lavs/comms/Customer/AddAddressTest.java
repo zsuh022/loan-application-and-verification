@@ -90,7 +90,7 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
 
 
     @Test
-    void testAddAddressSuccess() {
+    void testAddAddressSuccess() throws IOException {
         String customerId = addCustomer.add(conn, customer);
 
         for (CustomerAddress ad : customer.getAddressList()) {
@@ -147,19 +147,25 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
     }
 
     @Test
-    void testAddAddressFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
+    void testAddAddressFailureAll() {
 
         String customerId = addCustomer.add(mockConnection, customer);
-
         for (CustomerAddress ad : customer.getAddressList()) {
             addAddy.add(mockConnection, ad, customerId);
         }
 
         List<CustomerAddress> addresses = searchAddy.findAll(mockConnection, customerId);
         assertEquals(0, addresses.size());
+    }
+
+    @Test
+    void testAddAddressFailureSingular() {
+        String customerId = addCustomer.add(mockConnection, customer);
+        for (CustomerAddress ad : customer.getAddressList()) {
+            addAddy.add(mockConnection, ad, customerId);
+        }
+
+        CustomerAddress addresses = searchAddy.findById(mockConnection, customerId, 1, 1);
+        assertNull(addresses.getLine1());
     }
 }

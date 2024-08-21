@@ -13,6 +13,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import uoa.lavs.Main;
+import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.utility.CustomerValidator;
 import uoa.lavs.models.Customer.Customer;
@@ -415,9 +416,11 @@ public class NewCustomerScreenController {
                 employerValuesList, phoneValuesList)) {
             Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
                     emailValuesList, employerValuesList, phoneValuesList);
-            CustomerBucket customerBucket = CustomerBucket.getInstance();
-            customerBucket.setCustomer(newCustomer);
-            Main.setScreen(Screens.CUSTOMER);
+            //set active customer
+            CustomerBucket.getInstance().setCustomer(newCustomer);
+            CustomerScreenController.updateCustomer();
+            //load customer screen
+            Main.setScreen(SceneManager.Screens.CUSTOMER);
         }
     }
 
@@ -753,7 +756,7 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 
