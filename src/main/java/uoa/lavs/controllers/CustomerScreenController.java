@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
-import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Customer.*;
 import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
@@ -529,12 +529,64 @@ public class CustomerScreenController {
         lbCustomerOccupation.setText(activeCustomer.getOccupation());
         lbCustomerCitizenship.setText(activeCustomer.getCitizenship());
         lbCustomerVisa.setText(activeCustomer.getVisa());
-        // TODO: lbCustomerPhone.setText(activeCustomer.getPhoneList())
-        // TODO: lbCustomerEmail.setText(activeCustomer.getEmailList());
     }
 
     public void setAddressPaneInformation() {
-        // TODO:
+        List<CustomerAddress> addressList = activeCustomer.getAddressList();
+
+        if (!addressList.isEmpty()) {
+            lbCustomerType.setText(addressList.get(0).getType());
+            lbCustomerLine1.setText(addressList.get(0).getLine1());
+            lbCustomerLine2.setText(addressList.get(0).getLine2());
+            lbCustomerSuburb.setText(addressList.get(0).getSuburb());
+            lbCustomerCity.setText(addressList.get(0).getCity());
+            lbCustomerPostcode.setText(addressList.get(0).getPostCode());
+            lbCustomerCountry.setText(addressList.get(0).getCountry());
+            cbCustomerIsPrimary.setSelected(addressList.get(0).getIsPrimary());
+            cbCustomerIsMailing.setSelected(addressList.get(0).getIsMailing());
+        }
+        if (addressList.size() > 1) {
+            lbCustomerType1.setText(addressList.get(1).getType());
+            lbCustomerLine11.setText(addressList.get(1).getLine1());
+            lbCustomerLine21.setText(addressList.get(1).getLine2());
+            lbCustomerSuburb1.setText(addressList.get(1).getSuburb());
+            lbCustomerCity1.setText(addressList.get(1).getCity());
+            lbCustomerPostcode1.setText(addressList.get(1).getPostCode());
+            lbCustomerCountry1.setText(addressList.get(1).getCountry());
+            cbCustomerIsPrimary1.setSelected(addressList.get(1).getIsPrimary());
+            cbCustomerIsMailing1.setSelected(addressList.get(1).getIsMailing());
+        }
+        if (addressList.size() > 2) {
+            lbCustomerType2.setText(addressList.get(2).getType());
+            lbCustomerLine12.setText(addressList.get(2).getLine1());
+            lbCustomerLine22.setText(addressList.get(2).getLine2());
+            lbCustomerSuburb2.setText(addressList.get(2).getSuburb());
+            lbCustomerCity2.setText(addressList.get(2).getCity());
+            lbCustomerPostcode2.setText(addressList.get(2).getPostCode());
+            lbCustomerCountry2.setText(addressList.get(2).getCountry());
+            cbCustomerIsPrimary2.setSelected(addressList.get(2).getIsPrimary());
+            cbCustomerIsMailing2.setSelected(addressList.get(2).getIsMailing());
+        }
+        if (addressList.size() > 3) {
+            lbCustomerType3.setText(addressList.get(3).getType());
+            lbCustomerLine13.setText(addressList.get(3).getLine1());
+            lbCustomerLine23.setText(addressList.get(3).getLine2());
+            lbCustomerSuburb3.setText(addressList.get(3).getSuburb());
+            lbCustomerCity3.setText(addressList.get(3).getCity());
+            lbCustomerPostcode3.setText(addressList.get(3).getPostCode());
+            lbCustomerCountry3.setText(addressList.get(3).getCountry());
+            cbCustomerIsPrimary3.setSelected(addressList.get(3).getIsPrimary());
+            cbCustomerIsMailing3.setSelected(addressList.get(3).getIsMailing());
+        }
+    }
+
+    public void setContactsPaneInformation() {
+        List<CustomerPhone> phoneList = activeCustomer.getPhoneList();
+
+
+        List<CustomerEmail> emailList = activeCustomer.getEmailList();
+
+
     }
 
     public void setLoanPaneInformation() {
@@ -542,11 +594,15 @@ public class CustomerScreenController {
     }
 
     public void setEmployerPaneInformation() {
-        // TODO:
+        List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
+
+
     }
 
     public void setNotesPaneInformation() {
-        taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
+        if (activeCustomer.getNote() != null) {
+            taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
+        }
     }
 
     @FXML
