@@ -12,14 +12,19 @@ import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CustomerScreenController {
 
     private Customer activeCustomer;
 
     private HashMap<String, String> changeMap = new HashMap<>();
+
+    private CustomerValidator customerValidator = new CustomerValidator();
 
     @FXML
     private FontAwesomeIconView CustomerBack;
@@ -110,29 +115,31 @@ public class CustomerScreenController {
     @FXML
     private TextArea taCustomerNotes;
 
-    public boolean submitCustomerUpdate(HashMap<String, String> map) {
-        // TODO:
-        return true;
+    public void submitCustomerUpdate(HashMap<String, String> customerMap, List<Map<String, String>> addressList,
+                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                     List<Map<String, String>> phoneList) {
+        // validate
+        if (customerValidator.validateCustomer(customerMap, addressList, emailList, employerList, phoneList)) {
+            // replace active customer
+            Customer updatedCustomer = customerValidator.createCustomer(customerMap, addressList, emailList, employerList, phoneList);
+            activeCustomer = updatedCustomer;
+        }
     }
 
-    public boolean submitAddressUpdate(HashMap<String, String> map) {
+    public void submitAddressUpdate(HashMap<String, String> map) {
         // TODO:
-        return true;
     }
 
-    public boolean submitEmailUpdate(HashMap<String, String> map) {
+    public void submitEmailUpdate(HashMap<String, String> map) {
         // TODO:
-        return true;
     }
 
-    public boolean submitNoteUpdate(HashMap<String, String> map) {
+    public void submitNoteUpdate(HashMap<String, String> map) {
         // TODO:
-        return true;
     }
 
-    public boolean submitPhoneUpdate(HashMap<String, String> map) {
+    public void submitPhoneUpdate(HashMap<String, String> map) {
         // TODO:
-        return true;
     }
 
     @FXML
