@@ -126,25 +126,9 @@ public class CustomerScreenController {
         }
     }
 
-    public void submitAddressUpdate(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void submitEmailUpdate(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void submitNoteUpdate(HashMap<String, String> map) {
-        // TODO:
-    }
-
-    public void submitPhoneUpdate(HashMap<String, String> map) {
-        // TODO:
-    }
-
     @FXML
     private void onCustomerBackClicked(MouseEvent event) {
-        // go to drafts?
+        // go to
     }
 
     @FXML
