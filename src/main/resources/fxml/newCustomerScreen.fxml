@@ -128,7 +128,7 @@
                                              <children>
                                                 <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <AnchorPane fx:id="newCustomerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                      <AnchorPane fx:id="newCustomerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
                                                          <children>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
@@ -635,7 +635,7 @@
                                                             </AnchorPane>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane fx:id="newCustomerContactsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                      <AnchorPane fx:id="newCustomerContactsPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
