@@ -32,6 +32,7 @@ public class CustomerResultReader {
             left.getChildren().add(id);
             left.getChildren().add(name);
             right.getChildren().add(address);
+            pane.setCursor(javafx.scene.Cursor.HAND);
             pane.setOnMouseClicked(event -> {
                 //get customer id
                 String customerId = summary.getId();
