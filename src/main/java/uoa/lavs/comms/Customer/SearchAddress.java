@@ -50,10 +50,9 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
             for (int i = 1; i < addresses.getCountFromServer() + 1; i++) {
                 CustomerAddress address = findById(conn, customerId, i,
                         addresses.getNumberFromServer(i));
-                if (address != null) {
-                    list.add(address);
-                    if (address.getLine1() != null) logger.info("Address: {}, successfully loaded", address.getLine1());
-                }
+
+                list.add(address);
+                logger.info("Address: {}, successfully loaded", address.getLine1());
             }
             return list;
         }, status -> {

@@ -23,10 +23,9 @@ public class CustomerResultReader {
 
             Label id = new Label("Customer ID: " + summary.getId());
             Label name = new Label("Customer Name: " + summary.getName());
-            Label address = new Label("Customer Address: " + summary.getAddress());
             left.getChildren().add(id);
             left.getChildren().add(name);
-            right.getChildren().add(address);
+
             panes.add(pane);
         }
         return panes;

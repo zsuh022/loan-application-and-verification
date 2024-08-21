@@ -52,7 +52,7 @@ public class SearchEmployer extends AbstractSearchable<CustomerEmployer> {
             for (int i = 1; i < employers.getCountFromServer() + 1; i++) {
                 CustomerEmployer employer = findById(conn, customerId, i, employers.getNumberFromServer(i));
                 list.add(employer);
-                if (employer.getName() != null) logger.info("Employer: {}, successfully loaded", employer.getName());
+                logger.info("Employer: {}, successfully loaded", employer.getName());
 
             }
             return list;

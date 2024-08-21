@@ -31,7 +31,7 @@ public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Customer> {
     }
 
     @Test
-    protected void updateCustomerTest() {
+    protected void updateCustomerTest() throws IOException {
         addCustomer.add(conn, customer2);
         Customer dbCustomer = searchCustomer.findById(conn, customerID);
         assertDetails(customer2, dbCustomer);

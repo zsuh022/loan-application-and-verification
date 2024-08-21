@@ -2,7 +2,10 @@ package uoa.lavs.comms.Loan;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import uoa.lavs.comms.AbstractLoanTest;
+import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Customer.CustomerAddress;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 
@@ -16,6 +19,7 @@ public class AddCoborrowerTest extends AbstractLoanTest<Coborrower> {
 
     AddCoborrower addCoborrower = new AddCoborrower();
     SearchCoborrower searchCoborrower = new SearchCoborrower();
+    Coborrower coborrower = new Coborrower();
     String loanId = null;
 
     @Override
@@ -24,13 +28,12 @@ public class AddCoborrowerTest extends AbstractLoanTest<Coborrower> {
         super.setup();
         loanId = addLoan.add(conn, loan);
 
-        Coborrower coborrower = new Coborrower();
         coborrower.setId(customerId1);
         coborrower.setName(customer1.getName());
         coborrower.setNumber(null);
 
         loan.addCoborrower(coborrower);
-        addCoborrower.add(conn, coborrower, loanId);
+
     }
 
     @Override
@@ -41,6 +44,7 @@ public class AddCoborrowerTest extends AbstractLoanTest<Coborrower> {
 
     @Test
     protected void testCoborrowerSuccess() {
+        addCoborrower.add(conn, coborrower, loanId);
         List<Coborrower> coborrowersFromDb = searchCoborrower.findAll(conn, loanId);
 
         List<Coborrower> expectedCoborrowers = loan.getCoborrowerList();
@@ -75,5 +79,24 @@ public class AddCoborrowerTest extends AbstractLoanTest<Coborrower> {
                 fail("Unexpected coborrower found: " + dbCoborrower.getName());
             }
         }
+    }
+
+    @Test
+    void testAddCoborrowerFailureAll() {
+
+
+        addCoborrower.add(mockConnection, coborrower, loanId);
+
+        List<Coborrower> list = searchCoborrower.findAll(mockConnection, customerId);
+        assertEquals(0, list.size());
+    }
+
+    @Test
+    protected void testUnsupportedMethod() {
+        Executable executable = () -> {
+            Coborrower result = searchCoborrower.findById(conn, "1");
+        };
+
+        assertThrows(UnsupportedOperationException.class, executable, "findAll should throw UnsupportedOperationException");
     }
 }

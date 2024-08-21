@@ -43,7 +43,7 @@ public class SearchEmail extends AbstractSearchable<CustomerEmail> {
             for (int i = 1; i < emails.getCountFromServer() + 1; i++) {
                 CustomerEmail email = findById(conn, customerId, i, emails.getNumberFromServer(i));
                 list.add(email);
-                if (email.getAddress() != null) logger.info("Email: {}, successfully loaded", email.getAddress());
+                logger.info("Email: {}, successfully loaded", email.getAddress());
             }
             return list;
         }, status -> {
