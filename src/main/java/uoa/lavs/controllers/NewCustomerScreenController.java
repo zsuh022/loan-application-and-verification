@@ -436,7 +436,7 @@ public class NewCustomerScreenController {
     private void fillAddressValuesList() {
         addressValuesList.clear();
 
-        for (int i = 0; i < addressValuesList.size(); i++) {
+        for (int i = 0; i < addressTabPane.getTabs().size(); i++) {
             AnchorPane pane = (AnchorPane) addressTabPane.getTabs().get(i).getContent();
             Map<String, String> addressMap = new HashMap<>();
 

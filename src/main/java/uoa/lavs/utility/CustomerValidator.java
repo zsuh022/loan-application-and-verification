@@ -352,11 +352,6 @@ public class CustomerValidator {
                 logger.error("ValidateEmployer method failed: Customer employer email is empty");
                 return false;
             }
-
-            if (employerMap.get("web") == null || employerMap.get("web").isEmpty()) {
-                logger.error("ValidateEmployer method failed: Customer employer web is empty");
-                return false;
-            }
         }
 
         logger.info("Validated employer in CustomerValidator successfully");
