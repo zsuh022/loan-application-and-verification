@@ -36,7 +36,7 @@ public class SearchAddress extends AbstractSearchable<CustomerAddress> {
             newAddress.setIsMailing(address.getIsMailingFromServer());
             return newAddress;
         }, status -> {
-            return null;
+            return new CustomerAddress();
         });
     }
 

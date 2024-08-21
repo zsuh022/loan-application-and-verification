@@ -21,9 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSummary> {
 
     private final AddEmail addEmail = new AddEmail();
-
     private final AddAddress addAddy = new AddAddress();
-
     private final AddPhone addPhone = new AddPhone();
 
     private final CustomerEmail email1 = new CustomerEmail();
@@ -79,11 +77,6 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
 
     @Test
     void testCombinedAddAndSearchFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
         String customerId = addCustomer.add(mockConnection, customer);
 
         addEmail.add(mockConnection, email1, customerId);
@@ -93,7 +86,7 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
         List<CustomerSummary> summaries = initialSearch.findAll(mockConnection, customerId);
         assertTrue(summaries.isEmpty());
     }
-
+    
     @Override
     protected void assertDetails(CustomerSummary expected, CustomerSummary actual) {
         assertEquals(expected.getName(), actual.getName());

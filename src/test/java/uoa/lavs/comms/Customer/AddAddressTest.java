@@ -147,19 +147,25 @@ public class AddAddressTest extends AbstractCustomerTest<CustomerAddress> {
     }
 
     @Test
-    void testAddAddressFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
+    void testAddAddressFailureAll() {
 
-        Connection mockConnection = new MockConnection(errorResponse);
-
-        String customerId = addCustomer.add(mockConnection, customer);
-
+        String customerId = addCustomer.add(conn, customer);
         for (CustomerAddress ad : customer.getAddressList()) {
-            addAddy.add(mockConnection, ad, customerId);
+            addAddy.add(conn, ad, customerId);
         }
 
         List<CustomerAddress> addresses = searchAddy.findAll(mockConnection, customerId);
         assertEquals(0, addresses.size());
+    }
+
+    @Test
+    void testAddAddressFailureSingular() {
+        String customerId = addCustomer.add(conn, customer);
+        for (CustomerAddress ad : customer.getAddressList()) {
+            addAddy.add(conn, ad, customerId);
+        }
+
+        CustomerAddress addresses = searchAddy.findById(mockConnection, customerId, 1, 1);
+        assertNull(addresses.getLine1());
     }
 }

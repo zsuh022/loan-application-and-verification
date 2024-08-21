@@ -19,10 +19,6 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
     protected CustomerAddress address1, address2, address3, address4, address5;
     protected CustomerEmployer employer1;
 
-    protected final AddPhone addPhone = new AddPhone();
-    protected final AddEmail addEmail = new AddEmail();
-    protected final AddAddress addAddress = new AddAddress();
-
     @Override
     @BeforeEach
     protected void setup() throws IOException {
@@ -143,22 +139,4 @@ public abstract class AbstractExtendedCustomerTest<T> extends AbstractCustomerTe
         customer.addEmployer(employer1);
     }
 
-    protected void addPhones(Connection conn, String customerId) {
-        addPhone.add(conn, phone1, customerId);
-        addPhone.add(conn, phone2, customerId);
-        addPhone.add(conn, phone3, customerId);
-    }
-
-    protected void addEmails(Connection conn, String customerId) {
-        addEmail.add(conn, email1, customerId);
-        addEmail.add(conn, email2, customerId);
-    }
-
-    protected void addAddresses(Connection conn, String customerId) {
-        addAddress.add(conn, address1, customerId);
-        addAddress.add(conn, address2, customerId);
-        addAddress.add(conn, address3, customerId);
-        addAddress.add(conn, address4, customerId);
-        addAddress.add(conn, address5, customerId);
-    }
 }

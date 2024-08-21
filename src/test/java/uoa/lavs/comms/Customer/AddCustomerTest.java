@@ -15,13 +15,13 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AddCustomerTest extends AbstractCustomerTest<Customer> {
-
+    String id = null;
 
     @Override
     @BeforeEach
     protected void setup() throws IOException {
         super.setup();
-        addCustomer.add(conn, customer);
+        id = addCustomer.add(conn, customer);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
 
     @Test
     protected void testCustomerSuccess() {
-        Customer cus = searchCustomer.findById(conn, "1");
+        Customer cus = searchCustomer.findById(conn, id);
 
         assertDetails(customer, cus);
     }

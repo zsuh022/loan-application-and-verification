@@ -3,13 +3,13 @@ package uoa.lavs.comms;
 import org.junit.jupiter.api.BeforeEach;
 import uoa.lavs.comms.Customer.AddCustomer;
 import uoa.lavs.comms.Customer.SearchCustomer;
-import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.simulator.NitriteConnection;
 import uoa.lavs.models.Customer.Customer;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 
 import static java.nio.file.Files.deleteIfExists;
 
@@ -22,6 +22,7 @@ public abstract class AbstractCustomerTest<T> {
     protected final Customer customer = new Customer();
     protected final Customer customer1 = new Customer();
     protected Connection conn;
+    protected Connection mockConnection;
 
     @BeforeEach
     protected void setup() throws IOException {
@@ -45,7 +46,14 @@ public abstract class AbstractCustomerTest<T> {
         customer1.setOccupation("Engineer");
         customer1.setCitizenship("New Zealand");
         customer1.setVisa(null);
+
+        Status errorStatus = new Status(404, "Some problem", 123456);
+        Response errorResponse = new Response(errorStatus, new HashMap<>());
+
+        mockConnection = new MockConnection(errorResponse);
     }
 
     protected abstract void assertDetails(T expected, T actual);
+
+
 }
