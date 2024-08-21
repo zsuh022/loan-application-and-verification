@@ -172,13 +172,13 @@ public class CustomerValidatorTests {
 
     @Test
     void testValidateCustomer_nullDateOfBirth() {
-        validCustomerMap.put("dateOfBirth", null);
+        validCustomerMap.put("dob", null);
         assertFalse(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
     }
 
     @Test
     void testValidateCustomer_emptyDateOfBirth() {
-        validCustomerMap.put("dateOfBirth", "");
+        validCustomerMap.put("dob", "");
         assertFalse(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
     }
 
