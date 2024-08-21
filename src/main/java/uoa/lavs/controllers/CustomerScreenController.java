@@ -531,7 +531,7 @@ public class CustomerScreenController {
 
     @FXML
     private void onCustomerBackClicked(MouseEvent event) {
-        // go to drafts?
+        Main.setScreen(Screens.SEARCH_CUSTOMER);
     }
 
     @FXML

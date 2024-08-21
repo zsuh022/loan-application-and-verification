@@ -44,6 +44,9 @@
                                                    <VBox.margin>
                                                       <Insets top="15.0" />
                                                    </VBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </FontAwesomeIconView>
                                              </children>
                                           </VBox>
