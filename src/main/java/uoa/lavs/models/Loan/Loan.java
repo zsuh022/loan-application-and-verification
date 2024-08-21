@@ -46,10 +46,6 @@ public abstract class Loan {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     public Double getPrincipal() {
         return principal;
     }
@@ -100,6 +96,10 @@ public abstract class Loan {
 
     public void addCoborrower(Coborrower coborrower) {
         this.coborrowerList.add(coborrower);
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public void setPrincipal(Double principal) {

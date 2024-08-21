@@ -2,9 +2,11 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.Mortgage;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
@@ -22,7 +24,37 @@ public class LoanValidator {
     }
 
     public Loan createLoan(Map<String, String> loanValuesMap) {
+        // assume loan is mortgage
+        Loan loan = new Mortgage();
 
+        loan.setLoanId(generateTemporaryLoanId());
+        loan.setCustomerID(loanValuesMap.get("customerId"));
+        loan.setPrincipal(Double.parseDouble(loanValuesMap.get("principal")));
+        loan.setRate(Double.parseDouble(loanValuesMap.get("rate")));
+
+        // loan.setRateType();
+
+        loan.setStartDate(LocalDate.parse(loanValuesMap.get("startDate")));
+        loan.setPeriod(Integer.parseInt(loanValuesMap.get("period")));
+
+        // loan.setCompoundingFrequency();
+        // loan.setPaymentFrequency();
+
+        loan.setPaymentAmount(Double.parseDouble(loanValuesMap.get("amount")));
+
+        // isInterestOnly
+
+        // loan.setStatus(LoanStatus.Active);
+
+        for (int i = 0; i < 18; i++) {
+            String coborrowerId = loanValuesMap.get("coborrowerId" + i);
+            if (coborrowerId != null) {
+                Coborrower coborrower = new Coborrower();
+                coborrower.setId(coborrowerId);
+            }
+        }
+        
+        return loan;
     }
 
     public boolean validateLoan(Map<String, String> loanValuesMap) {
