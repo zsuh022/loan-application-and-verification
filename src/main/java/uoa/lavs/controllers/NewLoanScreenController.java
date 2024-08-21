@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.LoanValidator;
 
 import java.util.Date;
@@ -109,7 +110,7 @@ public class NewLoanScreenController {
         fillLoanValuesMap();
 
         if (loanValidator.validateLoan(loanValuesMap)) {
-            // create loan
+            Loan newLoan = loanValidator.createLoan(loanValuesMap);
             // do something
         }
     }
