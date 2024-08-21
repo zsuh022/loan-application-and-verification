@@ -14,6 +14,7 @@ import uoa.lavs.SceneManager.Screens;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class NewLoanScreenController {
 
@@ -104,7 +105,7 @@ public class NewLoanScreenController {
     public boolean submitNewLoan() {
         fillLoanValuesMap();
 
-        if (!validateLoan()) {
+        if (!validateLoan(loanValuesMap)) {
             return false;
         }
 
@@ -144,7 +145,7 @@ public class NewLoanScreenController {
         }
     }
 
-    private boolean validateLoan() {
+    private boolean validateLoan(Map<String, String> loanValuesMap) {
 
         if (loanValuesMap.get("customerId") == null || loanValuesMap.get("customerId").isEmpty()) {
             return false;
