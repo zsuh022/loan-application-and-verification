@@ -126,6 +126,35 @@ public class CustomerScreenController {
         }
     }
 
+    public void setGeneralPaneInformation() {
+        lbCustomerId.setText(activeCustomer.getId());
+        lbCustomerTitle.setText(activeCustomer.getTitle());
+        lbCustomerName.setText(activeCustomer.getName());
+        // TODO: lbCustomerStatus.setText("Active");
+        lbCustomerDob.setText(String.valueOf(activeCustomer.getDateOfBirth()));
+        lbCustomerOccupation.setText(activeCustomer.getOccupation());
+        lbCustomerCitizenship.setText(activeCustomer.getCitizenship());
+        lbCustomerVisa.setText(activeCustomer.getVisa());
+        // TODO: lbCustomerPhone.setText(activeCustomer.getPhoneList())
+        // TODO: lbCustomerEmail.setText(activeCustomer.getEmailList());
+    }
+
+    public void setAddressPaneInformation() {
+        // TODO:
+    }
+
+    public void setLoanPaneInformation() {
+        // TODO:
+    }
+
+    public void setEmployerPaneInformation() {
+        // TODO:
+    }
+
+    public void setNotesPaneInformation() {
+        taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
+    }
+
     @FXML
     private void onCustomerBackClicked(MouseEvent event) {
         // go to
