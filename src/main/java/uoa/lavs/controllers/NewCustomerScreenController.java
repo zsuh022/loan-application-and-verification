@@ -22,11 +22,18 @@ import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.utility.CustomerValidator;
 import uoa.lavs.models.Customer.Customer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class NewCustomerScreenController {
 
-    private HashMap<String, String> customerValuesMap = new HashMap<>();
+    private Map<String, String> customerValuesMap = new HashMap<>();
+
+    private ArrayList<Map<String, String>> addressValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> emailValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> employerValuesList = new ArrayList<>();
+    private ArrayList<Map<String, String>> phoneValuesList = new ArrayList<>();
 
     private CustomerValidator customerValidator = new CustomerValidator();
 
@@ -49,6 +56,10 @@ public class NewCustomerScreenController {
     private TextField tfNewCustomerTitle;
     @FXML
     private TextField tfNewCustomerName;
+    @FXML
+    private TextField tfNewCustomerName1;
+    @FXML
+    private TextField tfNewCustomerName2;
     @FXML
     private TextField tfNewCustomerDob;
     @FXML
@@ -394,95 +405,150 @@ public class NewCustomerScreenController {
 
     @FXML
     private void onNewCustomerBackClicked(MouseEvent event) {
-        // go to ...
         Main.setScreen(Screens.HOME);
     }
 
     @FXML
     public void submitNewCustomer(MouseEvent event) {
         fillCustomerValuesMap();
+        fillAddressValuesList();
+        fillEmailValuesList();
+        fillEmployerValuesList();
+        fillPhoneValuesList();
 
-        if (customerValidator.validateCustomer(customerValuesMap)) {
-            Customer newCustomer = customerValidator.createCustomer(customerValuesMap);
+        if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
+                employerValuesList, phoneValuesList)) {
+            Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
+                    emailValuesList, employerValuesList, phoneValuesList);
             CustomerBucket customerBucket = CustomerBucket.getInstance();
             customerBucket.setCustomer(newCustomer);
-
             Main.setScreen(Screens.CUSTOMER);
         }
     }
 
     private void fillCustomerValuesMap() {
-        // general
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
-        customerValuesMap.put("name", tfNewCustomerName.getText());
+        customerValuesMap.put("firstName", tfNewCustomerName.getText());
+        customerValuesMap.put("middleName", tfNewCustomerName1.getText());
+        customerValuesMap.put("lastName", tfNewCustomerName2.getText());
         customerValuesMap.put("dob", tfNewCustomerDob.getText());
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());
-
-        // address
-        customerValuesMap.put("address type 0", tfNewCustomerType.getText());
-        customerValuesMap.put("address line1 0", tfNewCustomerLine1.getText());
-        customerValuesMap.put("address line2 0", tfNewCustomerLine2.getText());
-        customerValuesMap.put("address suburb 0", tfNewCustomerSuburb.getText());
-        customerValuesMap.put("address city 0", tfNewCustomerCity.getText());
-        customerValuesMap.put("address postCode 0", tfNewCustomerPostcode.getText());
-        customerValuesMap.put("address country 0", tfNewCustomerCountry.getText());
-        customerValuesMap.put("address isPrimary 0", String.valueOf(cbNewCustomerIsPrimary.isSelected()));
-        customerValuesMap.put("address isMailing 0", String.valueOf(cbNewCustomerIsMailing.isSelected()));
-        customerValuesMap.put("address type 1", tfNewCustomerType1.getText());
-        customerValuesMap.put("address line1 1", tfNewCustomerLine11.getText());
-        customerValuesMap.put("address line2 1", tfNewCustomerLine21.getText());
-        customerValuesMap.put("address suburb 1", tfNewCustomerSuburb1.getText());
-        customerValuesMap.put("address city 1", tfNewCustomerCity1.getText());
-        customerValuesMap.put("address postCode 1", tfNewCustomerPostcode1.getText());
-        customerValuesMap.put("address country 1", tfNewCustomerCountry1.getText());
-        customerValuesMap.put("address isPrimary 1", String.valueOf(cbNewCustomerIsPrimary1.isSelected()));
-        customerValuesMap.put("address isMailing 1", String.valueOf(cbNewCustomerIsMailing1.isSelected()));
-        customerValuesMap.put("address type 2", tfNewCustomerType2.getText());
-        customerValuesMap.put("address line1 2", tfNewCustomerLine12.getText());
-        customerValuesMap.put("address line2 2", tfNewCustomerLine22.getText());
-        customerValuesMap.put("address suburb 2", tfNewCustomerSuburb2.getText());
-        customerValuesMap.put("address city 2", tfNewCustomerCity2.getText());
-        customerValuesMap.put("address postCode 2", tfNewCustomerPostcode2.getText());
-        customerValuesMap.put("address country 2", tfNewCustomerCountry2.getText());
-        customerValuesMap.put("address isPrimary 2", String.valueOf(cbNewCustomerIsPrimary2.isSelected()));
-        customerValuesMap.put("address isMailing 2", String.valueOf(cbNewCustomerIsMailing2.isSelected()));
-        customerValuesMap.put("address type 3", tfNewCustomerType3.getText());
-        customerValuesMap.put("address line1 3", tfNewCustomerLine13.getText());
-        customerValuesMap.put("address line2 3", tfNewCustomerLine23.getText());
-        customerValuesMap.put("address suburb 3", tfNewCustomerSuburb3.getText());
-        customerValuesMap.put("address city 3", tfNewCustomerCity3.getText());
-        customerValuesMap.put("address postCode 3", tfNewCustomerPostcode3.getText());
-        customerValuesMap.put("address country 3", tfNewCustomerCountry3.getText());
-        customerValuesMap.put("address isPrimary 3", String.valueOf(cbNewCustomerIsPrimary3.isSelected()));
-        customerValuesMap.put("address isMailing 3", String.valueOf(cbNewCustomerIsMailing3.isSelected()));
-
-        // contacts
-        customerValuesMap.put("phone type 0", tfNewCustomerPhType.getText());
-        customerValuesMap.put("phone number 0", tfNewCustomerPhNum.getText());
-        customerValuesMap.put("phone isPrimary 0", String.valueOf(cbNewCustomerIsPhPrimary.isSelected()));
-        customerValuesMap.put("phone isTexting 0", String.valueOf(cbNewCustomerIsPhSMS.isSelected()));
-        customerValuesMap.put("email address 0", tfNewCustomerEmail.getText());
-        customerValuesMap.put("email isPrimary 0", String.valueOf(cbNewCustomerEmailIsPrimary.isSelected()));
-
-        // employer
-        customerValuesMap.put("employer name 0", tfNewCustomerEmployerName.getText());
-        customerValuesMap.put("employer line1 0", tfNewCustomerEmployerLine1.getText());
-        customerValuesMap.put("employer line2 0", tfNewCustomerEmployerLine2.getText());
-        customerValuesMap.put("employer suburb 0", tfNewCustomerEmployerSuburb.getText());
-        customerValuesMap.put("employer city 0", tfNewCustomerEmployerCity.getText());
-        customerValuesMap.put("employer postCode 0", tfNewCustomerEmployerPostcode.getText());
-        customerValuesMap.put("employer country 0", tfNewCustomerEmployerCountry.getText());
-        customerValuesMap.put("employer phone 0", tfNewCustomerEmployerPhone.getText());
-        customerValuesMap.put("employer email 0", tfNewCustomerEmployerEmail.getText());
-        customerValuesMap.put("employer web 0", tfNewCustomerEmployerWeb.getText());
-        customerValuesMap.put("employer isOwner 0", String.valueOf(cbNewCustomerEmployerIsOwner.isSelected()));
-
-        // note
         customerValuesMap.put("note", taNewCustomerNotes.getText());
     }
 
+    private void fillAddressValuesList() {
+        addressValuesList.clear();
+
+        for (int i = 0; i < addressValuesList.size(); i++) {
+            AnchorPane pane = (AnchorPane) addressTabPane.getTabs().get(i).getContent();
+            Map<String, String> addressMap = new HashMap<>();
+
+            if (i == 0) {
+                addressMap.put("type", ((TextField) pane.lookup("#tfNewCustomerType")).getText());
+                addressMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerLine1")).getText());
+                addressMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerLine2")).getText());
+                addressMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerSuburb")).getText());
+                addressMap.put("city", ((TextField) pane.lookup("#tfNewCustomerCity")).getText());
+                addressMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerPostcode")).getText());
+                addressMap.put("country", ((TextField) pane.lookup("#tfNewCustomerCountry")).getText());
+                addressMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPrimary")).isSelected()));
+                addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing")).isSelected()));
+            } else {
+                addressMap.put("type", ((TextField) pane.lookup("#tfNewCustomerType" + i)).getText());
+                addressMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerLine1" + i)).getText());
+                addressMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerLine2" + i)).getText());
+                addressMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerSuburb" + i)).getText());
+                addressMap.put("city", ((TextField) pane.lookup("#tfNewCustomerCity" + i)).getText());
+                addressMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerPostcode" + i)).getText());
+                addressMap.put("country", ((TextField) pane.lookup("#tfNewCustomerCountry" + i)).getText());
+                addressMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPrimary" + i)).isSelected()));
+                addressMap.put("isMailing", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsMailing" + i)).isSelected()));
+            }
+            addressValuesList.add(addressMap);
+        }
+    }
+
+    private void fillEmailValuesList() {
+        emailValuesList.clear();
+
+        for (int i = 0; i < emailTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) emailTabPane.getTabs().get(i).getContent();
+            Map<String, String> emailMap = new HashMap<>();
+
+            if (i == 0) {
+                emailMap.put("address", ((TextField) pane.lookup("#tfNewCustomerEmail")).getText());
+                emailMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmailIsPrimary")).isSelected()));
+            } else {
+                emailMap.put("address", ((TextField) pane.lookup("#tfNewCustomerEmail" + i)).getText());
+                emailMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmailIsPrimary" + i)).isSelected()));
+            }
+            emailValuesList.add(emailMap);
+        }
+    }
+
+    private void fillEmployerValuesList() {
+        employerValuesList.clear();
+
+        for (int i = 0; i < employerTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) employerTabPane.getTabs().get(i).getContent();
+            Map<String, String> employerMap = new HashMap<>();
+
+            if (i == 0) {
+                employerMap.put("name", ((TextField) pane.lookup("#tfNewCustomerEmployerName")).getText());
+                employerMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerEmployerLine1")).getText());
+                employerMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerEmployerLine2")).getText());
+                employerMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerEmployerSuburb")).getText());
+                employerMap.put("city", ((TextField) pane.lookup("#tfNewCustomerEmployerCity")).getText());
+                employerMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerEmployerPostcode")).getText());
+                employerMap.put("country", ((TextField) pane.lookup("#tfNewCustomerEmployerCountry")).getText());
+                employerMap.put("phone", ((TextField) pane.lookup("#tfNewCustomerEmployerPhone")).getText());
+                employerMap.put("email", ((TextField) pane.lookup("#tfNewCustomerEmployerEmail")).getText());
+                employerMap.put("web", ((TextField) pane.lookup("#tfNewCustomerEmployerWeb")).getText());
+                employerMap.put("isOwner", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmployerIsOwner")).isSelected()));
+            } else {
+                employerMap.put("name", ((TextField) pane.lookup("#tfNewCustomerEmployerName" + i)).getText());
+                employerMap.put("line1", ((TextField) pane.lookup("#tfNewCustomerEmployerLine1" + i)).getText());
+                employerMap.put("line2", ((TextField) pane.lookup("#tfNewCustomerEmployerLine2" + i)).getText());
+                employerMap.put("suburb", ((TextField) pane.lookup("#tfNewCustomerEmployerSuburb" + i)).getText());
+                employerMap.put("city", ((TextField) pane.lookup("#tfNewCustomerEmployerCity" + i)).getText());
+                employerMap.put("postCode", ((TextField) pane.lookup("#tfNewCustomerEmployerPostcode" + i)).getText());
+                employerMap.put("country", ((TextField) pane.lookup("#tfNewCustomerEmployerCountry" + i)).getText());
+                employerMap.put("phone", ((TextField) pane.lookup("#tfNewCustomerEmployerPhone" + i)).getText());
+                employerMap.put("email", ((TextField) pane.lookup("#tfNewCustomerEmployerEmail" + i)).getText());
+                employerMap.put("web", ((TextField) pane.lookup("#tfNewCustomerEmployerWeb" + i)).getText());
+                employerMap.put("isOwner", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerEmployerIsOwner" + i)).isSelected()));
+            }
+
+            employerValuesList.add(employerMap);
+        }
+    }
+
+    private void fillPhoneValuesList() {
+        phoneValuesList.clear();
+
+        for (int i = 0; i < phoneTabPane.getTabs().size(); i++) {
+            AnchorPane pane = (AnchorPane) phoneTabPane.getTabs().get(i).getContent();
+            Map<String, String> phoneMap = new HashMap<>();
+
+            if (i == 0) {
+                phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhType")).getText());
+                phoneMap.put("prefix", ((TextField) pane.lookup("#tfNewCustomerPhPrefix")).getText());
+                phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhNum")).getText());
+                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhPrimary")).isSelected()));
+                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhSMS")).isSelected()));
+            } else {
+                phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhType" + i)).getText());
+                phoneMap.put("prefix", ((TextField) pane.lookup("#tfNewCustomerPhPrefix" + i)).getText());
+                phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhNum" + i)).getText());
+                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhPrimary" + i)).isSelected()));
+                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhSMS" + i)).isSelected()));
+            }
+
+            phoneValuesList.add(phoneMap);
+        }
+    }
 
     @FXML
     private void onGeneralButtonClicked() {
