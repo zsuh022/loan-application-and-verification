@@ -16,6 +16,7 @@ import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.*;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Customer.*;
@@ -453,9 +454,13 @@ public class NewCustomerScreenController {
                 addNote.add(conn, newCustomer.getNote(), customerID);
             }
 
+            // Cache customer
+            Cache.cacheCustomer(newCustomer);
+
             //set active customer
             CustomerBucket.getInstance().setCustomer(newCustomer);
             CustomerScreenController.updateCustomer();
+
             //load customer screen
             Main.setScreen(SceneManager.Screens.CUSTOMER);
         }

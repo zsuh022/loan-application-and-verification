@@ -31,6 +31,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
 
     @Override
     protected void assertDetails(Customer expected, Customer actual) {
+        assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getName(), actual.getName());
         assertEquals(expected.getDateOfBirth(), actual.getDateOfBirth());
@@ -43,6 +44,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
     @Test
     protected void testCustomerSuccess() {
         Customer cus = searchCustomer.findById(conn, id);
+        customer.setCustomerId(id);
 
         assertDetails(customer, cus);
     }

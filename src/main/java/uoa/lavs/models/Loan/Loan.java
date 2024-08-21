@@ -29,6 +29,7 @@ public abstract class Loan {
     protected LoanStatus status;
     protected LoanDetails summary;
     protected Integer term;
+    protected Boolean interestOnly;
 
     public String getId() {
         return loanId;
@@ -148,6 +149,68 @@ public abstract class Loan {
 
     public LoanDetails getSummary() {
         return summary;
+    }
+
+    public String getStatusString() {
+        switch (status) {
+            case New -> {
+                return "New";
+            }
+            case Active -> {
+                return "Active";
+            }
+            case Cancelled -> {
+                return "Cancelled";
+            }
+            case Pending -> {
+                return "Pending";
+            }
+            default -> {
+                return "Unknown";
+            }
+        }
+    }
+
+    public String getCompoundingString() {
+        switch (compoundingFrequency) {
+            case Weekly -> {
+                return "Weekly";
+            }
+            case Fortnightly -> {
+                return "Fortnightly";
+            }
+            case Monthly -> {
+                return "Monthly";
+            }
+            default -> {
+                return "Unknown";
+            }
+        }
+    }
+
+    public String getPaymentFrequencyString() {
+        switch (paymentFrequency) {
+            case Weekly -> {
+                return "Weekly";
+            }
+            case Fortnightly -> {
+                return "Fortnightly";
+            }
+            case Monthly -> {
+                return "Monthly";
+            }
+            default -> {
+                return "Unknown";
+            }
+        }
+    }
+
+    public Boolean getInterestOnly() {
+        return interestOnly;
+    }
+
+    public void setInterestOnly(Boolean interestOnly) {
+        this.interestOnly = interestOnly;
     }
 
     public abstract ArrayList<LoanRepayment> getRepaymentSchedule();

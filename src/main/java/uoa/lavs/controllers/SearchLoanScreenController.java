@@ -37,6 +37,11 @@ public class SearchLoanScreenController {
 
     private String searchString;
 
+    @FXML
+    public void initialize() {
+        searchLoanEnter.requestFocus();
+    }
+
     public boolean submitLoanSearch() {
         InitialSearch search = new InitialSearch();
         List<LoanSummary> searchResults = search.findAll(Instance.getConnection(), searchLoanBar.getText());
@@ -63,18 +68,20 @@ public class SearchLoanScreenController {
 
     @FXML
     private void onSearchLoanEnterKeyPressed(KeyEvent event) {
+        System.out.println("Key pressed: " + event.getCode());
         if (event.getCode() == KeyCode.ENTER) {
             submitLoanSearch();
         }
     }
 
+
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
 
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 }

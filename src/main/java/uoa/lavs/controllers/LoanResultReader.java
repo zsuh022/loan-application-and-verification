@@ -32,6 +32,7 @@ public class LoanResultReader {
             left.getChildren().add(id);
             left.getChildren().add(name);
             right.getChildren().add(address);
+            pane.setCursor(javafx.scene.Cursor.HAND);
             pane.setOnMouseClicked(event -> {
                 //get Loan id
                 String LoanId = summary.getLoanID();

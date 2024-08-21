@@ -9,11 +9,13 @@ import uoa.lavs.comms.Loan.AddLoan;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
+import uoa.lavs.mainframe.messages.loan.UpdateLoanStatus;
 import uoa.lavs.mainframe.simulator.NitriteConnection;
 import uoa.lavs.mainframe.simulator.RecorderConnection;
 import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -26,8 +28,9 @@ import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.LoanFactory;
 import uoa.lavs.utility.LoanType;
 import uoa.lavs.utility.PaymentFrequency;
+import uoa.lavs.comms.Loan.UpdateStatus;
 
-public class Main extends Application{
+public class Main extends Application {
 
     public static Stage stage;
     private static Scene scene;
@@ -36,6 +39,7 @@ public class Main extends Application{
     public static void main(String[] args) {
         // flush log immediately to avoid inconsistencies with mainframe
         //test stuff start
+        Connection connection = Instance.getConnection();
 
         Customer customer = new Customer();
         customer.setCustomerId("TEMP_CUSTOMER_");
@@ -61,9 +65,10 @@ public class Main extends Application{
         loan.setCompoundingFrequency(Frequency.Yearly);
         loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
         loan.setPaymentAmount(1000.0);
-        loan.setStatus(LoanStatus.Active);
         loan.setTerm(360);
         String loanId = addLoan.add(Instance.getConnection(), loan);
+        UpdateStatus update = new UpdateStatus();
+        update.add(connection, LoanStatus.Active, loanId);
         System.out.println("Loan ID: " + loanId);
 
         //test stuff end
@@ -72,7 +77,6 @@ public class Main extends Application{
         // the following shows two ways of using the mainframe interface
         // approach #1: use the singleton instance - this way is recommended as it provides a single configuration
         // location (and is easy for the testers to change when needed).
-        Connection connection = Instance.getConnection();
         updateMainframe(connection);
     }
 
@@ -81,17 +85,17 @@ public class Main extends Application{
     }
 
     //loads a FXML file
-    private static Parent loadFxml(final String fxml) throws IOException{
-        return new FXMLLoader(Main.class.getResource("/fxml/"+fxml+".fxml")).load();
+    private static Parent loadFxml(final String fxml) throws IOException {
+        return new FXMLLoader(Main.class.getResource("/fxml/" + fxml + ".fxml")).load();
     }
 
     //Set the active screen
-    public static void setScreen(Screens screen){
+    public static void setScreen(Screens screen) {
         scene.setRoot(SceneManager.getScreen(screen));
     }
 
     @Override
-    public void start(final Stage stage) throws IOException{
+    public void start(final Stage stage) throws IOException {
         SceneManager.addScreenUi(Screens.CUSTOMER, loadFxml("customerScreen"));
         SceneManager.addScreenUi(Screens.DRAFTS, loadFxml("draftsScreen"));
         SceneManager.addScreenUi(Screens.HOME, loadFxml("homeScreen"));
@@ -101,7 +105,7 @@ public class Main extends Application{
         SceneManager.addScreenUi(Screens.NEW_LOAN, loadFxml("newLoanScreen"));
         SceneManager.addScreenUi(Screens.SEARCH_CUSTOMER, loadFxml("searchCustomerScreen"));
         SceneManager.addScreenUi(Screens.SEARCH_LOAN, loadFxml("searchLoanScreen"));
-        
+
         scene = new Scene(SceneManager.getScreen(Screens.LOGIN), 960, 540);
         stage.setScene(scene);
         stage.show();
@@ -124,7 +128,7 @@ public class Main extends Application{
             width = height / 9 * 16;
         }
         double scale = width / 960;
-        try{
+        try {
             // try to get the root of the scene and cast it to a BorderPane
             BorderPane border = (BorderPane) scene.getRoot();
             // get the content of the BorderPane
@@ -140,7 +144,7 @@ public class Main extends Application{
                     content,
                     new javafx.geometry.Insets(
                             verticalMargin, horizontalMargin, verticalMargin, horizontalMargin));
-        } catch (Exception e){
+        } catch (Exception e) {
             // TAKE THIS OUT AFTER
             System.out.println("Error scaling");
             e.printStackTrace();

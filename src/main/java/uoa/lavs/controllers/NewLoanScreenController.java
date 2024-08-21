@@ -14,8 +14,10 @@ import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Loan.AddCoborrower;
 import uoa.lavs.comms.Loan.AddLoan;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.LoanValidator;
@@ -51,6 +53,8 @@ public class NewLoanScreenController {
     private CheckBox cbNewLoanIsFixed;
     @FXML
     private DatePicker dpNewLoanStartDate;
+    @FXML
+    private TextField tfNewLoanTerm;
     @FXML
     private TextField tfNewLoanPeriod;
     @FXML
@@ -130,10 +134,14 @@ public class NewLoanScreenController {
             if (loanID != "0") {
                 // Creating loan in mainframe success
                 newLoan.setLoanId(loanID);
+                newLoan.setStatus(LoanStatus.Active);
             }
             for (Coborrower coborrower : newLoan.getCoborrowerList()) {
                 addCoborrower.add(conn, coborrower, loanID);
             }
+
+            // Add Loan to Cache
+            Cache.cacheLoan(newLoan);
 
             // Set active Loan
             LoanBucket.getInstance().setLoan(newLoan);
@@ -154,6 +162,7 @@ public class NewLoanScreenController {
         loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
         loanValuesMap.put("startDate", dpNewLoanStartDate.getValue().toString());
         loanValuesMap.put("period", tfNewLoanPeriod.getText());
+        loanValuesMap.put("term", tfNewLoanTerm.getText());
         loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));
         loanValuesMap.put("compoundingMonthly", String.valueOf(cbNewLoanCompoundingMonthly.isSelected()));
         loanValuesMap.put("compoundingAnnually", String.valueOf(cbNewLoanCompoundingAnnually.isSelected()));

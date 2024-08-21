@@ -37,10 +37,12 @@ public class LoanValidator {
         loan.setRate(Double.parseDouble(loanMap.get("rate")));
         loan.setRateType(discoverRateType(loanMap));
         loan.setStartDate(LocalDate.parse(loanMap.get("startDate")));
+        loan.setTerm(Integer.parseInt(loanMap.get("term")));
         loan.setPeriod(Integer.parseInt(loanMap.get("period")));
         loan.setCompoundingFrequency(discoverCompoundingFrequency(loanMap));
         loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
+        loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
 
         // TODO: loan.setStatus(LoanStatus.Active);
 

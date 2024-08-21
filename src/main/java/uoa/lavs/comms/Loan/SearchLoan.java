@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.mainframe.RateType;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.mainframe.messages.loan.LoadLoan;
@@ -32,6 +33,7 @@ public class SearchLoan extends AbstractSearchable<Loan> {
             newLoan.setCustomerID(loan.getCustomerIdFromServer());
             newLoan.setCustomerName(loan.getCustomerNameFromServer());
             newLoan.setRate(loan.getRateValueFromServer());
+
             newLoan.setRateType(loan.getRateTypeFromServer());
             LoanStatus stat = null;
             String statFromSvr = loan.getStatusFromServer();
@@ -54,6 +56,11 @@ public class SearchLoan extends AbstractSearchable<Loan> {
                 case Monthly -> freq = PaymentFrequency.Monthly;
             }
             newLoan.setPaymentFrequency(freq);
+            if (loan.getRateTypeFromServer() == RateType.InterestOnly) {
+                newLoan.setInterestOnly(true);
+            } else {
+                newLoan.setInterestOnly(false);
+            }
 
             logger.info("Loan for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());
             return newLoan;
