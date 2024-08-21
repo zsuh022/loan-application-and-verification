@@ -449,4 +449,9 @@ public class NewCustomerScreenController {
         employerTabPane.getSelectionModel().selectLast();
     }
 
+    @FXML
+    private void btnLogOut(){
+        Main.setScreen(Screens.LOGIN);
+    }
+
 }
