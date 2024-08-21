@@ -4,12 +4,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -61,7 +56,7 @@ public class NewCustomerScreenController {
     @FXML
     private TextField tfNewCustomerName2;
     @FXML
-    private TextField tfNewCustomerDob;
+    private DatePicker dpNewCustomerDob;
     @FXML
     private TextField tfNewCustomerOccupation;
     @FXML
@@ -431,7 +426,7 @@ public class NewCustomerScreenController {
         customerValuesMap.put("firstName", tfNewCustomerName.getText());
         customerValuesMap.put("middleName", tfNewCustomerName1.getText());
         customerValuesMap.put("lastName", tfNewCustomerName2.getText());
-        customerValuesMap.put("dob", tfNewCustomerDob.getText());
+        customerValuesMap.put("dob", dpNewCustomerDob.getValue().toString());
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());
