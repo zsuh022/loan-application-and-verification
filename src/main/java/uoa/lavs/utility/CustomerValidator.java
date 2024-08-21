@@ -57,20 +57,22 @@ public class CustomerValidator {
             customer.addEmail(email);
         }
 
-        for (Map<String, String> employerMap : employerList) {
-            CustomerEmployer employer = new CustomerEmployer();
-            employer.setName(employerMap.get("name"));
-            employer.setLine1(employerMap.get("line1"));
-            employer.setLine2(employerMap.get("line2"));
-            employer.setSuburb(employerMap.get("suburb"));
-            employer.setCity(employerMap.get("city"));
-            employer.setPostCode(employerMap.get("postCode"));
-            employer.setCountry(employerMap.get("country"));
-            employer.setPhone(employerMap.get("phone"));
-            employer.setEmail(employerMap.get("email"));
-            employer.setWeb(employerMap.get("web"));
-            employer.setIsOwner(Boolean.parseBoolean(employerMap.get("isOwner")));
-            customer.addEmployer(employer);
+        if (!customerMap.get("occupation").equalsIgnoreCase("unemployed")) {
+            for (Map<String, String> employerMap : employerList) {
+                CustomerEmployer employer = new CustomerEmployer();
+                employer.setName(employerMap.get("name"));
+                employer.setLine1(employerMap.get("line1"));
+                employer.setLine2(employerMap.get("line2"));
+                employer.setSuburb(employerMap.get("suburb"));
+                employer.setCity(employerMap.get("city"));
+                employer.setPostCode(employerMap.get("postCode"));
+                employer.setCountry(employerMap.get("country"));
+                employer.setPhone(employerMap.get("phone"));
+                employer.setEmail(employerMap.get("email"));
+                employer.setWeb(employerMap.get("web"));
+                employer.setIsOwner(Boolean.parseBoolean(employerMap.get("isOwner")));
+                customer.addEmployer(employer);
+            }
         }
 
         // only 1 note
@@ -138,8 +140,11 @@ public class CustomerValidator {
             return false;
         }
 
-        if (!validateEmployer(employerList)) {
-            return false;
+        // if unemployed, employer is optional
+        if (!customerMap.get("occupation").equals("unemployed")) {
+            if (!validateEmployer(employerList)) {
+                return false;
+            }
         }
 
         if (!validatePhone(phoneList)) {
