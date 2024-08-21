@@ -1623,7 +1623,7 @@
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                             </Rectangle>
-                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="29.0">
+                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="29.0">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
