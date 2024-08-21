@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class LoanValidator {
 
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LoanValidator.class);
-    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
 
     public static String generateTemporaryLoanId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -53,77 +53,92 @@ public class LoanValidator {
                 coborrower.setId(coborrowerId);
             }
         }
-        
+
         return loan;
     }
 
-    public boolean validateLoan(Map<String, String> loanValuesMap) {
+    public boolean validateLoan(Map<String, String> loanMap) {
+        logger.info("Validating loan for customer id {}", loanMap.get("customerId"));
 
-        if (loanValuesMap.get("customerId") == null || loanValuesMap.get("customerId").isEmpty()) {
+        if (loanMap.get("customerId") == null || loanMap.get("customerId").isEmpty()) {
+            logger.error("ValidateLoan method failed: Customer ID is empty");
             return false;
         }
 
         // check customer id valid
 
-        if (loanValuesMap.get("principal") == null || loanValuesMap.get("principal").isEmpty()) {
+        if (loanMap.get("principal") == null || loanMap.get("principal").isEmpty()) {
+            logger.error("ValidateLoan method failed: Principal is empty");
             return false;
         }
 
-        if (loanValuesMap.get("rate") == null || loanValuesMap.get("rate").isEmpty()) {
+        if (loanMap.get("rate") == null || loanMap.get("rate").isEmpty()) {
+            logger.error("ValidateLoan method failed: Rate is empty");
             return false;
         }
 
-        if (loanValuesMap.get("isFloating") == null || loanValuesMap.get("isFloating").isEmpty()) {
+        int rateTypeCounter = 0;
+        if (loanMap.get("isFloating").equals("true")) {
+            rateTypeCounter++;
+        }
+        if (loanMap.get("isFixed").equals("true")) {
+            rateTypeCounter++;
+        }
+
+        if (rateTypeCounter != 1) {
+            logger.error("ValidateLoan method failed: Select exactly one rate type");
+        }
+
+        if (loanMap.get("startDate") == null || loanMap.get("startDate").isEmpty()) {
+            logger.error("ValidateLoan method failed: startDate is empty");
             return false;
         }
 
-        if (loanValuesMap.get("isFixed") == null || loanValuesMap.get("isFixed").isEmpty()) {
-            return false;
-        }
-
-        if (loanValuesMap.get("startDate") == null || loanValuesMap.get("startDate").isEmpty()) {
-            return false;
-        }
-
-        if (loanValuesMap.get("period") == null || loanValuesMap.get("period").isEmpty()) {
+        if (loanMap.get("period") == null || loanMap.get("period").isEmpty()) {
+            logger.error("ValidateLoan method failed: period is empty");
             return false;
         }
 
         int compoundingCount = 0;
-        if (loanValuesMap.get("compoundingWeekly").equals("true")) {
+        if (loanMap.get("compoundingWeekly").equals("true")) {
             compoundingCount++;
         }
-        if (loanValuesMap.get("compoundingMonthly").equals("true")) {
+        if (loanMap.get("compoundingMonthly").equals("true")) {
             compoundingCount++;
         }
-        if (loanValuesMap.get("compoundingAnnually").equals("true")) {
+        if (loanMap.get("compoundingAnnually").equals("true")) {
             compoundingCount++;
         }
 
         if (compoundingCount != 1) {
+            logger.error("ValidateLoan method failed: Select exactly one compounding frequency");
             return false;
         }
 
         int frequencyCount = 0;
-        if (loanValuesMap.get("frequencyWeekly").equals("true")) {
+        if (loanMap.get("frequencyWeekly").equals("true")) {
             frequencyCount++;
         }
-        if (loanValuesMap.get("frequencyFortnightly").equals("true")) {
+        if (loanMap.get("frequencyFortnightly").equals("true")) {
             frequencyCount++;
         }
-        if (loanValuesMap.get("frequencyMonthly").equals("true")) {
+        if (loanMap.get("frequencyMonthly").equals("true")) {
             frequencyCount++;
         }
 
         if (frequencyCount != 1) {
+            logger.error("ValidateLoan method failed: Select exactly one payment frequency");
             return false;
         }
 
-        if (loanValuesMap.get("amount") == null || loanValuesMap.get("amount").isEmpty()) {
+        if (loanMap.get("amount") == null || loanMap.get("amount").isEmpty()) {
+            logger.error("ValidateLoan method failed: amount is empty");
             return false;
         }
 
-        if (loanValuesMap.get("isInterestOnly") == null || loanValuesMap.get("isInterestOnly").isEmpty()) {
+        // TODO: discussion
+        if (loanMap.get("isInterestOnly") == null || loanMap.get("isInterestOnly").isEmpty()) {
+            logger.error("ValidateLoan method failed: isInterestOnly is empty");
             return false;
         }
 
