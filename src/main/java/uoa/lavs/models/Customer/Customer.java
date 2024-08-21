@@ -10,7 +10,7 @@ public class Customer {
     private String customerId;
     private String title;
     private String name;
-    private LocalDate dateOfBirth;
+    private LocalDate dob;
     private String occupation;
     private String citizenship;
     private String visa;
@@ -47,12 +47,12 @@ public class Customer {
         this.name = name;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(LocalDate dob) {
+        this.dob = dob;
     }
 
     public String getOccupation() {

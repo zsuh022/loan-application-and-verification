@@ -28,7 +28,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
     protected void assertDetails(Customer expected, Customer actual) {
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getName(), actual.getName());
-        assertEquals(expected.getDateOfBirth(), actual.getDateOfBirth());
+        assertEquals(expected.getDob(), actual.getDob());
         assertEquals(expected.getOccupation(), actual.getOccupation());
         assertEquals(expected.getCitizenship(), actual.getCitizenship());
         assertNull(actual.getVisa());
@@ -53,7 +53,7 @@ public class AddCustomerTest extends AbstractCustomerTest<Customer> {
 
         assertNull(cus.getTitle());
         assertNull(cus.getName());
-        assertNull(cus.getDateOfBirth());
+        assertNull(cus.getDob());
         assertNull(cus.getOccupation());
         assertNull(cus.getCitizenship());
         assertNull(cus.getVisa());

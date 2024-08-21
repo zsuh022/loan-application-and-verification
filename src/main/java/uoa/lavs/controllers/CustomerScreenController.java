@@ -131,7 +131,7 @@ public class CustomerScreenController {
         lbCustomerTitle.setText(activeCustomer.getTitle());
         lbCustomerName.setText(activeCustomer.getName());
         // TODO: lbCustomerStatus.setText("Active");
-        lbCustomerDob.setText(String.valueOf(activeCustomer.getDateOfBirth()));
+        lbCustomerDob.setText(String.valueOf(activeCustomer.getDob()));
         lbCustomerOccupation.setText(activeCustomer.getOccupation());
         lbCustomerCitizenship.setText(activeCustomer.getCitizenship());
         lbCustomerVisa.setText(activeCustomer.getVisa());
