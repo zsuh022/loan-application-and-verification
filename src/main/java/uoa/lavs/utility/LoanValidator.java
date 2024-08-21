@@ -25,64 +25,79 @@ public class LoanValidator {
         return TEMPORARY_LOAN_ID_PREFIX + timeAsString;
     }
 
-    public Loan createLoan(Map<String, String> loanValuesMap) {
+    public Loan createLoan(Map<String, String> loanMap) {
+        logger.info("Creating loan for customer id {}", loanMap.get("customerId"));
+
         // assume loan is mortgage
         Loan loan = new Mortgage();
 
         loan.setLoanId(generateTemporaryLoanId());
-        loan.setCustomerID(loanValuesMap.get("customerId"));
-        loan.setPrincipal(Double.parseDouble(loanValuesMap.get("principal")));
-        loan.setRate(Double.parseDouble(loanValuesMap.get("rate")));
-        loan.setRateType(discoverRateType(loanValuesMap));
-        loan.setStartDate(LocalDate.parse(loanValuesMap.get("startDate")));
-        loan.setPeriod(Integer.parseInt(loanValuesMap.get("period")));
-        loan.setCompoundingFrequency(discoverCompoundingFrequency(loanValuesMap));
-        loan.setPaymentFrequency(discoverPaymentFrequency(loanValuesMap));
-        loan.setPaymentAmount(Double.parseDouble(loanValuesMap.get("amount")));
+        loan.setCustomerID(loanMap.get("customerId"));
+        loan.setPrincipal(Double.parseDouble(loanMap.get("principal")));
+        loan.setRate(Double.parseDouble(loanMap.get("rate")));
+        loan.setRateType(discoverRateType(loanMap));
+        loan.setStartDate(LocalDate.parse(loanMap.get("startDate")));
+        loan.setPeriod(Integer.parseInt(loanMap.get("period")));
+        loan.setCompoundingFrequency(discoverCompoundingFrequency(loanMap));
+        loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
+        loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
 
         // TODO: loan.setStatus(LoanStatus.Active);
 
         for (int i = 0; i < 18; i++) {
-            String coborrowerId = loanValuesMap.get("coborrowerId" + i);
+            String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
                 Coborrower coborrower = new Coborrower();
                 coborrower.setId(coborrowerId);
             }
         }
 
+        logger.info("Created loan for customer id {}", loanMap.get("customerId"));
         return loan;
     }
 
     private RateType discoverRateType(Map<String, String> loanMap) {
         if ("true".equals(loanMap.get("isFloating"))) {
+            logger.info("Create loan method: isFloating rate type selected");
             return RateType.Floating;
         } else if ("true".equals(loanMap.get("isFixed"))) {
+            logger.info("Create loan method: isFixed rate type selected");
             return RateType.Fixed;
         } else if ("true".equals(loanMap.get("isInterestOnly"))) {
+            logger.info("Create loan method: isInterestOnly rate type selected");
             return RateType.InterestOnly;
         }
+        logger.info("Create loan method: null rate type selected");
         return null;
     }
 
     private Frequency discoverCompoundingFrequency(Map<String, String> loanMap) {
         if ("true".equals(loanMap.get("compoundingWeekly"))) {
+            logger.info("Create loan method: compoundingWeekly frequency selected");
             return Frequency.Weekly;
         } else if ("true".equals(loanMap.get("compoundingMonthly"))) {
+            logger.info("Create loan method: compoundingMonthly frequency selected");
             return Frequency.Monthly;
         } else if ("true".equals(loanMap.get("compoundingAnnually"))) {
+            logger.info("Create loan method: compoundingAnnually frequency selected");
             return Frequency.Yearly;
         }
+        logger.info("Create loan method: null compoundingFrequency selected");
         return null;
     }
 
     private PaymentFrequency discoverPaymentFrequency(Map<String, String> loanMap) {
         if ("true".equals(loanMap.get("frequencyWeekly"))) {
+            logger.info("Create loan method: frequencyWeekly frequency selected");
             return PaymentFrequency.Weekly;
         } else if ("true".equals(loanMap.get("frequencyFortnightly"))) {
+            logger.info("Create loan method: frequencyFortnight frequency selected");
             return PaymentFrequency.Fortnightly;
         } else if ("true".equals(loanMap.get("frequencyMonthly"))) {
+            logger.info("Create loan method: frequencyMonthly frequency selected");
             return PaymentFrequency.Monthly;
         }
+        logger.info("Create loan method: null paymentFrequency selected");
         return null;
     }
 
@@ -111,6 +126,9 @@ public class LoanValidator {
             rateTypeCounter++;
         }
         if (loanMap.get("isFixed").equals("true")) {
+            rateTypeCounter++;
+        }
+        if (loanMap.get("isInterestOnly").equals("true")) {
             rateTypeCounter++;
         }
 
@@ -162,12 +180,6 @@ public class LoanValidator {
 
         if (loanMap.get("amount") == null || loanMap.get("amount").isEmpty()) {
             logger.error("ValidateLoan method failed: amount is empty");
-            return false;
-        }
-
-        // TODO: discussion
-        if (loanMap.get("isInterestOnly") == null || loanMap.get("isInterestOnly").isEmpty()) {
-            logger.error("ValidateLoan method failed: isInterestOnly is empty");
             return false;
         }
 
