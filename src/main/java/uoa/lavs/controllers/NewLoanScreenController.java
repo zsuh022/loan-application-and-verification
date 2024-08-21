@@ -10,7 +10,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
+import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Loan.AddCoborrower;
+import uoa.lavs.comms.Loan.AddLoan;
+import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.Instance;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.utility.LoanValidator;
 
@@ -111,7 +117,30 @@ public class NewLoanScreenController {
 
         if (loanValidator.validateLoan(loanValuesMap)) {
             Loan newLoan = loanValidator.createLoan(loanValuesMap);
-            // do something
+
+            // Connection
+            Connection conn = Instance.getConnection();
+
+            // Add Instances
+            AddLoan addLoan = new AddLoan();
+            AddCoborrower addCoborrower = new AddCoborrower();
+
+            // Attempt to create new loan in the mainframe
+            String loanID = addLoan.add(conn, newLoan);
+            if (loanID != "0") {
+                // Creating loan in mainframe success
+                newLoan.setLoanId(loanID);
+            }
+            for (Coborrower coborrower : newLoan.getCoborrowerList()) {
+                addCoborrower.add(conn, coborrower, loanID);
+            }
+
+            // Set active Loan
+            LoanBucket.getInstance().setLoan(newLoan);
+            LoanScreenController.updateLoan();
+
+            Main.setScreen(Screens.LOAN);
+
         }
     }
 
@@ -170,11 +199,12 @@ public class NewLoanScreenController {
     }
 
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
+
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 }
