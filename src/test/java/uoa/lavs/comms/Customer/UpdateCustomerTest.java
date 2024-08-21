@@ -3,6 +3,7 @@ package uoa.lavs.comms.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.comms.AbstractExtendedCustomerTest;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Customer.CustomerPhone;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,55 +11,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.util.List;
 
-public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Void> {
+public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Customer> {
 
-    private final CustomerPhone phone = new CustomerPhone();
-    private final SearchPhone search = new SearchPhone();
+    String customerID = null;
+    Customer customer2 = new Customer();
 
     @Override
     @BeforeEach
     protected void setup() throws IOException {
         super.setup();
+        customerID = addCustomer.add(conn, customer);
+        customer2.setCustomerId(customerID);
+        customer2.setTitle("Mr");
+        customer2.setName("Apple Jeans");
+        customer2.setDateOfBirth(java.time.LocalDate.of(1999, 1, 11));
+        customer2.setOccupation("Chef");
+        customer2.setCitizenship("New Zealand");
+        customer2.setVisa(null);
     }
 
     @Test
-    void testUpdatePhone() {
-
-        String id = addCustomer.add(conn, customer);
-        addPhones(conn, id);
-
-        phone.setNumber("99999999");
-        phone.setPrefix("+11");
-        phone.setIndex(1);
-        phone.setIsPrimary(false);
-        phone.setIsTexting(false);
-
-        addPhone.add(conn, phone, id);
-
-        List<CustomerPhone> list = search.findAll(conn, id);
-        
+    protected void updateCustomerTest() throws IOException {
+        addCustomer.add(conn, customer2);
+        Customer dbCustomer = searchCustomer.findById(conn, customerID);
+        assertDetails(customer2, dbCustomer);
     }
 
-//    @Test
-//    void testUpdateEmail() {
-//        email1.setAddress("john.doe@newmail.com");
-//
-//        String customerID = customer.getId();
-//
-//        String result = changeEmail.add(conn, email1, customerID);
-//    }
-//
-//    @Test
-//    void testUpdateAddress() {
-//        address1.setLine1("999 New Address St");
-//
-//        String customerID = customer.getId();
-//
-//        String result = changeAddress.add(conn, address1, customerID);
-//    }
 
     @Override
-    protected void assertDetails(Void expected, Void actual) {
-
+    protected void assertDetails(Customer expected, Customer actual) {
+        assertEquals(expected.getTitle(), actual.getTitle());
+        assertEquals(expected.getName(), actual.getName());
+        assertEquals(expected.getDateOfBirth(), actual.getDateOfBirth());
+        assertEquals(expected.getOccupation(), actual.getOccupation());
+        assertEquals(expected.getCitizenship(), actual.getCitizenship());
     }
 }

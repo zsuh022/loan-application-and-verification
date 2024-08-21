@@ -57,9 +57,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         summary.setId(id);
         summary.setName(customer.getNameFromServer(index));
         summary.setDob(customer.getDateofBirthFromServer(index));
-        summary.setAddress(findAddresses(conn, id));
         summary.setEmail(findEmail(conn, id));
-        summary.setPhone(findPhone(conn, id));
     }
 
     private void populateSummaryAdvanced(Connection conn, CustomerSummary summary, FindCustomerAdvanced customer, int index) {
@@ -67,24 +65,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         summary.setId(id);
         summary.setName(customer.getNameFromServer(index));
         summary.setDob(customer.getDateofBirthFromServer(index));
-        summary.setAddress(findAddresses(conn, id));
         summary.setEmail(findEmail(conn, id));
-        summary.setPhone(findPhone(conn, id));
-    }
-
-    private String findAddresses(Connection conn, String id) {
-        FindCustomerAddress addy = new FindCustomerAddress();
-        addy.setCustomerId(id);
-        return processRequest(conn, addy, status -> {
-            for (int j = 1; j < addy.getCountFromServer() + 1; j++) {
-                if (addy.getIsPrimaryFromServer(j)) {
-                    return addy.getTypeFromServer(j);
-                }
-            }
-            return "";
-        }, status -> {
-            return "";
-        });
     }
 
 
@@ -102,21 +83,5 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
             return "";
         });
     }
-
-    private String findPhone(Connection conn, String id) {
-        FindCustomerPhoneNumber phone = new FindCustomerPhoneNumber();
-        phone.setCustomerId(id);
-        return processRequest(conn, phone, status -> {
-            for (int j = 1; j < phone.getCountFromServer() + 1; j++) {
-                if (phone.getIsPrimaryFromServer(j)) {
-                    return String.valueOf(phone.getTypeFromServer(j));
-                }
-            }
-            return null;
-        }, status -> {
-            return null;
-        });
-    }
-
 
 }

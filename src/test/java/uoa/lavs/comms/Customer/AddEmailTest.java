@@ -7,6 +7,7 @@ import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.MockConnection;
 import uoa.lavs.mainframe.Response;
 import uoa.lavs.mainframe.Status;
+import uoa.lavs.models.Customer.CustomerAddress;
 import uoa.lavs.models.Customer.CustomerEmail;
 
 import java.io.IOException;
@@ -54,7 +55,7 @@ public class AddEmailTest extends AbstractCustomerTest<CustomerEmail> {
     }
 
     @Test
-    void testAddEmailSuccess() {
+    void testAddEmailSuccess() throws IOException {
         String customerId = addCustomer.add(conn, customer);
 
         for (CustomerEmail email : customer.getEmailList()) {
@@ -104,12 +105,7 @@ public class AddEmailTest extends AbstractCustomerTest<CustomerEmail> {
     }
 
     @Test
-    void testAddEmailFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
+    void testAddEmailFailureAll() throws IOException {
         String customerId = addCustomer.add(mockConnection, customer);
 
         for (CustomerEmail email : customer.getEmailList()) {
@@ -118,5 +114,16 @@ public class AddEmailTest extends AbstractCustomerTest<CustomerEmail> {
 
         List<CustomerEmail> emails = searchEmail.findAll(mockConnection, customerId);
         assertEquals(0, emails.size());
+    }
+
+    @Test
+    void testAddEmailFailureSingular() throws IOException {
+        String customerId = addCustomer.add(mockConnection, customer);
+        for (CustomerEmail email : customer.getEmailList()) {
+            addEmail.add(mockConnection, email, customerId);
+        }
+
+        CustomerEmail email = searchEmail.findById(mockConnection, customerId, 1, 1);
+        assertNull(email.getAddress());
     }
 }

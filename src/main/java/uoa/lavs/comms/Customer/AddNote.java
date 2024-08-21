@@ -59,12 +59,12 @@ public class AddNote extends AbstractWriter<CustomerNote> {
         while (start < length) {
             int end = Math.min(start + 70, length);
             String line;
-            if (end < length && note.charAt(end) == ' ') {
-                line = note.substring(start, end);
-                start = end;
-            } else if (end < length && note.charAt(end) != ' ') {
+            if (end < length) {
                 int lastSpace = note.lastIndexOf(' ', end);
-                if (lastSpace > start) {
+                if (note.charAt(end) == ' ') {
+                    line = note.substring(start, end);
+                    start = end;
+                } else if (lastSpace > start) {
                     line = note.substring(start, lastSpace + 1);
                     start = lastSpace + 1;
                 } else {

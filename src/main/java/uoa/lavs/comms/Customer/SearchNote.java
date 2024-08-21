@@ -36,9 +36,8 @@ public class SearchNote extends AbstractSearchable<CustomerNote> {
 
                 for (int lineIndex = 1; lineIndex <= totalLines; lineIndex++) {
                     String content = loadNotes.getLineFromServer(lineIndex);
-                    if (content != null) {
-                        fullNote.addNote(content);
-                    }
+                    fullNote.addNote(content);
+
                 }
             }
             return fullNote;

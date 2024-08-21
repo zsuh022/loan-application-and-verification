@@ -69,7 +69,7 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
     }
 
     @Test
-    void testAddPhoneSuccess() {
+    void testAddPhoneSuccess() throws IOException {
         String customerId = addCustomer.add(conn, customer);
 
         for (CustomerPhone phone : customer.getPhoneList()) {
@@ -122,12 +122,7 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
     }
 
     @Test
-    protected void testAddPhoneFailure() {
-        Status errorStatus = new Status(404, "Some problem", 123456);
-        Response errorResponse = new Response(errorStatus, new HashMap<>());
-
-        Connection mockConnection = new MockConnection(errorResponse);
-
+    protected void testAddPhoneFailureAll() throws IOException {
         String customerId = addCustomer.add(mockConnection, customer);
 
         for (CustomerPhone phone : customer.getPhoneList()) {
@@ -138,5 +133,17 @@ public class AddPhoneTest extends AbstractCustomerTest<CustomerPhone> {
         assertEquals(0, phones.size());
     }
 
-   
+    @Test
+    protected void testAddPhoneFailureSingular() throws IOException {
+        String customerId = addCustomer.add(mockConnection, customer);
+
+        for (CustomerPhone phone : customer.getPhoneList()) {
+            addPhone.add(mockConnection, phone, customerId);
+        }
+
+        CustomerPhone phones = searchPhone.findById(mockConnection, customerId, 1, 1);
+        assertNull(phones.getNumber());
+    }
+
+
 }
