@@ -433,6 +433,7 @@ public class NewCustomerScreenController {
     }
 
     private void fillAddressValuesList() {
+        addressValuesList.clear();
         for (Tab tab : addressTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> addressMap = new HashMap<>();
@@ -450,6 +451,7 @@ public class NewCustomerScreenController {
     }
 
     private void fillEmailValuesList() {
+        emailValuesList.clear();
         for (Tab tab : emailTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> emailMap = new HashMap<>();
@@ -460,6 +462,7 @@ public class NewCustomerScreenController {
     }
 
     private void fillEmployerValuesList() {
+        employerValuesList.clear();
         for (Tab tab : employerTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> employerMap = new HashMap<>();
@@ -479,6 +482,7 @@ public class NewCustomerScreenController {
     }
 
     private void fillPhoneValuesList() {
+        phoneValuesList.clear();
         for (Tab tab : phoneTabPane.getTabs()) {
             AnchorPane pane = (AnchorPane) tab.getContent();
             Map<String, String> phoneMap = new HashMap<>();
