@@ -37,7 +37,7 @@ public class Cache {
         ArrayList<Customer> results = new ArrayList<>();
         // search the cache for a customer with the given name
         for (Customer customer : customerCache) {
-            if (customer.getName().equals(name)) {
+            if (customer.getName().toLowerCase().contains(name.toLowerCase())) {
                 results.add(customer);
             }
         }

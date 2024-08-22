@@ -24,6 +24,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
             ArrayList<CustomerSummary> summaries = new ArrayList<>();
             for(Customer customer : Cache.searchCustomerCacheId(customerId)) {
                 summaries.add(obfuscateCustomer(customer));
+                System.out.println("Found in cache");
             }
             try{
                 FindCustomer customer = new FindCustomer();

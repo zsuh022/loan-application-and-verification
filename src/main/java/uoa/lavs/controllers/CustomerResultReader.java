@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Customer.CustomerSummary;
@@ -39,6 +40,8 @@ public class CustomerResultReader {
                 //get customer with id
                 SearchCustomer searchCustomer = new SearchCustomer();
                 Customer customer = searchCustomer.findById(Instance.getConnection(), customerId);
+                // cache customer
+                Cache.cacheCustomer(customer);
                 //set active customer
                 CustomerBucket.getInstance().setCustomer(customer);
                 CustomerScreenController.updateCustomer();

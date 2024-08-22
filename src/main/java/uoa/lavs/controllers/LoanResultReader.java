@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.comms.Loan.SearchLoan;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanSummary;
@@ -38,6 +39,8 @@ public class LoanResultReader {
                 //get Loan with id
                 SearchLoan searchLoan = new SearchLoan();
                 Loan Loan = searchLoan.findById(Instance.getConnection(), LoanId);
+                // cache Loan
+                Cache.cacheLoan(Loan);
                 //set active Loan
                 LoanBucket.getInstance().setLoan(Loan);
                 LoanScreenController.updateLoan();

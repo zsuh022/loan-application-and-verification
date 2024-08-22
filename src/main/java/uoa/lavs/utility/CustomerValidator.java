@@ -2,6 +2,7 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.models.Customer.*;
 
 import java.time.LocalDate;
@@ -10,14 +11,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
+
 public class CustomerValidator {
 
     // Log4J2
     private static final Logger logger = LogManager.getLogger(CustomerValidator.class);
-    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
 
     public static String generateTemporaryCustomerId() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HHmmss");
         String timeAsString = LocalDateTime.now().format(dtf);
         return TEMPORARY_CUSTOMER_ID_PREFIX + timeAsString;
     }
@@ -99,6 +101,7 @@ public class CustomerValidator {
         }
 
         logger.info("Created customer in CustomerValidator with name {}", customerMap.get("firstName"));
+        Cache.cacheCustomer(customer);
         return customer;
     }
 

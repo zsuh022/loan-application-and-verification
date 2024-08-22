@@ -17,8 +17,6 @@ public abstract class AbstractWriter<T> {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AbstractWriter.class);
 
-    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
-
     public String add(Connection conn, T entity) {
         throw new UnsupportedOperationException("add with No customerID is not supported for this entity.");
     }

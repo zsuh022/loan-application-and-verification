@@ -13,9 +13,9 @@ import java.util.*;
 public class LocalLogManager {
 
     // TEMPORARY ID PREFIX
-    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "TEMP_CUSTOMER_";
+    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "T_";
 
-    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "T_";
 
     // LOCAL LOG FILE PATH
     private static final String LOCAL_LOG_FILE_PATH = "log.json";
