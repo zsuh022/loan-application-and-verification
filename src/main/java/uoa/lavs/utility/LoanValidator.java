@@ -9,6 +9,7 @@ import uoa.lavs.logging.Cache;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
 import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.mainframe.RateType;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
@@ -51,6 +53,7 @@ public class LoanValidator {
         loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
+
 
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
@@ -87,6 +90,13 @@ public class LoanValidator {
         loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
+
+        int s = Integer.parseInt(loanMap.get("status"));
+        LoanStatus status = null;
+        status = LoanStatus.values()[s];
+        loan.setStatus(status);
+
+
 
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);

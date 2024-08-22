@@ -166,6 +166,7 @@ public class EditLoanScreenController {
         lbGeneralLoanCustomerName.setText(getCustomerName(loan.getCustomerId()));
         lbGeneralLoanPrincipal.setText(String.valueOf(loan.getPrincipal()));
         LoanStatus status = loan.getStatus();
+        System.out.println("STATUS " + status);
         switch (status) {
             case New:
                 rbNewLoanStatusNew.setSelected(true);
@@ -305,6 +306,18 @@ public class EditLoanScreenController {
         loanValuesMap.put("frequencyMonthly", String.valueOf(cbNewLoanFrequencyMonthly.isSelected()));
         loanValuesMap.put("amount", tfNewLoanAmount.getText());
         loanValuesMap.put("isInterestOnly", String.valueOf(cbNewLoanIsInterestOnly.isSelected()));
+        if(rbNewLoanStatusPending.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Pending.ordinal()));
+        }
+        else if(rbNewLoanStatusActive.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Active.ordinal()));
+        }
+        else if (rbNewLoanStatusCancelled.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Cancelled.ordinal()));
+        }
+        else{
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Unknown.ordinal()));
+        }
 
         for (int i = 0; i < 18; i++) {
             TextField coborrowerId;
