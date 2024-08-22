@@ -151,7 +151,7 @@
                                              <children>
                                                 <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <AnchorPane fx:id="customerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
+                                                      <AnchorPane fx:id="customerGeneralPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
                                                          <children>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
@@ -1115,11 +1115,11 @@
                                                             </VBox>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane fx:id="customerLoansPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;" visible="false">
+                                                      <AnchorPane fx:id="customerLoansPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-border-color: ffffff;">
                                                          <children>
                                                             <StackPane layoutX="1.3333333730697632" layoutY="1.3333333730697632" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
-                                                                  <TabPane side="RIGHT">
+                                                                  <TabPane side="RIGHT" stylesheets="@../screens.css">
                                                                      <tabs>
                                                                         <Tab text="Loan 1">
                                                                            <content>
