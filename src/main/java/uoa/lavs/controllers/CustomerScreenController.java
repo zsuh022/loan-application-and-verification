@@ -856,5 +856,11 @@ public class CustomerScreenController {
     public static void updateCustomer() {
         // get the current customer in the customer bucket and set it as the active customer
         instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
+        instance.setGeneralPaneInformation();
+        instance.setAddressPaneInformation();
+        instance.setContactsPaneInformation();
+        instance.setEmployerPaneInformation();
+        instance.setLoanPaneInformation();
+        instance.setNotesPaneInformation();
     }
 }
