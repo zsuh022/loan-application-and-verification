@@ -20,9 +20,9 @@ public class Instance {
     private static class SingletonHelper {
 
         //always works
-        private static final Connection INSTANCE = new NitriteConnection(dataPath);
+        // private static final Connection INSTANCE = new NitriteConnection(dataPath);
         // always fail
-        // private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new NFailsPerMRequestsPolicy(1, 1));
+        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new NFailsPerMRequestsPolicy(1, 1));
 //
     }
 
