@@ -133,11 +133,7 @@ public class LoanScreenController {
     public void initialize() {
         instance = this;
     }
-
-    public boolean submitLoanUpdate() {
-        // TODO:
-        return true;
-    }
+    
 
     public static void updateLoan() {
         // get the current customer in the customer bucket and set it as the active customer
@@ -204,7 +200,6 @@ public class LoanScreenController {
         vbox.setStyle("-fx-padding: 10;");
 
         for (Payments payment : paymentList) {
-            System.out.println(":ADWADAWDA" + payment.getCustomerName());
 
             AnchorPane pane = new AnchorPane();
             pane.setPrefWidth(630);
@@ -396,8 +391,9 @@ public class LoanScreenController {
     }
 
     @FXML
-    private void editLoan(){
-        Main.setScreen(Screens.LOAN);
+    private void editLoan() {
+        EditLoanScreenController.editLoan();
+        Main.setScreen(Screens.EDIT_LOAN);
     }
 
 }

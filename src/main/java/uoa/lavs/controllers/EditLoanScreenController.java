@@ -31,6 +31,10 @@ import java.util.Objects;
 
 public class EditLoanScreenController {
 
+    private static EditLoanScreenController INSTANCE;
+
+    private Loan activeLoan;
+
     private HashMap<String, String> loanValuesMap = new HashMap<>();
 
     private LoanValidator loanValidator = new LoanValidator();
@@ -120,48 +124,17 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId17;
 
+    private static EditLoanScreenController instance;
 
-    public void submitNewLoan() {
-        fillLoanValuesMap();
+    @FXML
+    public void initialize() {
+        instance = this;
+    }
 
-        if (loanValidator.validateLoan(loanValuesMap)) {
-            Loan newLoan = loanValidator.createLoan(loanValuesMap);
 
-            // Connection
-            Connection conn = Instance.getConnection();
-
-            // Add Instances
-            AddLoan addLoan = new AddLoan();
-            AddCoborrower addCoborrower = new AddCoborrower();
-
-            // Attempt to create new loan in the mainframe
-            String loanID = addLoan.add(conn, newLoan);
-            if (Objects.equals(loanID, "0")) {
-                // Failed to create Loan on mainframe
-                loanID = "TEMP_LOAN_";
-            }
-
-            newLoan.setLoanId(loanID);
-            newLoan.setStatus(LoanStatus.Active);
-            UpdateStatus update = new UpdateStatus();
-
-            // Will log if loan was not created in mainframe
-            update.add(conn, LoanStatus.Active, loanID);
-            
-            for (Coborrower coborrower : newLoan.getCoborrowerList()) {
-                addCoborrower.add(conn, coborrower, loanID);
-            }
-
-            // Add Loan to Cache
-            Cache.cacheLoan(newLoan);
-
-            // Set active Loan
-            LoanBucket.getInstance().setLoan(newLoan);
-            LoanScreenController.updateLoan();
-
-            Main.setScreen(Screens.LOAN);
-
-        }
+    public static void editLoan() {
+        instance.activeLoan = LoanBucket.getInstance().getLoan();
+        
     }
 
     private void fillLoanValuesMap() {

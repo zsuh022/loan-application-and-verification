@@ -695,7 +695,7 @@ public class CustomerScreenController {
         }
         if (employerList.size() > 2) {
             lbCustomerEmployerName2.setText(employerList.get(2).getName());
-            lbCustomerEmployerLine12.setText(employerList.get(2).getLine2());
+            lbCustomerEmployerLine12.setText(employerList.get(2).getLine1());
             lbCustomerEmployerLine22.setText(employerList.get(2).getLine2());
             lbCustomerEmployerSuburb2.setText(employerList.get(2).getSuburb());
             lbCustomerEmployerCity2.setText(employerList.get(2).getCity());
