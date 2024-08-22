@@ -183,8 +183,8 @@ public abstract class Loan {
             case Fortnightly -> {
                 return "Fortnightly";
             }
-            case Monthly -> {
-                return "Monthly";
+            case Yearly -> {
+                return "Annually";
             }
             default -> {
                 return "Unknown";
