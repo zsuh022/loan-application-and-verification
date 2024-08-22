@@ -640,6 +640,11 @@ public class CustomerScreenController {
         InitialSearch loanSearch = new InitialSearch();
         List<LoanSummary> loanList = loanSearch.findAll(Instance.getConnection(), activeCustomer.getId());
 
+        if (loanList.isEmpty()) {
+            lbLoanId.setText("");
+            lbLoanPrincipal.setText("");
+            cbLoanStatus.setSelected(false);
+        }
         if (!loanList.isEmpty()) {
             LoanSummary loan1 = loanList.get(0);
             lbLoanId.setText(loan1.getLoanID());
