@@ -5,7 +5,9 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.AddCustomer;
+import uoa.lavs.comms.Loan.AddCoborrower;
 import uoa.lavs.comms.Loan.AddLoan;
+import uoa.lavs.comms.Loan.SearchLoanSummary;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
@@ -24,7 +26,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanFactory;
 import uoa.lavs.utility.LoanType;
 import uoa.lavs.utility.PaymentFrequency;
@@ -66,9 +70,19 @@ public class Main extends Application {
         loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
         loan.setPaymentAmount(1000.0);
         loan.setTerm(360);
+
+        Coborrower co = new Coborrower();
+        AddCoborrower addCo = new AddCoborrower();
+
         String loanId = addLoan.add(Instance.getConnection(), loan);
-        UpdateStatus update = new UpdateStatus();
-        update.add(connection, LoanStatus.Active, loanId);
+
+        co.setId("1");
+
+
+        addCo.add(connection, co, loanId);
+
+        loan.addCoborrower(co);
+
         System.out.println("Loan ID: " + loanId);
 
         //test stuff end

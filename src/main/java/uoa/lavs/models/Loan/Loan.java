@@ -18,6 +18,7 @@ public abstract class Loan {
     protected String customerID;
     protected String customerName;
     protected List<Coborrower> coborrowerList = new ArrayList<>();
+    protected List<Payments> paymentsList = new ArrayList<>();
     protected Double principal;
     protected RateType rateType;
     protected Double rate;
@@ -30,6 +31,9 @@ public abstract class Loan {
     protected LoanDetails summary;
     protected Integer term;
     protected Boolean interestOnly;
+
+    public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
+
 
     public String getId() {
         return loanId;
@@ -213,7 +217,17 @@ public abstract class Loan {
         this.interestOnly = interestOnly;
     }
 
-    public abstract ArrayList<LoanRepayment> getRepaymentSchedule();
+    public List<Payments> getPaymentsList() {
+        return paymentsList;
+    }
+
+    public void setPaymentsList(List<Payments> list) {
+        this.paymentsList = list;
+    }
+
+    public void addPaymentsList(Payments paymentsList) {
+        this.paymentsList.add(paymentsList);
+    }
 
     @Override
     public boolean equals(Object obj) {

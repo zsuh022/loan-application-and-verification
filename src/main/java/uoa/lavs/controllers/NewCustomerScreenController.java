@@ -16,10 +16,12 @@ import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.*;
+import uoa.lavs.comms.Loan.SearchLoanSummary;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Customer.*;
+import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.CustomerValidator;
 
 import java.util.ArrayList;

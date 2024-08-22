@@ -2,8 +2,12 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.RateType;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.Mortgage;
@@ -11,6 +15,7 @@ import uoa.lavs.models.Loan.Mortgage;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 public class LoanValidator {
@@ -51,6 +56,14 @@ public class LoanValidator {
             if (coborrowerId != null) {
                 Coborrower coborrower = new Coborrower();
                 coborrower.setId(coborrowerId);
+                List<Customer> cacheList = Cache.searchCustomerCacheId(coborrowerId);
+                if (cacheList.size() == 1) {
+                    coborrower.setName(cacheList.get(0).getName());
+                } else {
+                    SearchCustomer search = new SearchCustomer();
+                    coborrower.setName(search.findById(Instance.getConnection(), coborrowerId).getName());
+                }
+                loan.addCoborrower(coborrower);
             }
         }
 

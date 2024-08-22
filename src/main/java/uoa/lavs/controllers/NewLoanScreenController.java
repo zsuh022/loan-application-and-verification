@@ -12,19 +12,20 @@ import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
-import uoa.lavs.comms.Loan.AddCoborrower;
-import uoa.lavs.comms.Loan.AddLoan;
+import uoa.lavs.comms.Loan.*;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanValidator;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NewLoanScreenController {
 
@@ -131,11 +132,18 @@ public class NewLoanScreenController {
 
             // Attempt to create new loan in the mainframe
             String loanID = addLoan.add(conn, newLoan);
-            if (loanID != "0") {
-                // Creating loan in mainframe success
-                newLoan.setLoanId(loanID);
-                newLoan.setStatus(LoanStatus.Active);
+            if (Objects.equals(loanID, "0")) {
+                // Failed to create Loan on mainframe
+                loanID = "TEMP_LOAN_";
             }
+
+            newLoan.setLoanId(loanID);
+            newLoan.setStatus(LoanStatus.Active);
+            UpdateStatus update = new UpdateStatus();
+
+            // Will log if loan was not created in mainframe
+            update.add(conn, LoanStatus.Active, loanID);
+            
             for (Coborrower coborrower : newLoan.getCoborrowerList()) {
                 addCoborrower.add(conn, coborrower, loanID);
             }

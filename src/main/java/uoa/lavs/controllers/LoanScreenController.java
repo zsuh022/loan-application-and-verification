@@ -3,20 +3,24 @@ package uoa.lavs.controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.comms.Loan.SearchLoanSummary;
+import uoa.lavs.comms.Loan.SearchPayments;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.LoanDetails;
+import uoa.lavs.models.Loan.Payments;
 
 import java.text.NumberFormat;
 
@@ -76,6 +80,8 @@ public class LoanScreenController {
     private Button btnPaymentsLoans;
     @FXML
     private AnchorPane loanPaymentsPane;
+    @FXML
+    private ScrollPane loanPaymentScrollPane;
     // TODO: @FXML private Label ...
     @FXML
     private Label lbPaymentsLoansLine1;
@@ -94,6 +100,8 @@ public class LoanScreenController {
     private Button btnCoborrowersLoans;
     @FXML
     private AnchorPane loanCoborrowersPane;
+    @FXML
+    private ScrollPane loanCoborrowersPaneInner;
     // TODO:
     // summary
     @FXML
@@ -137,6 +145,7 @@ public class LoanScreenController {
 
         // Fill the loan screen with the correct details
         instance.fillFields(instance.activeLoan);
+
     }
 
     private void fillFields(Loan loan) {
@@ -145,7 +154,7 @@ public class LoanScreenController {
         lbGeneralLoanCustomerName.setText(getCustomerName(loan.getCustomerId()));
         lbGeneralLoanPrincipal.setText(formatCurrency(loan.getPrincipal()));
         lbGeneralLoanStatus.setText(loan.getStatusString());
-        lbGeneralLoanRate.setText(String.valueOf(loan.getRate()) + " %");
+        lbGeneralLoanRate.setText(loan.getRate() + " %");
         lbGeneralLoanStartDate.setText(formatDate(loan.getStartDate()));
         lbGeneralLoanPeriod.setText(formatMonthsToYears(loan.getPeriod()));
         lbGeneralLoanTerm.setText(formatMonthsToYears(loan.getTerm()));
@@ -158,7 +167,128 @@ public class LoanScreenController {
             lbGeneralLoanInterestOnly.setText("\u2610");
         }
 
+        LoanDetails details = loan.getSummary();
+        if (details == null) {
+            SearchLoanSummary searchSummary = new SearchLoanSummary();
+            details = searchSummary.findById(Instance.getConnection(), loan.getId());
+        }
+
+        lbSummaryLoansCustomerName.setText(details.getCustomerName());
+        lbSummaryLoansCustomerId.setText(details.getCustomerID());
+        lbSummaryLoansRate.setText(details.getRate() + " %");
+        lbSummaryLoansTerm.setText(formatMonthsToYears(details.getTerm()));
+        lbSummaryLoansFrequency.setText(details.getFrequencyString());
+        lbSummaryLoansAmount.setText(formatCurrency(details.getPayment()));
+        lbSummaryLoansTotalPaid.setText(formatCurrency(details.getInterest()));
+        lbSummaryLoansTotalCost.setText(formatCurrency(details.getTotal()));
+        lbSummaryLoansPayoffDate.setText(formatDate(details.getPayoffDate()));
+
+        List<Coborrower> list = loan.getCoborrowerList();
+        displayCoborrowers(list);
+
+        List<Payments> paymentList = loan.getPaymentsList();
+        displayPaymentList(paymentList);
+
     }
+
+    private void displayPaymentList(List<Payments> paymentList) {
+        VBox vbox = createPaymentsVBox(paymentList);
+        loanPaymentScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        loanPaymentScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        loanPaymentScrollPane.setContent(vbox);
+    }
+
+    private VBox createPaymentsVBox(List<Payments> paymentList) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setStyle("-fx-padding: 10;");
+
+        for (Payments payment : paymentList) {
+            System.out.println(":ADWADAWDA" + payment.getCustomerName());
+
+            AnchorPane pane = new AnchorPane();
+            pane.setPrefWidth(630);
+            pane.setPrefHeight(100);
+            pane.setStyle("-fx-background-color: #F0F0F0; -fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5;");
+
+            VBox left = new VBox();
+            left.setStyle("-fx-padding: 10;");
+            VBox right = new VBox();
+            right.setStyle("-fx-padding: 10;");
+
+            pane.getChildren().addAll(left, right);
+            AnchorPane.setLeftAnchor(left, 0.0);
+            AnchorPane.setRightAnchor(right, 0.0);
+
+            Label idLabel = new Label("Customer ID: " + payment.getCustomerId());
+            idLabel.setStyle("-fx-font-size: 12px;");
+
+            Label paymentDateLabel = new Label("Payment Date: " + formatDate(payment.getPaymentDate()));
+            paymentDateLabel.setStyle("-fx-font-size: 12px; ");
+
+            Label paymentNumberLabel = new Label("Payment Number: " + payment.getPaymentNumber());
+            paymentNumberLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+            Label paymentInterestLabel = new Label("Interest Paid: " + String.format("%.2f", payment.getPaymentInterest()));
+            paymentInterestLabel.setStyle("-fx-font-size: 12px;");
+
+            Label paymentPrincipalLabel = new Label("Principal Paid: " + String.format("%.2f", payment.getPaymentPrincipal()));
+            paymentPrincipalLabel.setStyle("-fx-font-size: 12px;");
+
+            Label paymentRemainingLabel = new Label("Remaining Balance: " + String.format("%.2f", payment.getPaymentRemaining()));
+            paymentRemainingLabel.setStyle("-fx-font-size: 12px;");
+
+            left.getChildren().addAll(paymentNumberLabel, idLabel, paymentDateLabel);
+            right.getChildren().addAll(paymentInterestLabel, paymentPrincipalLabel, paymentRemainingLabel);
+
+            vbox.getChildren().add(pane);
+        }
+
+        return vbox;
+    }
+
+
+    private void displayCoborrowers(List<Coborrower> coborrowers) {
+        VBox vbox = createCoborrowersVBox(coborrowers);
+
+        loanCoborrowersPaneInner.setContent(vbox);
+        loanCoborrowersPaneInner.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        loanCoborrowersPaneInner.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+    }
+
+    private VBox createCoborrowersVBox(List<Coborrower> coborrowers) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setStyle("-fx-padding: 10;");
+
+        for (Coborrower coborrower : coborrowers) {
+
+            AnchorPane pane = new AnchorPane();
+            pane.setPrefWidth(630);
+            pane.setPrefHeight(70);
+            pane.setStyle("-fx-background-color: #F0F0F0; -fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5;");
+
+            VBox left = new VBox();
+            left.setStyle("-fx-padding: 10;");
+
+            pane.getChildren().addAll(left);
+            AnchorPane.setLeftAnchor(left, 0.0);
+
+            Label nameLabel = new Label("Name: " + coborrower.getName());
+            nameLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+            Label idLabel = new Label("Coborrower ID: " + coborrower.getId());
+            idLabel.setStyle("-fx-font-size: 12px;");
+
+
+            left.getChildren().addAll(nameLabel, idLabel);
+
+            vbox.getChildren().add(pane);
+        }
+
+        return vbox;
+    }
+
 
     private String getCustomerName(String customerID) {
         List<Customer> list = Cache.searchCustomerCacheId(customerID);
