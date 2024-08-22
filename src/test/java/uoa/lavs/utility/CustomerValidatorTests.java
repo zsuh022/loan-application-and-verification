@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
 
 public class CustomerValidatorTests {
 
@@ -80,7 +81,7 @@ public class CustomerValidatorTests {
     void testGenerateTemporaryCustomerId() {
         String tempId = CustomerValidator.generateTemporaryCustomerId();
         assertNotNull(tempId);
-        assertTrue(tempId.startsWith(CustomerValidator.TEMPORARY_CUSTOMER_ID_PREFIX));
+        assertTrue(tempId.startsWith(TEMPORARY_CUSTOMER_ID_PREFIX));
     }
 
     @Test

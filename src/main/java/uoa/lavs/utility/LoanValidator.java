@@ -265,10 +265,10 @@ public class LoanValidator {
     }
 
     private void errorPopup(String header, String body) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(body);
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(header);
+            alert.setContentText(body);
+            alert.showAndWait();
     }
 }
