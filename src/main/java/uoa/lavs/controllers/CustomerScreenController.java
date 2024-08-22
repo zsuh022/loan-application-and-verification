@@ -640,6 +640,11 @@ public class CustomerScreenController {
         InitialSearch loanSearch = new InitialSearch();
         List<LoanSummary> loanList = loanSearch.findAll(Instance.getConnection(), activeCustomer.getId());
 
+        if (loanList.isEmpty()) {
+            lbLoanId.setText("");
+            lbLoanPrincipal.setText("");
+            cbLoanStatus.setSelected(false);
+        }
         if (!loanList.isEmpty()) {
             LoanSummary loan1 = loanList.get(0);
             lbLoanId.setText(loan1.getLoanID());
@@ -733,7 +738,9 @@ public class CustomerScreenController {
 
     public void setNotesPaneInformation() {
         if (activeCustomer.getNote() != null) {
-            taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
+            taCustomerNotes.setText(activeCustomer.getNote().getNote());
+        } else {
+            taCustomerNotes.clear();
         }
     }
 
@@ -861,5 +868,11 @@ public class CustomerScreenController {
     public static void updateCustomer() {
         // get the current customer in the customer bucket and set it as the active customer
         instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
+        instance.setGeneralPaneInformation();
+        instance.setAddressPaneInformation();
+        instance.setContactsPaneInformation();
+        instance.setEmployerPaneInformation();
+        instance.setLoanPaneInformation();
+        instance.setNotesPaneInformation();
     }
 }
