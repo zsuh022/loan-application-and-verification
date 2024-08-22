@@ -50,8 +50,6 @@ public class LoanValidator {
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
 
-        // TODO: loan.setStatus(LoanStatus.Active);
-
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
@@ -127,6 +125,10 @@ public class LoanValidator {
         }
 
         // check customer id valid
+        if (!isCustomerIdValid(loanMap.get("customerId"))) {
+            logger.error("ValidateLoan method failed: Customer ID is invalid");
+            return false;
+        }
 
         if (loanMap.get("principal") == null || loanMap.get("principal").isEmpty()) {
             logger.error("ValidateLoan method failed: Principal is empty");
@@ -160,6 +162,18 @@ public class LoanValidator {
 
         if (loanMap.get("period") == null || loanMap.get("period").isEmpty()) {
             logger.error("ValidateLoan method failed: period is empty");
+            return false;
+        }
+
+        if (loanMap.get("term") == null || loanMap.get("term").isEmpty()) {
+            logger.error("ValidateLoan method failed: term is empty");
+            return false;
+        }
+
+        int term = Integer.parseInt(loanMap.get("term"));
+        int period = Integer.parseInt(loanMap.get("period"));
+        if (term < period) {
+            logger.error("ValidateLoan method failed: term is less than period");
             return false;
         }
 
@@ -201,7 +215,37 @@ public class LoanValidator {
         }
 
         // check coborrower id valid
+        for (int i = 0; i < 18; i++) {
+            String coborrowerId = loanMap.get("coborrowerId" + i);
+            if (coborrowerId != null && !isCustomerIdValid(coborrowerId)) {
+                logger.error("ValidateLoan method failed: Customer ID of coborrower is invalid");
+                return false;
+            }
+        }
 
+        logger.info("Validating loan for customer id {}", loanMap.get("customerId"));
         return true;
+    }
+
+    private boolean isCustomerIdValid(String customerId) {
+        logger.info("Validating customer id in isCustomerIdValid method {}", customerId);
+
+        // search using SearchCustomer
+        SearchCustomer search = new SearchCustomer();
+
+        try {
+            Customer customers = search.findById(Instance.getConnection(), customerId);
+
+            if (customers != null) {
+                logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
+                return true;
+            } else {
+                logger.error("isCustomerIdValid method: Customer ID {} is invalid. No customer found", customerId);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error("isCustomerIdValid method: error occurred");
+            return false;
+        }
     }
 }
