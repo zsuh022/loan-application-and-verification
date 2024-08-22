@@ -41,6 +41,8 @@ public class EditCustomerScreenController {
     private CustomerValidator customerValidator = new CustomerValidator();
 
     @FXML
+    private Label lbCustomerId;
+    @FXML
     private FontAwesomeIconView newCustomerBack;
     @FXML
     private Rectangle saveNewCustomerGeneral;
