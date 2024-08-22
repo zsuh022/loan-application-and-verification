@@ -1,5 +1,6 @@
 package uoa.lavs.utility;
 
+import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.logging.Cache;
@@ -112,37 +113,44 @@ public class CustomerValidator {
 
         if (customerMap.get("firstName") == null || customerMap.get("firstName").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer first name is empty");
+            errorPopUp("First Name is empty", "Please enter a first name.");
             return false;
         }
 
         if (customerMap.get("lastName") == null || customerMap.get("lastName").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer last name is empty");
+            errorPopUp("Last Name is empty", "Please enter a last name.");
             return false;
         }
 
         if (customerMap.get("dob") == null || customerMap.get("dob").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer dob is empty");
+            errorPopUp("Date of Birth is empty", "Please enter a date of birth.");
             return false;
         }
 
         LocalDate dob = LocalDate.parse(customerMap.get("dob"));
         if (dob.isAfter(LocalDate.now())) {
             logger.error("ValidateCustomer method failed: Customer dob is after current date");
+            errorPopUp("Date of Birth is invalid", "Please enter a date of birth before the current day.");
             return false;
         }
 
         if (customerMap.get("occupation") == null || customerMap.get("occupation").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer occupation is empty");
+            errorPopUp("Occupation is empty", "Please enter an occupation. Please enter 'unemployed' if applicable.");
             return false;
         }
 
         if (customerMap.get("citizenship") == null || customerMap.get("citizenship").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer citizenship is empty");
+            errorPopUp("Citizenship is empty", "Please enter a citizenship.");
             return false;
         }
 
         if (customerMap.get("visa") == null || customerMap.get("visa").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer visa is empty");
+            errorPopUp("Visa is empty", "Please enter a visa.");
             return false;
         }
 
@@ -179,21 +187,25 @@ public class CustomerValidator {
 
             if (addressMap.get("type") == null || addressMap.get("type").isEmpty()) {
                 logger.error("ValidateAddress method failed: Customer address type is empty");
+                errorPopUp("Address Type is empty", "Please enter an address type.");
                 return false;
             }
 
             if (addressMap.get("line1") == null || addressMap.get("line1").isEmpty()) {
                 logger.error("ValidateAddress method failed: Customer address line1 is empty");
+                errorPopUp("Address Line 1 is empty", "Please enter an address line 1.");
                 return false;
             }
 
             if (addressMap.get("suburb") == null || addressMap.get("suburb").isEmpty()) {
                 logger.error("ValidateAddress method failed: Customer address suburb is empty");
+                errorPopUp("Address Suburb is empty", "Please enter an address suburb.");
                 return false;
             }
 
             if (addressMap.get("city") == null || addressMap.get("city").isEmpty()) {
                 logger.error("ValidateAddress method failed: Customer address city is empty");
+                errorPopUp("Address City is empty", "Please enter an address city.");
                 return false;
             }
 
@@ -201,11 +213,13 @@ public class CustomerValidator {
                     !addressMap.get("postCode").matches("\\d{4}")) {
                 // assume post code is exactly 4 digits
                 logger.error("ValidateAddress method failed: Customer address postCode is empty or is not 4 digits");
+                errorPopUp("Address Post Code is empty or invalid", "Please enter a 4-digit post code.");
                 return false;
             }
 
             if (addressMap.get("country") == null || addressMap.get("country").isEmpty()) {
                 logger.error("ValidateAddress method failed: Customer address country is empty");
+                errorPopUp("Address Country is empty", "Please enter an address country.");
                 return false;
             }
 
@@ -220,11 +234,13 @@ public class CustomerValidator {
 
         if (primaryCount != 1) {
             logger.error("ValidateAddress method failed: there should be exactly one primary address, found {}", primaryCount);
+            errorPopUp("Primary Address error", "Please select exactly one primary address.");
             return false;
         }
 
         if (mailingCount == 0) {
             logger.error("ValidateAddress method failed: there should be at least one mailing address, found {}", mailingCount);
+            errorPopUp("Mailing Address error", "Please select at least one mailing address.");
             return false;
         }
 
@@ -240,6 +256,7 @@ public class CustomerValidator {
         for (Map<String, String> emailMap : emailList) {
             if (emailMap.get("address") == null || emailMap.get("address").isEmpty()) {
                 logger.error("ValidateEmail method failed: Customer email address is empty");
+                errorPopUp("Email Address is empty", "Please enter an email address.");
                 return false;
             }
 
@@ -247,49 +264,58 @@ public class CustomerValidator {
             if (email.length != 2) {
                 // email split into prefix and domain
                 logger.error("ValidateEmail method failed: Customer email address needs exactly one @");
+                errorPopUp("Email Address error", "Please enter a valid email address. (e.g. johndoe@gmail.com)");
                 return false;
             }
 
             String prefix = email[0];
             if (!prefix.matches("^[a-zA-Z0-9._-]+$")) {
                 logger.error("ValidateEmail method failed: Customer email address prefix contains invalid characters");
+                errorPopUp("Email Address error", "Email address contains invalid characters.");
                 return false;
             }
 
             if (!Character.isLetter(prefix.charAt(0)) || !Character.isLetterOrDigit(prefix.charAt(prefix.length() - 1))) {
                 logger.error("ValidateEmail method failed: Customer email address prefix starts or ends with invalid characters");
+                errorPopUp("Email Address error", "Email address starts or ends with invalid characters.");
                 return false;
             }
 
             if (prefix.contains("..") || prefix.contains("__") || prefix.contains("--")) {
                 logger.error("ValidateEmail method failed: Customer email address prefix contains invalid adjacent characters");
+                errorPopUp("Email Address error", "Email address contains invalid adjacent characters.");
                 return false;
             }
 
             String[] domain = email[1].split("\\.");
             if (domain.length <= 1) {
                 logger.error("ValidateEmail method failed: Customer email address domain needs at least one full stop");
+                errorPopUp("Email Address error", "Email address domain needs at least one full stop.");
                 return false;
             }
 
             for (String domainPart : domain) {
                 if (domainPart.isEmpty()) {
                     logger.error("ValidateEmail method failed: Email domain part is empty");
+                    errorPopUp("Email Address error", "Email address domain is blank.");
                     return false;
                 }
 
                 if (!domainPart.matches("^[a-zA-Z0-9-]+$")) {
                     logger.error("ValidateEmail method failed: Email domain part contains invalid characters");
+                    errorPopUp("Email Address error", "Email address domain contains invalid characters.");
                     return false;
                 }
 
                 if (!Character.isLetterOrDigit(domainPart.charAt(0)) || !Character.isLetterOrDigit(domainPart.charAt(domainPart.length() - 1))) {
                     logger.error("ValidateEmail method failed: Email domain part starts or ends with invalid characters");
+                    errorPopUp("Email Address error", "Email address domain starts or ends with invalid characters.");
                     return false;
                 }
 
                 if (domainPart.contains("--")) {
                     logger.error("ValidateEmail method failed: Email domain part contains invalid adjacent characters");
+                    errorPopUp("Email Address error", "Email address domain contains invalid adjacent characters.");
                     return false;
                 }
             }
@@ -301,6 +327,7 @@ public class CustomerValidator {
 
         if (primaryCount != 1) {
             logger.error("ValidateEmail method failed: there should be exactly one primary email, found {}", primaryCount);
+            errorPopUp("Primary Email error", "Please select exactly one primary email.");
             return false;
         }
 
@@ -314,21 +341,25 @@ public class CustomerValidator {
         for (Map<String, String> employerMap : employerList) {
             if (employerMap.get("name") == null || employerMap.get("name").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer name is empty");
+                errorPopUp("Employer Name is empty", "Please enter an employer name.");
                 return false;
             }
 
             if (employerMap.get("line1") == null || employerMap.get("line1").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer line1 is empty");
+                errorPopUp("Employer Line 1 is empty", "Please enter an employer line 1.");
                 return false;
             }
 
             if (employerMap.get("suburb") == null || employerMap.get("suburb").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer suburb is empty");
+                errorPopUp("Employer Suburb is empty", "Please enter an employer suburb.");
                 return false;
             }
 
             if (employerMap.get("city") == null || employerMap.get("city").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer city is empty");
+                errorPopUp("Employer City is empty", "Please enter an employer city.");
                 return false;
             }
 
@@ -336,11 +367,13 @@ public class CustomerValidator {
                     !employerMap.get("postCode").matches("\\d{4}")) {
                 // assume post code is 4 digits
                 logger.error("ValidateEmployer method failed: Customer employer postCode is empty or is not 4 digits");
+                errorPopUp("Employer Post Code is empty or invalid", "Please enter a 4-digit post code.");
                 return false;
             }
 
             if (employerMap.get("country") == null || employerMap.get("country").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer country is empty");
+                errorPopUp("Employer Country is empty", "Please enter an employer country.");
                 return false;
             }
 
@@ -348,11 +381,13 @@ public class CustomerValidator {
                     !employerMap.get("phone").matches("\\d+")) {
                 // phone only has digits
                 logger.error("ValidateEmployer method failed: Customer employer phone is empty or is not digits");
+                errorPopUp("Employer Phone is empty or invalid", "Please enter a valid phone number.");
                 return false;
             }
 
             if (employerMap.get("email") == null || employerMap.get("email").isEmpty()) {
                 logger.error("ValidateEmployer method failed: Customer employer email is empty");
+                errorPopUp("Employer Email is empty", "Please enter an employer email.");
                 return false;
             }
         }
@@ -370,6 +405,7 @@ public class CustomerValidator {
         for (Map<String, String> phoneMap : phoneList) {
             if (phoneMap.get("type") == null || phoneMap.get("type").isEmpty()) {
                 logger.error("ValidatePhone method failed: Customer phone type is empty");
+                errorPopUp("Phone Type is empty", "Please enter a phone type.");
                 return false;
             }
 
@@ -377,6 +413,7 @@ public class CustomerValidator {
                     !phoneMap.get("prefix").matches("\\d{3}")) {
                 // prefix exactly 3 digits
                 logger.error("ValidatePhone method failed: Customer phone prefix is empty or is not 3 digits");
+                errorPopUp("Phone Prefix is empty or invalid", "Please enter a 3-digit phone prefix.");
                 return false;
             }
 
@@ -384,6 +421,7 @@ public class CustomerValidator {
                     !phoneMap.get("number").matches("\\d+")) {
                 // number only has digits
                 logger.error("ValidatePhone method failed: Customer phone number is empty or is not digits");
+                errorPopUp("Phone Number is empty or invalid", "Please enter a valid phone number.");
                 return false;
             }
 
@@ -398,15 +436,25 @@ public class CustomerValidator {
 
         if (primaryCount != 1) {
             logger.error("ValidatePhone method failed: there should be exactly one primary phone, found {}", primaryCount);
+            errorPopUp("Primary Phone error", "Please select exactly one primary phone.");
             return false;
         }
 
         if (textingCount == 0) {
             logger.error("ValidatePhone method failed: there should be at least one texting phone, found {}", textingCount);
+            errorPopUp("Texting Phone error", "Please select at least one texting phone.");
             return false;
         }
 
         logger.info("Validated phone in CustomerValidator successfully");
         return true;
+    }
+
+    private static void errorPopUp(String header, String body) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error creating Customer");
+        alert.setHeaderText(header);
+        alert.setContentText(body);
+        alert.showAndWait();
     }
 }

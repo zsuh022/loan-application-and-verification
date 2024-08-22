@@ -24,6 +24,7 @@ import uoa.lavs.models.Customer.*;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.CustomerValidator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -469,11 +470,16 @@ public class NewCustomerScreenController {
     }
 
     private void fillCustomerValuesMap() {
+        LocalDate dob = dpNewCustomerDob.getValue();
+        String dobString = "";
+        if(dpNewCustomerDob.getValue() != null){
+            dobString = dob.toString();
+        }
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
         customerValuesMap.put("firstName", tfNewCustomerName.getText());
         customerValuesMap.put("middleName", tfNewCustomerName1.getText());
         customerValuesMap.put("lastName", tfNewCustomerName2.getText());
-        customerValuesMap.put("dob", dpNewCustomerDob.getValue().toString());
+        customerValuesMap.put("dob", dobString);
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
         customerValuesMap.put("visa", tfNewCustomerVisa.getText());

@@ -22,6 +22,7 @@ import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanValidator;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -162,13 +163,18 @@ public class NewLoanScreenController {
 
     private void fillLoanValuesMap() {
         loanValuesMap.clear();
+        LocalDate startDate = dpNewLoanStartDate.getValue();
+        String startDateString = "";
+        if (startDate != null) {
+            startDateString = startDate.toString();
+        }
 
         loanValuesMap.put("customerId", tfNewLoanCustomerId.getText());
         loanValuesMap.put("principal", tfNewLoanPrincipal.getText());
         loanValuesMap.put("rate", tfNewLoanRate.getText());
         loanValuesMap.put("isFloating", String.valueOf(cbNewLoanIsFloating.isSelected()));
         loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
-        loanValuesMap.put("startDate", dpNewLoanStartDate.getValue().toString());
+        loanValuesMap.put("startDate", startDateString);
         loanValuesMap.put("period", tfNewLoanPeriod.getText());
         loanValuesMap.put("term", tfNewLoanTerm.getText());
         loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));
