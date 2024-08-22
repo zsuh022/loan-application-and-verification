@@ -1634,12 +1634,12 @@
                                                                   </TextArea>
                                                                </children>
                                                             </VBox>
-                                                            <Rectangle fx:id="submitUpdate" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" stroke="BLACK" strokeType="INSIDE" width="80.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                                            <Rectangle fx:id="submitUpdate" arcHeight="25.0" arcWidth="25.0" fill="#da5630" height="36.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitUpdate" stroke="BLACK" strokeType="INSIDE" width="80.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                                                                <cursor>
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                             </Rectangle>
-                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitNewCustomer" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="29.0">
+                                                            <Text fill="WHITE" layoutX="20.0" layoutY="20.0" onMouseClicked="#submitUpdate" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="29.0">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
