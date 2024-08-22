@@ -66,10 +66,6 @@ public class EditCustomerScreenController {
     @FXML
     private TextField tfNewCustomerName;
     @FXML
-    private TextField tfNewCustomerName1;
-    @FXML
-    private TextField tfNewCustomerName2;
-    @FXML
     private DatePicker dpNewCustomerDob;
     @FXML
     private TextField tfNewCustomerOccupation;
@@ -669,9 +665,7 @@ public class EditCustomerScreenController {
             dobString = dob.toString();
         }
         customerValuesMap.put("title", tfNewCustomerTitle.getText());
-        customerValuesMap.put("firstName", tfNewCustomerName.getText());
-        customerValuesMap.put("middleName", tfNewCustomerName1.getText());
-        customerValuesMap.put("lastName", tfNewCustomerName2.getText());
+        customerValuesMap.put("fullName", tfNewCustomerName.getText());
         customerValuesMap.put("dob", dobString);
         customerValuesMap.put("occupation", tfNewCustomerOccupation.getText());
         customerValuesMap.put("citizenship", tfNewCustomerCitizenship.getText());
