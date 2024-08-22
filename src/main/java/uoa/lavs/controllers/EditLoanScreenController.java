@@ -2,34 +2,35 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Customer.SearchCustomer;
 import uoa.lavs.comms.Loan.*;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
-import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanValidator;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class EditLoanScreenController {
+
+    private static EditLoanScreenController instance;
+
+    private Loan activeLoan;
 
     private HashMap<String, String> loanValuesMap = new HashMap<>();
 
@@ -53,9 +54,17 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanRate;
     @FXML
-    private CheckBox cbNewLoanIsFloating;
+    private RadioButton cbNewLoanIsFloating;
     @FXML
-    private CheckBox cbNewLoanIsFixed;
+    private RadioButton cbNewLoanIsFixed;
+    @FXML
+    private RadioButton rbNewLoanStatusNew;
+    @FXML
+    private RadioButton rbNewLoanStatusPending;
+    @FXML
+    private RadioButton rbNewLoanStatusActive;
+    @FXML
+    private RadioButton rbNewLoanStatusCancelled;
     @FXML
     private Label lbGeneralLoanStartDate;
     @FXML
@@ -63,17 +72,17 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanPeriod;
     @FXML
-    private CheckBox cbNewLoanCompoundingWeekly;
+    private RadioButton cbNewLoanCompoundingWeekly;
     @FXML
-    private CheckBox cbNewLoanCompoundingMonthly;
+    private RadioButton cbNewLoanCompoundingMonthly;
     @FXML
-    private CheckBox cbNewLoanCompoundingAnnually;
+    private RadioButton cbNewLoanCompoundingAnnually;
     @FXML
-    private CheckBox cbNewLoanFrequencyWeekly;
+    private RadioButton cbNewLoanFrequencyWeekly;
     @FXML
-    private CheckBox cbNewLoanFrequencyFortnightly;
+    private RadioButton cbNewLoanFrequencyFortnightly;
     @FXML
-    private CheckBox cbNewLoanFrequencyMonthly;
+    private RadioButton cbNewLoanFrequencyMonthly;
     @FXML
     private TextField tfNewLoanAmount;
     @FXML
@@ -84,7 +93,7 @@ public class EditLoanScreenController {
     @FXML
     private AnchorPane newLoanCoborrowersPane;
     @FXML
-    private TextField tfNewLoanCoborrowerId;
+    private TextField tfNewLoanCoborrowerId0;
     @FXML
     private TextField tfNewLoanCoborrowerId1;
     @FXML
@@ -120,12 +129,70 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId17;
 
+    @FXML
+    public void initialize() {
+        instance = this;
+    }
+
+
+    public static void editLoanUpdate() {
+        instance.activeLoan = LoanBucket.getInstance().getLoan();
+        instance.mapFields(instance.activeLoan);
+
+    }
+
+    private void mapFields(Loan loan) {
+        lbGeneralLoanCustomerId.setText(loan.getCustomerId());
+        lbGeneralLoanCustomerName.setText(getCustomerName(loan.getCustomerId()));
+        lbGeneralLoanPrincipal.setText(String.valueOf(loan.getPrincipal()));
+        LoanStatus status = loan.getStatus();
+        switch (status) {
+            case New:
+                rbNewLoanStatusNew.setSelected(true);
+            case Pending:
+                rbNewLoanStatusPending.setSelected(true);
+            case Cancelled:
+                rbNewLoanStatusCancelled.setSelected(true);
+            default:
+                rbNewLoanStatusActive.setSelected(true);
+        }
+        switch (loan.getRateType()) {
+            case Fixed:
+                cbNewLoanIsFixed.setSelected(true);
+            case Floating:
+                cbNewLoanIsFloating.setSelected(true);
+        }
+        tfNewLoanRate.setText(String.valueOf(loan.getRate()));
+        lbGeneralLoanStartDate.setText(formatDate(loan.getStartDate()));
+        tfNewLoanTerm.setText(String.valueOf(loan.getTerm()));
+        tfNewLoanPeriod.setText(String.valueOf(loan.getPeriod()));
+        switch (loan.getCompoundingFrequency()) {
+            case Weekly:
+                cbNewLoanCompoundingWeekly.setSelected(true);
+            case Monthly:
+                cbNewLoanCompoundingMonthly.setSelected(true);
+            default:
+                cbNewLoanCompoundingAnnually.setSelected(true);
+        }
+        switch (loan.getPaymentFrequency()) {
+            case Weekly:
+                cbNewLoanFrequencyWeekly.setSelected(true);
+            case Fortnightly:
+                cbNewLoanFrequencyFortnightly.setSelected(true);
+            default:
+                cbNewLoanFrequencyMonthly.setSelected(true);
+        }
+        tfNewLoanAmount.setText(String.valueOf(loan.getPaymentAmount()));
+        cbNewLoanIsInterestOnly.setSelected(loan.getInterestOnly());
+        List<Coborrower> list = loan.getCoborrowerList();
+        displayCoborrowers(list);
+    }
 
     public void submitNewLoan() {
         fillLoanValuesMap();
 
         if (loanValidator.validateLoan(loanValuesMap)) {
-            Loan newLoan = loanValidator.createLoan(loanValuesMap);
+            loanValidator.updateLoan(loanValuesMap);
 
             // Connection
             Connection conn = Instance.getConnection();
@@ -134,35 +201,69 @@ public class EditLoanScreenController {
             AddLoan addLoan = new AddLoan();
             AddCoborrower addCoborrower = new AddCoborrower();
 
-            // Attempt to create new loan in the mainframe
-            String loanID = addLoan.add(conn, newLoan);
-            if (Objects.equals(loanID, "0")) {
-                // Failed to create Loan on mainframe
-                loanID = "TEMP_LOAN_";
-            }
+            // Attempt to update
+            String loanID = addLoan.add(conn, activeLoan);
 
-            newLoan.setLoanId(loanID);
-            newLoan.setStatus(LoanStatus.Active);
+            loanValuesMap.put("isFloating", String.valueOf(cbNewLoanIsFloating.isSelected()));
+            loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
+            LoanStatus status = null;
+            if (rbNewLoanStatusActive.isSelected()) {
+                activeLoan.setStatus(LoanStatus.Active);
+                status = LoanStatus.Active;
+            } else if (rbNewLoanStatusCancelled.isSelected()) {
+                activeLoan.setStatus(LoanStatus.Cancelled);
+                status = LoanStatus.Cancelled;
+            } else if (rbNewLoanStatusPending.isSelected()) {
+                activeLoan.setStatus(LoanStatus.Pending);
+                status = LoanStatus.Pending;
+            }
             UpdateStatus update = new UpdateStatus();
 
-            // Will log if loan was not created in mainframe
-            update.add(conn, LoanStatus.Active, loanID);
-            
-            for (Coborrower coborrower : newLoan.getCoborrowerList()) {
+            update.add(conn, status, loanID);
+
+            for (Coborrower coborrower : activeLoan.getCoborrowerList()) {
                 addCoborrower.add(conn, coborrower, loanID);
             }
 
-            // Add Loan to Cache
-            Cache.cacheLoan(newLoan);
-
-            // Set active Loan
-            LoanBucket.getInstance().setLoan(newLoan);
             LoanScreenController.updateLoan();
 
             Main.setScreen(Screens.LOAN);
 
         }
     }
+
+    private void displayCoborrowers(List<Coborrower> coborrowers) {
+        for (int i = 0; i < coborrowers.size(); i++) {
+            TextField field = ((TextField) newLoanCoborrowersPane.lookup("#tfNewCustomerType" + 1));
+            field.setText(coborrowers.get(0).getId());
+        }
+    }
+
+    private String getCustomerName(String customerID) {
+        List<Customer> list = Cache.searchCustomerCacheId(customerID);
+        if (list.size() == 1) {
+            // Customer exists in cache
+            return list.get(0).getName();
+        } else {
+
+            // Customer not in cache so cache customer
+            SearchCustomer customerSearch = new SearchCustomer();
+            Customer cus = customerSearch.findById(Instance.getConnection(), customerID);
+            if (cus != null) {
+                Cache.cacheCustomer(cus);
+                // Recursive call as customer is cached now
+                return getCustomerName(cus.getId());
+            }
+            return "";
+        }
+    }
+
+
+    private String formatDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return date.format(formatter);
+    }
+
 
     private void fillLoanValuesMap() {
         loanValuesMap.clear();
@@ -172,7 +273,7 @@ public class EditLoanScreenController {
         loanValuesMap.put("rate", tfNewLoanRate.getText());
         loanValuesMap.put("isFloating", String.valueOf(cbNewLoanIsFloating.isSelected()));
         loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
-        loanValuesMap.put("startDate", lbGeneralLoanStartDate.getText());
+        loanValuesMap.put("startDate", String.valueOf(activeLoan.getStartDate()));
         loanValuesMap.put("period", tfNewLoanPeriod.getText());
         loanValuesMap.put("term", tfNewLoanTerm.getText());
         loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));

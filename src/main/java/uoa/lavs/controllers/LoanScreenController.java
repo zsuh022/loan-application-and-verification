@@ -134,6 +134,10 @@ public class LoanScreenController {
         instance = this;
     }
 
+    public boolean submitLoanUpdate() {
+        // TODO:
+        return true;
+    }
 
     public static void updateLoan() {
         // get the current customer in the customer bucket and set it as the active customer
@@ -392,7 +396,8 @@ public class LoanScreenController {
     }
 
     @FXML
-    private void editLoan(){
+    private void editLoan() {
+        EditLoanScreenController.editLoanUpdate();
         Main.setScreen(Screens.EDIT_LOAN);
     }
 

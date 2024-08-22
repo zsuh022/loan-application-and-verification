@@ -437,10 +437,8 @@ public class NewCustomerScreenController {
 
             // Attempt to create new customer in the mainframe
             String customerID = addCustomer.add(conn, newCustomer);
-            if (customerID != "0") {
-                // Create new customer success
-                newCustomer.setCustomerId(customerID);
-            }
+            newCustomer.setCustomerId(customerID);
+
             for (CustomerAddress address : newCustomer.getAddressList()) {
                 addAddress.add(conn, address, customerID);
             }
@@ -472,7 +470,7 @@ public class NewCustomerScreenController {
     private void fillCustomerValuesMap() {
         LocalDate dob = dpNewCustomerDob.getValue();
         String dobString = "";
-        if(dpNewCustomerDob.getValue() != null){
+        if (dpNewCustomerDob.getValue() != null) {
             dobString = dob.toString();
         }
         customerValuesMap.put("title", tfNewCustomerTitle.getText());

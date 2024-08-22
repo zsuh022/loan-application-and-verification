@@ -7,9 +7,11 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.EditLoanScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.EditLoanScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -128,22 +130,59 @@
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                      <children>
+                                                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" wrappingWidth="121.0" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets left="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="lbGeneralLoanPrincipal1" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                                                           <HBox.margin>
+                                                                              <Insets right="30.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                        <RadioButton fx:id="rbNewLoanStatusNew" mnemonicParsing="false" text="New" textFill="WHITE">
+                                                                           <toggleGroup>
+                                                                              <ToggleGroup fx:id="status" />
+                                                                           </toggleGroup>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="rbNewLoanStatusPending" mnemonicParsing="false" prefHeight="17.0" prefWidth="128.0" text="Pending" textFill="WHITE" toggleGroup="$status">
+                                                                           <padding>
+                                                                              <Insets left="58.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="rbNewLoanStatusActive" mnemonicParsing="false" text="Active" textFill="WHITE" toggleGroup="$status">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="rbNewLoanStatusCancelled" mnemonicParsing="false" text="Cancelled" textFill="WHITE" toggleGroup="$status">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
                                                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate*:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
                                                                            <HBox.margin>
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
                                                                         </Text>
                                                                         <TextField fx:id="tfNewLoanRate" />
-                                                                        <CheckBox fx:id="cbNewLoanIsFloating" mnemonicParsing="false" text="Floating" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanIsFixed" mnemonicParsing="false" text="Fixed" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
+                                                                        <RadioButton fx:id="cbNewLoanIsFloating" mnemonicParsing="false" text="Floating" textFill="WHITE">
+                                                                           <toggleGroup>
+                                                                              <ToggleGroup fx:id="a" />
+                                                                           </toggleGroup>
+                                                                           <padding>
+                                                                              <Insets left="68.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="cbNewLoanIsFixed" mnemonicParsing="false" text="Fixed" textFill="WHITE" toggleGroup="$a">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
                                                                      </children>
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -183,17 +222,21 @@
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
                                                                         </Text>
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanCompoundingAnnually" mnemonicParsing="false" text="Annually" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
+                                                                        <RadioButton fx:id="cbNewLoanCompoundingWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE">
+                                                                           <toggleGroup>
+                                                                              <ToggleGroup fx:id="b" />
+                                                                           </toggleGroup>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="cbNewLoanCompoundingMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE" toggleGroup="$b">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="cbNewLoanCompoundingAnnually" mnemonicParsing="false" text="Annually" textFill="WHITE" toggleGroup="$b">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
                                                                      </children>
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -203,17 +246,21 @@
                                                                               <Insets left="30.0" />
                                                                            </HBox.margin>
                                                                         </Text>
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE" />
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyFortnightly" mnemonicParsing="false" text="Fortnightly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
-                                                                        <CheckBox fx:id="cbNewLoanFrequencyMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE">
-                                                                           <HBox.margin>
-                                                                              <Insets left="20.0" />
-                                                                           </HBox.margin>
-                                                                        </CheckBox>
+                                                                        <RadioButton fx:id="cbNewLoanFrequencyWeekly" mnemonicParsing="false" text="Weekly" textFill="WHITE">
+                                                                           <toggleGroup>
+                                                                              <ToggleGroup fx:id="c" />
+                                                                           </toggleGroup>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="cbNewLoanFrequencyFortnightly" mnemonicParsing="false" text="Fortnightly" textFill="WHITE" toggleGroup="$c">
+                                                                           <padding>
+                                                                              <Insets left="40.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
+                                                                        <RadioButton fx:id="cbNewLoanFrequencyMonthly" mnemonicParsing="false" text="Monthly" textFill="WHITE" toggleGroup="$c">
+                                                                           <padding>
+                                                                              <Insets left="26.0" />
+                                                                           </padding>
+                                                                        </RadioButton>
                                                                      </children>
                                                                   </HBox>
                                                                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -270,7 +317,7 @@
                                                                                                 <Insets left="30.0" top="20.0" />
                                                                                              </HBox.margin>
                                                                                           </Text>
-                                                                                          <TextField fx:id="tfNewLoanCoborrowerId">
+                                                                                          <TextField fx:id="tfNewLoanCoborrowerId0">
                                                                                              <HBox.margin>
                                                                                                 <Insets top="17.0" />
                                                                                              </HBox.margin>

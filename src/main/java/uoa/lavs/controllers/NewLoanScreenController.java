@@ -130,10 +130,6 @@ public class NewLoanScreenController {
 
             // Attempt to create new loan in the mainframe
             String loanID = addLoan.add(conn, newLoan);
-            if (Objects.equals(loanID, "0")) {
-                // Failed to create Loan on mainframe
-                loanID = "TEMP_LOAN_";
-            }
 
             newLoan.setLoanId(loanID);
             newLoan.setStatus(LoanStatus.New);
