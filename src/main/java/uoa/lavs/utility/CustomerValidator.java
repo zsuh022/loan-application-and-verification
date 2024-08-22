@@ -122,6 +122,12 @@ public class CustomerValidator {
             return false;
         }
 
+        LocalDate dob = LocalDate.parse(customerMap.get("dob"));
+        if (dob.isAfter(LocalDate.now())) {
+            logger.error("ValidateCustomer method failed: Customer dob is after current date");
+            return false;
+        }
+
         if (customerMap.get("occupation") == null || customerMap.get("occupation").isEmpty()) {
             logger.error("ValidateCustomer method failed: Customer occupation is empty");
             return false;
