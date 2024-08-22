@@ -36,6 +36,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
@@ -49,7 +50,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.HomeScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.HomeScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -154,12 +155,35 @@
                   </Text>
                </buttons>
             </ButtonBar>
-            <Text fill="#ffcc04" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <FontAwesomeIconView fill="#ffcc04" glyphName="REFRESH" layoutX="750.0" layoutY="548.0" rotate="60.0" size="24" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="150.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <Button fx:id="syncButton" mnemonicParsing="false" onAction="#onSyncButtonClicked" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #da5630; -fx-border-color: ffffff; -fx-border-radius: 5; -fx-background-radius: 5; -fx-font-size: 18;" text="Sync" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Italic" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" size="24" />
+                     </graphic>
+                  </Button>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="30.0">
+                     <children>
+                        <Text fill="#ffcc04" strokeType="OUTSIDE" strokeWidth="0.0" text="Last synced:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="syncTimeLabel" alignment="CENTER_RIGHT" text="N/A" textFill="#ffcc04">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
