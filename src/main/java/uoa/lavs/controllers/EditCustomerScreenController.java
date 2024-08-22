@@ -188,9 +188,9 @@ public class EditCustomerScreenController {
     @FXML
     private TextField tfNewCustomerPhNum1;
     @FXML
-    private CheckBox cbNewCustomerIsPhPrimary1;
+    private CheckBox cbNewCustomerPhIsPrimary1;
     @FXML
-    private CheckBox cbNewCustomerIsPhSMS1;
+    private CheckBox cbNewCustomerPhIsSMS1;
     @FXML
     private TextField tfNewCustomerEmail1;
     @FXML
@@ -202,9 +202,9 @@ public class EditCustomerScreenController {
     @FXML
     private TextField tfNewCustomerPhNum2;
     @FXML
-    private CheckBox cbNewCustomerIsPhPrimary2;
+    private CheckBox cbNewCustomerPhIsPrimary2;
     @FXML
-    private CheckBox cbNewCustomerIsPhSMS2;
+    private CheckBox cbNewCustomerPhIsSMS2;
     @FXML
     private TextField tfNewCustomerEmail2;
     @FXML
@@ -216,9 +216,9 @@ public class EditCustomerScreenController {
     @FXML
     private TextField tfNewCustomerPhNum3;
     @FXML
-    private CheckBox cbNewCustomerIsPhPrimary3;
+    private CheckBox cbNewCustomerPhIsPrimary3;
     @FXML
-    private CheckBox cbNewCustomerIsPhSMS3;
+    private CheckBox cbNewCustomerPhIsSMS3;
     @FXML
     private TextField tfNewCustomerEmail3;
     @FXML
@@ -495,22 +495,22 @@ public class EditCustomerScreenController {
                 tfNewCustomerPhType1.setText(phoneList.get(1).getType());
                 tfNewCustomerPhPrefix1.setText(phoneList.get(1).getPrefix());
                 tfNewCustomerPhNum1.setText(phoneList.get(1).getNumber());
-                cbNewCustomerIsPhPrimary1.setSelected(phoneList.get(1).getIsPrimary());
-                cbNewCustomerIsPhSMS1.setSelected(phoneList.get(1).getIsTexting());
+                cbNewCustomerPhIsPrimary1.setSelected(phoneList.get(1).getIsPrimary());
+                cbNewCustomerPhIsSMS1.setSelected(phoneList.get(1).getIsTexting());
             }
             if (phoneList.size() > 2) {
                 tfNewCustomerPhType2.setText(phoneList.get(2).getType());
                 tfNewCustomerPhPrefix2.setText(phoneList.get(2).getPrefix());
                 tfNewCustomerPhNum2.setText(phoneList.get(2).getNumber());
-                cbNewCustomerIsPhPrimary2.setSelected(phoneList.get(2).getIsPrimary());
-                cbNewCustomerIsPhSMS2.setSelected(phoneList.get(2).getIsTexting());
+                cbNewCustomerPhIsPrimary2.setSelected(phoneList.get(2).getIsPrimary());
+                cbNewCustomerPhIsSMS2.setSelected(phoneList.get(2).getIsTexting());
             }
             if (phoneList.size() > 3) {
                 tfNewCustomerPhType3.setText(phoneList.get(3).getType());
                 tfNewCustomerPhPrefix3.setText(phoneList.get(3).getPrefix());
                 tfNewCustomerPhNum3.setText(phoneList.get(3).getNumber());
-                cbNewCustomerIsPhPrimary3.setSelected(phoneList.get(3).getIsPrimary());
-                cbNewCustomerIsPhSMS3.setSelected(phoneList.get(3).getIsTexting());
+                cbNewCustomerPhIsPrimary3.setSelected(phoneList.get(3).getIsPrimary());
+                cbNewCustomerPhIsSMS3.setSelected(phoneList.get(3).getIsTexting());
             }
     
             if (!emailList.isEmpty()) {
@@ -777,8 +777,8 @@ public class EditCustomerScreenController {
                 phoneMap.put("type", ((TextField) pane.lookup("#tfNewCustomerPhType" + i)).getText());
                 phoneMap.put("prefix", ((TextField) pane.lookup("#tfNewCustomerPhPrefix" + i)).getText());
                 phoneMap.put("number", ((TextField) pane.lookup("#tfNewCustomerPhNum" + i)).getText());
-                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhPrimary" + i)).isSelected()));
-                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerIsPhSMS" + i)).isSelected()));
+                phoneMap.put("isPrimary", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerPhIsPrimary" + i)).isSelected()));
+                phoneMap.put("isTexting", String.valueOf(((CheckBox) pane.lookup("#cbNewCustomerPhIsSMS" + i)).isSelected()));
             }
 
             phoneValuesList.add(phoneMap);
