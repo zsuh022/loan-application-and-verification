@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.Customer.SearchCustomer;
 import uoa.lavs.logging.Cache;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.RateType;
@@ -18,9 +19,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
-public class LoanValidator {
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
-    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
+public class LoanValidator {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LoanValidator.class);
 
@@ -68,6 +69,7 @@ public class LoanValidator {
         }
 
         logger.info("Created loan for customer id {}", loanMap.get("customerId"));
+        Cache.cacheLoan(loan);
         return loan;
     }
 

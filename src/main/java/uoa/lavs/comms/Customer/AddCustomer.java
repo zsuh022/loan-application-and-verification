@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
+
 public class AddCustomer extends AbstractWriter<Customer> {
 
     // Log4J2
@@ -42,8 +44,8 @@ public class AddCustomer extends AbstractWriter<Customer> {
             // Return new customer ID
             return newCustomer.getCustomerIdFromServer();
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", customer);
-            return "0";
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), customer.getId(), customer);
+            return customer.getId();
         }, 1201, "Customer", null);
     }
 

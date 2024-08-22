@@ -58,7 +58,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextField fx:id="searchCustomerBar" prefHeight="30.0" style="-fx-background-color: rgba(255,255,255,0.3); -fx-background-radius: 15; -fx-border-color: ffffff; -fx-border-radius: 15; -fx-border-width: 1; -fx-text-fill: ffffff;">
+                              <TextField fx:id="searchCustomerBar" prefHeight="30.0" onKeyPressed="#onSearchCustomerEnterKeyPressed" style="-fx-background-color: rgba(255,255,255,0.3); -fx-background-radius: 15; -fx-border-color: ffffff; -fx-border-radius: 15; -fx-border-width: 1; -fx-text-fill: ffffff;">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -109,7 +109,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fx:id="searchCustomerEnter" fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="20.0" onKeyPressed="#onSearchCustomerEnterKeyPressed" onMouseClicked="#onSearchCustomerEnterClicked" size="16.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="144.0">
+            <FontAwesomeIconView fx:id="searchCustomerEnter" fill="WHITE" glyphName="SEARCH" layoutX="20.0" layoutY="20.0" onMouseClicked="#onSearchCustomerEnterClicked" size="16.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="144.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

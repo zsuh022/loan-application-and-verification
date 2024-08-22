@@ -2,6 +2,7 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -47,6 +48,10 @@ public class SearchCustomerScreenController {
         }
         List<CustomerSummary> searchResults = search.findAll(Instance.getConnection(), searchCustomerBar.getText());
         if (searchResults.size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Results Found");
+            alert.setHeaderText("No results found for the search term: " + searchCustomerBar.getText());
+            alert.showAndWait();
             return false;
         } else {
             VBox content = new VBox();

@@ -8,6 +8,7 @@ import uoa.lavs.comms.Customer.AddCustomer;
 import uoa.lavs.comms.Loan.AddCoborrower;
 import uoa.lavs.comms.Loan.AddLoan;
 import uoa.lavs.comms.Loan.SearchLoanSummary;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
@@ -18,6 +19,8 @@ import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -41,56 +44,68 @@ public class Main extends Application {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        // flush log immediately to avoid inconsistencies with mainframe
+
         //test stuff start
-        Connection connection = Instance.getConnection();
 
-        Customer customer = new Customer();
-        customer.setCustomerId("TEMP_CUSTOMER_");
-        customer.setTitle("Mr");
-        customer.setName("John Doe");
-        customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
-        customer.setOccupation("Engineer");
-        customer.setCitizenship("New Zealand");
-        customer.setVisa(null);
-        AddCustomer addCustomer = new AddCustomer();
-        String customerId = addCustomer.add(Instance.getConnection(), customer);
-        System.out.println("Customer ID: " + customerId);
-        AddLoan addLoan = new AddLoan();
-        Loan loan = new LoanFactory().getLoan(LoanType.Mortgage);
-        loan.setLoanId("TEMP_LOAN_");
-        loan.setCustomerID(customerId);
-        loan.setCustomerName(customer.getName());
-        loan.setPrincipal(10000.0);
-        loan.setRateType(RateType.Fixed);
-        loan.setRate(10.0);
-        loan.setStartDate(java.time.LocalDate.of(2024, 2, 11));
-        loan.setPeriod(5);
-        loan.setCompoundingFrequency(Frequency.Yearly);
-        loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
-        loan.setPaymentAmount(1000.0);
-        loan.setTerm(360);
-
-        Coborrower co = new Coborrower();
-        AddCoborrower addCo = new AddCoborrower();
-
-        String loanId = addLoan.add(Instance.getConnection(), loan);
-
-        co.setId("1");
-
-
-        addCo.add(connection, co, loanId);
-
-        loan.addCoborrower(co);
-
-        System.out.println("Loan ID: " + loanId);
+//        //delete database and log
+//        File file = new File("lavs-data.db");
+//        file.delete();
+//        file = new File("log.json");
+//        file.delete();
+//
+//        Customer customer = new Customer();
+//        customer.setCustomerId("T_1234");
+//        customer.setTitle("Mr");
+//        customer.setName("John Doe");
+//        customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
+//        customer.setOccupation("Engineer");
+//        customer.setCitizenship("New Zealand");
+//        customer.setVisa(null);
+//        AddCustomer addCustomer = new AddCustomer();
+//        String customerId = addCustomer.add(Instance.getConnection(), customer);
+//        System.out.println("Customer ID: " + customerId);
+//        Cache.cacheCustomer(customer);
+//
+//        AddLoan addLoan = new AddLoan();
+//        Loan loan = new LoanFactory().getLoan(LoanType.Mortgage);
+//        loan.setLoanId("T_1234");
+//        loan.setCustomerID(customerId);
+//        loan.setCustomerName(customer.getName());
+//        loan.setPrincipal(10000.0);
+//        loan.setRateType(RateType.Fixed);
+//        loan.setRate(10.0);
+//        loan.setStartDate(java.time.LocalDate.of(2024, 2, 11));
+//        loan.setPeriod(5);
+//        loan.setCompoundingFrequency(Frequency.Yearly);
+//        loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
+//        loan.setPaymentAmount(1000.0);
+//        loan.setStatus(LoanStatus.Active);
+//        loan.setTerm(360);
+//        String loanId = addLoan.add(Instance.getConnection(), loan);
+//        System.out.println("Loan ID: " + loanId);
+//        Cache.cacheLoan(loan);
+//
+//        Coborrower co = new Coborrower();
+//        AddCoborrower addCo = new AddCoborrower();
+//
+//        co.setId("1");
+//
+//
+//        addCo.add(Instance.getConnection(), co, loanId);
+//
+//        loan.addCoborrower(co);
+//
+//        System.out.println("Loan ID: " + loanId);
 
         //test stuff end
+
+        // flush log immediately to avoid inconsistencies with mainframe
         LocalLogManager.flushLog();
         launch();
         // the following shows two ways of using the mainframe interface
         // approach #1: use the singleton instance - this way is recommended as it provides a single configuration
         // location (and is easy for the testers to change when needed).
+        Connection connection = Instance.getConnection();
         updateMainframe(connection);
     }
 

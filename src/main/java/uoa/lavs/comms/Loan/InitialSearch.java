@@ -1,14 +1,14 @@
 package uoa.lavs.comms.Loan;
 
 import uoa.lavs.comms.AbstractSearchable;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
-import uoa.lavs.mainframe.messages.customer.*;
 import uoa.lavs.mainframe.messages.loan.FindLoan;
-import uoa.lavs.models.Customer.CustomerSummary;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanSummary;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InitialSearch extends AbstractSearchable<LoanSummary> {
@@ -18,9 +18,25 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
 
     @Override
     public List<LoanSummary> findAll(Connection conn, String id) {
-        FindLoan loan = new FindLoan();
-        loan.setId(id);
-        return processRequest(conn, loan, status -> executeCommon(conn, loan), status -> new ArrayList<>());
+        HashSet<String> foundIDs = new HashSet<>();
+        ArrayList<LoanSummary> summaries = new ArrayList<>();
+        for(Loan loan : Cache.searchLoanCache(id)) {
+            foundIDs.add(loan.getId());
+            summaries.add(obfuscateLoan(loan));
+        }
+        try{
+            FindLoan loan = new FindLoan();
+            loan.setId(id);
+            for(LoanSummary summary : (List<LoanSummary>) processRequest(conn, loan, status -> executeCommon(conn, loan), status -> new ArrayList<>())) {
+                if(!foundIDs.contains(summary.getLoanID())) {
+                    summaries.add(summary);
+                    foundIDs.add(summary.getLoanID());
+                }
+            }
+        } catch (Exception e) {
+            // do nothing
+        }
+        return summaries;
     }
 
 
@@ -34,5 +50,9 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
             summaries.add(summary);
         }
         return summaries;
+    }
+
+    private LoanSummary obfuscateLoan(Loan loan) {
+        return new LoanSummary(loan.getId(), loan.getCustomerId(), loan.getCustomerName(), loan.getStatus().toString(), loan.getPrincipal());
     }
 }

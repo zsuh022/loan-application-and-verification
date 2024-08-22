@@ -521,11 +521,6 @@ public class CustomerScreenController {
         }
     }
 
-    public static void updateCustomer() {
-        // get the current customer in the customer bucket and set it as the active customer
-        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
-    }
-
     public void setGeneralPaneInformation() {
         lbCustomerId.setText(activeCustomer.getId());
         lbCustomerTitle.setText(activeCustomer.getTitle());
@@ -845,5 +840,8 @@ public class CustomerScreenController {
         Main.setScreen(Screens.LOGIN);
     }
 
-
+    public static void updateCustomer() {
+        // get the current customer in the customer bucket and set it as the active customer
+        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
+    }
 }

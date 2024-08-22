@@ -3,6 +3,7 @@ package uoa.lavs.comms.Loan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Frequency;
 import uoa.lavs.mainframe.RateType;
@@ -13,6 +14,7 @@ import uoa.lavs.models.Loan.Mortgage;
 import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.utility.PaymentFrequency;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchLoan extends AbstractSearchable<Loan> {
@@ -22,6 +24,13 @@ public class SearchLoan extends AbstractSearchable<Loan> {
 
     @Override
     public Loan findById(Connection conn, String loanID) {
+
+        ArrayList<Loan> loanCache = Cache.searchLoanCache(loanID);
+
+        if(loanCache.size() > 0) {
+            return loanCache.get(0);
+        }
+
         LoadLoan loan = new LoadLoan();
         loan.setLoanId(loanID);
 

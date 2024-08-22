@@ -1,11 +1,15 @@
 package uoa.lavs.comms.Customer;
 
 import uoa.lavs.comms.AbstractSearchable;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.messages.customer.*;
+import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Customer.CustomerEmail;
 import uoa.lavs.models.Customer.CustomerSummary;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InitialSearch extends AbstractSearchable<CustomerSummary> {
@@ -18,13 +22,47 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
     @Override
     public List<CustomerSummary> findAll(Connection conn, String customerId) {
         if (this.type == 0) {
-            FindCustomer customer = new FindCustomer();
-            customer.setCustomerId(customerId);
-            return processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>());
+            HashSet<String> foundIDs = new HashSet<>();
+            ArrayList<CustomerSummary> summaries = new ArrayList<>();
+            for(Customer customer : Cache.searchCustomerCacheId(customerId)) {
+                foundIDs.add(customer.getId());
+                summaries.add(obfuscateCustomer(customer));
+                System.out.println("Found in cache");
+            }
+            try{
+                FindCustomer customer = new FindCustomer();
+                customer.setCustomerId(customerId);
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    if(!foundIDs.contains(summary.getId())) {
+                        summaries.add(summary);
+                        foundIDs.add(summary.getId());
+                    }
+                }
+            } catch (Exception e) {
+                // do nothing
+            }
+            return summaries;
         } else {
-            FindCustomerAdvanced customer = new FindCustomerAdvanced();
-            customer.setSearchName(customerId);
-            return processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>());
+            HashSet<String> foundIDs = new HashSet<>();
+            ArrayList<CustomerSummary> summaries = new ArrayList<>();
+            for(Customer customer : Cache.searchCustomerName(customerId)) {
+                foundIDs.add(customer.getId());
+                summaries.add(obfuscateCustomer(customer));
+            }
+            try{
+                FindCustomerAdvanced customer = new FindCustomerAdvanced();
+                customer.setSearchName(customerId);
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    if(!foundIDs.contains(summary.getId())) {
+                        summaries.add(summary);
+                        foundIDs.add(summary.getId());
+                    }
+                }
+            } catch (Exception e) {
+                // do nothing
+            }
+
+            return summaries;
         }
     }
 
@@ -82,6 +120,21 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         }, status -> {
             return "";
         });
+    }
+
+    private CustomerSummary obfuscateCustomer(Customer customer) {
+        CustomerSummary summary = new CustomerSummary();
+        summary.setId(customer.getId());
+        summary.setName(customer.getName());
+        summary.setDob(customer.getDateOfBirth());
+        List<CustomerEmail> emails = customer.getEmailList();
+        for(CustomerEmail email : emails) {
+            if(email.getIsPrimary()) {
+                summary.setEmail(email.getAddress());
+                break;
+            }
+        }
+        return summary;
     }
 
 }

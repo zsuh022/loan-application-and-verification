@@ -15,12 +15,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
+
 public class AddLoan extends AbstractWriter<Loan> {
 
     // Log4J2
     private static final Logger logger = LogManager.getLogger(AddLoan.class);
-
-    public static final String TEMPORARY_LOAN_ID_PREFIX = "TEMP_LOAN_";
 
     // Returns ID for new loan
     @Override
@@ -59,8 +59,8 @@ public class AddLoan extends AbstractWriter<Loan> {
             // Return new loan ID
             return newLoan.getLoanIdFromServer();
         }, status -> {
-            mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", loan);
-            return "0";
+            mainframeError(status.getErrorCode(), status.getErrorMessage(), loan.getId(), loan);
+            return loan.getId();
         }, 2201, "Loan", null);
     }
 

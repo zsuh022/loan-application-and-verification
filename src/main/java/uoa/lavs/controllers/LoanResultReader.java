@@ -9,6 +9,7 @@ import uoa.lavs.comms.Loan.SearchCoborrower;
 import uoa.lavs.comms.Loan.SearchLoan;
 import uoa.lavs.comms.Loan.SearchLoanSummary;
 import uoa.lavs.comms.Loan.SearchPayments;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Loan.*;
 
@@ -55,6 +56,8 @@ public class LoanResultReader {
                 SearchPayments searchPayments = new SearchPayments();
                 List<Payments> paymentList = searchPayments.findAll(Instance.getConnection(), LoanId);
                 Loan.setPaymentsList(paymentList);
+                // cache Loan
+                Cache.cacheLoan(Loan);
                 //set active Loan
                 LoanBucket.getInstance().setLoan(Loan);
                 LoanScreenController.updateLoan();
