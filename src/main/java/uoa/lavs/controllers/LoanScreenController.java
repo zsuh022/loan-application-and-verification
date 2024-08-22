@@ -21,7 +21,6 @@ import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.models.Loan.Payments;
-import uoa.lavs.controllers.EditLoanScreenController;
 
 import java.text.NumberFormat;
 
@@ -32,6 +31,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class LoanScreenController {
+
+    private static LoanScreenController INSTANCE;
 
     private Loan activeLoan;
 
@@ -133,6 +134,10 @@ public class LoanScreenController {
         instance = this;
     }
 
+    public boolean submitLoanUpdate() {
+        // TODO:
+        return true;
+    }
 
     public static void updateLoan() {
         // get the current customer in the customer bucket and set it as the active customer
@@ -199,6 +204,7 @@ public class LoanScreenController {
         vbox.setStyle("-fx-padding: 10;");
 
         for (Payments payment : paymentList) {
+            System.out.println(":ADWADAWDA" + payment.getCustomerName());
 
             AnchorPane pane = new AnchorPane();
             pane.setPrefWidth(630);

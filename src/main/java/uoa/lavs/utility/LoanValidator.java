@@ -116,9 +116,6 @@ public class LoanValidator {
         } else if ("true".equals(loanMap.get("isFixed"))) {
             logger.info("Create loan method: isFixed rate type selected");
             return RateType.Fixed;
-        } else if ("true".equals(loanMap.get("isInterestOnly"))) {
-            logger.info("Create loan method: isInterestOnly rate type selected");
-            return RateType.InterestOnly;
         }
         logger.info("Create loan method: null rate type selected");
         return null;
@@ -187,9 +184,6 @@ public class LoanValidator {
             rateTypeCounter++;
         }
         if (loanMap.get("isFixed").equals("true")) {
-            rateTypeCounter++;
-        }
-        if (loanMap.get("isInterestOnly").equals("true")) {
             rateTypeCounter++;
         }
 
@@ -302,10 +296,10 @@ public class LoanValidator {
     }
 
     private void errorPopup(String header, String body) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(body);
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(header);
+            alert.setContentText(body);
+            alert.showAndWait();
     }
 }

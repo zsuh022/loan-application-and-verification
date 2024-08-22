@@ -32,6 +32,23 @@ public class CustomerValidator {
 
         Customer customer = new Customer();
         customer.setCustomerId(generateTemporaryCustomerId());
+        populateCustomer(customer, customerMap, addressList, emailList, employerList, phoneList);
+        logger.info("Created customer in CustomerValidator with name {}", customerMap.get("firstName"));
+        Cache.cacheCustomer(customer);
+        return customer;
+    }
+
+    public Customer updateCustomer(Customer customer, Map<String, String> customerMap, List<Map<String, String>> addressList,
+                                   List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                   List<Map<String, String>> phoneList) {
+        populateCustomer(customer, customerMap, addressList, emailList, employerList, phoneList);
+        logger.info("Updated customer in CustomerValidator with name {}", customerMap.get("firstName"));
+        return customer;
+    }
+
+    private void populateCustomer(Customer customer, Map<String, String> customerMap, List<Map<String, String>> addressList,
+                                  List<Map<String, String>> emailList, List<Map<String, String>> employerList,
+                                  List<Map<String, String>> phoneList){
         customer.setTitle(customerMap.get("title"));
 
         String firstName = customerMap.get("firstName");
@@ -44,7 +61,7 @@ public class CustomerValidator {
         customer.setOccupation(customerMap.get("occupation"));
         customer.setCitizenship(customerMap.get("citizenship"));
         customer.setVisa(customerMap.get("visa"));
-
+        customer.getAddressList().clear();
         for (Map<String, String> addressMap : addressList) {
             CustomerAddress address = new CustomerAddress();
             address.setType(addressMap.get("type"));
@@ -58,14 +75,14 @@ public class CustomerValidator {
             address.setIsMailing(Boolean.parseBoolean(addressMap.get("isMailing")));
             customer.addAddress(address);
         }
-
+        customer.getEmailList().clear();
         for (Map<String, String> emailMap : emailList) {
             CustomerEmail email = new CustomerEmail();
             email.setAddress(emailMap.get("address"));
             email.setIsPrimary(Boolean.parseBoolean(emailMap.get("isPrimary")));
             customer.addEmail(email);
         }
-
+        customer.getEmployerList().clear();
         if (!customerMap.get("occupation").equalsIgnoreCase("unemployed")) {
             for (Map<String, String> employerMap : employerList) {
                 CustomerEmployer employer = new CustomerEmployer();
@@ -90,7 +107,7 @@ public class CustomerValidator {
             note.setNote(customerMap.get("note"));
             customer.setNote(note);
         }
-
+        customer.getPhoneList().clear();
         for (Map<String, String> phoneMap : phoneList) {
             CustomerPhone phone = new CustomerPhone();
             phone.setType(phoneMap.get("type"));
@@ -100,11 +117,9 @@ public class CustomerValidator {
             phone.setIsTexting(Boolean.parseBoolean(phoneMap.get("isTexting")));
             customer.addPhone(phone);
         }
-
-        logger.info("Created customer in CustomerValidator with name {}", customerMap.get("firstName"));
-        Cache.cacheCustomer(customer);
-        return customer;
     }
+
+
 
     public boolean validateCustomer(Map<String, String> customerMap, List<Map<String, String>> addressList,
                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
@@ -451,10 +466,10 @@ public class CustomerValidator {
     }
 
     private static void errorPopUp(String header, String body) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error creating Customer");
-        alert.setHeaderText(header);
-        alert.setContentText(body);
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error creating Customer");
+            alert.setHeaderText(header);
+            alert.setContentText(body);
+            alert.showAndWait();
     }
 }

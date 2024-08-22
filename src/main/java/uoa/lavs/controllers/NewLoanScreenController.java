@@ -132,12 +132,12 @@ public class NewLoanScreenController {
             String loanID = addLoan.add(conn, newLoan);
 
             newLoan.setLoanId(loanID);
-            newLoan.setStatus(LoanStatus.Active);
+            newLoan.setStatus(LoanStatus.New);
             UpdateStatus update = new UpdateStatus();
 
             // Will log if loan was not created in mainframe
-            update.add(conn, LoanStatus.Active, loanID);
-
+            update.add(conn, LoanStatus.New, loanID);
+            
             for (Coborrower coborrower : newLoan.getCoborrowerList()) {
                 addCoborrower.add(conn, coborrower, loanID);
             }

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
 public class LoanValidatorTests {
 
@@ -43,7 +44,7 @@ public class LoanValidatorTests {
     void testGenerateTemporaryLoanId() {
         String tempLoanId = LoanValidator.generateTemporaryLoanId();
         assertNotNull(tempLoanId);
-        assertTrue(tempLoanId.startsWith(LoanValidator.TEMPORARY_LOAN_ID_PREFIX));
+        assertTrue(tempLoanId.startsWith(TEMPORARY_LOAN_ID_PREFIX));
     }
 
     @Test
