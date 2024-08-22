@@ -857,6 +857,8 @@ public class CustomerScreenController {
 
     @FXML
     private void customerAddLoan() {
+        CustomerBucket.getInstance().setCustomer(activeCustomer);
+        NewLoanScreenController.updateCustomerField();
         Main.setScreen(Screens.NEW_LOAN);
     }
 
