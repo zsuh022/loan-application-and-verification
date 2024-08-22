@@ -2,32 +2,31 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Customer.SearchCustomer;
 import uoa.lavs.comms.Loan.*;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
+import uoa.lavs.models.Loan.Payments;
 import uoa.lavs.utility.LoanValidator;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class EditLoanScreenController {
 
@@ -134,7 +133,78 @@ public class EditLoanScreenController {
 
     public static void editLoan() {
         instance.activeLoan = LoanBucket.getInstance().getLoan();
-        
+        instance.mapFields(instance.activeLoan);
+
+    }
+
+    private void mapFields(Loan loan) {
+        lbGeneralLoanCustomerId.setText(loan.getCustomerId());
+        lbGeneralLoanCustomerName.setText(getCustomerName(loan.getCustomerId()));
+        lbGeneralLoanPrincipal.setText(formatCurrency(loan.getPrincipal()));
+        lbGeneralLoanStatus.setText(loan.getStatusString());
+        lbGeneralLoanRate.setText(loan.getRate() + " %");
+        lbGeneralLoanStartDate.setText(formatDate(loan.getStartDate()));
+        lbGeneralLoanPeriod.setText(formatMonthsToYears(loan.getPeriod()));
+        lbGeneralLoanTerm.setText(formatMonthsToYears(loan.getTerm()));
+        lbGeneralLoanCompounding.setText(loan.getCompoundingString());
+        lbGeneralLoanFrequency.setText(loan.getPaymentFrequencyString());
+        lbGeneralLoanAmount.setText(formatCurrency(loan.getPaymentAmount()));
+        if (loan.getInterestOnly()) {
+            lbGeneralLoanInterestOnly.setText("\u2611");
+        } else {
+            lbGeneralLoanInterestOnly.setText("\u2610");
+        }
+
+        List<Coborrower> list = loan.getCoborrowerList();
+        displayCoborrowers(list);
+
+
+    }
+
+
+
+    private String getCustomerName(String customerID) {
+        List<Customer> list = Cache.searchCustomerCacheId(customerID);
+        if (list.size() == 1) {
+            // Customer exists in cache
+            return list.get(0).getName();
+        } else {
+
+            // Customer not in cache so cache customer
+            SearchCustomer customerSearch = new SearchCustomer();
+            Customer cus = customerSearch.findById(Instance.getConnection(), customerID);
+            if (cus != null) {
+                Cache.cacheCustomer(cus);
+                // Recursive call as customer is cached now
+                return getCustomerName(cus.getId());
+            }
+            return "";
+        }
+    }
+
+    private String formatCurrency(double amount) {
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        return currencyFormatter.format(amount);
+    }
+
+    private String formatDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return date.format(formatter);
+    }
+
+    private String formatMonthsToYears(int totalMonths) {
+        int years = totalMonths / 12;
+        int months = totalMonths % 12;
+
+        if (years > 0 && months > 0) {
+            return String.format("%d months (%d years)", totalMonths, years);
+        } else if (years > 0) {
+            return String.format("%d years", years);
+        } else {
+            return String.format("%d months", months);
+        }
+    }
+
     }
 
     private void fillLoanValuesMap() {

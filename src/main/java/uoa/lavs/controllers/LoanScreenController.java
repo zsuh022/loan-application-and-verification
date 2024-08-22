@@ -32,8 +32,6 @@ import java.util.Locale;
 
 public class LoanScreenController {
 
-    private static LoanScreenController INSTANCE;
-
     private Loan activeLoan;
 
     private HashMap<String, String> changesMap = new HashMap<>();
@@ -133,7 +131,7 @@ public class LoanScreenController {
     public void initialize() {
         instance = this;
     }
-    
+
 
     public static void updateLoan() {
         // get the current customer in the customer bucket and set it as the active customer
