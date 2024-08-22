@@ -123,6 +123,10 @@ public class LoanValidator {
         }
 
         // check customer id valid
+        if (!isCustomerIdValid(loanMap.get("customerId"))) {
+            logger.error("ValidateLoan method failed: Customer ID is invalid");
+            return false;
+        }
 
         if (loanMap.get("principal") == null || loanMap.get("principal").isEmpty()) {
             logger.error("ValidateLoan method failed: Principal is empty");
@@ -209,7 +213,37 @@ public class LoanValidator {
         }
 
         // check coborrower id valid
+        for (int i = 0; i < 18; i++) {
+            String coborrowerId = loanMap.get("coborrowerId" + i);
+            if (coborrowerId != null && !isCustomerIdValid(coborrowerId)) {
+                logger.error("ValidateLoan method failed: Customer ID of coborrower is invalid");
+                return false;
+            }
+        }
 
+        logger.info("Validating loan for customer id {}", loanMap.get("customerId"));
         return true;
+    }
+
+    private boolean isCustomerIdValid(String customerId) {
+        logger.info("Validating customer id in isCustomerIdValid method {}", customerId);
+
+        // search using SearchCustomer
+        SearchCustomer search = new SearchCustomer();
+
+        try {
+            Customer customers = search.findById(Instance.getConnection(), customerId);
+
+            if (customers != null) {
+                logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
+                return true;
+            } else {
+                logger.error("isCustomerIdValid method: Customer ID {} is invalid. No customer found", customerId);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error("isCustomerIdValid method: error occurred");
+            return false;
+        }
     }
 }
