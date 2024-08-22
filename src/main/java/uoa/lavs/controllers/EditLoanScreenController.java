@@ -129,9 +129,29 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId17;
 
+    private List<TextField> coborrowerTextFields;
+
     @FXML
     public void initialize() {
+
         instance = this;
+        coborrowerTextFields = Arrays.asList(
+                tfNewLoanCoborrowerId0,
+                tfNewLoanCoborrowerId1,
+                tfNewLoanCoborrowerId3,
+                tfNewLoanCoborrowerId4,
+                tfNewLoanCoborrowerId5,
+                tfNewLoanCoborrowerId6,
+                tfNewLoanCoborrowerId7,
+                tfNewLoanCoborrowerId8,
+                tfNewLoanCoborrowerId10,
+                tfNewLoanCoborrowerId11,
+                tfNewLoanCoborrowerId12,
+                tfNewLoanCoborrowerId13,
+                tfNewLoanCoborrowerId14,
+                tfNewLoanCoborrowerId15,
+                tfNewLoanCoborrowerId16,
+                tfNewLoanCoborrowerId17);
     }
 
 
@@ -146,21 +166,27 @@ public class EditLoanScreenController {
         lbGeneralLoanCustomerName.setText(getCustomerName(loan.getCustomerId()));
         lbGeneralLoanPrincipal.setText(String.valueOf(loan.getPrincipal()));
         LoanStatus status = loan.getStatus();
-        switch (status) {
-            case New:
+        System.out.println("STATUS " + status);
+        switch (status.ordinal()) {
+            case 0:
                 rbNewLoanStatusNew.setSelected(true);
-            case Pending:
+                break;
+            case 1:
                 rbNewLoanStatusPending.setSelected(true);
-            case Cancelled:
+                break;
+            case 2:
                 rbNewLoanStatusCancelled.setSelected(true);
+                break;
             default:
                 rbNewLoanStatusActive.setSelected(true);
         }
         switch (loan.getRateType()) {
             case Fixed:
                 cbNewLoanIsFixed.setSelected(true);
+                break;
             case Floating:
                 cbNewLoanIsFloating.setSelected(true);
+                break;
         }
         tfNewLoanRate.setText(String.valueOf(loan.getRate()));
         lbGeneralLoanStartDate.setText(formatDate(loan.getStartDate()));
@@ -169,16 +195,20 @@ public class EditLoanScreenController {
         switch (loan.getCompoundingFrequency()) {
             case Weekly:
                 cbNewLoanCompoundingWeekly.setSelected(true);
+                break;
             case Monthly:
                 cbNewLoanCompoundingMonthly.setSelected(true);
+                break;
             default:
                 cbNewLoanCompoundingAnnually.setSelected(true);
         }
         switch (loan.getPaymentFrequency()) {
             case Weekly:
                 cbNewLoanFrequencyWeekly.setSelected(true);
+                break;
             case Fortnightly:
                 cbNewLoanFrequencyFortnightly.setSelected(true);
+                break;
             default:
                 cbNewLoanFrequencyMonthly.setSelected(true);
         }
@@ -216,6 +246,12 @@ public class EditLoanScreenController {
             } else if (rbNewLoanStatusPending.isSelected()) {
                 activeLoan.setStatus(LoanStatus.Pending);
                 status = LoanStatus.Pending;
+            }else if (rbNewLoanStatusNew.isSelected()){
+                activeLoan.setStatus(LoanStatus.New);
+                status = LoanStatus.New;
+            }else{
+                activeLoan.setStatus(LoanStatus.Unknown);
+                status = LoanStatus.Unknown;
             }
             UpdateStatus update = new UpdateStatus();
 
@@ -233,9 +269,10 @@ public class EditLoanScreenController {
     }
 
     private void displayCoborrowers(List<Coborrower> coborrowers) {
-        for (int i = 0; i < coborrowers.size(); i++) {
-            TextField field = ((TextField) newLoanCoborrowersPane.lookup("#tfNewCustomerType" + 1));
-            field.setText(coborrowers.get(0).getId());
+        int size = Math.min(coborrowers.size(), coborrowerTextFields.size());
+        for (int i = 0; i < size; i++) {
+            TextField field = coborrowerTextFields.get(i);
+            field.setText(coborrowers.get(i).getId());
         }
     }
 
@@ -284,6 +321,21 @@ public class EditLoanScreenController {
         loanValuesMap.put("frequencyMonthly", String.valueOf(cbNewLoanFrequencyMonthly.isSelected()));
         loanValuesMap.put("amount", tfNewLoanAmount.getText());
         loanValuesMap.put("isInterestOnly", String.valueOf(cbNewLoanIsInterestOnly.isSelected()));
+        if(rbNewLoanStatusPending.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Pending.ordinal()));
+        }
+        else if(rbNewLoanStatusActive.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Active.ordinal()));
+        }
+        else if (rbNewLoanStatusCancelled.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Cancelled.ordinal()));
+        }
+        else if (rbNewLoanStatusNew.isSelected()){
+            loanValuesMap.put("status", String.valueOf(LoanStatus.New.ordinal()));
+        }
+        else{
+            loanValuesMap.put("status", String.valueOf(LoanStatus.Unknown.ordinal()));
+        }
 
         for (int i = 0; i < 18; i++) {
             TextField coborrowerId;

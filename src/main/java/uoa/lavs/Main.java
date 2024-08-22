@@ -44,73 +44,9 @@ public class Main extends Application {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-
-        //test stuff start
-
-        //delete database and log
-        File file = new File("lavs-data.db");
-        file.delete();
-        file = new File("log.json");
-        file.delete();
-
-        Customer customer = new Customer();
-        customer.setCustomerId("T_1234");
-        customer.setTitle("Mr");
-        customer.setName("John Doe");
-        customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
-        customer.setOccupation("Engineer");
-        customer.setCitizenship("New Zealand");
-        customer.setVisa(null);
-        AddCustomer addCustomer = new AddCustomer();
-        String customerId = addCustomer.add(Instance.getConnection(), customer);
-        System.out.println("Customer ID: " + customerId);
-        Cache.cacheCustomer(customer);
-
-        AddLoan addLoan = new AddLoan();
-        Loan loan = new LoanFactory().getLoan(LoanType.Mortgage);
-        loan.setLoanId("T_1234");
-        loan.setCustomerID(customerId);
-        loan.setCustomerName(customer.getName());
-        loan.setPrincipal(10000.0);
-        loan.setRateType(RateType.Fixed);
-        loan.setRate(10.0);
-        loan.setStartDate(java.time.LocalDate.of(2024, 2, 11));
-        loan.setPeriod(5);
-        loan.setCompoundingFrequency(Frequency.Yearly);
-        loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
-        loan.setPaymentAmount(1000.0);
-        loan.setStatus(LoanStatus.Active);
-        loan.setTerm(360);
-        String loanId = addLoan.add(Instance.getConnection(), loan);
-        System.out.println("Loan ID: " + loanId);
-        Cache.cacheLoan(loan);
-
-        Coborrower co = new Coborrower();
-        AddCoborrower addCo = new AddCoborrower();
-
-        co.setId("1");
-
-
-        addCo.add(Instance.getConnection(), co, loanId);
-
-        loan.addCoborrower(co);
-
-        System.out.println("Loan ID: " + loanId);
-
-        //test stuff end
-
         // flush log immediately to avoid inconsistencies with mainframe
         LocalLogManager.flushLog();
         launch();
-        // the following shows two ways of using the mainframe interface
-        // approach #1: use the singleton instance - this way is recommended as it provides a single configuration
-        // location (and is easy for the testers to change when needed).
-        Connection connection = Instance.getConnection();
-        updateMainframe(connection);
-    }
-
-    private static void updateMainframe(Connection connection) {
-
     }
 
     //loads a FXML file
@@ -121,6 +57,7 @@ public class Main extends Application {
     //Set the active screen
     public static void setScreen(Screens screen) {
         scene.setRoot(SceneManager.getScreen(screen));
+        scaleContent();
     }
 
     @Override
@@ -146,7 +83,7 @@ public class Main extends Application {
 
     }
 
-    private void scaleContent() {
+    private static void scaleContent() {
         double width = scene.getWidth();
         double height = scene.getHeight();
         // check if height is the limiting factor
