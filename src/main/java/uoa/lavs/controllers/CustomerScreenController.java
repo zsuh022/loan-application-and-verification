@@ -848,6 +848,11 @@ public class CustomerScreenController {
         Main.setScreen(Screens.LOGIN);
     }
 
+    @FXML
+    private void customerAddLoan() {
+        Main.setScreen(Screens.NEW_LOAN);
+    }
+
     public static void updateCustomer() {
         // get the current customer in the customer bucket and set it as the active customer
         instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
