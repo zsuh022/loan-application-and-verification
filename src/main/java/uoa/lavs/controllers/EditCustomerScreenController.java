@@ -27,9 +27,13 @@ import uoa.lavs.utility.CustomerValidator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EditCustomerScreenController {
+
+    private static EditCustomerScreenController instance;
+    private Customer activeCustomer;
 
     private Map<String, String> customerValuesMap = new HashMap<>();
 
@@ -406,12 +410,207 @@ public class EditCustomerScreenController {
         firstPhoneTab.setClosable(false);
         Tab firstEmailTab = emailTabPane.getTabs().get(0);
         firstEmailTab.setClosable(false);
+        instance = this;
     }
 
     @FXML
     private void onEditCustomerBackClicked(MouseEvent event) {
         Main.setScreen(Screens.CUSTOMER);
     }
+
+    public static void editCustomer(){
+        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
+        instance.mapFields(instance.activeCustomer);
+    }
+
+    private void mapFields(Customer activeCustomer){
+
+            lbCustomerId.setText(activeCustomer.getId());
+            tfNewCustomerTitle.setText(activeCustomer.getTitle());
+            tfNewCustomerName.setText(activeCustomer.getName());
+            // TODO: tfNewCustomerStatus.setText("Active");
+            dpNewCustomerDob.setValue(activeCustomer.getDateOfBirth());
+            tfNewCustomerOccupation.setText(activeCustomer.getOccupation());
+            tfNewCustomerCitizenship.setText(activeCustomer.getCitizenship());
+            tfNewCustomerVisa.setText(activeCustomer.getVisa());
+        
+    
+
+            List<CustomerAddress> addressList = activeCustomer.getAddressList();
+    
+            if (!addressList.isEmpty()) {
+                tfNewCustomerType.setText(addressList.get(0).getType());
+                tfNewCustomerLine1.setText(addressList.get(0).getLine1());
+                tfNewCustomerLine2.setText(addressList.get(0).getLine2());
+                tfNewCustomerSuburb.setText(addressList.get(0).getSuburb());
+                tfNewCustomerCity.setText(addressList.get(0).getCity());
+                tfNewCustomerPostcode.setText(addressList.get(0).getPostCode());
+                tfNewCustomerCountry.setText(addressList.get(0).getCountry());
+                cbNewCustomerIsPrimary.setSelected(addressList.get(0).getIsPrimary());
+                cbNewCustomerIsMailing.setSelected(addressList.get(0).getIsMailing());
+            }
+            if (addressList.size() > 1) {
+                tfNewCustomerType1.setText(addressList.get(1).getType());
+                tfNewCustomerLine11.setText(addressList.get(1).getLine1());
+                tfNewCustomerLine21.setText(addressList.get(1).getLine2());
+                tfNewCustomerSuburb1.setText(addressList.get(1).getSuburb());
+                tfNewCustomerCity1.setText(addressList.get(1).getCity());
+                tfNewCustomerPostcode1.setText(addressList.get(1).getPostCode());
+                tfNewCustomerCountry1.setText(addressList.get(1).getCountry());
+                cbNewCustomerIsPrimary1.setSelected(addressList.get(1).getIsPrimary());
+                cbNewCustomerIsMailing1.setSelected(addressList.get(1).getIsMailing());
+            }
+            if (addressList.size() > 2) {
+                tfNewCustomerType2.setText(addressList.get(2).getType());
+                tfNewCustomerLine12.setText(addressList.get(2).getLine1());
+                tfNewCustomerLine22.setText(addressList.get(2).getLine2());
+                tfNewCustomerSuburb2.setText(addressList.get(2).getSuburb());
+                tfNewCustomerCity2.setText(addressList.get(2).getCity());
+                tfNewCustomerPostcode2.setText(addressList.get(2).getPostCode());
+                tfNewCustomerCountry2.setText(addressList.get(2).getCountry());
+                cbNewCustomerIsPrimary2.setSelected(addressList.get(2).getIsPrimary());
+                cbNewCustomerIsMailing2.setSelected(addressList.get(2).getIsMailing());
+            }
+            if (addressList.size() > 3) {
+                tfNewCustomerType3.setText(addressList.get(3).getType());
+                tfNewCustomerLine13.setText(addressList.get(3).getLine1());
+                tfNewCustomerLine23.setText(addressList.get(3).getLine2());
+                tfNewCustomerSuburb3.setText(addressList.get(3).getSuburb());
+                tfNewCustomerCity3.setText(addressList.get(3).getCity());
+                tfNewCustomerPostcode3.setText(addressList.get(3).getPostCode());
+                tfNewCustomerCountry3.setText(addressList.get(3).getCountry());
+                cbNewCustomerIsPrimary3.setSelected(addressList.get(3).getIsPrimary());
+                cbNewCustomerIsMailing3.setSelected(addressList.get(3).getIsMailing());
+            }
+        
+    
+
+            List<CustomerPhone> phoneList = activeCustomer.getPhoneList();
+            List<CustomerEmail> emailList = activeCustomer.getEmailList();
+    
+            if (!phoneList.isEmpty()) {
+                tfNewCustomerPhType.setText(phoneList.get(0).getType());
+                tfNewCustomerPhPrefix.setText(phoneList.get(0).getPrefix());
+                tfNewCustomerPhNum.setText(phoneList.get(0).getNumber());
+                cbNewCustomerIsPhPrimary.setSelected(phoneList.get(0).getIsPrimary());
+                cbNewCustomerIsPhSMS.setSelected(phoneList.get(0).getIsTexting());
+            }
+            if (phoneList.size() > 1) {
+                tfNewCustomerPhType1.setText(phoneList.get(1).getType());
+                tfNewCustomerPhPrefix1.setText(phoneList.get(1).getPrefix());
+                tfNewCustomerPhNum1.setText(phoneList.get(1).getNumber());
+                cbNewCustomerIsPhPrimary1.setSelected(phoneList.get(1).getIsPrimary());
+                cbNewCustomerIsPhSMS1.setSelected(phoneList.get(1).getIsTexting());
+            }
+            if (phoneList.size() > 2) {
+                tfNewCustomerPhType2.setText(phoneList.get(2).getType());
+                tfNewCustomerPhPrefix2.setText(phoneList.get(2).getPrefix());
+                tfNewCustomerPhNum2.setText(phoneList.get(2).getNumber());
+                cbNewCustomerIsPhPrimary2.setSelected(phoneList.get(2).getIsPrimary());
+                cbNewCustomerIsPhSMS2.setSelected(phoneList.get(2).getIsTexting());
+            }
+            if (phoneList.size() > 3) {
+                tfNewCustomerPhType3.setText(phoneList.get(3).getType());
+                tfNewCustomerPhPrefix3.setText(phoneList.get(3).getPrefix());
+                tfNewCustomerPhNum3.setText(phoneList.get(3).getNumber());
+                cbNewCustomerIsPhPrimary3.setSelected(phoneList.get(3).getIsPrimary());
+                cbNewCustomerIsPhSMS3.setSelected(phoneList.get(3).getIsTexting());
+            }
+    
+            if (!emailList.isEmpty()) {
+                tfNewCustomerEmail.setText(emailList.get(0).getAddress());
+                cbNewCustomerIsPrimary.setSelected(emailList.get(0).getIsPrimary());
+            }
+            if (emailList.size() > 1) {
+                tfNewCustomerEmail1.setText(emailList.get(1).getAddress());
+                cbNewCustomerIsPrimary1.setSelected(emailList.get(1).getIsPrimary());
+            }
+            if (emailList.size() > 2) {
+                tfNewCustomerEmail2.setText(emailList.get(2).getAddress());
+                cbNewCustomerIsPrimary2.setSelected(emailList.get(2).getIsPrimary());
+            }
+            if (emailList.size() > 3) {
+                tfNewCustomerEmail3.setText(emailList.get(3).getAddress());
+                cbNewCustomerIsPrimary3.setSelected(emailList.get(3).getIsPrimary());
+            }
+        
+
+
+        List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
+
+        if (!employerList.isEmpty()) {
+            tfNewCustomerEmployerName.setText(employerList.get(0).getName());
+            tfNewCustomerEmployerLine1.setText(employerList.get(0).getLine1());
+            tfNewCustomerEmployerLine2.setText(employerList.get(0).getLine2());
+            tfNewCustomerEmployerSuburb.setText(employerList.get(0).getSuburb());
+            tfNewCustomerEmployerCity.setText(employerList.get(0).getCity());
+            tfNewCustomerEmployerPostcode.setText(employerList.get(0).getPostCode());
+            tfNewCustomerEmployerCountry.setText(employerList.get(0).getCountry());
+            tfNewCustomerEmployerPhone.setText(employerList.get(0).getPhone());
+            tfNewCustomerEmployerEmail.setText(employerList.get(0).getEmail());
+            tfNewCustomerEmployerWeb.setText(employerList.get(0).getWeb());
+        }
+        if (employerList.size() > 1) {
+            tfNewCustomerEmployerName1.setText(employerList.get(1).getName());
+            tfNewCustomerEmployerLine11.setText(employerList.get(1).getLine1());
+            tfNewCustomerEmployerLine21.setText(employerList.get(1).getLine2());
+            tfNewCustomerEmployerSuburb1.setText(employerList.get(1).getSuburb());
+            tfNewCustomerEmployerCity1.setText(employerList.get(1).getCity());
+            tfNewCustomerEmployerPostcode1.setText(employerList.get(1).getPostCode());
+            tfNewCustomerEmployerCountry1.setText(employerList.get(1).getCountry());
+            tfNewCustomerEmployerPhone1.setText(employerList.get(1).getPhone());
+            tfNewCustomerEmployerEmail1.setText(employerList.get(1).getEmail());
+            tfNewCustomerEmployerWeb1.setText(employerList.get(1).getWeb());
+        }
+        if (employerList.size() > 2) {
+            tfNewCustomerEmployerName2.setText(employerList.get(2).getName());
+            tfNewCustomerEmployerLine12.setText(employerList.get(2).getLine2());
+            tfNewCustomerEmployerLine22.setText(employerList.get(2).getLine2());
+            tfNewCustomerEmployerSuburb2.setText(employerList.get(2).getSuburb());
+            tfNewCustomerEmployerCity2.setText(employerList.get(2).getCity());
+            tfNewCustomerEmployerPostcode2.setText(employerList.get(2).getPostCode());
+            tfNewCustomerEmployerCountry2.setText(employerList.get(2).getCountry());
+            tfNewCustomerEmployerPhone2.setText(employerList.get(2).getPhone());
+            tfNewCustomerEmployerEmail2.setText(employerList.get(2).getEmail());
+            tfNewCustomerEmployerWeb2.setText(employerList.get(2).getWeb());
+        }
+        if (employerList.size() > 3) {
+            tfNewCustomerEmployerName3.setText(employerList.get(3).getName());
+            tfNewCustomerEmployerLine13.setText(employerList.get(3).getLine1());
+            tfNewCustomerEmployerLine23.setText(employerList.get(3).getLine2());
+            tfNewCustomerEmployerSuburb3.setText(employerList.get(3).getSuburb());
+            tfNewCustomerEmployerCity3.setText(employerList.get(3).getCity());
+            tfNewCustomerEmployerPostcode3.setText(employerList.get(3).getPostCode());
+            tfNewCustomerEmployerCountry3.setText(employerList.get(3).getCountry());
+            tfNewCustomerEmployerPhone3.setText(employerList.get(3).getPhone());
+            tfNewCustomerEmployerEmail3.setText(employerList.get(3).getEmail());
+            tfNewCustomerEmployerWeb3.setText(employerList.get(3).getWeb());
+        }
+        if (employerList.size() > 4) {
+            tfNewCustomerEmployerName4.setText(employerList.get(4).getName());
+            tfNewCustomerEmployerLine14.setText(employerList.get(4).getLine1());
+            tfNewCustomerEmployerLine24.setText(employerList.get(4).getLine2());
+            tfNewCustomerEmployerSuburb4.setText(employerList.get(4).getSuburb());
+            tfNewCustomerEmployerCity4.setText(employerList.get(4).getCity());
+            tfNewCustomerEmployerPostcode4.setText(employerList.get(4).getPostCode());
+            tfNewCustomerEmployerCountry4.setText(employerList.get(4).getCountry());
+            tfNewCustomerEmployerPhone4.setText(employerList.get(4).getPhone());
+            tfNewCustomerEmployerEmail4.setText(employerList.get(4).getEmail());
+            tfNewCustomerEmployerWeb4.setText(employerList.get(4).getWeb());
+        }
+    
+
+
+        if (activeCustomer.getNote() != null) {
+            taNewCustomerNotes.setText(activeCustomer.getNote().getNote());
+        } else {
+            taNewCustomerNotes.clear();
+        }
+    
+    
+        
+    }
+
 
     @FXML
     public void submitNewCustomer(MouseEvent event) {
