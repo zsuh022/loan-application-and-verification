@@ -862,6 +862,7 @@ public class CustomerScreenController {
 
     @FXML
     private void editCustomer() {
+        EditCustomerScreenController.editCustomer();
         Main.setScreen(Screens.EDIT_CUSTOMER);
     }
 
