@@ -14,6 +14,7 @@ import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
@@ -26,6 +27,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class NewLoanScreenController {
+
+    private static NewLoanScreenController instance;
 
     private HashMap<String, String> loanValuesMap = new HashMap<>();
 
@@ -114,6 +117,10 @@ public class NewLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId17;
 
+    @FXML
+    private void initialize() {
+        instance = this;
+    }
 
     public void submitNewLoan() {
         fillLoanValuesMap();
@@ -222,5 +229,12 @@ public class NewLoanScreenController {
     @FXML
     private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
+    }
+
+    public static void updateCustomerField() {
+        Customer customer = CustomerBucket.getInstance().getCustomer();
+        if (customer != null) {
+            instance.tfNewLoanCustomerId.setText(customer.getId());
+        }
     }
 }
