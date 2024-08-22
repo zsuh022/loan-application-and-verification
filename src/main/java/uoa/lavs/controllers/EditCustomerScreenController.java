@@ -611,6 +611,29 @@ public class EditCustomerScreenController {
         
     }
 
+    @FXML
+    private void submitUpdate (MouseEvent event) {
+        fillCustomerValuesMap();
+        fillAddressValuesList();
+        fillEmailValuesList();
+        fillEmployerValuesList();
+        fillPhoneValuesList();
+
+        if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
+                employerValuesList, phoneValuesList)) {
+            customerValidator.updateCustomer(activeCustomer, customerValuesMap, addressValuesList,
+                    emailValuesList, employerValuesList, phoneValuesList);
+
+            // Connection
+            Connection conn = Instance.getConnection();
+
+
+            CustomerScreenController.updateCustomer();
+
+            //load customer screen
+            Main.setScreen(SceneManager.Screens.CUSTOMER);
+        }
+    }
 
     @FXML
     public void submitNewCustomer(MouseEvent event) {
@@ -1009,11 +1032,6 @@ public class EditCustomerScreenController {
     @FXML
     private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
-    }
-
-    @FXML
-    private void onCustomerBackClicked(){
-        Main.setScreen(Screens.CUSTOMER);
     }
 
 }
