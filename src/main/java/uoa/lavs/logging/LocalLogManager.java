@@ -1,5 +1,7 @@
 package uoa.lavs.logging;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
@@ -8,7 +10,10 @@ import uoa.lavs.mainframe.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.Callable;
 
 public class LocalLogManager {
 
@@ -29,6 +34,8 @@ public class LocalLogManager {
     private final HashMap<String, String> temporaryLoanIds = new HashMap<>();
     private JSONArray log;
     private int logCount;
+    private SimpleBooleanProperty empty = new SimpleBooleanProperty(true);
+    private SimpleStringProperty syncTime = new SimpleStringProperty("N/A");
 
     private LocalLogManager(){
         // read log from file
@@ -37,6 +44,9 @@ public class LocalLogManager {
             logFile.createNewFile();
             log = new JSONArray(log = new JSONArray(Files.readString(logFile.toPath())));
             logCount = log.length();
+            if(logCount > 0) {
+                empty.setValue(false);
+            }
         } catch (Exception e) {
             // if file does not exist, create new log
             logger.error("Error reading log file: {}", e.getMessage());
@@ -52,6 +62,7 @@ public class LocalLogManager {
         INSTANCE.log.put(logEntry);
         INSTANCE.logCount++;
         INSTANCE.writeLog();
+        INSTANCE.empty.setValue(false);
     }
 
     public static boolean flushLog() {
@@ -112,6 +123,7 @@ public class LocalLogManager {
         }
         // if all responses were successful, clear log
         if(succeeded) {
+            INSTANCE.syncTime.setValue(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
             INSTANCE.clearLog();
         }
         return succeeded;
@@ -121,6 +133,7 @@ public class LocalLogManager {
         logger.info("Clearing log");
         log.clear();
         logCount = 0;
+        INSTANCE.empty.setValue(true);
         // clear log file
         writeLog();
     }
@@ -173,5 +186,13 @@ public class LocalLogManager {
             INSTANCE.temporaryLoanIds.put(temporaryId, id);
             logger.info("Mapped loan {} to {}", temporaryId, id);
         }
+    }
+
+    public static SimpleBooleanProperty getEmptyProperty() {
+        return INSTANCE.empty;
+    }
+
+    public static SimpleStringProperty getSyncTimeProperty() {
+        return INSTANCE.syncTime;
     }
 }
