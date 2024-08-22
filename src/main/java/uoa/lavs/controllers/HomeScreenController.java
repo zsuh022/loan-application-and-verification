@@ -24,6 +24,7 @@ public class HomeScreenController
     private Button btnDrafts;
     @FXML
     private Button syncButton;
+
     @FXML
     private MenuItem btnSearchCustomer;
     @FXML
@@ -37,10 +38,6 @@ public class HomeScreenController
         syncTimeLabel.textProperty().bind(LocalLogManager.getSyncTimeProperty());
     }
 
-    @FXML
-    void onDraftsButtonClicked(ActionEvent event) {
-        Main.setScreen(Screens.DRAFTS);
-    }
 
     @FXML
     void searchLoanClicked(ActionEvent event){

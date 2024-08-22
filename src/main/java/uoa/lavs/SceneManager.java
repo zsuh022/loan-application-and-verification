@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 public class SceneManager {
     public enum Screens {
         CUSTOMER,
-        DRAFTS,
         HOME,
         LOAN,
         LOGIN,
