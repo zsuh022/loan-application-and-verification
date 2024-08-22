@@ -21,6 +21,7 @@ import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.models.Loan.Payments;
+import uoa.lavs.controllers.EditLoanScreenController;
 
 import java.text.NumberFormat;
 
@@ -390,7 +391,7 @@ public class LoanScreenController {
 
     @FXML
     private void editLoan() {
-        EditLoanScreenController.editLoan();
+        EditLoanScreenController.editLoanUpdate();
         Main.setScreen(Screens.EDIT_LOAN);
     }
 

@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.controllers.LoanBucket;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
@@ -70,6 +71,42 @@ public class LoanValidator {
         logger.info("Created loan for customer id {}", loanMap.get("customerId"));
         Cache.cacheLoan(loan);
         return loan;
+    }
+
+    public void updateLoan(Map<String, String> loanMap) {
+        Loan loan = LoanBucket.getInstance().getLoan();
+
+        loan.setCustomerID(loanMap.get("customerId"));
+        loan.setPrincipal(Double.parseDouble(loanMap.get("principal")));
+        loan.setRate(Double.parseDouble(loanMap.get("rate")));
+        loan.setRateType(discoverRateType(loanMap));
+        loan.setStartDate(LocalDate.parse(loanMap.get("startDate")));
+        loan.setTerm(Integer.parseInt(loanMap.get("term")));
+        loan.setPeriod(Integer.parseInt(loanMap.get("period")));
+        loan.setCompoundingFrequency(discoverCompoundingFrequency(loanMap));
+        loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
+        loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
+        loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
+
+        for (int i = 0; i < 18; i++) {
+            String coborrowerId = loanMap.get("coborrowerId" + i);
+            if (coborrowerId != null) {
+                Coborrower coborrower = new Coborrower();
+                coborrower.setId(coborrowerId);
+                List<Customer> cacheList = Cache.searchCustomerCacheId(coborrowerId);
+                if (cacheList.size() == 1) {
+                    coborrower.setName(cacheList.get(0).getName());
+                } else {
+                    SearchCustomer search = new SearchCustomer();
+                    coborrower.setName(search.findById(Instance.getConnection(), coborrowerId).getName());
+                }
+                loan.addCoborrower(coborrower);
+            }
+        }
+
+        logger.info("Updated loan for customer id {}", loanMap.get("customerId"));
+
+
     }
 
     private RateType discoverRateType(Map<String, String> loanMap) {

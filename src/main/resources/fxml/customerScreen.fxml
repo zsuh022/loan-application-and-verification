@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.CustomerScreenController">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uoa.lavs.controllers.CustomerScreenController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -383,12 +383,15 @@
                                                                                           </HBox>
                                                                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                              <children>
-                                                                                                <CheckBox fx:id="cbCustomerIsPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                                <CheckBox fx:id="cbCustomerIsPrimary" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                                    <HBox.margin>
                                                                                                       <Insets left="30.0" />
                                                                                                    </HBox.margin>
+                                                                                                   <cursor>
+                                                                                                      <Cursor fx:constant="DEFAULT" />
+                                                                                                   </cursor>
                                                                                                 </CheckBox>
-                                                                                                <CheckBox fx:id="cbCustomerIsMailing" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                                                <CheckBox fx:id="cbCustomerIsMailing" disable="true" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                                    <HBox.margin>
                                                                                                       <Insets left="20.0" />
                                                                                                    </HBox.margin>
@@ -507,12 +510,12 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbCustomerIsPrimary1" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsPrimary1" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </CheckBox>
-                                                                                    <CheckBox fx:id="cbCustomerIsMailing1" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsMailing1" disable="true" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -627,12 +630,12 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbCustomerIsPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsPrimary2" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </CheckBox>
-                                                                                    <CheckBox fx:id="cbCustomerIsMailing2" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsMailing2" disable="true" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -747,12 +750,12 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbCustomerIsPrimary3" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsPrimary3" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
                                                                                     </CheckBox>
-                                                                                    <CheckBox fx:id="cbCustomerIsMailing3" mnemonicParsing="false" text="Mailing" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbCustomerIsMailing3" disable="true" mnemonicParsing="false" text="Mailing" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="20.0" />
                                                                                        </HBox.margin>
@@ -821,12 +824,12 @@
                                                                                                             <Insets right="30.0" />
                                                                                                          </HBox.margin>
                                                                                                       </Label>
-                                                                                                      <CheckBox fx:id="cbCustomerIsPhPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                                      <CheckBox fx:id="cbCustomerIsPhPrimary" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                                          <HBox.margin>
                                                                                                             <Insets left="30.0" />
                                                                                                          </HBox.margin>
                                                                                                       </CheckBox>
-                                                                                                      <CheckBox fx:id="cbCustomerIsPhSMS" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                                      <CheckBox fx:id="cbCustomerIsPhSMS" disable="true" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                                          <HBox.margin>
                                                                                                             <Insets left="30.0" />
                                                                                                          </HBox.margin>
@@ -885,12 +888,12 @@
                                                                                                 <Insets right="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Label>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary1" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary1" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS1" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS1" disable="true" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
@@ -945,12 +948,12 @@
                                                                                                 <Insets right="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Label>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary2" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS2" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS2" disable="true" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
@@ -1005,12 +1008,12 @@
                                                                                                 <Insets right="30.0" />
                                                                                              </HBox.margin>
                                                                                           </Label>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary3" mnemonicParsing="false" text="Primary" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhPrimary3" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
                                                                                           </CheckBox>
-                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS3" mnemonicParsing="false" text="SMS" textFill="WHITE">
+                                                                                          <CheckBox fx:id="cbCustomerIsPhSMS3" disable="true" mnemonicParsing="false" text="SMS" textFill="WHITE">
                                                                                              <HBox.margin>
                                                                                                 <Insets left="30.0" />
                                                                                              </HBox.margin>
@@ -1043,7 +1046,7 @@
                                                                                                       <Insets right="30.0" />
                                                                                                    </HBox.margin>
                                                                                                 </Label>
-                                                                                                <CheckBox fx:id="lbCustomerIsPrimary" mnemonicParsing="false" text="Primary" textFill="WHITE" />
+                                                                                                <CheckBox fx:id="lbCustomerIsPrimary" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE" />
                                                                                              </children>
                                                                                           </HBox>
                                                                                        </children>
@@ -1052,7 +1055,7 @@
                                                                             </Tab>
                                                                           </tabs>
                                                                         </TabPane>
-                                                                        <AnchorPane fx:id="emailTab1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" visible="false">
+                                                                        <AnchorPane fx:id="emailTab1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                            <children>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                                  <children>
@@ -1066,12 +1069,12 @@
                                                                                           <Insets right="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Label>
-                                                                                    <CheckBox fx:id="lbCustomerIsPrimary1" mnemonicParsing="false" text="Primary" textFill="WHITE" />
+                                                                                    <CheckBox fx:id="lbCustomerIsPrimary1" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE" />
                                                                                  </children>
                                                                               </HBox>
                                                                            </children>
                                                                         </AnchorPane>
-                                                                        <AnchorPane fx:id="emailTab2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" visible="false">
+                                                                        <AnchorPane fx:id="emailTab2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                            <children>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                                  <children>
@@ -1085,7 +1088,7 @@
                                                                                           <Insets right="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Label>
-                                                                                    <CheckBox fx:id="lbCustomerIsPrimary2" mnemonicParsing="false" text="Primary" textFill="WHITE" />
+                                                                                    <CheckBox fx:id="lbCustomerIsPrimary2" disable="true" mnemonicParsing="false" text="Primary" textFill="WHITE" />
                                                                                  </children>
                                                                               </HBox>
                                                                            </children>
@@ -1157,7 +1160,7 @@
                                                                                           </HBox>
                                                                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                              <children>
-                                                                                                <CheckBox fx:id="cbLoanStatus" mnemonicParsing="false" text="Status" textFill="WHITE">
+                                                                                                <CheckBox fx:id="cbLoanStatus" disable="true" mnemonicParsing="false" text="Status" textFill="WHITE">
                                                                                                    <HBox.margin>
                                                                                                       <Insets left="30.0" />
                                                                                                    </HBox.margin>
@@ -1206,7 +1209,7 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbLoanStatus1" mnemonicParsing="false" text="Status" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbLoanStatus1" disable="true" mnemonicParsing="false" text="Status" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
@@ -1251,7 +1254,7 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbLoanStatus2" mnemonicParsing="false" text="Status" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbLoanStatus2" disable="true" mnemonicParsing="false" text="Status" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
@@ -1296,7 +1299,7 @@
                                                                               </HBox>
                                                                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                                                                  <children>
-                                                                                    <CheckBox fx:id="cbLoanStatus3" mnemonicParsing="false" text="Status" textFill="WHITE">
+                                                                                    <CheckBox fx:id="cbLoanStatus3" disable="true" mnemonicParsing="false" text="Status" textFill="WHITE">
                                                                                        <HBox.margin>
                                                                                           <Insets left="30.0" />
                                                                                        </HBox.margin>
@@ -1463,6 +1466,16 @@
                                                                                                 </Label>
                                                                                              </children>
                                                                                           </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                             <children>
+                                                                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                                   <HBox.margin>
+                                                                                                      <Insets left="30.0" />
+                                                                                                   </HBox.margin>
+                                                                                                </Text>
+                                                                                                <CheckBox fx:id="cbNewCustomerEmployerIsOwner" disable="true" mnemonicParsing="false" textFill="WHITE" />
+                                                                                             </children>
+                                                                                          </HBox>
                                                                                        </children>
                                                                                     </VBox>
                                                                                  </children>
@@ -1615,6 +1628,16 @@
                                                                                     </Label>
                                                                                  </children>
                                                                               </HBox>
+                                                                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                 <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                       <HBox.margin>
+                                                                                          <Insets left="30.0" />
+                                                                                       </HBox.margin>
+                                                                                    </Text>
+                                                                                    <CheckBox fx:id="cbNewCustomerEmployerIsOwner1" mnemonicParsing="false" textFill="WHITE" />
+                                                                                 </children>
+                                                                              </HBox>
                                                                            </children>
                                                                         </VBox>
                                                                      </children>
@@ -1761,6 +1784,26 @@
                                                                                           <Insets right="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Label>
+                                                                                 </children>
+                                                                              </HBox>
+                                                                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                 <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                       <HBox.margin>
+                                                                                          <Insets left="30.0" />
+                                                                                       </HBox.margin>
+                                                                                    </Text>
+                                                                                    <CheckBox fx:id="cbNewCustomerEmployerIsOwner111" disable="true" mnemonicParsing="false" textFill="WHITE" />
+                                                                                 </children>
+                                                                              </HBox>
+                                                                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                 <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                       <HBox.margin>
+                                                                                          <Insets left="30.0" />
+                                                                                       </HBox.margin>
+                                                                                    </Text>
+                                                                                    <CheckBox fx:id="cbNewCustomerEmployerIsOwner2" disable="true" mnemonicParsing="false" textFill="WHITE" />
                                                                                  </children>
                                                                               </HBox>
                                                                            </children>
@@ -1911,6 +1954,16 @@
                                                                                     </Label>
                                                                                  </children>
                                                                               </HBox>
+                                                                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                 <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                       <HBox.margin>
+                                                                                          <Insets left="30.0" />
+                                                                                       </HBox.margin>
+                                                                                    </Text>
+                                                                                    <CheckBox fx:id="cbNewCustomerEmployerIsOwner3" mnemonicParsing="false" textFill="WHITE" />
+                                                                                 </children>
+                                                                              </HBox>
                                                                            </children>
                                                                         </VBox>
                                                                      </children>
@@ -2057,6 +2110,16 @@
                                                                                           <Insets right="30.0" />
                                                                                        </HBox.margin>
                                                                                     </Label>
+                                                                                 </children>
+                                                                              </HBox>
+                                                                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                                                 <children>
+                                                                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner:" wrappingWidth="150.0" HBox.hgrow="ALWAYS">
+                                                                                       <HBox.margin>
+                                                                                          <Insets left="30.0" />
+                                                                                       </HBox.margin>
+                                                                                    </Text>
+                                                                                    <CheckBox fx:id="cbNewCustomerEmployerIsOwner4" mnemonicParsing="false" textFill="WHITE" />
                                                                                  </children>
                                                                               </HBox>
                                                                            </children>

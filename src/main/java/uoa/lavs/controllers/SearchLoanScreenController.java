@@ -73,7 +73,6 @@ public class SearchLoanScreenController {
 
     @FXML
     private void onSearchLoanEnterKeyPressed(KeyEvent event) {
-        System.out.println("Key pressed: " + event.getCode());
         if (event.getCode() == KeyCode.ENTER) {
             submitLoanSearch();
         }
