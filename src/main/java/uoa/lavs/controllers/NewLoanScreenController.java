@@ -2,10 +2,7 @@ package uoa.lavs.controllers;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -50,9 +47,9 @@ public class NewLoanScreenController {
     @FXML
     private TextField tfNewLoanRate;
     @FXML
-    private CheckBox cbNewLoanIsFloating;
+    private RadioButton rbRateTypeFloating;
     @FXML
-    private CheckBox cbNewLoanIsFixed;
+    private RadioButton rbRateTypeFixed;
     @FXML
     private DatePicker dpNewLoanStartDate;
     @FXML
@@ -60,17 +57,17 @@ public class NewLoanScreenController {
     @FXML
     private TextField tfNewLoanPeriod;
     @FXML
-    private CheckBox cbNewLoanCompoundingWeekly;
+    private RadioButton rbCompoundingWeekly;
     @FXML
-    private CheckBox cbNewLoanCompoundingMonthly;
+    private RadioButton rbCompoundingMonthly;
     @FXML
-    private CheckBox cbNewLoanCompoundingAnnually;
+    private RadioButton rbCompoundingAnnually;
     @FXML
-    private CheckBox cbNewLoanFrequencyWeekly;
+    private RadioButton rbPaymentWeekly;
     @FXML
-    private CheckBox cbNewLoanFrequencyFortnightly;
+    private RadioButton rbPaymentFortnightly;
     @FXML
-    private CheckBox cbNewLoanFrequencyMonthly;
+    private RadioButton rbPaymentMonthly;
     @FXML
     private TextField tfNewLoanAmount;
     @FXML
@@ -172,17 +169,17 @@ public class NewLoanScreenController {
         loanValuesMap.put("customerId", tfNewLoanCustomerId.getText());
         loanValuesMap.put("principal", tfNewLoanPrincipal.getText());
         loanValuesMap.put("rate", tfNewLoanRate.getText());
-        loanValuesMap.put("isFloating", String.valueOf(cbNewLoanIsFloating.isSelected()));
-        loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
+        loanValuesMap.put("isFloating", String.valueOf(rbRateTypeFloating.isSelected()));
+        loanValuesMap.put("isFixed", String.valueOf(rbRateTypeFixed.isSelected()));
         loanValuesMap.put("startDate", startDateString);
         loanValuesMap.put("period", tfNewLoanPeriod.getText());
         loanValuesMap.put("term", tfNewLoanTerm.getText());
-        loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));
-        loanValuesMap.put("compoundingMonthly", String.valueOf(cbNewLoanCompoundingMonthly.isSelected()));
-        loanValuesMap.put("compoundingAnnually", String.valueOf(cbNewLoanCompoundingAnnually.isSelected()));
-        loanValuesMap.put("frequencyWeekly", String.valueOf(cbNewLoanFrequencyWeekly.isSelected()));
-        loanValuesMap.put("frequencyFortnightly", String.valueOf(cbNewLoanFrequencyFortnightly.isSelected()));
-        loanValuesMap.put("frequencyMonthly", String.valueOf(cbNewLoanFrequencyMonthly.isSelected()));
+        loanValuesMap.put("compoundingWeekly", String.valueOf(rbCompoundingWeekly.isSelected()));
+        loanValuesMap.put("compoundingMonthly", String.valueOf(rbCompoundingMonthly.isSelected()));
+        loanValuesMap.put("compoundingAnnually", String.valueOf(rbCompoundingAnnually.isSelected()));
+        loanValuesMap.put("frequencyWeekly", String.valueOf(rbPaymentWeekly.isSelected()));
+        loanValuesMap.put("frequencyFortnightly", String.valueOf(rbPaymentFortnightly.isSelected()));
+        loanValuesMap.put("frequencyMonthly", String.valueOf(rbPaymentMonthly.isSelected()));
         loanValuesMap.put("amount", tfNewLoanAmount.getText());
         loanValuesMap.put("isInterestOnly", String.valueOf(cbNewLoanIsInterestOnly.isSelected()));
 
