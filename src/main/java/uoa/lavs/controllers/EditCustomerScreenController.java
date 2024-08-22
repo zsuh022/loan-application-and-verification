@@ -611,9 +611,8 @@ public class EditCustomerScreenController {
         
     }
 
-
     @FXML
-    public void submitNewCustomer(MouseEvent event) {
+    public void submitUpdate(MouseEvent event) {
         fillCustomerValuesMap();
         fillAddressValuesList();
         fillEmailValuesList();
@@ -622,7 +621,7 @@ public class EditCustomerScreenController {
 
         if (customerValidator.validateCustomer(customerValuesMap, addressValuesList, emailValuesList,
                 employerValuesList, phoneValuesList)) {
-            Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
+            customerValidator.updateCustomer(activeCustomer, customerValuesMap, addressValuesList,
                     emailValuesList, employerValuesList, phoneValuesList);
 
             // Connection
@@ -637,30 +636,25 @@ public class EditCustomerScreenController {
             AddNote addNote = new AddNote();
 
             // Attempt to create new customer in the mainframe
-            String customerID = addCustomer.add(conn, newCustomer);
-            newCustomer.setCustomerId(customerID);
+            String customerID = addCustomer.add(conn, activeCustomer);
 
-            for (CustomerAddress address : newCustomer.getAddressList()) {
+            for (CustomerAddress address : activeCustomer.getAddressList()) {
                 addAddress.add(conn, address, customerID);
             }
-            for (CustomerEmail email : newCustomer.getEmailList()) {
+            for (CustomerEmail email : activeCustomer.getEmailList()) {
                 addEmail.add(conn, email, customerID);
             }
-            for (CustomerEmployer employer : newCustomer.getEmployerList()) {
+            for (CustomerEmployer employer : activeCustomer.getEmployerList()) {
                 addEmployer.add(conn, employer, customerID);
             }
-            for (CustomerPhone phone : newCustomer.getPhoneList()) {
+            for (CustomerPhone phone : activeCustomer.getPhoneList()) {
                 addPhone.add(conn, phone, customerID);
             }
-            if (newCustomer.getNote() != null) {
-                addNote.add(conn, newCustomer.getNote(), customerID);
+            if (activeCustomer.getNote() != null) {
+                addNote.add(conn, activeCustomer.getNote(), customerID);
             }
 
-            // Cache customer
-            Cache.cacheCustomer(newCustomer);
-
             //set active customer
-            CustomerBucket.getInstance().setCustomer(newCustomer);
             CustomerScreenController.updateCustomer();
 
             //load customer screen
