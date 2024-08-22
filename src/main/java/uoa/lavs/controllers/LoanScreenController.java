@@ -204,7 +204,6 @@ public class LoanScreenController {
         vbox.setStyle("-fx-padding: 10;");
 
         for (Payments payment : paymentList) {
-            System.out.println(":ADWADAWDA" + payment.getCustomerName());
 
             AnchorPane pane = new AnchorPane();
             pane.setPrefWidth(630);

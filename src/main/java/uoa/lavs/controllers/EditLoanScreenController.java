@@ -129,9 +129,29 @@ public class EditLoanScreenController {
     @FXML
     private TextField tfNewLoanCoborrowerId17;
 
+    private List<TextField> coborrowerTextFields;
+
     @FXML
     public void initialize() {
+
         instance = this;
+        coborrowerTextFields = Arrays.asList(
+                tfNewLoanCoborrowerId0,
+                tfNewLoanCoborrowerId1,
+                tfNewLoanCoborrowerId3,
+                tfNewLoanCoborrowerId4,
+                tfNewLoanCoborrowerId5,
+                tfNewLoanCoborrowerId6,
+                tfNewLoanCoborrowerId7,
+                tfNewLoanCoborrowerId8,
+                tfNewLoanCoborrowerId10,
+                tfNewLoanCoborrowerId11,
+                tfNewLoanCoborrowerId12,
+                tfNewLoanCoborrowerId13,
+                tfNewLoanCoborrowerId14,
+                tfNewLoanCoborrowerId15,
+                tfNewLoanCoborrowerId16,
+                tfNewLoanCoborrowerId17);
     }
 
 
@@ -233,9 +253,10 @@ public class EditLoanScreenController {
     }
 
     private void displayCoborrowers(List<Coborrower> coborrowers) {
-        for (int i = 0; i < coborrowers.size(); i++) {
-            TextField field = ((TextField) newLoanCoborrowersPane.lookup("#tfNewCustomerType" + 1));
-            field.setText(coborrowers.get(0).getId());
+        int size = Math.min(coborrowers.size(), coborrowerTextFields.size());
+        for (int i = 0; i < size; i++) {
+            TextField field = coborrowerTextFields.get(i);
+            field.setText(coborrowers.get(i).getId());
         }
     }
 
