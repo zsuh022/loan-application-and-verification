@@ -738,7 +738,9 @@ public class CustomerScreenController {
 
     public void setNotesPaneInformation() {
         if (activeCustomer.getNote() != null) {
-            taCustomerNotes.setText(String.valueOf(activeCustomer.getNote()));
+            taCustomerNotes.setText(activeCustomer.getNote().getNote());
+        } else {
+            taCustomerNotes.clear();
         }
     }
 
