@@ -49,8 +49,6 @@ public class LoanValidator {
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
 
-        // TODO: loan.setStatus(LoanStatus.Active);
-
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
@@ -158,6 +156,18 @@ public class LoanValidator {
 
         if (loanMap.get("period") == null || loanMap.get("period").isEmpty()) {
             logger.error("ValidateLoan method failed: period is empty");
+            return false;
+        }
+
+        if (loanMap.get("term") == null || loanMap.get("term").isEmpty()) {
+            logger.error("ValidateLoan method failed: term is empty");
+            return false;
+        }
+
+        int term = Integer.parseInt(loanMap.get("term"));
+        int period = Integer.parseInt(loanMap.get("period"));
+        if (term < period) {
+            logger.error("ValidateLoan method failed: term is less than period");
             return false;
         }
 
