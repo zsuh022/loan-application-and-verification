@@ -59,7 +59,7 @@ public class AddLoan extends AbstractWriter<Loan> {
             return newLoan.getLoanIdFromServer();
         }, status -> {
             mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", loan);
-            return "0";
+            return loan.getId();
         }, 2201, "Loan", null);
     }
 

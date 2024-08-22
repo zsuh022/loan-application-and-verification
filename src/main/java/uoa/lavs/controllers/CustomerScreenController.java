@@ -636,26 +636,26 @@ public class CustomerScreenController {
         // TODO: get loan
         List<Loan> loanList;
 
-        if (loanList.isEmpty()) {
-            lbLoanId.setText(loanList.get(0).getId());
-            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 1) {
-            lbLoanId1.setText(loanList.get(1).getId());
-            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 2) {
-            lbLoanId2.setText(loanList.get(2).getId());
-            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 3) {
-            lbLoanId3.setText(loanList.get(3).getId());
-            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
+//        if (loanList.isEmpty()) {
+//            lbLoanId.setText(loanList.get(0).getId());
+//            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 1) {
+//            lbLoanId1.setText(loanList.get(1).getId());
+//            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 2) {
+//            lbLoanId2.setText(loanList.get(2).getId());
+//            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 3) {
+//            lbLoanId3.setText(loanList.get(3).getId());
+//            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
     }
 
     public void setEmployerPaneInformation() {

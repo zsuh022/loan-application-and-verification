@@ -1,8 +1,11 @@
 package uoa.lavs.comms.Customer;
 
 import uoa.lavs.comms.AbstractSearchable;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.messages.customer.*;
+import uoa.lavs.models.Customer.Customer;
+import uoa.lavs.models.Customer.CustomerEmail;
 import uoa.lavs.models.Customer.CustomerSummary;
 
 import java.util.ArrayList;
@@ -18,13 +21,32 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
     @Override
     public List<CustomerSummary> findAll(Connection conn, String customerId) {
         if (this.type == 0) {
-            FindCustomer customer = new FindCustomer();
-            customer.setCustomerId(customerId);
-            return processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>());
+            ArrayList<CustomerSummary> summaries = new ArrayList<>();
+            for(Customer customer : Cache.searchCustomerCacheId(customerId)) {
+                summaries.add(obfuscateCustomer(customer));
+            }
+            try{
+                FindCustomer customer = new FindCustomer();
+                customer.setCustomerId(customerId);
+                summaries.addAll(processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>()));
+            } catch (Exception e) {
+                // do nothing
+            }
+            return summaries;
         } else {
-            FindCustomerAdvanced customer = new FindCustomerAdvanced();
-            customer.setSearchName(customerId);
-            return processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>());
+            ArrayList<CustomerSummary> summaries = new ArrayList<>();
+            for(Customer customer : Cache.searchCustomerName(customerId)) {
+                summaries.add(obfuscateCustomer(customer));
+            }
+            try{
+                FindCustomerAdvanced customer = new FindCustomerAdvanced();
+                customer.setSearchName(customerId);
+                summaries.addAll(processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>()));
+            } catch (Exception e) {
+                // do nothing
+            }
+
+            return summaries;
         }
     }
 
@@ -82,6 +104,21 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         }, status -> {
             return "";
         });
+    }
+
+    private CustomerSummary obfuscateCustomer(Customer customer) {
+        CustomerSummary summary = new CustomerSummary();
+        summary.setId(customer.getId());
+        summary.setName(customer.getName());
+        summary.setDob(customer.getDateOfBirth());
+        List<CustomerEmail> emails = customer.getEmailList();
+        for(CustomerEmail email : emails) {
+            if(email.getIsPrimary()) {
+                summary.setEmail(email.getAddress());
+                break;
+            }
+        }
+        return summary;
     }
 
 }

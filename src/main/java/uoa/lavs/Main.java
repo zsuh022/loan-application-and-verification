@@ -6,6 +6,7 @@ import javafx.scene.layout.BorderPane;
 import uoa.lavs.SceneManager.Screens;
 import uoa.lavs.comms.Customer.AddCustomer;
 import uoa.lavs.comms.Loan.AddLoan;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.logging.LocalLogManager;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
@@ -14,6 +15,8 @@ import uoa.lavs.mainframe.simulator.RecorderConnection;
 import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -35,7 +38,13 @@ public class Main extends Application{
 
     public static void main(String[] args) {
         // flush log immediately to avoid inconsistencies with mainframe
+
         //test stuff start
+        //delete database and log
+        File file = new File("lavs-data.db");
+        file.delete();
+        file = new File("log.json");
+        file.delete();
 
         Customer customer = new Customer();
         customer.setCustomerId("TEMP_CUSTOMER_");
@@ -48,6 +57,8 @@ public class Main extends Application{
         AddCustomer addCustomer = new AddCustomer();
         String customerId = addCustomer.add(Instance.getConnection(), customer);
         System.out.println("Customer ID: " + customerId);
+        Cache.cacheCustomer(customer);
+
         AddLoan addLoan = new AddLoan();
         Loan loan = new LoanFactory().getLoan(LoanType.Mortgage);
         loan.setLoanId("TEMP_LOAN_");
@@ -65,6 +76,7 @@ public class Main extends Application{
         loan.setTerm(360);
         String loanId = addLoan.add(Instance.getConnection(), loan);
         System.out.println("Loan ID: " + loanId);
+        Cache.cacheLoan(loan);
 
         //test stuff end
         LocalLogManager.flushLog();

@@ -1,10 +1,10 @@
 package uoa.lavs.mainframe;
 
-import uoa.lavs.mainframe.simulator.IntermittentConnection;
-import uoa.lavs.mainframe.simulator.NitriteConnection;
-import uoa.lavs.mainframe.simulator.SimpleReplayConnection;
+import uoa.lavs.mainframe.simulator.*;
 import uoa.lavs.mainframe.simulator.failures.NFailsPerMRequestsPolicy;
 import uoa.lavs.mainframe.simulator.failures.RandomPolicy;
+
+import java.util.HashMap;
 
 // implements the singleton pattern for a mainframe connection
 public class Instance {
@@ -19,7 +19,9 @@ public class Instance {
     // for the singleton
     private static class SingletonHelper {
         //        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new NFailsPerMRequestsPolicy(1, 3));
-        private static final Connection INSTANCE = new NitriteConnection(dataPath);
+        Status errorStatus = new Status(404, "Some problem", 123456);
+        Response errorResponse = new Response(errorStatus, new HashMap<>());
+        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new RandomPolicy(100, false));
 //        private static final Connection INSTANCE = new IntermittentConnection(new NitriteConnection(dataPath), new RandomPolicy(10, false));
     }
 

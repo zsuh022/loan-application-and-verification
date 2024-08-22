@@ -3,10 +3,12 @@ package uoa.lavs.comms.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.messages.customer.LoadCustomer;
 import uoa.lavs.models.Customer.Customer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchCustomer extends AbstractSearchable<Customer> {
@@ -16,6 +18,13 @@ public class SearchCustomer extends AbstractSearchable<Customer> {
 
     @Override
     public Customer findById(Connection conn, String customerId) {
+
+        ArrayList<Customer> customerCache = Cache.searchCustomerCacheId(customerId);
+
+        if(customerCache.size() > 0) {
+            return customerCache.get(0);
+        }
+
         LoadCustomer customer = new LoadCustomer();
         customer.setCustomerId(customerId);
 
