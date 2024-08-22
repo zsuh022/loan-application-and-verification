@@ -6,9 +6,11 @@ import javafx.scene.layout.VBox;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.comms.Loan.SearchCoborrower;
 import uoa.lavs.mainframe.Instance;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Customer.CustomerSummary;
+import uoa.lavs.models.Loan.Coborrower;
 
 import java.util.ArrayList;
 import java.util.List;

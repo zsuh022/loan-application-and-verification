@@ -35,4 +35,24 @@ public class LoanSummary {
     public Double getPrincipal() {
         return principal;
     }
+
+    public String getStatusString() {
+        switch (status) {
+            case "1" -> {
+                return "New";
+            }
+            case "5" -> {
+                return "Active";
+            }
+            case "8" -> {
+                return "Cancelled";
+            }
+            case "2" -> {
+                return "Pending";
+            }
+            default -> {
+                return "Unknown";
+            }
+        }
+    }
 }

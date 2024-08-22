@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class CustomerScreenController {
 
-    private static  CustomerScreenController instance;
+    private static CustomerScreenController instance;
 
     private Customer activeCustomer;
 
@@ -521,6 +521,11 @@ public class CustomerScreenController {
         }
     }
 
+    public static void updateCustomer() {
+        // get the current customer in the customer bucket and set it as the active customer
+        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
+    }
+
     public void setGeneralPaneInformation() {
         lbCustomerId.setText(activeCustomer.getId());
         lbCustomerTitle.setText(activeCustomer.getTitle());
@@ -632,31 +637,31 @@ public class CustomerScreenController {
         }
     }
 
-    public void setLoanPaneInformation() {
-        // TODO: get loan
-        List<Loan> loanList;
-
-        if (loanList.isEmpty()) {
-            lbLoanId.setText(loanList.get(0).getId());
-            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 1) {
-            lbLoanId1.setText(loanList.get(1).getId());
-            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 2) {
-            lbLoanId2.setText(loanList.get(2).getId());
-            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-        if (loanList.size() > 3) {
-            lbLoanId3.setText(loanList.get(3).getId());
-            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
-            // TODO: cbLoanStatus;
-        }
-    }
+//    public void setLoanPaneInformation() {
+//        // TODO: get loan
+//        List<Loan> loanList;
+//
+//        if (loanList.isEmpty()) {
+//            lbLoanId.setText(loanList.get(0).getId());
+//            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 1) {
+//            lbLoanId1.setText(loanList.get(1).getId());
+//            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 2) {
+//            lbLoanId2.setText(loanList.get(2).getId());
+//            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//        if (loanList.size() > 3) {
+//            lbLoanId3.setText(loanList.get(3).getId());
+//            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
+//            // TODO: cbLoanStatus;
+//        }
+//    }
 
     public void setEmployerPaneInformation() {
         List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
@@ -836,12 +841,9 @@ public class CustomerScreenController {
     }
 
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 
-    public static void updateCustomer() {
-        // get the current customer in the customer bucket and set it as the active customer
-        instance.activeCustomer = CustomerBucket.getInstance().getCustomer();
-    }
+
 }

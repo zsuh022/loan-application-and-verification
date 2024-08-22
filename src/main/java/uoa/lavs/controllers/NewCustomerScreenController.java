@@ -15,8 +15,14 @@ import javafx.scene.text.Text;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Customer.*;
+import uoa.lavs.comms.Loan.SearchLoanSummary;
+import uoa.lavs.logging.Cache;
+import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.Instance;
+import uoa.lavs.models.Customer.*;
+import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.CustomerValidator;
-import uoa.lavs.models.Customer.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -416,9 +422,47 @@ public class NewCustomerScreenController {
                 employerValuesList, phoneValuesList)) {
             Customer newCustomer = customerValidator.createCustomer(customerValuesMap, addressValuesList,
                     emailValuesList, employerValuesList, phoneValuesList);
+
+            // Connection
+            Connection conn = Instance.getConnection();
+
+            // Add instances
+            AddCustomer addCustomer = new AddCustomer();
+            AddAddress addAddress = new AddAddress();
+            AddEmail addEmail = new AddEmail();
+            AddEmployer addEmployer = new AddEmployer();
+            AddPhone addPhone = new AddPhone();
+            AddNote addNote = new AddNote();
+
+            // Attempt to create new customer in the mainframe
+            String customerID = addCustomer.add(conn, newCustomer);
+            if (customerID != "0") {
+                // Create new customer success
+                newCustomer.setCustomerId(customerID);
+            }
+            for (CustomerAddress address : newCustomer.getAddressList()) {
+                addAddress.add(conn, address, customerID);
+            }
+            for (CustomerEmail email : newCustomer.getEmailList()) {
+                addEmail.add(conn, email, customerID);
+            }
+            for (CustomerEmployer employer : newCustomer.getEmployerList()) {
+                addEmployer.add(conn, employer, customerID);
+            }
+            for (CustomerPhone phone : newCustomer.getPhoneList()) {
+                addPhone.add(conn, phone, customerID);
+            }
+            if (newCustomer.getNote() != null) {
+                addNote.add(conn, newCustomer.getNote(), customerID);
+            }
+
+            // Cache customer
+            Cache.cacheCustomer(newCustomer);
+
             //set active customer
             CustomerBucket.getInstance().setCustomer(newCustomer);
             CustomerScreenController.updateCustomer();
+
             //load customer screen
             Main.setScreen(SceneManager.Screens.CUSTOMER);
         }
