@@ -57,6 +57,7 @@ public class Main extends Application {
     //Set the active screen
     public static void setScreen(Screens screen) {
         scene.setRoot(SceneManager.getScreen(screen));
+        scaleContent();
     }
 
     @Override
@@ -82,7 +83,7 @@ public class Main extends Application {
 
     }
 
-    private void scaleContent() {
+    private static void scaleContent() {
         double width = scene.getWidth();
         double height = scene.getHeight();
         // check if height is the limiting factor
