@@ -25,6 +25,9 @@ public class Cache {
     public static ArrayList<Customer> searchCustomerCacheId(String id) {
         ArrayList<Customer> results = new ArrayList<>();
         // search the cache for a customer with the given id
+        if(id == null) {
+            return results;
+        }
         for (Customer customer : customerCache) {
             if (customer.getId().equals(id)) {
                 results.add(customer);
@@ -35,6 +38,9 @@ public class Cache {
 
     public static ArrayList<Customer> searchCustomerName(String name) {
         ArrayList<Customer> results = new ArrayList<>();
+        if(name == null) {
+            return results;
+        }
         // search the cache for a customer with the given name
         for (Customer customer : customerCache) {
             if (customer.getName().toLowerCase().contains(name.toLowerCase())) {
@@ -46,6 +52,9 @@ public class Cache {
 
     public static ArrayList<Loan> searchLoanCache(String id) {
         ArrayList<Loan> results = new ArrayList<>();
+        if(id == null) {
+            return results;
+        }
         // search the cache for a loan with the given id
         for (Loan loan : loanCache) {
             if (loan.getId().equals(id)) {

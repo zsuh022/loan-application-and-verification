@@ -30,6 +30,7 @@ public class SearchCustomer extends AbstractSearchable<Customer> {
 
         return processRequest(conn, customer, status -> {
             Customer newCustomer = new Customer();
+            newCustomer.setCustomerId(customerId);
             newCustomer.setTitle(customer.getTitleFromServer());
             newCustomer.setName(customer.getNameFromServer());
             newCustomer.setDateOfBirth(customer.getDateofBirthFromServer());

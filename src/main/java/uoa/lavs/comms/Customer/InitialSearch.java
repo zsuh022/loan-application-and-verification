@@ -9,6 +9,7 @@ import uoa.lavs.models.Customer.CustomerEmail;
 import uoa.lavs.models.Customer.CustomerSummary;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class InitialSearch extends AbstractSearchable<CustomerSummary> {
@@ -21,28 +22,42 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
     @Override
     public List<CustomerSummary> findAll(Connection conn, String customerId) {
         if (this.type == 0) {
+            HashSet<String> foundIDs = new HashSet<>();
             ArrayList<CustomerSummary> summaries = new ArrayList<>();
             for(Customer customer : Cache.searchCustomerCacheId(customerId)) {
+                foundIDs.add(customer.getId());
                 summaries.add(obfuscateCustomer(customer));
                 System.out.println("Found in cache");
             }
             try{
                 FindCustomer customer = new FindCustomer();
                 customer.setCustomerId(customerId);
-                summaries.addAll(processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>()));
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    if(!foundIDs.contains(summary.getId())) {
+                        summaries.add(summary);
+                        foundIDs.add(summary.getId());
+                    }
+                }
             } catch (Exception e) {
                 // do nothing
             }
             return summaries;
         } else {
+            HashSet<String> foundIDs = new HashSet<>();
             ArrayList<CustomerSummary> summaries = new ArrayList<>();
             for(Customer customer : Cache.searchCustomerName(customerId)) {
+                foundIDs.add(customer.getId());
                 summaries.add(obfuscateCustomer(customer));
             }
             try{
                 FindCustomerAdvanced customer = new FindCustomerAdvanced();
                 customer.setSearchName(customerId);
-                summaries.addAll(processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>()));
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    if(!foundIDs.contains(summary.getId())) {
+                        summaries.add(summary);
+                        foundIDs.add(summary.getId());
+                    }
+                }
             } catch (Exception e) {
                 // do nothing
             }
