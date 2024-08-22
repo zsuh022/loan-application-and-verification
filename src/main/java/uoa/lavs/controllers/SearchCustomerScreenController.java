@@ -37,10 +37,15 @@ public class SearchCustomerScreenController {
     @FXML
     private ScrollPane resultBox;
 
-    private String searchString;
-
     public boolean submitCustomerSearch() {
-        InitialSearch search = new InitialSearch(1);
+        String searchText = searchCustomerBar.getText().trim();
+        InitialSearch search;
+
+        if (isInteger(searchText)) {
+            search = new InitialSearch(0);
+        } else {
+            search = new InitialSearch(1);
+        }
         List<CustomerSummary> searchResults = search.findAll(Instance.getConnection(), searchCustomerBar.getText());
         if (searchResults.size() == 0) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -75,11 +80,21 @@ public class SearchCustomerScreenController {
     }
 
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
+
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
+    }
+
+    private boolean isInteger(String text) {
+        try {
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class CustomerScreenController {
 
-    private static  CustomerScreenController instance;
+    private static CustomerScreenController instance;
 
     private Customer activeCustomer;
 
@@ -632,10 +632,10 @@ public class CustomerScreenController {
         }
     }
 
-    public void setLoanPaneInformation() {
-        // TODO: get loan
-        List<Loan> loanList;
-
+//    public void setLoanPaneInformation() {
+//        // TODO: get loan
+//        List<Loan> loanList;
+//
 //        if (loanList.isEmpty()) {
 //            lbLoanId.setText(loanList.get(0).getId());
 //            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
@@ -656,7 +656,7 @@ public class CustomerScreenController {
 //            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
 //            // TODO: cbLoanStatus;
 //        }
-    }
+//    }
 
     public void setEmployerPaneInformation() {
         List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
@@ -836,7 +836,7 @@ public class CustomerScreenController {
     }
 
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 

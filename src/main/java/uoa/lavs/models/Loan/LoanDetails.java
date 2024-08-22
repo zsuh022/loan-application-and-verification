@@ -78,4 +78,21 @@ public class LoanDetails {
     public Frequency getFrequency() {
         return frequency;
     }
+
+    public String getFrequencyString() {
+        switch (frequency) {
+            case Weekly -> {
+                return "Weekly";
+            }
+            case Fortnightly -> {
+                return "Fortnightly";
+            }
+            case Monthly -> {
+                return "Monthly";
+            }
+            default -> {
+                return "Unknown";
+            }
+        }
+    }
 }

@@ -10,13 +10,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
+import uoa.lavs.SceneManager;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Loan.*;
+import uoa.lavs.logging.Cache;
+import uoa.lavs.mainframe.Connection;
+import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.LoanStatus;
+import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanValidator;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NewLoanScreenController {
 
@@ -45,6 +54,8 @@ public class NewLoanScreenController {
     private CheckBox cbNewLoanIsFixed;
     @FXML
     private DatePicker dpNewLoanStartDate;
+    @FXML
+    private TextField tfNewLoanTerm;
     @FXML
     private TextField tfNewLoanPeriod;
     @FXML
@@ -111,7 +122,41 @@ public class NewLoanScreenController {
 
         if (loanValidator.validateLoan(loanValuesMap)) {
             Loan newLoan = loanValidator.createLoan(loanValuesMap);
-            // do something
+
+            // Connection
+            Connection conn = Instance.getConnection();
+
+            // Add Instances
+            AddLoan addLoan = new AddLoan();
+            AddCoborrower addCoborrower = new AddCoborrower();
+
+            // Attempt to create new loan in the mainframe
+            String loanID = addLoan.add(conn, newLoan);
+            if (Objects.equals(loanID, "0")) {
+                // Failed to create Loan on mainframe
+                loanID = "TEMP_LOAN_";
+            }
+
+            newLoan.setLoanId(loanID);
+            newLoan.setStatus(LoanStatus.Active);
+            UpdateStatus update = new UpdateStatus();
+
+            // Will log if loan was not created in mainframe
+            update.add(conn, LoanStatus.Active, loanID);
+            
+            for (Coborrower coborrower : newLoan.getCoborrowerList()) {
+                addCoborrower.add(conn, coborrower, loanID);
+            }
+
+            // Add Loan to Cache
+            Cache.cacheLoan(newLoan);
+
+            // Set active Loan
+            LoanBucket.getInstance().setLoan(newLoan);
+            LoanScreenController.updateLoan();
+
+            Main.setScreen(Screens.LOAN);
+
         }
     }
 
@@ -125,6 +170,7 @@ public class NewLoanScreenController {
         loanValuesMap.put("isFixed", String.valueOf(cbNewLoanIsFixed.isSelected()));
         loanValuesMap.put("startDate", dpNewLoanStartDate.getValue().toString());
         loanValuesMap.put("period", tfNewLoanPeriod.getText());
+        loanValuesMap.put("term", tfNewLoanTerm.getText());
         loanValuesMap.put("compoundingWeekly", String.valueOf(cbNewLoanCompoundingWeekly.isSelected()));
         loanValuesMap.put("compoundingMonthly", String.valueOf(cbNewLoanCompoundingMonthly.isSelected()));
         loanValuesMap.put("compoundingAnnually", String.valueOf(cbNewLoanCompoundingAnnually.isSelected()));
@@ -170,11 +216,12 @@ public class NewLoanScreenController {
     }
 
     @FXML
-    private void logoClicked(){
+    private void logoClicked() {
         Main.setScreen(Screens.HOME);
     }
+
     @FXML
-    private void btnLogOut(){
+    private void btnLogOut() {
         Main.setScreen(Screens.LOGIN);
     }
 }

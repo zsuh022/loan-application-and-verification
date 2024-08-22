@@ -2,15 +2,21 @@ package uoa.lavs.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.RateType;
+import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.Mortgage;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
@@ -37,10 +43,12 @@ public class LoanValidator {
         loan.setRate(Double.parseDouble(loanMap.get("rate")));
         loan.setRateType(discoverRateType(loanMap));
         loan.setStartDate(LocalDate.parse(loanMap.get("startDate")));
+        loan.setTerm(Integer.parseInt(loanMap.get("term")));
         loan.setPeriod(Integer.parseInt(loanMap.get("period")));
         loan.setCompoundingFrequency(discoverCompoundingFrequency(loanMap));
         loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
+        loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
 
         // TODO: loan.setStatus(LoanStatus.Active);
 
@@ -49,6 +57,14 @@ public class LoanValidator {
             if (coborrowerId != null) {
                 Coborrower coborrower = new Coborrower();
                 coborrower.setId(coborrowerId);
+                List<Customer> cacheList = Cache.searchCustomerCacheId(coborrowerId);
+                if (cacheList.size() == 1) {
+                    coborrower.setName(cacheList.get(0).getName());
+                } else {
+                    SearchCustomer search = new SearchCustomer();
+                    coborrower.setName(search.findById(Instance.getConnection(), coborrowerId).getName());
+                }
+                loan.addCoborrower(coborrower);
             }
         }
 

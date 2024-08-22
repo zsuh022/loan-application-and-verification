@@ -34,6 +34,7 @@ public class SearchPayments extends AbstractSearchable<Payments> {
                         loan.getPaymentInterestFromServer(i), loan.getPaymentPrincipalFromServer(i), loan.getPaymentRemainingFromServer(i),
                         loan.getPaymentNumberFromServer(i), loan.getPaymentDateFromServer(i)
                 );
+                System.out.println("PAMENT DATE " + value.getPaymentDate());
                 list.add(value);
             }
             logger.info("Loan Payments for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());

@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractWriter;
 import uoa.lavs.mainframe.Connection;
 import uoa.lavs.mainframe.Frequency;
+import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.mainframe.messages.customer.UpdateCustomer;
 import uoa.lavs.mainframe.messages.loan.UpdateLoan;
 import uoa.lavs.models.Loan.Loan;
@@ -67,7 +68,7 @@ public class AddLoan extends AbstractWriter<Loan> {
     protected Map<String, String> extractLogProperties(Loan loan, String loanID) {
         Map<String, String> properties = new HashMap<>();
         properties.put("customerId", loan.getCustomerId());
-        properties.put("status", loan.getStatus().toString());
+        properties.put("status", String.valueOf(LoanStatus.New));
         properties.put("principal", loan.getPrincipal().toString());
         properties.put("rate.value", loan.getRate().toString());
         properties.put("rate.type", Integer.toString(loan.getRateType().ordinal()));
