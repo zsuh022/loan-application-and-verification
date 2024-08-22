@@ -13,8 +13,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import uoa.lavs.Main;
 import uoa.lavs.SceneManager.Screens;
+import uoa.lavs.comms.Loan.InitialSearch;
+import uoa.lavs.mainframe.Instance;
+import uoa.lavs.mainframe.LoanStatus;
 import uoa.lavs.models.Customer.*;
 import uoa.lavs.models.Loan.Loan;
+import uoa.lavs.models.Loan.LoanSummary;
 import uoa.lavs.utility.CustomerValidator;
 
 import java.util.HashMap;
@@ -632,31 +636,35 @@ public class CustomerScreenController {
         }
     }
 
-//    public void setLoanPaneInformation() {
-//        // TODO: get loan
-//        List<Loan> loanList;
-//
-//        if (loanList.isEmpty()) {
-//            lbLoanId.setText(loanList.get(0).getId());
-//            lbLoanPrincipal.setText(loanList.get(0).getPrincipal().toString());
-//            // TODO: cbLoanStatus;
-//        }
-//        if (loanList.size() > 1) {
-//            lbLoanId1.setText(loanList.get(1).getId());
-//            lbLoanPrincipal1.setText(loanList.get(1).getPrincipal().toString());
-//            // TODO: cbLoanStatus;
-//        }
-//        if (loanList.size() > 2) {
-//            lbLoanId2.setText(loanList.get(2).getId());
-//            lbLoanPrincipal2.setText(loanList.get(2).getPrincipal().toString());
-//            // TODO: cbLoanStatus;
-//        }
-//        if (loanList.size() > 3) {
-//            lbLoanId3.setText(loanList.get(3).getId());
-//            lbLoanPrincipal3.setText(loanList.get(3).getPrincipal().toString());
-//            // TODO: cbLoanStatus;
-//        }
-//    }
+    public void setLoanPaneInformation() {
+        InitialSearch loanSearch = new InitialSearch();
+        List<LoanSummary> loanList = loanSearch.findAll(Instance.getConnection(), activeCustomer.getId());
+
+        if (!loanList.isEmpty()) {
+            LoanSummary loan1 = loanList.get(0);
+            lbLoanId.setText(loan1.getLoanID());
+            lbLoanPrincipal.setText(loan1.getPrincipal().toString());
+            cbLoanStatus.setSelected("Active".equals(loan1.getStatusString()));
+        }
+        if (loanList.size() > 1) {
+            LoanSummary loan2 = loanList.get(1);
+            lbLoanId1.setText(loan2.getLoanID());
+            lbLoanPrincipal1.setText(loan2.getPrincipal().toString());
+            cbLoanStatus1.setSelected("Active".equals(loan2.getStatusString()));
+        }
+        if (loanList.size() > 2) {
+            LoanSummary loan3 = loanList.get(2);
+            lbLoanId2.setText(loan3.getLoanID());
+            lbLoanPrincipal2.setText(loan3.getPrincipal().toString());
+            cbLoanStatus2.setSelected("Active".equals(loan3.getStatusString()));
+        }
+        if (loanList.size() > 3) {
+            LoanSummary loan4 = loanList.get(3);
+            lbLoanId3.setText(loan4.getLoanID());
+            lbLoanPrincipal3.setText(loan4.getPrincipal().toString());
+            cbLoanStatus3.setSelected("Active".equals(loan4.getStatusString()));
+        }
+    }
 
     public void setEmployerPaneInformation() {
         List<CustomerEmployer> employerList = activeCustomer.getEmployerList();
