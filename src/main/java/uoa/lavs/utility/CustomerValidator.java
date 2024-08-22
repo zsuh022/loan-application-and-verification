@@ -42,6 +42,7 @@ public class CustomerValidator {
                                    List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                    List<Map<String, String>> phoneList) {
         populateCustomer(customer, customerMap, addressList, emailList, employerList, phoneList);
+        logger.info("Updated customer in CustomerValidator with name {}", customerMap.get("firstName"));
         return customer;
     }
 
