@@ -126,6 +126,8 @@ public class Main extends Application {
     @Override
     public void start(final Stage stage) throws IOException {
         SceneManager.addScreenUi(Screens.CUSTOMER, loadFxml("customerScreen"));
+        SceneManager.addScreenUi(Screens.EDIT_CUSTOMER, loadFxml("editCustomerScreen"));
+        SceneManager.addScreenUi(Screens.EDIT_LOAN, loadFxml("editLoanScreen"));
         SceneManager.addScreenUi(Screens.HOME, loadFxml("homeScreen"));
         SceneManager.addScreenUi(Screens.LOAN, loadFxml("loanScreen"));
         SceneManager.addScreenUi(Screens.LOGIN, loadFxml("loginScreen"));

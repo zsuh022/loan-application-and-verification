@@ -395,5 +395,9 @@ public class LoanScreenController {
         Main.setScreen(Screens.LOGIN);
     }
 
+    @FXML
+    private void editLoan(){
+        Main.setScreen(Screens.LOAN);
+    }
 
 }

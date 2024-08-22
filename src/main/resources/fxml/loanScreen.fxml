@@ -437,7 +437,7 @@
                                                                                 </VBox>
                                                                             </children>
                                                                         </AnchorPane>
-                                                                        <Circle fx:id="editLoansCircle" fill="#da5630" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
+                                                                        <Circle fx:id="editLoansCircle" fill="#da5630" onMouseClicked="#editLoan" radius="30.0" stroke="WHITE" strokeType="INSIDE" StackPane.alignment="BOTTOM_RIGHT">
                                                                             <StackPane.margin>
                                                                                 <Insets bottom="20.0" right="20.0" />
                                                                             </StackPane.margin>
@@ -445,10 +445,13 @@
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
                                                                         </Circle>
-                                                                        <FontAwesomeIconView fill="WHITE" glyphName="EDIT" size="32" StackPane.alignment="BOTTOM_RIGHT">
+                                                                        <FontAwesomeIconView fill="WHITE" glyphName="EDIT" onMouseClicked="#editLoan" size="32" StackPane.alignment="BOTTOM_RIGHT">
                                                                             <StackPane.margin>
                                                                                 <Insets bottom="33.0" right="31.0" />
                                                                             </StackPane.margin>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                                         </FontAwesomeIconView>
                                                                     </children>
                                                                 </StackPane>
