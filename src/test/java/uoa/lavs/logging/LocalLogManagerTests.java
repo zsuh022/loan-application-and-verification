@@ -29,14 +29,30 @@ public class LocalLogManagerTests {
     public void setup() {
         // delete lavs-data.db
         File db = new File("lavs-data.db");
-        // clear log
-        File file = new File("log.json");
         try {
-            Files.deleteIfExists(file.toPath());
             Files.deleteIfExists(db.toPath());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        int type = 1201;
+        String title = "Mr";
+        String name = "John Doe";
+        LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
+        String occupation = "Software Engineer";
+        String citizenship = "New Zealand";
+        String visa = "Work Visa";
+        // create hashmap for a new customer entry
+        HashMap<String, String> properties = new HashMap<>();
+        properties.put("title", title);
+        properties.put("name", name);
+        properties.put("id", null);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        properties.put("dob", formatter.format(dateOfBirth));
+        properties.put("occupation", occupation);
+        properties.put("citizenship", citizenship);
+        properties.put("visa", visa);
+        // write to log
+        writeToLog(type, properties);
     }
 
     @AfterAll
@@ -55,28 +71,8 @@ public class LocalLogManagerTests {
 
     @Test
     public void testWriteLog() {
-        int type = 1201;
-        String title = "Mr";
-        String name = "John Doe";
-        LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
-        String occupation = "Software Engineer";
-        String citizenship = "New Zealand";
-        String visa = "Work Visa";
-        // create hashmap for a new customer entry
-        HashMap<String, String> properties = new HashMap<>();
-        properties.put("title", title);
-        properties.put("name", name);
-        properties.put("id", null);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        properties.put("dob", formatter.format(dateOfBirth));
-        properties.put("occupation", occupation);
-        properties.put("citizenship", citizenship);
-        properties.put("visa", visa);
-        // write to log
-        writeToLog(type, properties);
         // should write to log.json
         // read log.json
-
         JSONArray log;
         File file = new File("log.json");
         int logCount;
@@ -90,34 +86,14 @@ public class LocalLogManagerTests {
             e.printStackTrace();
         }
         System.out.println(logCount);
-        assert ((JSONObject) log.get(0)).getString("name").equals(name);
+        assert ((JSONObject) log.get(0)).getString("name").equals("John Doe");
     }
 
     @Test
     public void testFlushLog() {
-        // add a log entry
-        int type = 1201;
-        String title = "Mr";
-        String name = "John Doe";
-        LocalDate dateOfBirth = LocalDate.of(1990, 1, 1);
-        String occupation = "Software Engineer";
-        String citizenship = "New Zealand";
-        String visa = "Work Visa";
-        // create hashmap for a new customer entry
-        HashMap<String, String> properties = new HashMap<>();
-        properties.put("title", title);
-        properties.put("name", name);
-        properties.put("id", null);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        properties.put("dob", formatter.format(dateOfBirth));
-        properties.put("occupation", occupation);
-        properties.put("citizenship", citizenship);
-        properties.put("visa", visa);
-        // write to log
-        writeToLog(type, properties);
-        // should write to log.json
         // flush log
         assert flushLog();
+        assert !LocalLogManager.getSyncTimeProperty().getValue().equals("N/A");
     }
 
     @Test
@@ -267,10 +243,38 @@ public class LocalLogManagerTests {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            assert log == null;
+            assert log.length() == 1;
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void testNotEmpty(){
+        LocalLogManager.reinitialise();
+        assert !LocalLogManager.getEmptyProperty().getValue();
+    }
+
+    @Test
+    public void createNewLoan(){
+        int Loantype = 2201;
+        String customerId = TEMPORARY_CUSTOMER_ID_PREFIX+"1";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate loanDate = LocalDate.of(2025, 1, 1);
+        HashMap<String, String> loanProperties = new HashMap<>();
+        loanProperties.put("compounding", "1");
+        loanProperties.put("id", null);
+        loanProperties.put("customerId", customerId);
+        loanProperties.put("principal", "1000");
+        loanProperties.put("rate.value", "0.1");
+        loanProperties.put("rate.type", "1");
+        loanProperties.put("date", loanDate.format(formatter));
+        loanProperties.put("period", "1");
+        loanProperties.put("term", "1");
+        loanProperties.put("payment.amount", "100");
+        loanProperties.put("payment.freq", "1");
+        // write to log
+        writeToLog(Loantype, loanProperties);
+        assert flushLog();
     }
 }

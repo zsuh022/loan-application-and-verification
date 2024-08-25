@@ -18,9 +18,9 @@ import java.util.concurrent.Callable;
 public class LocalLogManager {
 
     // TEMPORARY ID PREFIX
-    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "T_";
+    public static final String TEMPORARY_CUSTOMER_ID_PREFIX = "C_";
 
-    public static final String TEMPORARY_LOAN_ID_PREFIX = "T_";
+    public static final String TEMPORARY_LOAN_ID_PREFIX = "L_";
 
     // LOCAL LOG FILE PATH
     private static final String LOCAL_LOG_FILE_PATH = "log.json";
@@ -29,7 +29,8 @@ public class LocalLogManager {
     private static final Logger logger = LogManager.getLogger(LocalLogManager.class);
 
     // singleton instance to read log only at startup
-    private final static LocalLogManager INSTANCE = new LocalLogManager();
+    private static LocalLogManager INSTANCE = new LocalLogManager();
+
     private final HashMap<String, String> temporaryCustomerIds = new HashMap<>();
     private final HashMap<String, String> temporaryLoanIds = new HashMap<>();
     private JSONArray log;
@@ -194,5 +195,10 @@ public class LocalLogManager {
 
     public static SimpleStringProperty getSyncTimeProperty() {
         return INSTANCE.syncTime;
+    }
+
+    // ONLY USE FOR TESTING!!!
+    public static void reinitialise() {
+        INSTANCE = new LocalLogManager();
     }
 }

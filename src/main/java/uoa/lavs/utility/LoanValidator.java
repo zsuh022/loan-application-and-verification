@@ -29,6 +29,8 @@ public class LoanValidator {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LoanValidator.class);
 
+    private static boolean testing = false;
+
     public static String generateTemporaryLoanId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         String timeAsString = LocalDateTime.now().format(dtf);
@@ -166,26 +168,26 @@ public class LoanValidator {
 
         if (loanMap.get("customerId") == null || loanMap.get("customerId").isEmpty()) {
             logger.error("ValidateLoan method failed: Customer ID is empty");
-            errorPopup("Customer ID is empty", "Please enter a customer ID");
+            errorPopUp("Customer ID is empty", "Please enter a customer ID");
             return false;
         }
 
         // check customer id valid
         if (!isCustomerIdValid(loanMap.get("customerId"))) {
             logger.error("ValidateLoan method failed: Customer ID is invalid");
-            errorPopup("Customer ID is invalid", "Please enter a valid customer ID");
+            errorPopUp("Customer ID is invalid", "Please enter a valid customer ID");
             return false;
         }
 
         if (loanMap.get("principal") == null || loanMap.get("principal").isEmpty()) {
             logger.error("ValidateLoan method failed: Principal is empty");
-            errorPopup("Principal is empty", "Please enter a principal amount");
+            errorPopUp("Principal is empty", "Please enter a principal amount");
             return false;
         }
 
         if (loanMap.get("rate") == null || loanMap.get("rate").isEmpty()) {
             logger.error("ValidateLoan method failed: Rate is empty");
-            errorPopup("Rate is empty", "Please enter a rate");
+            errorPopUp("Rate is empty", "Please enter a rate");
             return false;
         }
 
@@ -199,24 +201,24 @@ public class LoanValidator {
 
         if (rateTypeCounter != 1) {
             logger.error("ValidateLoan method failed: Select exactly one rate type");
-            errorPopup("Select exactly one rate type", "Please select exactly one rate type");
+            errorPopUp("Select exactly one rate type", "Please select exactly one rate type");
         }
 
         if (loanMap.get("startDate") == null || loanMap.get("startDate").isEmpty()) {
             logger.error("ValidateLoan method failed: startDate is empty");
-            errorPopup("Start date is empty", "Please enter a start date");
+            errorPopUp("Start date is empty", "Please enter a start date");
             return false;
         }
 
         if (loanMap.get("period") == null || loanMap.get("period").isEmpty()) {
             logger.error("ValidateLoan method failed: period is empty");
-            errorPopup("Period is empty", "Please enter a period");
+            errorPopUp("Period is empty", "Please enter a period");
             return false;
         }
 
         if (loanMap.get("term") == null || loanMap.get("term").isEmpty()) {
             logger.error("ValidateLoan method failed: term is empty");
-            errorPopup("Term is empty", "Please enter a term");
+            errorPopUp("Term is empty", "Please enter a term");
             return false;
         }
 
@@ -224,7 +226,7 @@ public class LoanValidator {
         int period = Integer.parseInt(loanMap.get("period"));
         if (term < period) {
             logger.error("ValidateLoan method failed: term is less than period");
-            errorPopup("Term is less than period", "Please enter a term greater than or equal to period");
+            errorPopUp("Term is less than period", "Please enter a term greater than or equal to period");
             return false;
         }
 
@@ -241,7 +243,7 @@ public class LoanValidator {
 
         if (compoundingCount != 1) {
             logger.error("ValidateLoan method failed: Select exactly one compounding frequency");
-            errorPopup("Select exactly one compounding frequency", "Please select exactly one compounding frequency");
+            errorPopUp("Select exactly one compounding frequency", "Please select exactly one compounding frequency");
             return false;
         }
 
@@ -258,13 +260,13 @@ public class LoanValidator {
 
         if (frequencyCount != 1) {
             logger.error("ValidateLoan method failed: Select exactly one payment frequency");
-            errorPopup("Select exactly one payment frequency", "Please select exactly one payment frequency");
+            errorPopUp("Select exactly one payment frequency", "Please select exactly one payment frequency");
             return false;
         }
 
         if (loanMap.get("amount") == null || loanMap.get("amount").isEmpty()) {
             logger.error("ValidateLoan method failed: amount is empty");
-            errorPopup("Amount is empty", "Please enter an amount");
+            errorPopUp("Amount is empty", "Please enter an amount");
             return false;
         }
 
@@ -273,7 +275,7 @@ public class LoanValidator {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null && !isCustomerIdValid(coborrowerId)) {
                 logger.error("ValidateLoan method failed: Customer ID of coborrower is invalid");
-                errorPopup("Customer ID of a coborrower is invalid", "Please enter a valid customer ID for coborrower");
+                errorPopUp("Customer ID of a coborrower is invalid", "Please enter a valid customer ID for coborrower");
                 return false;
             }
         }
@@ -300,16 +302,22 @@ public class LoanValidator {
             }
         } catch (Exception e) {
             logger.error("isCustomerIdValid method: error occurred");
-            errorPopup("Error occurred", "An error occurred while validating customer ID " + customerId);
+            errorPopUp("Error occurred", "An error occurred while validating customer ID " + customerId);
             return false;
         }
     }
 
-    private void errorPopup(String header, String body) {
+    private void errorPopUp(String header, String body) {
+        if(!testing) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
+            alert.setTitle("Error Validating Loan");
             alert.setHeaderText(header);
             alert.setContentText(body);
             alert.showAndWait();
+        }
+    }
+
+    public static void setTesting(boolean testing) {
+        LoanValidator.testing = testing;
     }
 }
