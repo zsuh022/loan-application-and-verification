@@ -19,6 +19,8 @@ public class CustomerValidator {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(CustomerValidator.class);
 
+    private static boolean testing = false;
+
     public static String generateTemporaryCustomerId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HHmmss");
         String timeAsString = LocalDateTime.now().format(dtf);
@@ -479,11 +481,17 @@ public class CustomerValidator {
         return true;
     }
 
-    private static void errorPopUp(String header, String body) {
+    private void errorPopUp(String header, String body) {
+        if (!testing) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error creating Customer");
+            alert.setTitle("Error Validating Customer");
             alert.setHeaderText(header);
             alert.setContentText(body);
             alert.showAndWait();
+        }
+    }
+
+    public static void setTesting(boolean testing) {
+        CustomerValidator.testing = testing;
     }
 }

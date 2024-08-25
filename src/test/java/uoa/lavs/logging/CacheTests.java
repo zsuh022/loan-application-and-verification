@@ -93,6 +93,22 @@ public class CacheTests {
         customer.setCitizenship("New Zealand");
         customer.setVisa(null);
         Cache.cacheCustomer(customer);
+        Customer customer2 = new Customer();
+        customer2.setCustomerId("4");
+        customer2.setTitle("Mr");
+        customer2.setName("Jerry");
+        customer2.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
+        customer2.setOccupation("Engineer");
+        customer2.setCitizenship("New Zealand");
+        customer2.setVisa(null);
+        Cache.cacheCustomer(customer2);
         assert Cache.searchCustomerName("Terry").get(0).getName().equals("Terry");
+    }
+
+    @Test
+    public void testNullInput() {
+        assert Cache.searchCustomerName(null).isEmpty();
+        assert Cache.searchCustomerCacheId(null).isEmpty();
+        assert Cache.searchLoanCache(null).isEmpty();
     }
 }
