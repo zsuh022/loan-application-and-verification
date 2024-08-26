@@ -29,11 +29,15 @@ public class LocalLogManagerTests {
     public void setup() {
         // delete lavs-data.db
         File db = new File("lavs-data.db");
+        // clear log
+        File file = new File("log.json");
         try {
+            Files.deleteIfExists(file.toPath());
             Files.deleteIfExists(db.toPath());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        LocalLogManager.reinitialise();
         int type = 1201;
         String title = "Mr";
         String name = "John Doe";
@@ -45,7 +49,7 @@ public class LocalLogManagerTests {
         HashMap<String, String> properties = new HashMap<>();
         properties.put("title", title);
         properties.put("name", name);
-        properties.put("id", null);
+        properties.put("id", TEMPORARY_CUSTOMER_ID_PREFIX+"1");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         properties.put("dob", formatter.format(dateOfBirth));
         properties.put("occupation", occupation);

@@ -37,12 +37,13 @@ public class UpdateStatus extends AbstractWriter<LoanStatus> {
         }, status -> {
             mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", statusLoan);
             return "0";
-        }, 2207, "LoanStatus", null);
+        }, 2207, "LoanStatus", loanID);
     }
 
     @Override
     protected Map<String, String> extractLogProperties(LoanStatus loan, String loanID) {
         Map<String, String> properties = new HashMap<>();
+        System.out.println("Loan ID: " + loanID);
         properties.put("id", loanID);
         properties.put("status", loan.toString());
         return properties;

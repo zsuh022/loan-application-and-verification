@@ -34,7 +34,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     protected void setup() throws IOException {
         super.setup();
 
-        loan1.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
+        loan1.setLoanId(TEMPORARY_LOAN_ID_PREFIX + "1");
         loan1.setCustomerID(customerId);
         loan1.setCustomerName(customer.getName());
         loan1.setPrincipal(10000.0);
@@ -48,7 +48,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
         loan1.setStatus(LoanStatus.Active);
         loan1.setTerm(360);
 
-        loan4.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
+        loan4.setLoanId(TEMPORARY_LOAN_ID_PREFIX + "4");
         loan4.setCustomerID(customerId);
         loan4.setCustomerName(customer.getName());
         loan4.setPrincipal(10000.0);
@@ -73,6 +73,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     @Test
     protected void testLoanSuccess1() {
         id = addLoan.add(conn, loan);
+        System.out.println(id);
         loan.setLoanId(id);
         statusUpdate.add(conn, LoanStatus.New, id);
         Loan newLoan = searchLoan.findById(conn, id);
@@ -132,6 +133,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     @Test
     protected void testLoanUpdateFail() {
         id = addLoan.add(conn, loan);
+        System.out.println(id);
         loan.setLoanId(id);
         statusUpdate.add(conn, LoanStatus.New, id);
         statusUpdate.add(mockConnection, LoanStatus.New, id);

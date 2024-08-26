@@ -211,7 +211,9 @@ public class AddNoteTest extends AbstractCustomerTest<CustomerNote> {
 
         Connection mockConnection = new MockConnection(errorResponse);
 
-        String customerId = addNote.add(mockConnection, note1, customerID);
+
+        String customerId = addCustomer.add(conn, customer);
+        addNote.add(mockConnection, note1, customerID);
 
         CustomerNote notes = searchNote.findById(mockConnection, customerId);
         assertNull(notes);

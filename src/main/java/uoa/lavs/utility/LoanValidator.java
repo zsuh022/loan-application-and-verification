@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static uoa.lavs.controllers.AlertManager.errorPopUp;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
 public class LoanValidator {
@@ -305,19 +306,5 @@ public class LoanValidator {
             errorPopUp("Error occurred", "An error occurred while validating customer ID " + customerId);
             return false;
         }
-    }
-
-    private void errorPopUp(String header, String body) {
-        if(!testing) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Validating Loan");
-            alert.setHeaderText(header);
-            alert.setContentText(body);
-            alert.showAndWait();
-        }
-    }
-
-    public static void setTesting(boolean testing) {
-        LoanValidator.testing = testing;
     }
 }

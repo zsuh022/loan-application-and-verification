@@ -3,8 +3,6 @@ package uoa.lavs.utility;
 import javafx.scene.control.Alert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import uoa.lavs.logging.Cache;
-import uoa.lavs.models.Customer.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,14 +10,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
+import uoa.lavs.logging.Cache;
+import uoa.lavs.models.Customer.*;
+import static uoa.lavs.controllers.AlertManager.errorPopUp;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
 
 public class CustomerValidator {
 
     // Log4J2
     private static final Logger logger = LogManager.getLogger(CustomerValidator.class);
-
-    private static boolean testing = false;
 
     public static String generateTemporaryCustomerId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HHmmss");
@@ -479,19 +478,5 @@ public class CustomerValidator {
 
         logger.info("Validated phone in CustomerValidator successfully");
         return true;
-    }
-
-    private void errorPopUp(String header, String body) {
-        if (!testing) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Validating Customer");
-            alert.setHeaderText(header);
-            alert.setContentText(body);
-            alert.showAndWait();
-        }
-    }
-
-    public static void setTesting(boolean testing) {
-        CustomerValidator.testing = testing;
     }
 }
