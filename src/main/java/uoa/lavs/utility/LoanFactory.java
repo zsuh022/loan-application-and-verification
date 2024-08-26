@@ -10,7 +10,6 @@ public class LoanFactory {
             case Mortgage:
                 return new Mortgage();
             default:
-                // invalid loan type
                 return null;
         }
     }
