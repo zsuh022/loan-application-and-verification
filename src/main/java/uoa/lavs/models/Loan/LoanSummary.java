@@ -55,4 +55,29 @@ public class LoanSummary {
             }
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LoanSummary that = (LoanSummary) o;
+
+        if (loanID != null ? !loanID.equals(that.loanID) : that.loanID != null) return false;
+        if (customerID != null ? !customerID.equals(that.customerID) : that.customerID != null) return false;
+        if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        return principal != null ? principal.equals(that.principal) : that.principal == null;
+    }
+    @Override
+    public int hashCode() {
+        int result = loanID != null ? loanID.hashCode() : 0;
+        result = 31 * result + (customerID != null ? customerID.hashCode() : 0);
+        result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (principal != null ? principal.hashCode() : 0);
+        return result;
+    }
+
+
 }

@@ -3,6 +3,7 @@ package uoa.lavs.comms;
 import org.junit.jupiter.api.BeforeEach;
 import uoa.lavs.comms.Customer.AddCustomer;
 import uoa.lavs.comms.Customer.SearchCustomer;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.mainframe.simulator.NitriteConnection;
 import uoa.lavs.models.Customer.Customer;
@@ -12,6 +13,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 
 import static java.nio.file.Files.deleteIfExists;
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
 
 public abstract class AbstractCustomerTest<T> {
 
@@ -29,9 +31,11 @@ public abstract class AbstractCustomerTest<T> {
 
 //        conn = Instance.getConnection();
 
+        Cache.clearCustomerCache();
+        Cache.clearLoanCache();
         deleteIfExists(Path.of("lavs-data.db"));
         conn = new NitriteConnection("lavs-data.db");
-        customer.setCustomerId("TEMP_CUSTOMER_");
+        customer.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX);
         customer.setTitle("Mr");
         customer.setName("John Doe");
         customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
@@ -39,7 +43,7 @@ public abstract class AbstractCustomerTest<T> {
         customer.setCitizenship("New Zealand");
         customer.setVisa(null);
 
-        customer1.setCustomerId("TEMP_CUSTOMER_");
+        customer1.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX);
         customer1.setTitle("Mrs");
         customer1.setName("Susan Doe");
         customer1.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
