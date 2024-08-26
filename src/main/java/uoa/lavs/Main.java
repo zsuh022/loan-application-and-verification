@@ -61,7 +61,7 @@ public class Main extends Application {
     }
 
     public static void refreshLoan() throws IOException{
-        SceneManager.removeScreen(Screens.NEW_CUSTOMER);   
+        SceneManager.removeScreen(Screens.NEW_LOAN);   
         SceneManager.addScreenUi(Screens.NEW_LOAN, loadFxml("newLoanScreen"));
     }
 

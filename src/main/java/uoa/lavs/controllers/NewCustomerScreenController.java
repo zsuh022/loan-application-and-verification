@@ -414,7 +414,7 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    public void submitNewCustomer(MouseEvent event) {
+    public void submitNewCustomer(MouseEvent event) throws IOException {
         fillCustomerValuesMap();
         fillAddressValuesList();
         fillEmailValuesList();
@@ -466,6 +466,7 @@ public class NewCustomerScreenController {
 
             //load customer screen
             Main.setScreen(SceneManager.Screens.CUSTOMER);
+            Main.refreshCustomer();
         }
     }
 
