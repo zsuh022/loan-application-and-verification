@@ -1,5 +1,7 @@
 package uoa.lavs.utility;
 
 public enum LoanType {
-    Mortgage
+    Mortgage,
+    // fake for testing
+    Invalid
 }

@@ -30,8 +30,6 @@ public class LoanValidator {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LoanValidator.class);
 
-    private static boolean testing = false;
-
     public static String generateTemporaryLoanId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         String timeAsString = LocalDateTime.now().format(dtf);
@@ -203,6 +201,7 @@ public class LoanValidator {
         if (rateTypeCounter != 1) {
             logger.error("ValidateLoan method failed: Select exactly one rate type");
             errorPopUp("Select exactly one rate type", "Please select exactly one rate type");
+            return false;
         }
 
         if (loanMap.get("startDate") == null || loanMap.get("startDate").isEmpty()) {
@@ -285,26 +284,30 @@ public class LoanValidator {
         return true;
     }
 
-    private boolean isCustomerIdValid(String customerId) {
+    public boolean isCustomerIdValid(String customerId) {
         logger.info("Validating customer id in isCustomerIdValid method {}", customerId);
 
         // search using SearchCustomer
-        SearchCustomer search = new SearchCustomer();
+        SearchCustomer search = createSearchCustomer();
 
         try {
             Customer customers = search.findById(Instance.getConnection(), customerId);
-
-            if (customers != null) {
-                logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
-                return true;
-            } else {
+            if (customers == null) {
                 logger.error("isCustomerIdValid method: Customer ID {} is invalid. No customer found", customerId);
                 return false;
             }
+
+            logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
+            return true;
+
         } catch (Exception e) {
             logger.error("isCustomerIdValid method: error occurred");
             errorPopUp("Error occurred", "An error occurred while validating customer ID " + customerId);
             return false;
         }
+    }
+
+    protected SearchCustomer createSearchCustomer() {
+        return new SearchCustomer();
     }
 }
