@@ -54,6 +54,17 @@ public class Main extends Application {
         return new FXMLLoader(Main.class.getResource("/fxml/" + fxml + ".fxml")).load();
     }
 
+    
+    public static void refreshCustomer() throws IOException{
+        SceneManager.removeScreen(Screens.NEW_CUSTOMER);   
+        SceneManager.addScreenUi(Screens.NEW_CUSTOMER, loadFxml("newCustomerScreen"));
+    }
+
+    public static void refreshLoan() throws IOException{
+        SceneManager.removeScreen(Screens.NEW_CUSTOMER);   
+        SceneManager.addScreenUi(Screens.NEW_LOAN, loadFxml("newLoanScreen"));
+    }
+
     //Set the active screen
     public static void setScreen(Screens screen) {
         scene.setRoot(SceneManager.getScreen(screen));

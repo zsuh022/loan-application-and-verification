@@ -24,6 +24,7 @@ import uoa.lavs.models.Customer.*;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.CustomerValidator;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -407,8 +408,9 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void onNewCustomerBackClicked(MouseEvent event) {
+    private void onNewCustomerBackClicked(MouseEvent event) throws IOException {
         Main.setScreen(Screens.HOME);
+        Main.refreshCustomer();
     }
 
     @FXML
@@ -667,8 +669,9 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void logoClicked() {
+    private void logoClicked() throws IOException {
         Main.setScreen(Screens.HOME);
+        Main.refreshCustomer();
     }
 
     @FXML
@@ -804,8 +807,9 @@ public class NewCustomerScreenController {
     }
 
     @FXML
-    private void btnLogOut() {
+    private void btnLogOut() throws IOException {
         Main.setScreen(Screens.LOGIN);
+        Main.refreshCustomer();
     }
 
 }
