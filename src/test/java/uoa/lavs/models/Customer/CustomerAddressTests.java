@@ -106,16 +106,6 @@ class CustomerAddressTests {
     }
 
     @Test
-    void testEquals_NullObject() {
-        assertFalse(customerAddress.equals(null));
-    }
-
-    @Test
-    void testEquals_DifferentClass() {
-        assertFalse(customerAddress.equals("Some String"));
-    }
-
-    @Test
     void testEquals_DifferentType() {
         CustomerAddress anotherAddress = new CustomerAddress();
         anotherAddress.setType("Commercial");
@@ -203,5 +193,15 @@ class CustomerAddressTests {
         customerAddress.setIsMailing(true);
 
         assertFalse(customerAddress.equals(anotherAddress));
+    }
+
+    @Test
+    void testEquals_NullObject() {
+        assertFalse(customerAddress.equals(null));
+    }
+
+    @Test
+    void testEquals_DifferentClass() {
+        assertFalse(customerAddress.equals("Some String"));
     }
 }
