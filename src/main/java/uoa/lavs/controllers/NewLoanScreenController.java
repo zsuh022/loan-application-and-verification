@@ -20,6 +20,7 @@ import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.LoanDetails;
 import uoa.lavs.utility.LoanValidator;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
@@ -122,7 +123,7 @@ public class NewLoanScreenController {
         instance = this;
     }
 
-    public void submitNewLoan() {
+    public void submitNewLoan() throws IOException {
         fillLoanValuesMap();
 
         if (loanValidator.validateLoan(loanValuesMap)) {
@@ -157,6 +158,7 @@ public class NewLoanScreenController {
             LoanScreenController.updateLoan();
 
             Main.setScreen(Screens.LOAN);
+            Main.refreshLoan();
 
         }
     }
@@ -201,8 +203,9 @@ public class NewLoanScreenController {
     }
 
     @FXML
-    private void onNewLoanBackClicked(MouseEvent event) {
+    private void onNewLoanBackClicked(MouseEvent event) throws IOException {
         Main.setScreen(Screens.HOME);
+        Main.refreshLoan();
     }
 
     @FXML
@@ -222,13 +225,15 @@ public class NewLoanScreenController {
     }
 
     @FXML
-    private void logoClicked() {
+    private void logoClicked() throws IOException {
         Main.setScreen(Screens.HOME);
+        Main.refreshLoan();
     }
 
     @FXML
-    private void btnLogOut() {
+    private void btnLogOut() throws IOException {
         Main.setScreen(Screens.LOGIN);
+        Main.refreshLoan();
     }
 
     public static void updateCustomerField() {
