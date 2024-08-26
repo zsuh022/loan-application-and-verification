@@ -293,18 +293,36 @@ public class LoanValidator {
 
         try {
             Customer customers = search.findById(Instance.getConnection(), customerId);
-
-            if (customers != null) {
-                logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
-                return true;
-            } else {
+            if (customers == null) {
                 logger.error("isCustomerIdValid method: Customer ID {} is invalid. No customer found", customerId);
                 return false;
             }
+
+            logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
+            return true;
+
         } catch (Exception e) {
             logger.error("isCustomerIdValid method: error occurred");
             errorPopUp("Error occurred", "An error occurred while validating customer ID " + customerId);
             return false;
         }
+    }
+
+    protected SearchCustomer createSearchCustomer() {
+        return new SearchCustomer();
+    }
+
+    private void errorPopUp(String header, String body) {
+        if (!testing) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Validating Loan");
+            alert.setHeaderText(header);
+            alert.setContentText(body);
+            alert.showAndWait();
+        }
+    }
+
+    public static void setTesting(boolean testing) {
+        LoanValidator.testing = testing;
     }
 }

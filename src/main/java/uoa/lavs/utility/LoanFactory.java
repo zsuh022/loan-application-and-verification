@@ -14,9 +14,4 @@ public class LoanFactory {
                 return null;
         }
     }
-
-    public Boolean validateMortgage() {
-        // TODO:
-        return true;
-    }
 }
