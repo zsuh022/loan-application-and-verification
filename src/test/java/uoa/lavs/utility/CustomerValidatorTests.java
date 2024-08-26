@@ -1,5 +1,6 @@
 package uoa.lavs.utility;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.models.Customer.*;
@@ -21,6 +22,11 @@ public class CustomerValidatorTests {
     private List<Map<String, String>> validEmailList;
     private List<Map<String, String>> validEmployerList;
     private List<Map<String, String>> validPhoneList;
+
+    @BeforeAll
+    static void setUpAll() {
+        CustomerValidator.setTesting(true);
+    }
 
     @BeforeEach
     void setUp() {

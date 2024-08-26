@@ -1,5 +1,6 @@
 package uoa.lavs.utility;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.mainframe.Frequency;
@@ -17,6 +18,11 @@ public class LoanValidatorTests {
 
     private LoanValidator loanValidator;
     private Map<String, String> validLoanMap;
+
+    @BeforeAll
+    static void setUpAll() {
+        LoanValidator.setTesting(true);
+    }
 
     @BeforeEach
     void setUp() {
