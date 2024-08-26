@@ -56,7 +56,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_SameValues() {
+    void testEquals_SameValues() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setType("Mobile");
         anotherPhone.setPrefix("021");
@@ -74,7 +74,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentType() {
+    void testEquals_DifferentType() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setType("Landline");
 
@@ -84,7 +84,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentPrefix() {
+    void testEquals_DifferentPrefix() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setPrefix("090");
 
@@ -94,7 +94,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentNumber() {
+    void testEquals_DifferentNumber() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setNumber("9876543");
 
@@ -104,7 +104,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentIsPrimary() {
+    void testEquals_DifferentIsPrimary() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setIsPrimary(false);
 
@@ -114,7 +114,7 @@ class CustomerPhoneTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentIsTexting() {
+    void testEquals_DifferentIsTexting() {
         CustomerPhone anotherPhone = new CustomerPhone();
         anotherPhone.setIsTexting(false);
 

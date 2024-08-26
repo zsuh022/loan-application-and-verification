@@ -46,8 +46,12 @@ public class CustomerSummary {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         CustomerSummary that = (CustomerSummary) o;
 
@@ -65,6 +69,4 @@ public class CustomerSummary {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
-
-
 }

@@ -92,7 +92,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_SameValues() {
+    void testEquals_SameValues() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setName("ABC");
         anotherEmployer.setLine1("123 Corporate Road");
@@ -122,7 +122,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentName() {
+    void testEquals_DifferentName() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setName("Google");
 
@@ -132,7 +132,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentLine1() {
+    void testEquals_DifferentLine1() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setLine1("456 Business Road");
 
@@ -142,7 +142,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentLine2() {
+    void testEquals_DifferentLine2() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setLine2("Suite 100");
 
@@ -152,7 +152,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentSuburb() {
+    void testEquals_DifferentSuburb() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setSuburb("Auckland CBD");
 
@@ -162,7 +162,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentCity() {
+    void testEquals_DifferentCity() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setCity("Wellington");
 
@@ -172,7 +172,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentPostCode() {
+    void testEquals_DifferentPostCode() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setPostCode("5678");
 
@@ -182,7 +182,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentCountry() {
+    void testEquals_DifferentCountry() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setCountry("USA");
 
@@ -192,7 +192,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentPhone() {
+    void testEquals_DifferentPhone() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setPhone("987654321");
 
@@ -202,7 +202,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentEmail() {
+    void testEquals_DifferentEmail() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setEmail("contact@google.com");
 
@@ -212,7 +212,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentWeb() {
+    void testEquals_DifferentWeb() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setWeb("www.google.com");
 
@@ -222,7 +222,7 @@ class CustomerEmployerTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentIsOwner() {
+    void testEquals_DifferentIsOwner() {
         CustomerEmployer anotherEmployer = new CustomerEmployer();
         anotherEmployer.setIsOwner(false);
 

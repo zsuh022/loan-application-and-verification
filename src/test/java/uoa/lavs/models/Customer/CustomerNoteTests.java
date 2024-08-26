@@ -39,7 +39,7 @@ class CustomerNoteTests {
     }
 
     @Test
-    void testEquals_DifferentObject_SameNote() {
+    void testEquals_SameNote() {
         CustomerNote anotherNote = new CustomerNote();
         anotherNote.setNote("This is a note.");
 
@@ -49,7 +49,7 @@ class CustomerNoteTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentNote() {
+    void testEquals_DifferentNote() {
         CustomerNote anotherNote = new CustomerNote();
         anotherNote.setNote("This is a different note.");
 

@@ -80,7 +80,7 @@ class CustomerAddressTests {
     }
 
     @Test
-    void testEquals_DifferentObject_SameValues() {
+    void testEquals_SameValues() {
         CustomerAddress anotherAddress = new CustomerAddress();
         anotherAddress.setType("Residential");
         anotherAddress.setLine1("123 Rainbow Road");

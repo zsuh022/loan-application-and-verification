@@ -38,7 +38,7 @@ class CustomerEmailTests {
     }
 
     @Test
-    void testEquals_DifferentObject_SameValues() {
+    void testEquals_SameValues() {
         CustomerEmail anotherEmail = new CustomerEmail();
         anotherEmail.setAddress("test@example.com");
         anotherEmail.setIsPrimary(true);
@@ -50,7 +50,7 @@ class CustomerEmailTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentAddress() {
+    void testEquals_DifferentAddress() {
         CustomerEmail anotherEmail = new CustomerEmail();
         anotherEmail.setAddress("other@example.com");
 
@@ -60,7 +60,7 @@ class CustomerEmailTests {
     }
 
     @Test
-    void testEquals_DifferentObject_DifferentIsPrimary() {
+    void testEquals_DifferentIsPrimary() {
         CustomerEmail anotherEmail = new CustomerEmail();
         anotherEmail.setIsPrimary(false);
 
