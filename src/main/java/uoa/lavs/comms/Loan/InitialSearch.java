@@ -1,5 +1,7 @@
 package uoa.lavs.comms.Loan;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
@@ -12,6 +14,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class InitialSearch extends AbstractSearchable<LoanSummary> {
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(uoa.lavs.comms.Customer.InitialSearch.class);
 
     public InitialSearch() {
     }
@@ -23,6 +27,7 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
         for(Loan loan : Cache.searchLoanCache(id)) {
             foundIDs.add(loan.getId());
             summaries.add(obfuscateLoan(loan));
+            logger.info("Found in cache");
         }
         try{
             FindLoan loan = new FindLoan();
@@ -52,7 +57,7 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
         return summaries;
     }
 
-    private LoanSummary obfuscateLoan(Loan loan) {
+    LoanSummary obfuscateLoan(Loan loan) {
         return new LoanSummary(loan.getId(), loan.getCustomerId(), loan.getCustomerName(), loan.getStatus().toString(), loan.getPrincipal());
     }
 }

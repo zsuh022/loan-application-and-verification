@@ -21,6 +21,14 @@ public class Cache {
         loanCache.add(loan);
     }
 
+    public static void clearCustomerCache() {
+        customerCache.clear();
+    }
+
+    public static void clearLoanCache() {
+        loanCache.clear();
+    }
+
 
     public static ArrayList<Customer> searchCustomerCacheId(String id) {
         ArrayList<Customer> results = new ArrayList<>();

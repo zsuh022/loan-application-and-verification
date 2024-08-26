@@ -1,5 +1,7 @@
 package uoa.lavs.comms.Customer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import uoa.lavs.comms.AbstractSearchable;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Connection;
@@ -13,6 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class InitialSearch extends AbstractSearchable<CustomerSummary> {
+    // Log4J2
+    private static final Logger logger = LogManager.getLogger(InitialSearch.class);
     private int type;
 
     public InitialSearch(int type) {
@@ -27,7 +31,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
             for(Customer customer : Cache.searchCustomerCacheId(customerId)) {
                 foundIDs.add(customer.getId());
                 summaries.add(obfuscateCustomer(customer));
-                System.out.println("Found in cache");
+                logger.info("Found in cache");
             }
             try{
                 FindCustomer customer = new FindCustomer();
@@ -122,7 +126,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         });
     }
 
-    private CustomerSummary obfuscateCustomer(Customer customer) {
+    CustomerSummary obfuscateCustomer(Customer customer) {
         CustomerSummary summary = new CustomerSummary();
         summary.setId(customer.getId());
         summary.setName(customer.getName());

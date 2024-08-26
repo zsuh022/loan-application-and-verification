@@ -20,19 +20,29 @@ public class CustomerResultReader {
         List<AnchorPane> panes = new ArrayList<>();
         for (CustomerSummary summary : searchSummaries) {
             AnchorPane pane = new AnchorPane();
-            pane.setPrefWidth(678);
-            pane.setPrefHeight(70);
+            pane.setPrefWidth(650);
+            pane.setPrefHeight(50);
+            pane.setStyle("-fx-background-color: #F0F0F0; -fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5;");
+
             VBox left = new VBox();
+            left.setStyle("-fx-padding: 10;");
             VBox right = new VBox();
+            right.setStyle("-fx-padding: 10;");
             pane.getChildren().addAll(left, right);
             AnchorPane.setLeftAnchor(left, 0.0);
             AnchorPane.setRightAnchor(right, 0.0);
 
             Label id = new Label("Customer ID: " + summary.getId());
+            id.setStyle("-fx-font-size: 12px; ");
+
             Label name = new Label("Customer Name: " + summary.getName());
+            name.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
             Label address = new Label("Customer Email: " + summary.getEmail());
-            left.getChildren().add(id);
+            address.setStyle("-fx-font-size: 12px; ");
+
             left.getChildren().add(name);
+            left.getChildren().add(id);
             right.getChildren().add(address);
             pane.setCursor(javafx.scene.Cursor.HAND);
             pane.setOnMouseClicked(event -> {

@@ -55,6 +55,8 @@ public class SearchCustomerScreenController {
             return false;
         } else {
             VBox content = new VBox();
+
+            content.setSpacing(10);
             content.getChildren().addAll(CustomerResultReader.processSearch(searchResults));
             resultBox.setContent(content);
         }

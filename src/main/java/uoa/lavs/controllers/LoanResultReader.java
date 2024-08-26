@@ -21,17 +21,26 @@ public class LoanResultReader {
         List<AnchorPane> panes = new ArrayList<>();
         for (LoanSummary summary : searchSummaries) {
             AnchorPane pane = new AnchorPane();
-            pane.setPrefWidth(678);
-            pane.setPrefHeight(70);
+            pane.setPrefWidth(650);
+            pane.setPrefHeight(50);
+            pane.setStyle("-fx-background-color: #F0F0F0; -fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5;");
+
             VBox left = new VBox();
+            left.setStyle("-fx-padding: 10;");
+
             VBox right = new VBox();
+            right.setStyle("-fx-padding: 10;");
+
             pane.getChildren().addAll(left, right);
             AnchorPane.setLeftAnchor(left, 0.0);
             AnchorPane.setRightAnchor(right, 0.0);
 
             Label id = new Label("Loan ID: " + summary.getLoanID());
+            id.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
             Label name = new Label("Loan Status: " + summary.getStatusString());
+            name.setStyle("-fx-font-size: 12px; ");
             Label address = new Label("Loan Principal: " + summary.getPrincipal());
+            address.setStyle("-fx-font-size: 12px; ");
             left.getChildren().add(id);
             left.getChildren().add(name);
             right.getChildren().add(address);

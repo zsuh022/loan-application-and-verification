@@ -16,9 +16,11 @@ import uoa.lavs.models.Customer.CustomerPhone;
 import uoa.lavs.models.Customer.CustomerSummary;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
+import static java.nio.file.Files.deleteIfExists;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSummary> {
@@ -47,11 +49,15 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
 
     @Test
     void testCombinedAddAndSearchSuccess() throws IOException {
+
         String customerId = addCustomer.add(conn, customer);
         addEmail.add(conn, email1, customerId);
         addEmail.add(conn, email2, customerId);
 
         List<CustomerSummary> summariesFromDb = initialSearch.findAll(conn, customerId);
+        for(CustomerSummary s: summariesFromDb){
+            System.out.println(s.getName());
+        }
         assertEquals(1, summariesFromDb.size());
 
         CustomerSummary retrievedSummary = summariesFromDb.get(0);
@@ -75,8 +81,8 @@ public class CombinedInitialSearchTest extends AbstractCustomerTest<CustomerSumm
 
         addEmail.add(conn, email2, customerId);
 
-        List<CustomerSummary> summaries = initialSearch.findAll(conn, customerId);
-        assertEquals(summaries.get(0).getEmail(), "");
+        List<CustomerSummary> summaries = initialSearch.findAll(mockConnection, customerId);
+        assertTrue(summaries.isEmpty());
     }
 
     @Test

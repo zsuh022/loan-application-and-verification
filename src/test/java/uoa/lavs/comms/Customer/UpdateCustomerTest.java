@@ -3,6 +3,7 @@ package uoa.lavs.comms.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uoa.lavs.comms.AbstractExtendedCustomerTest;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Customer.CustomerPhone;
 
@@ -21,7 +22,9 @@ public class UpdateCustomerTest extends AbstractExtendedCustomerTest<Customer> {
     protected void setup() throws IOException {
         super.setup();
         customerID = addCustomer.add(conn, customer);
-        customer2.setCustomerId(customerID);
+        customer.setCustomerId(customerID);
+        Cache.cacheCustomer(customer);
+        customer2 = Cache.searchCustomerCacheId(customerID).get(0);
         customer2.setTitle("Mr");
         customer2.setName("Apple Jeans");
         customer2.setDateOfBirth(java.time.LocalDate.of(1999, 1, 11));

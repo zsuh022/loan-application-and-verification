@@ -54,6 +54,7 @@ public class SearchLoanScreenController {
             return false;
         } else {
             VBox content = new VBox();
+            content.setSpacing(10);
             content.getChildren().addAll(LoanResultReader.processSearch(searchResults));
             resultBox.setContent(content);
         }

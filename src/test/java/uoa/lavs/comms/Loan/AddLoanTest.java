@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import uoa.lavs.comms.AbstractCustomerTest;
 import uoa.lavs.comms.AbstractLoanTest;
+import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.*;
 import uoa.lavs.models.Customer.Customer;
 import uoa.lavs.models.Loan.Loan;
@@ -15,6 +16,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
+
 
 public class AddLoanTest extends AbstractLoanTest<Loan> {
 
@@ -30,7 +34,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     protected void setup() throws IOException {
         super.setup();
 
-        loan1.setLoanId("TEMP_LOAN_");
+        loan1.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
         loan1.setCustomerID(customerId);
         loan1.setCustomerName(customer.getName());
         loan1.setPrincipal(10000.0);
@@ -41,14 +45,14 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
         loan1.setCompoundingFrequency(Frequency.Yearly);
         loan1.setPaymentFrequency(PaymentFrequency.Weekly);
         loan1.setPaymentAmount(1000.0);
-        loan1.setStatus(LoanStatus.New);
+        loan1.setStatus(LoanStatus.Active);
         loan1.setTerm(360);
 
-        loan4.setLoanId("TEMP_LOAN_");
+        loan4.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
         loan4.setCustomerID(customerId);
         loan4.setCustomerName(customer.getName());
         loan4.setPrincipal(10000.0);
-        loan4.setRateType(RateType.Fixed);
+        loan4.setRateType(RateType.InterestOnly);
         loan4.setRate(10.0);
         loan4.setStartDate(java.time.LocalDate.of(2024, 2, 11));
         loan4.setPeriod(5);
@@ -70,7 +74,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     protected void testLoanSuccess1() {
         id = addLoan.add(conn, loan);
         loan.setLoanId(id);
-        statusUpdate.add(conn, LoanStatus.Active, id);
+        statusUpdate.add(conn, LoanStatus.New, id);
         Loan newLoan = searchLoan.findById(conn, id);
         assertDetails(loan, newLoan);
     }
@@ -79,7 +83,7 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     protected void testLoanSuccess2() {
         id = addLoan.add(conn, loan1);
         loan1.setLoanId(id);
-        statusUpdate.add(conn, LoanStatus.New, id);
+        statusUpdate.add(conn, LoanStatus.Active, id);
         Loan newLoan = searchLoan.findById(conn, id);
         assertDetails(loan1, newLoan);
     }
@@ -129,10 +133,35 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     protected void testLoanUpdateFail() {
         id = addLoan.add(conn, loan);
         loan.setLoanId(id);
-        statusUpdate.add(conn, LoanStatus.Active, id);
-        statusUpdate.add(mockConnection, LoanStatus.Active, id);
+        statusUpdate.add(conn, LoanStatus.New, id);
+        statusUpdate.add(mockConnection, LoanStatus.New, id);
         Loan newLoan = searchLoan.findById(conn, id);
         assertDetails(loan, newLoan);
+    }
+
+    @Test
+    protected void testCacheLoan(){
+        SearchLoan searchLoan = new SearchLoan();
+        Connection mockConnection = mock(Connection.class);
+
+        Loan loan = new Mortgage();
+        loan.setLoanId("loan123");
+        loan.setCustomerID("customer123");
+        loan.setPrincipal(10000.0);
+        loan.setRateType(RateType.InterestOnly);
+        loan.setRate(5.0);
+        loan.setStartDate(java.time.LocalDate.of(2024, 1, 1));
+        loan.setPeriod(5);
+        loan.setCompoundingFrequency(Frequency.Yearly);
+        loan.setPaymentFrequency(PaymentFrequency.Monthly);
+        loan.setPaymentAmount(500.0);
+        loan.setStatus(LoanStatus.Active);
+        loan.setTerm(360);
+        Cache.cacheLoan(loan);
+        Loan cachedLoan = searchLoan.findById(mockConnection, "loan123");
+
+        assertEquals(loan, cachedLoan, "The loan returned should be the one cached.");
+
     }
 
     @Test

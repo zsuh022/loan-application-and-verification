@@ -12,6 +12,7 @@ import uoa.lavs.utility.LoanType;
 import uoa.lavs.utility.PaymentFrequency;
 
 import java.io.IOException;
+import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
 
 public class AbstractLoanTest<R> extends AbstractCustomerTest<R> {
@@ -30,7 +31,7 @@ public class AbstractLoanTest<R> extends AbstractCustomerTest<R> {
 
         customerId = addCustomer.add(conn, customer);
         customerId1 = addCustomer.add(conn, customer1);
-        loan.setLoanId("TEMP_LOAN_");
+        loan.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
         loan.setCustomerID(customerId);
         loan.setCustomerName(customer.getName());
         loan.setPrincipal(10000.0);
@@ -41,7 +42,7 @@ public class AbstractLoanTest<R> extends AbstractCustomerTest<R> {
         loan.setCompoundingFrequency(Frequency.Yearly);
         loan.setPaymentFrequency(PaymentFrequency.Fortnightly);
         loan.setPaymentAmount(1000.0);
-        loan.setStatus(LoanStatus.Active);
+        loan.setStatus(LoanStatus.New);
         loan.setTerm(360);
     }
 
