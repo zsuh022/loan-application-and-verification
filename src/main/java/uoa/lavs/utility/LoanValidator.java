@@ -98,8 +98,6 @@ public class LoanValidator {
         status = LoanStatus.values()[s];
         loan.setStatus(status);
 
-
-
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
@@ -117,8 +115,6 @@ public class LoanValidator {
         }
 
         logger.info("Updated loan for customer id {}", loanMap.get("customerId"));
-
-
     }
 
     private RateType discoverRateType(Map<String, String> loanMap) {
@@ -202,6 +198,7 @@ public class LoanValidator {
         if (rateTypeCounter != 1) {
             logger.error("ValidateLoan method failed: Select exactly one rate type");
             errorPopUp("Select exactly one rate type", "Please select exactly one rate type");
+            return false;
         }
 
         if (loanMap.get("startDate") == null || loanMap.get("startDate").isEmpty()) {
