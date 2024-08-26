@@ -84,7 +84,7 @@ class CustomerSummaryTests {
     }
 
     @Test
-    void testEquals_nullId() {
+    void testEquals_NullId() {
         CustomerSummary anotherSummary = new CustomerSummary();
         anotherSummary.setId("123");
 
@@ -112,7 +112,7 @@ class CustomerSummaryTests {
     }
 
     @Test
-    void testEquals_nullName() {
+    void testEquals_NullName() {
         CustomerSummary anotherSummary = new CustomerSummary();
         anotherSummary.setName("John Doe");
 
@@ -168,7 +168,7 @@ class CustomerSummaryTests {
     }
 
     @Test
-    void testEquals_nullEmail() {
+    void testEquals_NullEmail() {
         CustomerSummary anotherSummary = new CustomerSummary();
         anotherSummary.setEmail("john@example.com");
 

@@ -1,4 +1,5 @@
 package uoa.lavs.models.Loan;
 
-public class LoanTests {
+class LoanTests {
+
 }
