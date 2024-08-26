@@ -56,7 +56,6 @@ public class LoanValidator {
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
 
-
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
@@ -281,22 +280,22 @@ public class LoanValidator {
         return true;
     }
 
-    private boolean isCustomerIdValid(String customerId) {
+    boolean isCustomerIdValid(String customerId) {
         logger.info("Validating customer id in isCustomerIdValid method {}", customerId);
 
         // search using SearchCustomer
-        SearchCustomer search = new SearchCustomer();
+        SearchCustomer search = createSearchCustomer();
 
         try {
             Customer customers = search.findById(Instance.getConnection(), customerId);
-
-            if (customers != null) {
-                logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
-                return true;
-            } else {
+            if (customers == null) {
                 logger.error("isCustomerIdValid method: Customer ID {} is invalid. No customer found", customerId);
                 return false;
             }
+
+            logger.info("isCustomerIdValid method: Customer ID {} is valid", customerId);
+            return true;
+
         } catch (Exception e) {
             logger.error("isCustomerIdValid method: error occurred");
             errorPopUp("Error occurred", "An error occurred while validating customer ID " + customerId);
@@ -304,8 +303,12 @@ public class LoanValidator {
         }
     }
 
+    protected SearchCustomer createSearchCustomer() {
+        return new SearchCustomer();
+    }
+
     private void errorPopUp(String header, String body) {
-        if(!testing) {
+        if (!testing) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Validating Loan");
             alert.setHeaderText(header);

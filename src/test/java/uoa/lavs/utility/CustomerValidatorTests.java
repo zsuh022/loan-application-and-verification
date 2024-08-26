@@ -14,7 +14,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
 
-public class CustomerValidatorTests {
+class CustomerValidatorTests {
 
     private CustomerValidator validator;
     private Map<String, String> validCustomerMap;

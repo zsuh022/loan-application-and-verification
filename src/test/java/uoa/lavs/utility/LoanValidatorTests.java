@@ -7,24 +7,19 @@ import uoa.lavs.comms.Customer.SearchCustomer;
 import uoa.lavs.controllers.LoanBucket;
 import uoa.lavs.logging.Cache;
 import uoa.lavs.mainframe.Frequency;
-import uoa.lavs.mainframe.Instance;
 import uoa.lavs.mainframe.RateType;
 import uoa.lavs.models.Customer.Customer;
-import uoa.lavs.models.Loan.Coborrower;
 import uoa.lavs.models.Loan.Loan;
 import uoa.lavs.models.Loan.Mortgage;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
-public class LoanValidatorTests {
+class LoanValidatorTests {
 
     private Loan loan;
     private LoanValidator validator;
@@ -360,5 +355,53 @@ public class LoanValidatorTests {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
             validator.updateLoan(validLoanMap);
         });
+    }
+
+    @Test
+    void testValidateLoan_isCustomerIdValid_customerNotFound() {
+        // replace the default SearchCustomer with the mock version where no customer is found
+        LoanValidator validator = new LoanValidator() {
+            @Override
+            protected SearchCustomer createSearchCustomer() {
+                return new SearchCustomerMock();
+            }
+        };
+
+        boolean result = validator.isCustomerIdValid("nonexistent-id");
+
+        assertFalse(result, "The validation should fail for a nonexistent customer ID");
+    }
+
+    @Test
+    void testValidateLoan_isCustomerIdValid_exceptionThrown() {
+        // replace the default SearchCustomer with the mock version that throws an exception
+        LoanValidator validator = new LoanValidator() {
+            @Override
+            protected SearchCustomer createSearchCustomer() {
+                return new SearchCustomerExceptionMock();
+            }
+        };
+
+        boolean result = validator.isCustomerIdValid("any-id");
+
+        assertFalse(result, "The validation should fail when an exception is thrown");
+    }
+
+    @Test
+    void testValidateLoan_updateLoan_cacheListSizeOne() {
+        Customer cachedCustomer = new Customer();
+        cachedCustomer.setCustomerId("10000");
+        cachedCustomer.setName("John Doe");
+        Cache.cacheCustomer(cachedCustomer);
+
+        Loan loan = new Mortgage();
+        LoanBucket.getInstance().setLoan(loan);
+
+        validLoanMap.put("coborrowerId0", "10000");
+        validator.updateLoan(validLoanMap);
+
+        assertEquals(1, loan.getCoborrowerList().size(), "Coborrower list should have one entry");
+        assertEquals("10000", loan.getCoborrowerList().get(0).getId(), "Coborrower ID should be '10000'");
+        assertEquals("John Doe", loan.getCoborrowerList().get(0).getName(), "Coborrower name should be 'John Doe'");
     }
 }
