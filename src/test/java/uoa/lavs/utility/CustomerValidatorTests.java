@@ -154,6 +154,14 @@ public class CustomerValidatorTests {
     }
 
     @Test
+    void testValidateCustomer_validFullName() {
+        validCustomerMap.remove("firstName");
+        validCustomerMap.remove("lastName");
+        validCustomerMap.put("fullName", "John Alexander Doe");
+        assertTrue(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
+    }
+
+    @Test
     void testValidateCustomer_nullFirstName() {
         validCustomerMap.put("firstName", null);
         assertFalse(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
@@ -186,6 +194,12 @@ public class CustomerValidatorTests {
     @Test
     void testValidateCustomer_emptyDateOfBirth() {
         validCustomerMap.put("dob", "");
+        assertFalse(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
+    }
+
+    @Test
+    void testValidateCustomer_dateOfBirthInFuture() {
+        validCustomerMap.put("dob", LocalDate.now().plusDays(1).toString());
         assertFalse(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
     }
 
@@ -680,5 +694,12 @@ public class CustomerValidatorTests {
         validCustomerMap.put("note", "This is a customer note.");
         assertTrue(validator.validateCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList));
     }
-}
 
+    @Test
+    void testValidateCustomerWithNote_content() {
+        validCustomerMap.put("note", "This is a customer note.");
+        Customer customer = validator.createCustomer(validCustomerMap, validAddressList, validEmailList, validEmployerList, validPhoneList);
+        assertNotNull(customer.getNote());
+        assertEquals("This is a customer note.", customer.getNote().getNote());
+    }
+}

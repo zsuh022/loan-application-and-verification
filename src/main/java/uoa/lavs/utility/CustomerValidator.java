@@ -51,7 +51,7 @@ public class CustomerValidator {
     private void populateCustomer(Customer customer, Map<String, String> customerMap, List<Map<String, String>> addressList,
                                   List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                   List<Map<String, String>> phoneList){
-        if(customerMap.get("fullName") !=null){
+        if (customerMap.get("fullName") != null) {
             customer.setName(customerMap.get("fullName"));
         } else {
             customer.setTitle(customerMap.get("title"));
@@ -130,7 +130,7 @@ public class CustomerValidator {
                                     List<Map<String, String>> emailList, List<Map<String, String>> employerList,
                                     List<Map<String, String>> phoneList) {
 
-        if(customerMap.get("fullName") !=null){
+        if (customerMap.get("fullName") != null) {
             logger.info("Validating customer with name {}", customerMap.get("fullName"));
             if (customerMap.get("fullName") == null || customerMap.get("fullName").isEmpty()) {
                 logger.error("ValidateCustomer method failed: Customer name is empty");
@@ -138,7 +138,6 @@ public class CustomerValidator {
                 return false;
             }
         } else {
-            logger.info("Validating customer with name {}", customerMap.get("firstName"));
             logger.info("Validating customer with name {}", customerMap.get("firstName"));
 
             if (customerMap.get("firstName") == null || customerMap.get("firstName").isEmpty()) {
