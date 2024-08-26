@@ -62,16 +62,6 @@ public class CustomerPhone {
         this.index = index;
     }
 
-    public boolean validatePrefix(String p) {
-        // assume prefix 2 to 4 digits
-        return p.matches("\\d{2,4}");
-    }
-
-    public boolean validateNumber(String n) {
-        // assume number is 7 or 8 digits
-        return n.matches("\\d{7,8}");
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

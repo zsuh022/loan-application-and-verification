@@ -58,8 +58,12 @@ public class LoanSummary {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         LoanSummary that = (LoanSummary) o;
 
@@ -69,6 +73,7 @@ public class LoanSummary {
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
         return principal != null ? principal.equals(that.principal) : that.principal == null;
     }
+
     @Override
     public int hashCode() {
         int result = loanID != null ? loanID.hashCode() : 0;
@@ -78,6 +83,4 @@ public class LoanSummary {
         result = 31 * result + (principal != null ? principal.hashCode() : 0);
         return result;
     }
-
-
 }

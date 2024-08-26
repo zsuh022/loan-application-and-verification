@@ -304,11 +304,8 @@ public abstract class Loan {
         return true;
     }
 
-
     @Override
     public int hashCode() {
         return Objects.hash(loanId, customerID, customerName, coborrowerList, principal, rateType, rate, startDate, period, compoundingFrequency, paymentFrequency, paymentAmount, status, summary, term);
     }
-
-
 }
