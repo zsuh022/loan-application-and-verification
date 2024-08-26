@@ -37,7 +37,7 @@ public class UpdateStatus extends AbstractWriter<LoanStatus> {
         }, status -> {
             mainframeError(status.getErrorCode(), status.getErrorMessage(), "0", statusLoan);
             return "0";
-        }, 2207, "LoanStatus", null);
+        }, 2207, "LoanStatus", loanID);
     }
 
     @Override

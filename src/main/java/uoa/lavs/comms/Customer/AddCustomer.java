@@ -56,7 +56,7 @@ public class AddCustomer extends AbstractWriter<Customer> {
         properties.put("title", customer.getTitle());
         properties.put("name", customer.getName());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        properties.put("dateOfBirth", customer.getDateOfBirth().format(formatter));
+        properties.put("dob", customer.getDateOfBirth().format(formatter));
         properties.put("occupation", customer.getOccupation());
         properties.put("citizenship", customer.getCitizenship());
         properties.put("visa", customer.getVisa());

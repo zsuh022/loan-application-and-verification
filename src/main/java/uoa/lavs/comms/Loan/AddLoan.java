@@ -67,6 +67,7 @@ public class AddLoan extends AbstractWriter<Loan> {
     @Override
     protected Map<String, String> extractLogProperties(Loan loan, String loanID) {
         Map<String, String> properties = new HashMap<>();
+        properties.put("id", loanID);
         properties.put("customerId", loan.getCustomerId());
         properties.put("status", String.valueOf(LoanStatus.New));
         properties.put("principal", loan.getPrincipal().toString());

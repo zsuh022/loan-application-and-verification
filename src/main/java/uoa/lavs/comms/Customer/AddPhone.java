@@ -48,8 +48,12 @@ public class AddPhone extends AbstractWriter<CustomerPhone> {
         properties.put("phoneNumber", value.getNumber());
         properties.put("type", value.getType());
         properties.put("prefix", value.getPrefix());
-        properties.put("isPrimary", value.getIsPrimary().toString());
-        properties.put("canSendTxt", value.getIsTexting().toString());
+        int flags = 0;
+        flags &= 253;
+        if (value.getIsPrimary()) flags |= 1;
+        flags &= 254;
+        if (value.getIsTexting()) flags |= 2;
+        properties.put("flags", Integer.toString(flags));
         properties.put("id", customerID);
         return properties;
     }

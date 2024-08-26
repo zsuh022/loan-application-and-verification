@@ -31,10 +31,13 @@ public abstract class AbstractSearchable<T> {
             Status status = request.send(conn);
 
             if (status.getWasSuccessful()) {
-                logger.info("Successfully retrieved data using {}, Transaction ID = {}", request.getClass().getName(), status.getTransactionId());
+                logger.info("Successfully retrieved data using {}, Transaction ID = {}", request.getClass()
+                        .getName(), status.getTransactionId());
                 return onSuccess.apply(status);
             } else {
-                logger.error("Failed to retrieve data using {}, Status: {}, Error Code: {} Transaction ID = {}", request.getClass().getName(), status.getErrorMessage(), status.getErrorCode(), status.getTransactionId());
+                logger.error("Failed to retrieve data using {}, Status: {}, Error Code: {} Transaction ID = {}"
+                        , request.getClass().getName(), status.getErrorMessage(), status.getErrorCode(),
+                        status.getTransactionId());
                 return onFailure.apply(status);
             }
         } catch (IOException e) {

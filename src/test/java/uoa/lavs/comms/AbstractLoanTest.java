@@ -31,7 +31,7 @@ public class AbstractLoanTest<R> extends AbstractCustomerTest<R> {
 
         customerId = addCustomer.add(conn, customer);
         customerId1 = addCustomer.add(conn, customer1);
-        loan.setLoanId(TEMPORARY_LOAN_ID_PREFIX);
+        loan.setLoanId(TEMPORARY_LOAN_ID_PREFIX + "0");
         loan.setCustomerID(customerId);
         loan.setCustomerName(customer.getName());
         loan.setPrincipal(10000.0);

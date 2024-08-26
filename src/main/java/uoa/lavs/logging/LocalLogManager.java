@@ -35,6 +35,7 @@ public class LocalLogManager {
     private final HashMap<String, String> temporaryLoanIds = new HashMap<>();
     private JSONArray log;
     private int logCount;
+    // observables for UI
     private SimpleBooleanProperty empty = new SimpleBooleanProperty(true);
     private SimpleStringProperty syncTime = new SimpleStringProperty("N/A");
 
@@ -105,17 +106,18 @@ public class LocalLogManager {
                 INSTANCE.logCount--;
                 i--;
 
-                // if request was for a new customer, map temporary id to id
+                // if request was for a new customer, map temporary id to real id for future requests
                 if(request.getRequestType() == 1201) {
                     mapTemporaryCustomerId(temporaryId, response.getValue("id"));
                 }
 
-                // if request was for a new loan, map temporary id to id
+                // if request was for a new loan, map temporary id to real id for future requests
                 if(request.getRequestType() == 2201) {
                     mapTemporaryLoanId(temporaryId, response.getValue("id"));
                 }
             } else {
-                logger.error("Failed to send log entry: {} with error: {}: {}", logEntry, response.getStatus().getErrorCode(), response.getStatus().getErrorMessage());
+                logger.error("Failed to send log entry: {} with error: {}: {}", logEntry, response.getStatus()
+                        .getErrorCode(), response.getStatus().getErrorMessage());
                 // if not successful break loop
                 succeeded = false;
                 INSTANCE.writeLog();

@@ -3,6 +3,7 @@ package uoa.lavs.utility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uoa.lavs.controllers.AlertManager;
 import uoa.lavs.models.Customer.*;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static uoa.lavs.controllers.AlertManager.setTesting;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_CUSTOMER_ID_PREFIX;
 
 class CustomerValidatorTests {
@@ -25,7 +27,7 @@ class CustomerValidatorTests {
 
     @BeforeAll
     static void setUpAll() {
-        CustomerValidator.setTesting(true);
+        AlertManager.setTesting(true);
     }
 
     @BeforeEach

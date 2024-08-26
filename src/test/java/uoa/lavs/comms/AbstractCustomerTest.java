@@ -35,7 +35,7 @@ public abstract class AbstractCustomerTest<T> {
         Cache.clearLoanCache();
         deleteIfExists(Path.of("lavs-data.db"));
         conn = new NitriteConnection("lavs-data.db");
-        customer.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX);
+        customer.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX + "0");
         customer.setTitle("Mr");
         customer.setName("John Doe");
         customer.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));
@@ -43,7 +43,7 @@ public abstract class AbstractCustomerTest<T> {
         customer.setCitizenship("New Zealand");
         customer.setVisa(null);
 
-        customer1.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX);
+        customer1.setCustomerId(TEMPORARY_CUSTOMER_ID_PREFIX+ "1");
         customer1.setTitle("Mrs");
         customer1.setName("Susan Doe");
         customer1.setDateOfBirth(java.time.LocalDate.of(2024, 2, 11));

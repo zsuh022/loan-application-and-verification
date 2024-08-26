@@ -30,13 +30,15 @@ public class SearchPayments extends AbstractSearchable<Payments> {
             List<Payments> list = new ArrayList<>();
             for (int i = 1; i < loan.getPageCountFromServer() + 1; i++) {
                 Payments value = new Payments(
-                        loan.getCustomerIdFromServer(), loan.getCustomerNameFromServer(), loan.getPaymentCountFromServer(),
-                        loan.getPaymentInterestFromServer(i), loan.getPaymentPrincipalFromServer(i), loan.getPaymentRemainingFromServer(i),
+                        loan.getCustomerIdFromServer(), loan.getCustomerNameFromServer(),
+                        loan.getPaymentCountFromServer(), loan.getPaymentInterestFromServer(i),
+                        loan.getPaymentPrincipalFromServer(i), loan.getPaymentRemainingFromServer(i),
                         loan.getPaymentNumberFromServer(i), loan.getPaymentDateFromServer(i)
                 );
                 list.add(value);
             }
-            logger.info("Loan Payments for customer ID {}, successfully loaded", loan.getCustomerIdFromServer());
+            logger.info("Loan Payments for customer ID {}, successfully loaded",
+                    loan.getCustomerIdFromServer());
             return list;
         }, status -> {
             return new ArrayList<>();

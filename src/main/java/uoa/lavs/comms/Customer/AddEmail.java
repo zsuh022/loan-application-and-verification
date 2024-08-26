@@ -44,7 +44,10 @@ public class AddEmail extends AbstractWriter<CustomerEmail> {
     protected Map<String, String> extractLogProperties(CustomerEmail value, String customerID) {
         Map<String, String> properties = new HashMap<>();
         properties.put("address", value.getAddress());
-        properties.put("isPrimary", value.getIsPrimary().toString());
+        int flags = 0;
+        flags &= 254;
+        if (value.getIsPrimary()) flags |= 1;
+        properties.put("flags", Integer.toString(flags));
         properties.put("id", customerID);
         return properties;
     }

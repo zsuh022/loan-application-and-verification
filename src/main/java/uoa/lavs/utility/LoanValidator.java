@@ -23,13 +23,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static uoa.lavs.controllers.AlertManager.errorPopUp;
 import static uoa.lavs.logging.LocalLogManager.TEMPORARY_LOAN_ID_PREFIX;
 
 public class LoanValidator {
     // Log4J2
     private static final Logger logger = LogManager.getLogger(LoanValidator.class);
-
-    private static boolean testing = false;
 
     public static String generateTemporaryLoanId() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -55,6 +54,7 @@ public class LoanValidator {
         loan.setPaymentFrequency(discoverPaymentFrequency(loanMap));
         loan.setPaymentAmount(Double.parseDouble(loanMap.get("amount")));
         loan.setInterestOnly(Boolean.valueOf(loanMap.get("isInterestOnly")));
+
 
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
@@ -97,6 +97,8 @@ public class LoanValidator {
         status = LoanStatus.values()[s];
         loan.setStatus(status);
 
+
+
         for (int i = 0; i < 18; i++) {
             String coborrowerId = loanMap.get("coborrowerId" + i);
             if (coborrowerId != null) {
@@ -114,6 +116,8 @@ public class LoanValidator {
         }
 
         logger.info("Updated loan for customer id {}", loanMap.get("customerId"));
+
+
     }
 
     private RateType discoverRateType(Map<String, String> loanMap) {
@@ -280,7 +284,7 @@ public class LoanValidator {
         return true;
     }
 
-    boolean isCustomerIdValid(String customerId) {
+    public boolean isCustomerIdValid(String customerId) {
         logger.info("Validating customer id in isCustomerIdValid method {}", customerId);
 
         // search using SearchCustomer
@@ -305,19 +309,5 @@ public class LoanValidator {
 
     protected SearchCustomer createSearchCustomer() {
         return new SearchCustomer();
-    }
-
-    private void errorPopUp(String header, String body) {
-        if (!testing) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Validating Loan");
-            alert.setHeaderText(header);
-            alert.setContentText(body);
-            alert.showAndWait();
-        }
-    }
-
-    public static void setTesting(boolean testing) {
-        LoanValidator.testing = testing;
     }
 }

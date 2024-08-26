@@ -16,4 +16,10 @@ class LoanFactoryTests {
         assertNotNull(loan);
         assertInstanceOf(Mortgage.class, loan);
     }
+
+    @Test
+    void testGetLoan_Invalid() {
+        Loan loan = loanFactory.getLoan(LoanType.Invalid);
+        assertNull(loan);
+    }
 }

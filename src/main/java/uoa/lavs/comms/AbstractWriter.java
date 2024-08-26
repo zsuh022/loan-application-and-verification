@@ -34,7 +34,8 @@ public abstract class AbstractWriter<T> {
             Status status = request.send(conn);
 
             if (status.getWasSuccessful()) {
-                logger.info("Successfully wrote data using {}, Transaction ID = {}", request.getClass().getName(), status.getTransactionId());
+                logger.info("Successfully wrote data using {}, Transaction ID = {}", request.getClass()
+                        .getName(), status.getTransactionId());
                 return onSuccess.apply(status);
             } else {
                 writeToLog(logType, entity, entityName, status.getTransactionId(), ID);
@@ -48,7 +49,8 @@ public abstract class AbstractWriter<T> {
 
     protected void writeToLog(int type, T entity, String name, Long tranID, String customerID) {
         logger.info(
-                "\n********** Failure to update Mainframe ************\n Attempting to log {} {} with code: {}, Transaction ID: {}",
+                "\n********** Failure to update Mainframe ************\n Attempting to log {} {} " +
+                        "with code: {}, Transaction ID: {}",
                 entity.getClass().getSimpleName(),
                 name,
                 type,
@@ -60,7 +62,8 @@ public abstract class AbstractWriter<T> {
 
     protected void mainframeError(int code, String message, String customerID, T entity) {
         logger.error(
-                "Failed to save {} to mainframe. Customer ID = {}, Error Code: {}, Error Message: {}.", entity.getClass().getSimpleName(), customerID, code, message);
+                "Failed to save {} to mainframe. Customer ID = {}, Error Code: {}, Error Message: {}.",
+                entity.getClass().getSimpleName(), customerID, code, message);
     }
 
 }

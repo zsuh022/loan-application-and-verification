@@ -32,7 +32,8 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
         try{
             FindLoan loan = new FindLoan();
             loan.setId(id);
-            for(LoanSummary summary : (List<LoanSummary>) processRequest(conn, loan, status -> executeCommon(conn, loan), status -> new ArrayList<>())) {
+            for(LoanSummary summary : (List<LoanSummary>) processRequest(conn, loan, status ->
+                    executeCommon(conn, loan), status -> new ArrayList<>())) {
                 if(!foundIDs.contains(summary.getLoanID())) {
                     summaries.add(summary);
                     foundIDs.add(summary.getLoanID());
@@ -50,7 +51,8 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
         int length = loan.getCountFromServer();
         for (int i = 1; i < length + 1; i++) {
             LoanSummary summary = new LoanSummary(
-                    loan.getLoanIdFromServer(i), loan.getCustomerIdFromServer(), loan.getCustomerNameFromServer(), loan.getStatusFromServer(i), loan.getPrincipalFromServer(i)
+                    loan.getLoanIdFromServer(i), loan.getCustomerIdFromServer(), loan.getCustomerNameFromServer(),
+                    loan.getStatusFromServer(i), loan.getPrincipalFromServer(i)
             );
             summaries.add(summary);
         }
@@ -58,6 +60,7 @@ public class InitialSearch extends AbstractSearchable<LoanSummary> {
     }
 
     LoanSummary obfuscateLoan(Loan loan) {
-        return new LoanSummary(loan.getId(), loan.getCustomerId(), loan.getCustomerName(), loan.getStatus().toString(), loan.getPrincipal());
+        return new LoanSummary(loan.getId(), loan.getCustomerId(), loan.getCustomerName(), loan.getStatus().toString(),
+                loan.getPrincipal());
     }
 }

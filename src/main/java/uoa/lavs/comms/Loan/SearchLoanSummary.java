@@ -21,11 +21,14 @@ public class SearchLoanSummary extends AbstractSearchable<LoanDetails> {
 
         return processRequest(conn, summary, status -> {
             LoanDetails value = new LoanDetails(
-                    loanID, summary.getCustomerIdFromServer(), summary.getCustomerNameFromServer(), summary.getPrincipalFromServer(),
-                    summary.getRateValueFromServer(), summary.getPayoffDateFromServer(), summary.getTermFromServer(), summary.getTotalInterestFromServer(),
-                    summary.getTotalLoanCostFromServer(), summary.getPaymentAmountFromServer(), summary.getPaymentFrequencyFromServer()
+                    loanID, summary.getCustomerIdFromServer(), summary.getCustomerNameFromServer(),
+                    summary.getPrincipalFromServer(), summary.getRateValueFromServer(),
+                    summary.getPayoffDateFromServer(), summary.getTermFromServer(),
+                    summary.getTotalInterestFromServer(), summary.getTotalLoanCostFromServer(),
+                    summary.getPaymentAmountFromServer(), summary.getPaymentFrequencyFromServer()
             );
-            logger.info("Loan Summary for customer ID {}, successfully loaded", summary.getCustomerIdFromServer());
+            logger.info("Loan Summary for customer ID {}, successfully loaded",
+                    summary.getCustomerIdFromServer());
             return value;
         }, status -> {
             return new LoanDetails();

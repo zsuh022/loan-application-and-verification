@@ -3,6 +3,7 @@ package uoa.lavs.utility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uoa.lavs.controllers.AlertManager;
 import uoa.lavs.comms.Customer.SearchCustomer;
 import uoa.lavs.controllers.LoanBucket;
 import uoa.lavs.logging.Cache;
@@ -27,7 +28,7 @@ class LoanValidatorTests {
 
     @BeforeAll
     static void setUpAll() {
-        LoanValidator.setTesting(true);
+        AlertManager.setTesting(true);
     }
 
     @BeforeEach

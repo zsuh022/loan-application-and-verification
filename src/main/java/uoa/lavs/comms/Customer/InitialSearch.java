@@ -36,14 +36,15 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
             try{
                 FindCustomer customer = new FindCustomer();
                 customer.setCustomerId(customerId);
-                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status ->
+                        executeCommon(conn, customer), status -> new ArrayList<>())) {
                     if(!foundIDs.contains(summary.getId())) {
                         summaries.add(summary);
                         foundIDs.add(summary.getId());
                     }
                 }
             } catch (Exception e) {
-                // do nothing
+                logger.error("Error in search", e);
             }
             return summaries;
         } else {
@@ -56,14 +57,16 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
             try{
                 FindCustomerAdvanced customer = new FindCustomerAdvanced();
                 customer.setSearchName(customerId);
-                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status -> executeCommon(conn, customer), status -> new ArrayList<>())) {
+                for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status ->
+                        executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    System.out.println(summary.getId());
                     if(!foundIDs.contains(summary.getId())) {
                         summaries.add(summary);
                         foundIDs.add(summary.getId());
                     }
                 }
             } catch (Exception e) {
-                // do nothing
+                logger.error("Error in search", e);
             }
 
             return summaries;
@@ -102,7 +105,9 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
         summary.setEmail(findEmail(conn, id));
     }
 
-    private void populateSummaryAdvanced(Connection conn, CustomerSummary summary, FindCustomerAdvanced customer, int index) {
+    private void populateSummaryAdvanced(
+            Connection conn, CustomerSummary summary,
+            FindCustomerAdvanced customer, int index) {
         String id = customer.getIdFromServer(index);
         summary.setId(id);
         summary.setName(customer.getNameFromServer(index));
