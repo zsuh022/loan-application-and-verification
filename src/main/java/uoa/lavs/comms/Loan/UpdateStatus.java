@@ -43,7 +43,6 @@ public class UpdateStatus extends AbstractWriter<LoanStatus> {
     @Override
     protected Map<String, String> extractLogProperties(LoanStatus loan, String loanID) {
         Map<String, String> properties = new HashMap<>();
-        System.out.println("Loan ID: " + loanID);
         properties.put("id", loanID);
         properties.put("status", loan.toString());
         return properties;

@@ -44,7 +44,7 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
                     }
                 }
             } catch (Exception e) {
-                // do nothing
+                logger.error("Error in search", e);
             }
             return summaries;
         } else {
@@ -59,13 +59,14 @@ public class InitialSearch extends AbstractSearchable<CustomerSummary> {
                 customer.setSearchName(customerId);
                 for(CustomerSummary summary : (List<CustomerSummary>) processRequest(conn, customer, status ->
                         executeCommon(conn, customer), status -> new ArrayList<>())) {
+                    System.out.println(summary.getId());
                     if(!foundIDs.contains(summary.getId())) {
                         summaries.add(summary);
                         foundIDs.add(summary.getId());
                     }
                 }
             } catch (Exception e) {
-                // do nothing
+                logger.error("Error in search", e);
             }
 
             return summaries;

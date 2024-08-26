@@ -57,11 +57,13 @@ public class AddAddress extends AbstractWriter<CustomerAddress> {
         properties.put("city", addy.getCity());
         properties.put("postCode", String.valueOf(addy.getPostCode()));
         properties.put("country", addy.getCountry());
-        properties.put("isPrimary", addy.getIsPrimary().toString());
-        properties.put("isMailing", addy.getIsMailing().toString());
+        int flags = 0;
+        flags &= 254;
+        if (addy.getIsPrimary()) flags |= 1;
+        flags &= 253;
+        if (addy.getIsMailing()) flags |= 2;
+        properties.put("flags", Integer.toString(flags));
         properties.put("id", customerID);
         return properties;
     }
-
-
 }

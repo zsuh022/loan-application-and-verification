@@ -62,7 +62,10 @@ public class AddEmployer extends AbstractWriter<CustomerEmployer> {
         properties.put("phone", value.getPhone());
         properties.put("email", value.getEmail());
         properties.put("web", value.getWeb());
-        properties.put("isOwner", value.getIsOwner().toString());
+        int flags = 0;
+        flags &= 254;
+        if (value.getIsOwner()) flags |= 1;
+        properties.put("flags", Integer.toString(flags));
         properties.put("id", customerID);
         return properties;
     }

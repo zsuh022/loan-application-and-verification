@@ -73,7 +73,6 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     @Test
     protected void testLoanSuccess1() {
         id = addLoan.add(conn, loan);
-        System.out.println(id);
         loan.setLoanId(id);
         statusUpdate.add(conn, LoanStatus.New, id);
         Loan newLoan = searchLoan.findById(conn, id);
@@ -133,7 +132,6 @@ public class AddLoanTest extends AbstractLoanTest<Loan> {
     @Test
     protected void testLoanUpdateFail() {
         id = addLoan.add(conn, loan);
-        System.out.println(id);
         loan.setLoanId(id);
         statusUpdate.add(conn, LoanStatus.New, id);
         statusUpdate.add(mockConnection, LoanStatus.New, id);

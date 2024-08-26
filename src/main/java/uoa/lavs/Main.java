@@ -112,9 +112,7 @@ public class Main extends Application {
                     new javafx.geometry.Insets(
                             verticalMargin, horizontalMargin, verticalMargin, horizontalMargin));
         } catch (Exception e) {
-            // TAKE THIS OUT AFTER
-            System.out.println("Error scaling");
-            e.printStackTrace();
+            // do nothing if the cast fails
         }
     }
 }
